@@ -23,6 +23,7 @@ async def search_semantic_scholar(claim_request: ClaimRequest) -> list[Source]:
             await asyncio.sleep(1)
             response = await client.get(SEMANTIC_URL, params=params, headers=headers)
 
+
     if response.status_code != 200:
         return []
 
@@ -34,7 +35,7 @@ async def search_semantic_scholar(claim_request: ClaimRequest) -> list[Source]:
         source = Source(
             url=item.get("url", ""),
             title=item.get("title", ""),
-            snippet=item.get("abstract", ""),
+            snippet=item.get("abstract") or item.get("title") or "",
             source_type="academic",
             raw_claim_rating=None
         )

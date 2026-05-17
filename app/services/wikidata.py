@@ -47,7 +47,7 @@ async def search_wikidata(claim_request: ClaimRequest) -> list[Source]:
     entity_ids = []
     entity_labels = {}
 
-    async with httpx.AsyncClient() as client:
+    async with httpx.AsyncClient(headers={"User-Agent": "FalseClaimDetector/1.0 (minwoopark.333@gmail.com)"}) as client:
         # Step 1: search for entities matching each extracted term
         for term in search_terms:
             params = {

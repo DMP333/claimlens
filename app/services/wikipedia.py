@@ -15,8 +15,11 @@ async def search_wikipedia(claim_request: ClaimRequest) -> list[Source]:
         "srlimit": 10
     }
 
+    headers = {"User-Agent": "FalseClaimDetector/1.0 (minwoopark.333@gmail.com)"}
+
     async with httpx.AsyncClient() as client:
-        response = await client.get(WIKI_URL, params=params)
+        response = await client.get(WIKI_URL, params=params, headers=headers)
+
 
     if response.status_code != 200:
         return []

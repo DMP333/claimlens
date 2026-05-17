@@ -1,5 +1,5 @@
 import asyncio
-from duckduckgo_search import DDGS
+from ddgs import DDGS
 from app.models.schemas import Source, ClaimRequest
 
 #TODO: explore different parameter options for api
