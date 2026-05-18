@@ -1,15 +1,16 @@
-from transformers import AutoTokenizer, AutoModelForSequenceClassification
-#transformer gives me accessed to pre-trained models
-#autotokenizer converts human text to model readable langauge
-#automodelforsequnce classification is what takes the input and gives us the result
-import torch #framework the model runs on
+from transformers import AutoTokenizer, AutoModelForSequenceClassification, pipeline
+import torch
 
-MODEL_NAME = "cross-encoder/nli-deberta-v3-base" #specific model we are using
+MODEL_NAME = "cross-encoder/nli-deberta-v3-base"
 
-tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME) #tokenizer for this specific model
-model = AutoModelForSequenceClassification.from_pretrained(MODEL_NAME) #neural network model? Already trained with valid weights
-model.eval() #turn model from training to evaluating
-#until here, it is run during the import statement, so early on
+tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
+model = AutoModelForSequenceClassification.from_pretrained(MODEL_NAME)
+model.eval()
+
+claim_type_classifier = pipeline(
+    "text-classification",
+    model="lighteternal/fact-or-opinion-xlmr-el",
+)
 
 #TODO: consider lazy loading to speed up startup
 #TODO: consider batched inference for performance
@@ -17,23 +18,27 @@ model.eval() #turn model from training to evaluating
 LABEL_MAP = {0: "opposing", 1: "supporting", 2: "neutral"}
 
 
-
 def classify_stance(premise: str, hypothesis: str) -> tuple[str, float]:
-    #premis is what the source says, hypothesis is the claim we are checking
-    #we return stance and confidence
-
-    inputs = tokenizer( #converts the text to numbers (tokens) that machine can read
+    inputs = tokenizer(
         premise,
         hypothesis,
         return_tensors="pt",
-        truncation=True, #loses the info if it goes over the max length, adjust if this causes the issue later
+        truncation=True,
         max_length=512,
     )
-    with torch.no_grad(): #don't track gradient of neural network cuz we are not doing any training
-        outputs = model(**inputs) #unpacts the dictioaary and actaully get the output
-    probs = torch.softmax(outputs.logits, dim=1)[0] #convert returned raw scores into probability of each verdict
-    predicted_idx = probs.argmax().item() #find max prob
-    confidence = probs[predicted_idx].item() #get confidnece of that
+    with torch.no_grad():
+        outputs = model(**inputs)
+    probs = torch.softmax(outputs.logits, dim=1)[0]
+    predicted_idx = probs.argmax().item()
+    confidence = probs[predicted_idx].item()
     return LABEL_MAP[predicted_idx], confidence
 
 
+def classify_claim_type(claim: str) -> tuple[str, float]:
+    result = claim_type_classifier(claim)[0]
+    label = result["label"]
+    score = result["score"]
+
+    if label == "LABEL_1":
+        return ("factual", score)
+    return ("opinion", score)

@@ -11,16 +11,20 @@ from app.services.nli_service import classify_stance
 from app.services.credibility_service import score_all_sources
 
 
-async def analyze_claim(request: ClaimRequest) -> ClaimResponse:
+async def analyze_claim(request: ClaimRequest) -> ClaimResponse: #rather the claim is opinon or not, and verdict of the claim
+    from app.services.nli_service import classify_claim_type
+
+    claim_type, claim_type_confidence = classify_claim_type(request.claim)
     raw_sources = await search_sources(request)
     analyzed_sources = await analyze_sources(request.claim, raw_sources)
     verdict, confidence_in_verdict = compute_verdict(analyzed_sources)
     return ClaimResponse(
+        claim_type=claim_type,
+        claim_type_confidence=claim_type_confidence,
         verdict=verdict,
         confidence_in_verdict=confidence_in_verdict,
         sources=analyzed_sources,
     )
-
 
 async def search_sources(request: ClaimRequest) -> list[Source]:
     service_names = [

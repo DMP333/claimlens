@@ -22,8 +22,10 @@ class SourceResult(BaseModel):
     support_summary: str
 
 class ClaimResponse(BaseModel):
+    claim_type: str #opinion vs factual
+    claim_type_confidence: float #how confident are you on the fact that it is opinon or factual
     verdict: str
-    confidence_in_verdict: float #also percentage
+    confidence_in_verdict: float
     sources: list[SourceResult]
 
 class Source(BaseModel):
@@ -33,5 +35,5 @@ class Source(BaseModel):
     source_type: str      # "fact_check", "news", "encyclopedia", "academic", "web"
     credibility: Optional[float] = None  # 0.0 to 1.0, filled in later
     raw_claim_rating: Optional[str] = None  # only for fact-checks, e.g. "False", "Mostly True"
-    metadata: dict | None = None #used to count how many other sources each source used, etc.. 
+    metadata: dict | None = None #used to count how many other sources each source used, etc..
 
