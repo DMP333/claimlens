@@ -12,34 +12,67 @@ async def search_wikipedia(claim_request: ClaimRequest) -> list[Source]:
         "list": "search",
         "srsearch": claim_request.claim,
         "format": "json",
-        "srlimit": 10
+        "srlimit": 10,
     }
-
     headers = {"User-Agent": "FalseClaimDetector/1.0 (minwoopark.333@gmail.com)"}
 
     async with httpx.AsyncClient() as client:
         response = await client.get(WIKI_URL, params=params, headers=headers)
 
+        if response.status_code != 200:
+            return []
 
-    if response.status_code != 200:
-        return []
+        data = response.json()
+        results = data.get("query", {}).get("search", [])
 
-    data = response.json()
-    results = data.get("query", {}).get("search", [])
+        sources = []
+        titles = []
+        for item in results:
+            title = item.get("title", "")
+            titles.append(title)
+            source = Source(
+                url=f"https://en.wikipedia.org/wiki/{title.replace(' ', '_')}",
+                title=title,
+                snippet=item.get("snippet", ""),
+                source_type="encyclopedia",
+                raw_claim_rating=None,
+                metadata={},
+            )
+            sources.append(source)
 
-    sources = []
-    for item in results:
-        title = item.get("title", "")
-        raw_snippet = item.get("snippet", "")
-        clean_snippet = re.sub(r"<[^>]+>", "", raw_snippet) #strips all html tag
+        if not titles:
+            return sources
 
-        source = Source(
-            url=f"https://en.wikipedia.org/wiki/{title.replace(' ', '_')}",
-            title=title,
-            snippet=clean_snippet,
-            source_type="encyclopedia",
-            raw_claim_rating=None
-        )
-        sources.append(source)
+        # Second call: fetch article length and quality categories
+        quality_params = {
+            "action": "query",
+            "titles": "|".join(titles[:10]),
+            "prop": "info|categories",
+            "cllimit": "50",
+            "clcategories": "Category:Featured articles|Category:Good articles",
+            "format": "json",
+        }
+        quality_response = await client.get(WIKI_URL, params=quality_params, headers=headers)
+
+        if quality_response.status_code != 200:
+            return sources
+
+        pages = quality_response.json().get("query", {}).get("pages", {})
+        quality_map = {}
+        for page_id, page_data in pages.items():
+            title = page_data.get("title", "")
+            length = page_data.get("length", 0)
+            categories = [c.get("title", "") for c in page_data.get("categories", [])]
+            is_featured = "Category:Featured articles" in categories
+            is_good = "Category:Good articles" in categories
+            quality_map[title] = {
+                "article_length": length,
+                "is_featured": is_featured,
+                "is_good": is_good,
+            }
+
+        for source in sources:
+            if source.title in quality_map:
+                source.metadata = quality_map[source.title]
 
     return sources

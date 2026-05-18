@@ -10,7 +10,7 @@ async def search_openalex(claim_request: ClaimRequest) -> list[Source]:
         "per_page": 10,
         "filter": f"publication_year:{claim_request.date_range_start.year}-{claim_request.date_range_end.year}",
         "sort": "relevance_score:desc",
-        "select": "id,display_name,doi,abstract_inverted_index,publication_year",
+        "select": "id,display_name,doi,abstract_inverted_index,publication_year,cited_by_count",
     }
 
     async with httpx.AsyncClient() as client:
@@ -37,6 +37,7 @@ async def search_openalex(claim_request: ClaimRequest) -> list[Source]:
             snippet=snippet,
             source_type="academic",
             raw_claim_rating=None,
+            metadata={"citation_count": item.get("cited_by_count", 0)},
         )
         sources.append(source)
 

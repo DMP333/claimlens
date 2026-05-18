@@ -7,11 +7,13 @@ from app.services.semantic_scholar import search_semantic_scholar
 from app.services.open_alex import search_openalex
 from app.services.duckduckgo import search_duckduckgo
 from app.services.wikidata import search_wikidata
+from app.services.nli_service import classify_stance
+from app.services.credibility_service import score_all_sources
 
 
 async def analyze_claim(request: ClaimRequest) -> ClaimResponse:
     raw_sources = await search_sources(request)
-    analyzed_sources = analyze_sources(request.claim, raw_sources)
+    analyzed_sources = await analyze_sources(request.claim, raw_sources)
     verdict, confidence_in_verdict = compute_verdict(analyzed_sources)
     return ClaimResponse(
         verdict=verdict,
@@ -50,13 +52,11 @@ async def search_sources(request: ClaimRequest) -> list[Source]:
 
     return all_sources
 
-
-def analyze_sources(claim: str, raw_sources: list[Source]) -> list[SourceResult]:
-    #TODO: replace reliability with source credibility scoring
-    from app.services.nli_service import classify_stance
+async def analyze_sources(claim: str, raw_sources: list[Source]) -> list[SourceResult]:
+    credibility_results = await score_all_sources(raw_sources)
 
     results = []
-    for source in raw_sources:
+    for source, cred in zip(raw_sources, credibility_results):
         if not source.snippet:
             continue
 
@@ -67,7 +67,11 @@ def analyze_sources(claim: str, raw_sources: list[Source]) -> list[SourceResult]
                 url=source.url,
                 title=source.title,
                 stance=stance,
-                reliability=0.5, #TODO: This number represents how much we trust this source, we can update them later
+                stance_confidence=confidence,
+                credibility_tier=cred["credibility_tier"],
+                credibility_score=cred["credibility_score"],
+                bias_rating=cred["bias_rating"],
+                factual_reporting=cred["factual_reporting"],
                 support_summary=f"NLI: {stance} ({confidence:.2f})",
             )
         )

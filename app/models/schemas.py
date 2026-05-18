@@ -14,7 +14,11 @@ class SourceResult(BaseModel):
     url: str
     title: str
     stance: str
-    reliability: float # gonna be percentage
+    stance_confidence: float #nli confidence
+    credibility_tier: str #vefified, estimated, unverified
+    credibility_score: float
+    bias_rating: str | None = None #bias, only tier one has it
+    factual_reporting: str | None = None
     support_summary: str
 
 class ClaimResponse(BaseModel):
@@ -29,3 +33,5 @@ class Source(BaseModel):
     source_type: str      # "fact_check", "news", "encyclopedia", "academic", "web"
     credibility: Optional[float] = None  # 0.0 to 1.0, filled in later
     raw_claim_rating: Optional[str] = None  # only for fact-checks, e.g. "False", "Mostly True"
+    metadata: dict | None = None #used to count how many other sources each source used, etc.. 
+

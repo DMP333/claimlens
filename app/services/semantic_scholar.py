@@ -37,7 +37,8 @@ async def search_semantic_scholar(claim_request: ClaimRequest) -> list[Source]:
             title=item.get("title", ""),
             snippet=item.get("abstract") or item.get("title") or "",
             source_type="academic",
-            raw_claim_rating=None
+            raw_claim_rating=None,
+            metadata={"citation_count": item.get("citationCount", 0)},
         )
         sources.append(source)
 
