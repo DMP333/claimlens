@@ -52,20 +52,26 @@ async def search_sources(request: ClaimRequest) -> list[Source]:
 
 
 def analyze_sources(claim: str, raw_sources: list[Source]) -> list[SourceResult]:
-    #TODO: implement NLI stance detection
+    #TODO: replace reliability with source credibility scoring
+    from app.services.nli_service import classify_stance
+
     results = []
     for source in raw_sources:
+        if not source.snippet:
+            continue
+
+        stance, confidence = classify_stance(source.snippet, claim)
+
         results.append(
             SourceResult(
                 url=source.url,
                 title=source.title,
-                stance="opposing",
-                reliability=0.85,
-                support_summary="Placeholder analysis.",
+                stance=stance,
+                reliability=0.5, #TODO: This number represents how much we trust this source, we can update them later
+                support_summary=f"NLI: {stance} ({confidence:.2f})",
             )
         )
     return results
-
 
 def compute_verdict(source_results_list: list[SourceResult]) -> tuple[str, float]:
     #TODO: implement real verdict logic with NLI integration
