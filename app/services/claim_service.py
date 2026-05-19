@@ -11,14 +11,15 @@ from app.services.nli_service import classify_stance
 from app.services.credibility_service import score_all_sources
 
 
-async def analyze_claim(request: ClaimRequest) -> ClaimResponse: #rather the claim is opinon or not, and verdict of the claim
+async def analyze_claim(request: ClaimRequest) -> ClaimResponse:
     from app.services.nli_service import classify_claim_type
 
     claim_type, claim_type_confidence = classify_claim_type(request.claim)
     raw_sources = await search_sources(request)
     analyzed_sources = await analyze_sources(request.claim, raw_sources)
-    verdict, confidence_in_verdict = compute_verdict(analyzed_sources)
+    verdict, confidence_in_verdict = compute_verdict(analyzed_sources, claim_type)
     return ClaimResponse(
+        claim=request.claim,
         claim_type=claim_type,
         claim_type_confidence=claim_type_confidence,
         verdict=verdict,
@@ -64,7 +65,8 @@ async def analyze_sources(claim: str, raw_sources: list[Source]) -> list[SourceR
         if not source.snippet:
             continue
 
-        stance, confidence = classify_stance(source.snippet, claim)
+        premise = f"{source.title}. {source.snippet}" if source.title else source.snippet
+        stance, confidence = classify_stance(premise, claim)
 
         results.append(
             SourceResult(
@@ -81,6 +83,36 @@ async def analyze_sources(claim: str, raw_sources: list[Source]) -> list[SourceR
         )
     return results
 
-def compute_verdict(source_results_list: list[SourceResult]) -> tuple[str, float]:
-    #TODO: implement real verdict logic with NLI integration
-    return ("inconclusive", 0.0)
+def compute_verdict(source_results_list: list[SourceResult], claim_type: str) -> tuple[str, float]:
+    weighted_supporting = 0.0
+    weighted_opposing = 0.0
+
+    for source in source_results_list:
+        if source.stance == "neutral":
+            continue
+        weight = source.stance_confidence * source.credibility_score
+        if source.stance == "supporting":
+            weighted_supporting += weight
+        elif source.stance == "opposing":
+            weighted_opposing += weight
+
+    total = weighted_supporting + weighted_opposing
+
+    if total == 0:
+        return ("insufficient evidence", 0.0)
+
+    ratio = weighted_supporting / total
+    confidence = abs(ratio - 0.5) * 2
+
+    if ratio >= 0.80:
+        verdict = "strongly supported"
+    elif ratio >= 0.60:
+        verdict = "likely supported"
+    elif ratio > 0.40:
+        verdict = "contested"
+    elif ratio >= 0.20:
+        verdict = "likely opposed"
+    else:
+        verdict = "strongly opposed"
+
+    return (verdict, round(confidence, 4))

@@ -22,6 +22,7 @@ class SourceResult(BaseModel):
     support_summary: str
 
 class ClaimResponse(BaseModel):
+    claim: str
     claim_type: str #opinion vs factual
     claim_type_confidence: float #how confident are you on the fact that it is opinon or factual
     verdict: str

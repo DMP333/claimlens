@@ -1,7 +1,7 @@
 from transformers import AutoTokenizer, AutoModelForSequenceClassification, pipeline
 import torch
 
-MODEL_NAME = "cross-encoder/nli-deberta-v3-base"
+MODEL_NAME = "MoritzLaurer/DeBERTa-v3-base-mnli-fever-anli"
 
 tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
 model = AutoModelForSequenceClassification.from_pretrained(MODEL_NAME)
@@ -15,7 +15,7 @@ claim_type_classifier = pipeline(
 #TODO: consider lazy loading to speed up startup
 #TODO: consider batched inference for performance
 
-LABEL_MAP = {0: "opposing", 1: "supporting", 2: "neutral"}
+LABEL_MAP = {0: "supporting", 1: "neutral", 2: "opposing"}
 
 
 def classify_stance(premise: str, hypothesis: str) -> tuple[str, float]:
