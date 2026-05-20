@@ -10,6 +10,45 @@ from app.services.wikidata import search_wikidata
 from app.services.nli_service import classify_stance
 from app.services.credibility_service import score_all_sources
 
+NEGATIVE_RATINGS = {"false", "incorrect", "inaccurate", "misleading", "pants on fire",
+                    "fake", "wrong", "not true", "unproven", "unsupported",
+                    "no evidence", "debunked", "unfounded", "baseless",
+                    "flawed", "distorts"}
+POSITIVE_RATINGS = {"true", "correct", "accurate", "mostly true", "confirmed"}
+
+
+def _stance_from_factcheck(source: Source, claim: str) -> tuple[str | None, float | None]:
+    rating = (source.raw_claim_rating or "").lower().strip()
+    claim_reviewed = (source.metadata or {}).get("claim_reviewed", "")
+
+    if not claim_reviewed or not rating:
+        return None, None
+
+    alignment, alignment_conf = classify_stance(claim_reviewed, claim)
+
+    print(f"[FC-DEBUG] claim_reviewed: '{claim_reviewed}'")
+    print(f"[FC-DEBUG] user_claim: '{claim}'")
+    print(f"[FC-DEBUG] alignment: {alignment} ({alignment_conf:.2f}) | rating: '{rating}'")
+
+    if alignment == "neutral" or alignment_conf < 0.70:
+        return None, None
+
+    rating_is_negative = any(neg in rating for neg in NEGATIVE_RATINGS)
+    rating_is_positive = any(pos in rating for pos in POSITIVE_RATINGS)
+
+    if rating_is_negative:
+        if alignment == "supporting":
+            return "opposing", 0.95
+        elif alignment == "opposing":
+            return "supporting", 0.95
+    elif rating_is_positive:
+        if alignment == "supporting":
+            return "supporting", 0.95
+        elif alignment == "opposing":
+            return "opposing", 0.95
+
+    return None, None
+
 
 async def analyze_claim(request: ClaimRequest) -> ClaimResponse:
     from app.services.nli_service import classify_claim_type
@@ -65,6 +104,26 @@ async def analyze_sources(claim: str, raw_sources: list[Source]) -> list[SourceR
         if not source.snippet:
             continue
 
+        # Fact-check sources: use rating instead of NLI on snippet
+        if source.source_type == "fact_check" and source.raw_claim_rating:
+            fc_stance, fc_conf = _stance_from_factcheck(source, claim)
+            if fc_stance:
+                results.append(
+                    SourceResult(
+                        url=source.url,
+                        title=source.title,
+                        stance=fc_stance,
+                        stance_confidence=fc_conf,
+                        credibility_tier=cred["credibility_tier"],
+                        credibility_score=cred["credibility_score"],
+                        bias_rating=cred["bias_rating"],
+                        factual_reporting=cred["factual_reporting"],
+                        support_summary=f"Fact-check: '{source.raw_claim_rating}' (rating-based)",
+                    )
+                )
+                continue
+
+        # All other sources: NLI as usual
         premise = f"{source.title}. {source.snippet}" if source.title else source.snippet
         stance, confidence = classify_stance(premise, claim)
 

@@ -35,6 +35,7 @@ async def search_factcheck(claim_request: ClaimRequest) -> list[Source]:
             snippet=item.get("text", ""),
             source_type="fact_check",
             raw_claim_rating=review.get("textualRating", None),
+            metadata={"claim_reviewed": item.get("text", "")},
         )
         sources.append(source)
 
