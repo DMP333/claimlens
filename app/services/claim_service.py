@@ -7,8 +7,9 @@ from app.services.semantic_scholar import search_semantic_scholar
 from app.services.open_alex import search_openalex
 from app.services.duckduckgo import search_duckduckgo
 from app.services.wikidata import search_wikidata
-from app.services.nli_service import classify_stance
+from app.services.nli_service import classify_stance, compute_relevance
 from app.services.credibility_service import score_all_sources
+
 
 NEGATIVE_RATINGS = {"false", "incorrect", "inaccurate", "misleading", "pants on fire",
                     "fake", "wrong", "not true", "unproven", "unsupported",
@@ -16,6 +17,19 @@ NEGATIVE_RATINGS = {"false", "incorrect", "inaccurate", "misleading", "pants on 
                     "flawed", "distorts"}
 POSITIVE_RATINGS = {"true", "correct", "accurate", "mostly true", "confirmed"}
 
+def _deduplicate_sources(sources: list[Source]) -> list[Source]:
+    #TODO: non-url based duplicate fixing
+    seen_urls = set()
+    unique = []
+    for source in sources:
+        url = source.url.rstrip("/").lower()
+        if url in seen_urls:
+            print(f"[DEDUP] dropped duplicate: {source.title[:80]}")
+            continue
+        seen_urls.add(url)
+        unique.append(source)
+    print(f"[DEDUP] {len(sources)} sources -> {len(unique)} after dedup")
+    return unique
 
 def _stance_from_factcheck(source: Source, claim: str) -> tuple[str | None, float | None]:
     rating = (source.raw_claim_rating or "").lower().strip()
@@ -49,12 +63,36 @@ def _stance_from_factcheck(source: Source, claim: str) -> tuple[str | None, floa
 
     return None, None
 
+RELEVANCE_THRESHOLD = 0.35 #how relevant the source is suppose to be with the claim
+
+def _filter_relevant_sources(claim: str, sources: list[Source]) -> list[Source]:
+    texts = []
+    for source in sources:
+        if source.title and source.snippet:
+            text = f"{source.title}. {source.snippet}"
+        else:
+            text = source.title or source.snippet or ""
+        texts.append(text)
+
+    scores = compute_relevance(claim, texts)
+
+    filtered = []
+    for source, text, score in zip(sources, texts, scores):
+        if text == "" or score >= RELEVANCE_THRESHOLD:
+            filtered.append(source)
+        else:
+            print(f"[FILTERED] {score:.2f} | {source.title[:80]}")
+
+    print(f"[RELEVANCE] {len(sources)} sources -> {len(filtered)} after filtering")
+    return filtered
 
 async def analyze_claim(request: ClaimRequest) -> ClaimResponse:
     from app.services.nli_service import classify_claim_type
 
     claim_type, claim_type_confidence = classify_claim_type(request.claim)
     raw_sources = await search_sources(request)
+    raw_sources = _filter_relevant_sources(request.claim, raw_sources) #filtering added
+    raw_sources = _deduplicate_sources(raw_sources) #filter duplicate sources
     analyzed_sources = await analyze_sources(request.claim, raw_sources)
     verdict, confidence_in_verdict = compute_verdict(analyzed_sources, claim_type)
     return ClaimResponse(
@@ -148,6 +186,8 @@ def compute_verdict(source_results_list: list[SourceResult], claim_type: str) ->
 
     for source in source_results_list:
         if source.stance == "neutral":
+            continue
+        if source.stance_confidence < 0.60: #0.6 threshold
             continue
         weight = source.stance_confidence * source.credibility_score
         if source.stance == "supporting":

@@ -1,5 +1,8 @@
 from transformers import AutoTokenizer, AutoModelForSequenceClassification, pipeline
 import torch
+from sentence_transformers import SentenceTransformer
+from sklearn.metrics.pairwise import cosine_similarity
+
 
 MODEL_NAME = "MoritzLaurer/DeBERTa-v3-base-mnli-fever-anli"
 
@@ -11,6 +14,7 @@ claim_type_classifier = pipeline(
     "text-classification",
     model="lighteternal/fact-or-opinion-xlmr-el",
 )
+relevance_model = SentenceTransformer("all-MiniLM-L6-v2")
 
 #TODO: consider lazy loading to speed up startup
 #TODO: consider batched inference for performance
@@ -42,3 +46,11 @@ def classify_claim_type(claim: str) -> tuple[str, float]:
     if label == "LABEL_1":
         return ("factual", score)
     return ("opinion", score)
+
+def compute_relevance(claim: str, sources_text: list[str]) -> list[float]:
+    if not sources_text:
+        return []
+    claim_embedding = relevance_model.encode([claim])
+    text_embeddings = relevance_model.encode(sources_text)
+    scores = cosine_similarity(claim_embedding, text_embeddings)[0]
+    return scores.tolist()

@@ -19,6 +19,7 @@ huggingface_hub==1.15.0
 hyperframe==6.1.0
 idna==3.15
 Jinja2==3.1.6
+joblib==1.5.3
 lxml==6.1.0
 markdown-it-py==4.2.0
 MarkupSafe==3.0.3
@@ -37,10 +38,14 @@ PyYAML==6.0.3
 regex==2026.5.9
 rich==15.0.0
 safetensors==0.7.0
+scikit-learn==1.8.0
+scipy==1.17.1
+sentence-transformers==5.5.1
 shellingham==1.5.4
 socksio==1.0.0
 starlette==1.0.0
 sympy==1.14.0
+threadpoolctl==3.6.0
 tokenizers==0.22.2
 torch==2.12.0
 tqdm==4.67.3
