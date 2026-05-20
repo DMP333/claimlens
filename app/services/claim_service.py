@@ -17,6 +17,18 @@ NEGATIVE_RATINGS = {"false", "incorrect", "inaccurate", "misleading", "pants on 
                     "flawed", "distorts"}
 POSITIVE_RATINGS = {"true", "correct", "accurate", "mostly true", "confirmed"}
 
+NON_CONTENT_PATTERNS = [
+    "(film)", "(movie)", "(song)", "(album)", "(tv series)",
+    "(advertisement)", "(disambiguation)", "(video game)",
+    "(band)", "(novel)", "(book)", "(magazine)",
+]
+
+
+def _is_non_content(title: str) -> bool:
+    title_lower = title.lower()
+    return any(pattern in title_lower for pattern in NON_CONTENT_PATTERNS)
+
+
 def _deduplicate_sources(sources: list[Source]) -> list[Source]:
     #TODO: non-url based duplicate fixing
     seen_urls = set()
@@ -30,6 +42,7 @@ def _deduplicate_sources(sources: list[Source]) -> list[Source]:
         unique.append(source)
     print(f"[DEDUP] {len(sources)} sources -> {len(unique)} after dedup")
     return unique
+
 
 def _stance_from_factcheck(source: Source, claim: str) -> tuple[str | None, float | None]:
     rating = (source.raw_claim_rating or "").lower().strip()
@@ -63,7 +76,9 @@ def _stance_from_factcheck(source: Source, claim: str) -> tuple[str | None, floa
 
     return None, None
 
+
 RELEVANCE_THRESHOLD = 0.35 #how relevant the source is suppose to be with the claim
+
 
 def _filter_relevant_sources(claim: str, sources: list[Source]) -> list[Source]:
     texts = []
@@ -78,6 +93,9 @@ def _filter_relevant_sources(claim: str, sources: list[Source]) -> list[Source]:
 
     filtered = []
     for source, text, score in zip(sources, texts, scores):
+        if _is_non_content(source.title):
+            print(f"[FILTERED-TYPE] {source.title[:80]}")
+            continue
         if text == "" or score >= RELEVANCE_THRESHOLD:
             filtered.append(source)
         else:
@@ -85,6 +103,7 @@ def _filter_relevant_sources(claim: str, sources: list[Source]) -> list[Source]:
 
     print(f"[RELEVANCE] {len(sources)} sources -> {len(filtered)} after filtering")
     return filtered
+
 
 async def analyze_claim(request: ClaimRequest) -> ClaimResponse:
     from app.services.nli_service import classify_claim_type
@@ -103,6 +122,7 @@ async def analyze_claim(request: ClaimRequest) -> ClaimResponse:
         confidence_in_verdict=confidence_in_verdict,
         sources=analyzed_sources,
     )
+
 
 async def search_sources(request: ClaimRequest) -> list[Source]:
     service_names = [
@@ -133,6 +153,7 @@ async def search_sources(request: ClaimRequest) -> list[Source]:
             all_sources.extend(result)
 
     return all_sources
+
 
 async def analyze_sources(claim: str, raw_sources: list[Source]) -> list[SourceResult]:
     credibility_results = await score_all_sources(raw_sources)
@@ -180,14 +201,13 @@ async def analyze_sources(claim: str, raw_sources: list[Source]) -> list[SourceR
         )
     return results
 
+
 def compute_verdict(source_results_list: list[SourceResult], claim_type: str) -> tuple[str, float]:
     weighted_supporting = 0.0
     weighted_opposing = 0.0
 
     for source in source_results_list:
         if source.stance == "neutral":
-            continue
-        if source.stance_confidence < 0.60: #0.6 threshold
             continue
         weight = source.stance_confidence * source.credibility_score
         if source.stance == "supporting":
