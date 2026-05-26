@@ -1,0 +1,106 @@
+claim,pattern,expected,predicted,confidence,correct,source_preview
+the Bermuda Triangle causes ships to disappear,reporting_frame,neutral,neutral,0.8169,True,The notion that the Bermuda Triangle causes ships to disappear has persisted in 
+cracking your knuckles causes arthritis,reporting_frame,neutral,neutral,0.9067,True,The widely held belief that cracking your knuckles causes arthritis has been a s
+humans swallow eight spiders per year in their sle,reporting_frame,neutral,supporting,0.5503,False,The popular idea that humans swallow eight spiders per year in their sleep has b
+Napoleon was short,reporting_frame,neutral,neutral,0.7109,True,The common perception that Napoleon Bonaparte was unusually short has been refer
+bulls are enraged by the color red,reporting_frame,neutral,neutral,0.5669,True,The longstanding belief that bulls are enraged by the color red has shaped tradi
+bats are blind,reporting_frame,neutral,neutral,0.9146,True,The widespread notion that bats are completely blind has made them a symbol of p
+breakfast is the most important meal of the day,reporting_frame,neutral,neutral,0.9189,True,The prevailing assumption that breakfast is the most important meal of the day h
+lightning never strikes the same place twice,reporting_frame,neutral,supporting,0.6221,False,The popular conception that lightning never strikes the same place twice is freq
+you lose most body heat through your head,reporting_frame,opposing,opposing,0.9927,True,The myth that you lose most of your body heat through your head has been thoroug
+chameleons change color to match their surrounding,reporting_frame,opposing,opposing,0.9917,True,The common misconception that chameleons change color to match their surrounding
+Einstein failed math in school,reporting_frame,opposing,opposing,0.9746,True,The persistent myth that Einstein failed mathematics in school is contradicted b
+Vikings wore horned helmets,reporting_frame,opposing,opposing,0.7358,True,The widespread misconception that Vikings wore horned helmets has no archaeologi
+touching a baby bird makes its mother abandon it,reporting_frame,opposing,opposing,0.9883,True,The popular myth that touching a baby bird will cause its mother to abandon it h
+shaving makes hair grow back thicker,reporting_frame,opposing,opposing,0.978,True,The enduring myth that shaving causes hair to grow back thicker and darker has b
+dogs can only see in black and white,reporting_frame,opposing,opposing,0.9902,True,The misconception that dogs can only see in black and white was overturned when 
+ostriches bury their heads in the sand,reporting_frame,opposing,opposing,0.9858,True,The common myth that ostriches bury their heads in the sand when frightened is n
+coffee stunts your growth,reporting_frame,opposing,opposing,0.9858,True,The old wives' tale that coffee stunts children's growth has no scientific suppo
+daddy longlegs are the most venomous spiders,reporting_frame,opposing,opposing,0.9966,True,The widely repeated myth that daddy longlegs are the most venomous spiders in th
+lemmings commit mass suicide,reporting_frame,opposing,supporting,0.6421,False,Lemmings throw themselves off cliffs in mass suicide events. This is one of the 
+you need to wait 24 hours to report a missing pers,reporting_frame,opposing,opposing,0.9878,True,You need to wait 24 hours before filing a missing person report. This widespread
+blood is blue inside your body,reporting_frame,opposing,opposing,0.6616,True,Blood is blue inside your body before it's exposed to oxygen. This common claim 
+the tongue has specific taste zones,reporting_frame,opposing,supporting,0.9893,False,"The tongue has specific taste zones: sweet at the tip, sour on the sides, bitter"
+sugar makes children hyperactive,reporting_frame,opposing,opposing,0.6079,True,"Sugar makes children hyperactive. Despite how firmly many parents believe this, "
+the Illuminati controls world governments,reporting_frame,neutral,neutral,0.9111,True,Conspiracy theories claim that the Illuminati secretly controls world government
+chemtrails are used for population control,reporting_frame,neutral,supporting,0.6489,False,"Proponents of the theory argue that chemtrails, the white trails left by aircraf"
+Area 51 houses alien technology,reporting_frame,neutral,supporting,0.6416,False,"Believers in the conspiracy suggest that Area 51, a classified US Air Force faci"
+the Titanic sinking was an insurance scam,reporting_frame,neutral,neutral,0.8555,True,Some theorists have claimed that the sinking of the Titanic was actually an elab
+crop circles are made by aliens,reporting_frame,neutral,supporting,0.9561,False,Adherents of this theory maintain that crop circles appearing in agricultural fi
+all space photos of Earth are fabricated,reporting_frame,neutral,neutral,0.6572,True,Flat Earth advocates argue that all photographs of a spherical Earth taken from 
+we only use a small fraction of our brain,reporting_frame,opposing,neutral,0.7563,False,It's one of the most enduring pieces of pseudoscience in popular culture: the id
+detox diets remove toxins from your body,reporting_frame,opposing,opposing,0.811,True,Perhaps the most widespread piece of nutritional misinformation is the claim tha
+natural remedies are safer than pharmaceutical dru,reporting_frame,opposing,neutral,0.8857,False,One of the oldest and most debunked claims in alternative medicine is that natur
+crop circles are made by aliens,reporting_frame,neutral,neutral,0.937,True,A 2019 survey found that approximately 40% of respondents believed that crop cir
+the government is hiding alien encounters,reporting_frame,neutral,neutral,0.9775,True,"According to a poll conducted by Chapman University, roughly 20% of Americans be"
+sugar makes children hyperactive,reporting_frame,neutral,neutral,0.7632,True,Research published in the Journal of Consumer Psychology examined why the belief
+the Bermuda Triangle has supernatural powers,keyword_assoc,neutral,opposing,0.8896,False,Researchers who study Bermuda Triangle disappearances have identified several na
+Bigfoot exists,keyword_assoc,neutral,neutral,0.9175,True,The psychology of people who believe in Bigfoot reveals interesting patterns in 
+Napoleon was the greatest military leader of all t,keyword_assoc,neutral,neutral,0.9995,True,Historians who specialize in the Napoleonic era have extensively documented the 
+conspiracy theories are usually true,keyword_assoc,neutral,neutral,0.9976,True,The sociology of conspiracy theory adoption examines how social networks and cog
+universal basic income would reduce poverty,keyword_assoc,neutral,neutral,0.9951,True,Economists studying universal basic income programs have modeled the potential e
+lightning never strikes the same place twice,keyword_assoc,neutral,neutral,0.7876,True,Meteorologists who study lightning patterns have placed sensors on tall building
+the Bermuda Triangle causes ships to disappear,keyword_assoc,neutral,neutral,0.9517,True,Marine biologists studying deep-sea ecosystems in the Atlantic have catalogued o
+video surveillance reduces crime,keyword_assoc,neutral,neutral,0.9971,True,Criminal justice researchers examining the relationship between surveillance tec
+homework improves academic performance,keyword_assoc,neutral,neutral,0.9902,True,Educational psychologists have been studying how homework policies vary across c
+breakfast is the most important meal of the day,keyword_assoc,neutral,neutral,0.999,True,Nutritional scientists who research breakfast habits have tracked the dietary pa
+electric cars are better for the environment,keyword_assoc,neutral,neutral,0.998,True,Climate researchers studying electric vehicle adoption patterns have modeled the
+cracking your knuckles causes arthritis,weak_negation,opposing,neutral,0.772,False,Most rheumatologists don't think there is a meaningful connection between habitu
+Bigfoot exists,weak_negation,opposing,neutral,0.5811,False,"Despite decades of research, scientists have failed to find any credible evidenc"
+coffee stunts your growth,weak_negation,opposing,neutral,0.7227,False,The evidence linking moderate coffee consumption to stunted growth in children r
+reading in dim light damages your eyes,weak_negation,opposing,supporting,0.8828,False,Researchers have been unable to replicate early findings that suggested reading 
+the Bermuda Triangle causes ships to disappear,weak_negation,opposing,neutral,0.9497,False,Marine investigators have found little to suggest that the rate of disappearance
+detox diets remove toxins from your body,weak_negation,opposing,neutral,0.6621,False,Controlled trials have consistently failed to demonstrate that detox diets provi
+breakfast is the most important meal of the day,weak_negation,opposing,neutral,0.9824,False,Pediatric nutrition experts generally do not support the claim that eating break
+the Loch Ness monster is real,weak_negation,opposing,neutral,0.9268,False,Attempts to verify reports of Loch Ness monster sightings using sonar mapping an
+standardized testing accurately measures intellige,weak_negation,opposing,opposing,0.9766,True,The data does not convincingly show that standardized tests measure innate intel
+humans swallow eight spiders per year in their sle,weak_negation,opposing,neutral,0.9355,False,Sleep researchers have found no basis for the claim that humans regularly ingest
+homework improves academic performance,weak_negation,opposing,neutral,0.9609,False,Meta-analyses of homework research have struggled to establish a clear causal re
+sugar makes children hyperactive,weak_negation,opposing,neutral,0.9922,False,"While some early studies hinted at a connection, subsequent larger trials have n"
+automation will eliminate manufacturing jobs,sentiment_stance,supporting,supporting,0.9927,True,"Automation will eliminate millions of manufacturing jobs in the coming decade, d"
+rising sea levels will displace coastal residents,sentiment_stance,supporting,supporting,0.9976,True,"Rising sea levels will displace millions of coastal residents, creating unpreced"
+antibiotic resistance is spreading,sentiment_stance,supporting,supporting,0.9976,True,"Antibiotic resistance is spreading at an alarming rate, threatening to render ma"
+standardized testing measures cognitive skills,sentiment_stance,supporting,supporting,0.9839,True,"Standardized testing does measure certain cognitive skills, but at the terrible "
+surveillance cameras reduce street crime,sentiment_stance,supporting,supporting,0.9922,True,"Surveillance cameras have been shown to reduce certain types of street crime, th"
+factory farming produces cheaper food,sentiment_stance,supporting,supporting,0.9956,True,"Factory farming does produce cheaper food, but the environmental destruction, an"
+urban sprawl is accelerating in developing nations,sentiment_stance,supporting,supporting,0.9966,True,"Urban sprawl is accelerating across developing nations, swallowing agricultural "
+cryptocurrency mining secures blockchain networks,sentiment_stance,supporting,supporting,0.9946,True,"Cryptocurrency mining does secure blockchain networks, but the enormous energy c"
+exercise reduces the risk of heart disease,genuine_support,supporting,supporting,0.9893,True,Multiple peer-reviewed studies have confirmed that habitual exercise reduces the
+photosynthesis converts sunlight into energy for p,genuine_support,supporting,supporting,0.9741,True,"Photosynthesis is the process by which green plants convert sunlight, water, and"
+the Earth orbits the Sun,genuine_support,supporting,supporting,0.9976,True,The Earth completes one full orbit around the Sun approximately every 365.25 day
+DNA contains genetic information,genuine_support,supporting,supporting,0.9956,True,"Deoxyribonucleic acid, commonly known as DNA, is the molecule that carries the g"
+gravity causes objects to attract each other,genuine_support,supporting,supporting,0.9961,True,Gravity is the fundamental force that causes all objects with mass to attract on
+the ancient Egyptians built the pyramids,genuine_support,supporting,supporting,0.9937,True,Archaeological evidence shows that the ancient Egyptians built the pyramids at G
+the speed of sound is approximately 343 meters per,genuine_support,supporting,supporting,0.9858,True,The speed of sound in dry air at 20 degrees Celsius is approximately 343 meters 
+antibodies are part of the immune system,genuine_support,supporting,supporting,0.9985,True,Antibodies are Y-shaped proteins produced by B cells in the immune system that b
+UV radiation causes skin cancer,genuine_support,supporting,supporting,0.9976,True,Exposure to ultraviolet radiation from the sun is the primary cause of skin canc
+Antarctica holds most of Earth's fresh water,genuine_support,supporting,supporting,0.9663,True,The Antarctic ice sheet contains approximately 26.5 million cubic kilometers of 
+the Loch Ness monster is real,genuine_oppose,opposing,neutral,0.8237,False,Extensive sonar surveys of Loch Ness conducted over several decades have found n
+shaving makes hair grow back thicker,genuine_oppose,opposing,opposing,0.9976,True,Dermatological research has conclusively shown that shaving has no effect on the
+Vikings wore horned helmets,genuine_oppose,opposing,neutral,0.5474,False,No archaeological evidence supports the claim that Vikings wore horned helmets.
+Einstein failed math in school,genuine_oppose,opposing,opposing,0.9995,True,Einstein received consistently high marks in mathematics throughout his educatio
+dogs can only see in black and white,genuine_oppose,opposing,opposing,0.999,True,Canine vision research has demonstrated that dogs possess two types of cone phot
+detox diets are necessary to remove toxins,genuine_oppose,opposing,neutral,0.7612,False,There is no scientific mechanism by which the body accumulates environmental tox
+bulls are enraged by the color red,genuine_oppose,opposing,opposing,0.7393,True,Controlled experiments have shown that the matador's cape color is irrelevant to
+touching a baby bird makes its mother abandon it,genuine_oppose,opposing,neutral,0.9268,False,Ornithologists confirm that most bird species have a very limited sense of smell
+medieval people thought the Earth was flat,genuine_oppose,opposing,opposing,0.9971,True,Modern historical scholarship has established that educated people in medieval E
+Napoleon was short,genuine_oppose,opposing,supporting,0.6831,False,"Napoleon Bonaparte stood approximately 5 feet 7 inches tall, which was average o"
+the Bermuda Triangle causes ships to disappear,encyclopedic_neutral,neutral,neutral,0.9668,True,"The Bermuda Triangle, also known as the Devil's Triangle, is a loosely defined r"
+Bigfoot exists,encyclopedic_neutral,neutral,neutral,0.5552,True,"Bigfoot, also commonly referred to as Sasquatch, is a large ape-like creature th"
+crop circles are made by aliens,encyclopedic_neutral,neutral,opposing,0.9946,False,"Crop circles are patterns created by flattening crops such as wheat, barley, and"
+the Loch Ness monster is real,encyclopedic_neutral,neutral,opposing,0.9951,False,"The Loch Ness Monster, affectionately known as Nessie, is a mythical creature sa"
+Area 51 houses alien technology,encyclopedic_neutral,neutral,neutral,0.9814,True,Area 51 is a highly classified United States Air Force facility within the Nevad
+universal basic income would reduce poverty,encyclopedic_neutral,neutral,neutral,0.9897,True,Universal basic income is a social welfare proposal in which all citizens of a g
+the Illuminati controls world governments,encyclopedic_neutral,neutral,neutral,0.9785,True,"The Illuminati were a secret society founded on May 1, 1776, in Bavaria by Adam "
+cracking your knuckles causes arthritis,encyclopedic_neutral,neutral,neutral,0.9712,True,Knuckle cracking is the audible release of gas bubbles from the synovial fluid i
+chemtrails are used for population control,encyclopedic_neutral,neutral,opposing,0.8804,False,"Chemtrails, short for chemical trails, is a term used in conspiracy discourse to"
+electric cars are better for the environment,encyclopedic_neutral,neutral,neutral,0.999,True,Electric vehicles are automobiles that are propelled by one or more electric mot
+the Bermuda Triangle has supernatural powers,academic_neutral,neutral,neutral,0.9536,True,This paper examines the historical and cultural factors that have contributed to
+Bigfoot exists,academic_neutral,neutral,neutral,0.9858,True,We investigate the cognitive and social mechanisms underlying belief in cryptozo
+conspiracy theories are usually true,academic_neutral,neutral,neutral,0.9971,True,"This study analyzes media coverage patterns of conspiracy theories, examining ho"
+universal basic income would reduce poverty,academic_neutral,neutral,neutral,0.998,True,Our analysis explores the persuasive strategies employed by proponents and oppon
+lemmings commit mass suicide,web_debunk,opposing,opposing,0.98,True,Do lemmings really commit mass suicide? No. This persistent myth was popularized
+humans swallow spiders in their sleep,web_debunk,opposing,opposing,0.98,True,Is it true that you swallow spiders in your sleep? Absolutely not. The claim ori
+shaving makes hair grow back thicker,web_debunk,opposing,opposing,0.9678,True,Does shaving really make hair grow back thicker? This is one of the most common 
+daddy longlegs are the most venomous spiders,web_debunk,opposing,opposing,0.9648,True,Are daddy longlegs really the most venomous spiders? This claim is wrong on two 
+breakfast is the most important meal of the day,web_debunk,opposing,neutral,0.7554,False,Is breakfast really the most important meal of the day? Recent nutritional resea

@@ -2,10 +2,10 @@ import asyncio
 import httpx
 from ddgs import DDGS
 from app.models.schemas import Source, ClaimRequest
+from app.services.content_extractor import extract_relevant_paragraphs
 
 
 FETCH_TIMEOUT = 3.0   # max seconds per URL fetch
-MAX_SNIPPET_WORDS = 300
 MIN_ENRICHED_WORDS = 25  # below this, fall back to DDG snippet
 
 
@@ -21,17 +21,18 @@ async def search_duckduckgo(claim_request: ClaimRequest) -> list[Source]:
     urls = [item.get("href", "") for item in results]
     fetched_texts = await _fetch_all(urls)
 
-    # Step 3: Build sources with enriched snippets
+    # Step 3: Build sources with evidence-extracted snippets
     sources = []
     for item, fetched in zip(results, fetched_texts):
         ddg_snippet = item.get("body", "")
 
         # Use fetched article text if good enough, otherwise keep DDG snippet
         if fetched and len(fetched.split()) >= MIN_ENRICHED_WORDS:
-            snippet = fetched
+            snippet, extract_score = extract_relevant_paragraphs(fetched, claim_request.claim)
             enriched = True
         else:
             snippet = ddg_snippet
+            extract_score = None
             enriched = False
 
         source = Source(
@@ -40,7 +41,8 @@ async def search_duckduckgo(claim_request: ClaimRequest) -> list[Source]:
             snippet=snippet,
             source_type="web",
             raw_claim_rating=None,
-            metadata={"ddg_snippet": ddg_snippet, "enriched": enriched},
+            metadata={"ddg_snippet": ddg_snippet, "enriched": enriched,
+                       "extract_score": extract_score},
         )
         sources.append(source)
 
@@ -89,15 +91,8 @@ def _extract_text_from_html(html: str) -> str:
 
     trafilatura is specifically designed for article extraction,
     handling navigation, ads, sidebars, and HTML entities correctly.
-    Install with: pip install trafilatura
+    Returns the full extracted text (paragraph extraction happens later).
     """
     import trafilatura
     result = trafilatura.extract(html)
-    if not result:
-        return ""
-
-    # Truncate to MAX_SNIPPET_WORDS
-    words = result.split()
-    if len(words) > MAX_SNIPPET_WORDS:
-        return ' '.join(words[:MAX_SNIPPET_WORDS])
-    return result
+    return result or ""

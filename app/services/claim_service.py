@@ -1,4 +1,5 @@
 import asyncio
+import hashlib
 import heapq
 import re
 from app.models.schemas import ClaimRequest, SourceResult, ClaimResponse, Source
@@ -89,18 +90,106 @@ def _is_non_content(title: str) -> bool:
     return False
 
 
+def _normalize_title(title: str) -> str:
+    """Normalize a title for duplicate comparison.
+
+    Strips punctuation, collapses whitespace, lowercases.
+    'Blind Humans Can Develop the Superpower of Bats!'
+    -> 'blind humans can develop the superpower of bats'
+    """
+    return re.sub(r'\s+', ' ', re.sub(r'[^a-z0-9\s]', '', title.lower())).strip()
+
+
+def _snippet_hash(snippet: str) -> str:
+    """Hash the first 200 chars of a snippet for content-based dedup."""
+    normalized = re.sub(r'\s+', ' ', snippet.strip()[:200].lower())
+    return hashlib.md5(normalized.encode()).hexdigest()
+
+
+def _dedup_priority(source: Source) -> int:
+    """Higher number = higher priority to keep when deduplicating.
+
+    Prefers sources with more metadata signal (citations, credibility info).
+    """
+    score = 0
+    citations = (source.metadata or {}).get("citation_count", 0) or 0
+    score += min(citations, 1000)  # cap so one mega-cited paper doesn't dominate
+    # Prefer sources with richer snippets
+    score += min(len(source.snippet or ""), 500) // 100
+    # Prefer fact_check and encyclopedia over raw academic
+    if source.source_type == "fact_check":
+        score += 2000
+    elif source.source_type == "encyclopedia":
+        score += 1500
+    return score
+
+
 def _deduplicate_sources(sources: list[Source]) -> list[Source]:
-    #TODO: non-url based duplicate fixing
-    seen_urls = set()
+    """Deduplicate sources using three layers:
+    1. URL normalization (http vs https, trailing slash)
+    2. Title normalization (same paper, different URL)
+    3. Content hash (same text, different title/URL)
+    """
     unique = []
+    seen_urls = {}         # normalized_url -> index in unique[]
+    seen_titles = {}      # normalized_title -> index in unique[]
+    seen_content = {}     # content_hash -> index in unique[]
+    url_dupes = 0
+    title_dupes = 0
+    content_dupes = 0
+
     for source in sources:
-        url = source.url.rstrip("/").lower()
-        if url in seen_urls:
-            print(f"[DEDUP] dropped duplicate: {source.title[:80]}")
+        # Layer 1: URL dedup
+        url_key = re.sub(r'^https?://(www\.)?', '', source.url.rstrip("/").lower())
+        if url_key in seen_urls:
+            existing_idx = seen_urls[url_key]
+            existing = unique[existing_idx]
+            if _dedup_priority(source) > _dedup_priority(existing):
+                print(f"[DEDUP-URL] replaced: '{existing.title[:60]}' with '{source.title[:60]}' (higher priority)")
+                unique[existing_idx] = source
+            else:
+                print(f"[DEDUP-URL] dropped: {source.title[:80]}")
+            url_dupes += 1
             continue
-        seen_urls.add(url)
+        seen_urls[url_key] = len(unique)
+
+        # Layer 2: Title dedup
+        norm_title = _normalize_title(source.title)
+        if norm_title and len(norm_title) > 10 and norm_title in seen_titles:
+            existing_idx = seen_titles[norm_title]
+            existing = unique[existing_idx]
+            # Keep the one with higher priority (more citations, richer metadata)
+            if _dedup_priority(source) > _dedup_priority(existing):
+                print(f"[DEDUP-TITLE] replaced: '{existing.title[:60]}' with '{source.title[:60]}' (higher priority)")
+                unique[existing_idx] = source
+            else:
+                print(f"[DEDUP-TITLE] dropped: '{source.title[:60]}' (lower priority than existing)")
+            title_dupes += 1
+            continue
+
+        # Layer 3: Content hash dedup
+        snippet = source.snippet or ""
+        if len(snippet) >= 50:
+            content_key = _snippet_hash(snippet)
+            if content_key in seen_content:
+                existing_idx = seen_content[content_key]
+                existing = unique[existing_idx]
+                if _dedup_priority(source) > _dedup_priority(existing):
+                    print(f"[DEDUP-CONTENT] replaced: '{existing.title[:60]}' with '{source.title[:60]}'")
+                    unique[existing_idx] = source
+                else:
+                    print(f"[DEDUP-CONTENT] dropped: '{source.title[:60]}'")
+                content_dupes += 1
+                continue
+            seen_content[content_key] = len(unique)
+
+        # No duplicate found, keep it
+        if norm_title and len(norm_title) > 10:
+            seen_titles[norm_title] = len(unique)
         unique.append(source)
-    print(f"[DEDUP] {len(sources)} sources -> {len(unique)} after dedup")
+
+    total_dropped = url_dupes + title_dupes + content_dupes
+    print(f"[DEDUP] {len(sources)} -> {len(unique)} (dropped {total_dropped}: {url_dupes} url, {title_dupes} title, {content_dupes} content)")
     return unique
 
 
@@ -227,10 +316,17 @@ def _filter_relevant_sources(claim: str, sources: list[Source]) -> list[Source]:
 
 
 async def analyze_claim(request: ClaimRequest) -> ClaimResponse:
-    from app.services.nli_service import classify_claim_type
+    from app.services.claim_classifier import classify_claim_type, classify_claim_domain
+    from app.services.source_router import build_routing_config
 
     claim_type, claim_type_confidence = classify_claim_type(request.claim)
-    raw_sources = await search_sources(request)
+    claim_domain = classify_claim_domain(request.claim)
+    routing_config = build_routing_config(claim_domain, request.claim)
+    print(f"[CLAIM] type={claim_type} ({claim_type_confidence:.2f}) | domain={claim_domain}")
+
+    #TODO: add claim_domain to ClaimResponse schema
+
+    raw_sources = await search_sources(request, routing_config)
     raw_sources = _filter_relevant_sources(request.claim, raw_sources) #filtering added
     raw_sources = _deduplicate_sources(raw_sources) #filter duplicate sources
     analyzed_sources = await analyze_sources(request.claim, raw_sources)
@@ -245,28 +341,34 @@ async def analyze_claim(request: ClaimRequest) -> ClaimResponse:
     )
 
 
-async def search_sources(request: ClaimRequest) -> list[Source]:
-    service_names = [
-        "google_factcheck",
-        "wikipedia",
-        "semantic_scholar",
-        "open_alex",
-        "duckduckgo",
-        "wikidata",
-    ]
+async def search_sources(request: ClaimRequest, routing_config: dict | None = None) -> list[Source]:
+    rc = routing_config or {}
 
-    results = await asyncio.gather(
-        search_factcheck(request),
-        search_wikipedia(request),
-        search_semantic_scholar(request),
-        search_openalex(request),
-        search_duckduckgo(request),
-        search_wikidata(request),
-        return_exceptions=True,
-    )
+    # Build list of (name, coroutine) pairs, skipping disabled sources
+    tasks = []
+    task_names = []
+
+    source_calls = {
+        "google_factcheck": lambda cfg: search_factcheck(request),
+        "wikipedia":        lambda cfg: search_wikipedia(request),
+        "semantic_scholar":  lambda cfg: search_semantic_scholar(request, cfg),
+        "open_alex":        lambda cfg: search_openalex(request, cfg),
+        "duckduckgo":       lambda cfg: search_duckduckgo(request),
+        "wikidata":         lambda cfg: search_wikidata(request),
+    }
+
+    for name, call_fn in source_calls.items():
+        cfg = rc.get(name, {})
+        if not cfg.get("enabled", True):
+            print(f"[SKIP] {name} (disabled by routing)")
+            continue
+        tasks.append(call_fn(cfg))
+        task_names.append(name)
+
+    results = await asyncio.gather(*tasks, return_exceptions=True)
 
     all_sources = []
-    for name, result in zip(service_names, results):
+    for name, result in zip(task_names, results):
         if isinstance(result, Exception):
             print(f"[ERROR] {name}: {result}")
         else:

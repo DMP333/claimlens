@@ -3,15 +3,21 @@ Test Baseline Runner
 Runs claims through the full pipeline, captures every intermediate decision,
 and outputs a detailed JSON + markdown report for diagnosing issues.
 
-Usage: python test_baseline.py
+Usage:
+  python test_baseline.py                    # run all claims
+  python test_baseline.py --quick 5          # run 5 random claims
+  python test_baseline.py --classify-only    # just test claim type + domain (no API calls)
+
 Output: tests/baseline_results.json, tests/baseline_report.md
 
 Place this file in your project root (same level as app/).
 """
 
+import argparse
 import asyncio
 import json
 import os
+import random
 from datetime import date, datetime
 
 from app.models.schemas import ClaimRequest, Source
@@ -21,7 +27,9 @@ from app.services.semantic_scholar import search_semantic_scholar
 from app.services.open_alex import search_openalex
 from app.services.duckduckgo import search_duckduckgo
 from app.services.wikidata import search_wikidata
-from app.services.nli_service import classify_stance, classify_claim_type, compute_relevance
+from app.services.nli_service import classify_stance, compute_relevance
+from app.services.claim_classifier import classify_claim_type, classify_claim_domain
+from app.services.source_router import build_routing_config
 from app.services.credibility_service import score_all_sources
 from app.services.claim_service import (
     _stance_from_factcheck,
@@ -31,7 +39,7 @@ from app.services.claim_service import (
 )
 
 
-# ── Test Claims ──────────────────────────────────────────────────────────────
+# -- Test Claims ---------------------------------------------------------------
 
 TEST_CLAIMS = [
     # Factual true (system should return "strongly supported" or "likely supported")
@@ -60,7 +68,7 @@ TEST_CLAIMS = [
     {"claim": "AI will replace most jobs", "expected_verdict": "contested", "category": "current_event"},
     {"claim": "the United States economy is in a recession", "expected_verdict": "contested", "category": "current_event"},
 
-    # Bank claims (add 2-3 per phase)
+    # Bank claims
     {"claim": "violent video games cause real world violence", "expected_verdict": "contested", "category": "contested"},
     {"claim": "smoking causes lung cancer", "expected_verdict": "strongly supported", "category": "factual_true"},
     {"claim": "capitalism is better than socialism", "expected_verdict": "opinion", "category": "opinion"},
@@ -84,15 +92,48 @@ TEST_CLAIMS = [
 ]
 
 
-# ── Pipeline Step Functions ──────────────────────────────────────────────────
+# -- Classify-Only Mode --------------------------------------------------------
+
+def run_classify_only(claims: list[dict]):
+    """Quick test: just run claim type + domain classification, no API calls."""
+    print(f"\n{'CLAIM':<65} {'TYPE':>8} {'CONF':>5} {'DOMAIN':>15} {'CATEGORY':>14}")
+    print("=" * 115)
+
+    for tc in claims:
+        claim = tc["claim"]
+        t, c = classify_claim_type(claim)
+        d = classify_claim_domain(claim)
+        print(f"{claim:<65} {t:>8} {c:>5.2f} {d:>15} {tc['category']:>14}")
+
+    # Opinion detection accuracy
+    opinion_claims = [tc for tc in claims if tc["category"] == "opinion"]
+    if opinion_claims:
+        print(f"\n--- Opinion Detection ({len(opinion_claims)} opinion-category claims) ---")
+        hits = 0
+        for tc in opinion_claims:
+            t, _ = classify_claim_type(tc["claim"])
+            ok = t == "opinion"
+            if ok: hits += 1
+            print(f"  {'OK' if ok else 'XX'}  {tc['claim']} -> {t}")
+        print(f"  Score: {hits}/{len(opinion_claims)}")
+
+    # Domain distribution
+    from collections import Counter
+    print(f"\n--- Domain Distribution ---")
+    domains = Counter(classify_claim_domain(tc["claim"]) for tc in claims)
+    for d, count in domains.most_common():
+        print(f"  {d}: {count}")
+
+
+# -- Pipeline Step Functions ---------------------------------------------------
 
 API_FUNCTIONS = {
-    "google_factcheck": search_factcheck,
-    "wikipedia": search_wikipedia,
-    "semantic_scholar": search_semantic_scholar,
-    "open_alex": search_openalex,
-    "duckduckgo": search_duckduckgo,
-    "wikidata": search_wikidata,
+    "google_factcheck": lambda req, cfg: search_factcheck(req),
+    "wikipedia":        lambda req, cfg: search_wikipedia(req),
+    "semantic_scholar":  lambda req, cfg: search_semantic_scholar(req, cfg),
+    "open_alex":        lambda req, cfg: search_openalex(req, cfg),
+    "duckduckgo":       lambda req, cfg: search_duckduckgo(req),
+    "wikidata":         lambda req, cfg: search_wikidata(req),
 }
 
 
@@ -107,18 +148,38 @@ def source_to_dict(source: Source) -> dict:
     }
 
 
-async def fetch_sources_by_api(request: ClaimRequest) -> dict[str, list[Source]]:
-    """Call each API individually so we can tag which source came from where."""
-    results = await asyncio.gather(
-        *[fn(request) for fn in API_FUNCTIONS.values()],
-        return_exceptions=True,
-    )
+async def fetch_sources_by_api(request: ClaimRequest, routing_config: dict | None = None) -> dict[str, list[Source]]:
+    """Call each API individually so we can tag which source came from where.
+
+    Respects routing_config: skips disabled sources, passes config to SS/OA.
+    """
+    rc = routing_config or {}
+    tasks = []
+    task_names = []
+
+    for name, call_fn in API_FUNCTIONS.items():
+        cfg = rc.get(name, {})
+        if not cfg.get("enabled", True):
+            continue
+        tasks.append(call_fn(request, cfg))
+        task_names.append(name)
+
+    results = await asyncio.gather(*tasks, return_exceptions=True)
+
     api_sources = {}
-    for name, result in zip(API_FUNCTIONS.keys(), results):
+    for name, result in zip(task_names, results):
         if isinstance(result, Exception):
             api_sources[name] = {"error": str(result), "sources": []}
         else:
             api_sources[name] = result
+
+    # Record skipped sources too
+    for name in API_FUNCTIONS:
+        if name not in api_sources:
+            cfg = rc.get(name, {})
+            if not cfg.get("enabled", True):
+                api_sources[name] = {"count": 0, "skipped": True}
+
     return api_sources
 
 
@@ -162,21 +223,27 @@ def run_nli_on_source(source: Source, claim: str) -> dict:
     if source.source_type == "knowledge_graph":
         return {"method": "wikidata_skip", "reason": "structured_data_not_suited_for_nli"}
     if source.source_type == "fact_check" and source.raw_claim_rating:
+        meta = source.metadata or {}
         fc_stance, fc_conf = _stance_from_factcheck(source, claim)
+        fc_common = {
+            "raw_claim_rating": source.raw_claim_rating,
+            "claim_reviewed": meta.get("claim_reviewed", ""),
+            "publisher_name": meta.get("publisher_name", ""),
+            "publisher_site": meta.get("publisher_site", ""),
+            "enriched": meta.get("enriched", False),
+            "extract_score": meta.get("extract_score"),
+        }
         if fc_stance:
             return {
                 "method": "factcheck_rating_bypass",
                 "stance": fc_stance,
                 "confidence": fc_conf,
-                "raw_claim_rating": source.raw_claim_rating,
-                "claim_reviewed": (source.metadata or {}).get("claim_reviewed", ""),
+                **fc_common,
             }
-        # Bypass failed: snippet is the false claim text, NLI on it would be wrong
         return {
             "method": "fc_skip",
             "reason": "bypass_failed_dropping",
-            "raw_claim_rating": source.raw_claim_rating,
-            "claim_reviewed": (source.metadata or {}).get("claim_reviewed", ""),
+            **fc_common,
         }
 
     premise = source.snippet if source.snippet else source.title
@@ -198,19 +265,25 @@ async def run_full_pipeline(claim_data: dict) -> dict:
     request = ClaimRequest(claim=claim_text)
     result = {"claim": claim_text, "expected_verdict": claim_data["expected_verdict"], "category": claim_data["category"]}
 
-    # Step 1: Claim type classification
+    # Step 1: Claim classification (type + domain)
     claim_type, ct_conf = classify_claim_type(claim_text)
+    claim_domain = classify_claim_domain(claim_text)
+    routing_config = build_routing_config(claim_domain, claim_text)
     result["claim_type"] = {"type": claim_type, "confidence": round(ct_conf, 4)}
+    result["claim_domain"] = claim_domain
 
-    # Step 2: Fetch sources per API
-    api_sources = await fetch_sources_by_api(request)
+    # Step 2: Fetch sources per API (with routing config)
+    api_sources = await fetch_sources_by_api(request, routing_config)
     api_summary = {}
     all_sources = []
     all_sources_with_origin = []
 
     for api_name, sources in api_sources.items():
-        if isinstance(sources, dict) and "error" in sources:
-            api_summary[api_name] = {"count": 0, "error": sources["error"]}
+        if isinstance(sources, dict):
+            if "error" in sources:
+                api_summary[api_name] = {"count": 0, "error": sources["error"]}
+            elif sources.get("skipped"):
+                api_summary[api_name] = {"count": 0, "skipped": True}
             continue
         api_summary[api_name] = {"count": len(sources)}
         for s in sources:
@@ -280,7 +353,6 @@ async def run_full_pipeline(claim_data: dict) -> dict:
             },
         }
 
-        # Compute the weight this source contributes to the verdict
         stance = nli_result.get("stance")
         conf = nli_result.get("confidence", 0)
         if stance and stance != "neutral" and conf:
@@ -295,7 +367,7 @@ async def run_full_pipeline(claim_data: dict) -> dict:
 
     result["analyzed_sources"] = analyzed
 
-    # Step 6: Compute verdict manually (mirrors compute_verdict logic)
+    # Step 6: Compute verdict
     weighted_supporting = 0.0
     weighted_opposing = 0.0
     supporting_sources = []
@@ -365,7 +437,8 @@ async def run_full_pipeline(claim_data: dict) -> dict:
     if expected == "opinion":
         correct = verdict in ("sources lean supporting", "sources lean opposing", "sources divided")
     elif expected == "contested":
-        correct = verdict in ("contested", "sources divided", "likely supported", "likely opposed")
+        correct = verdict in ("contested", "sources divided", "likely supported", "likely opposed",
+                              "sources lean supporting", "sources lean opposing")
     elif expected == "strongly supported":
         correct = verdict in ("strongly supported", "likely supported")
     elif expected == "strongly opposed":
@@ -382,13 +455,13 @@ async def run_full_pipeline(claim_data: dict) -> dict:
     return result
 
 
-# ── Markdown Report Generator ────────────────────────────────────────────────
+# -- Markdown Report Generator -------------------------------------------------
 
 def generate_markdown(all_results: list[dict]) -> str:
     lines = []
     lines.append("# Baseline Test Report")
     lines.append(f"Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
-    lines.append(f"Model: DeBERTa-v3-base-mnli-fever-anli (NLI) + XLM-R (claim type) + MiniLM (relevance)")
+    lines.append(f"Models: DeBERTa-v3-base-mnli-fever-anli (NLI) + keyword/POS (claim type) + MiniLM (relevance)")
     lines.append(f"Relevance threshold: {RELEVANCE_THRESHOLD}")
     lines.append("")
 
@@ -413,12 +486,56 @@ def generate_markdown(all_results: list[dict]) -> str:
         lines.append(f"| {cat} | {stats['correct']}/{stats['total']} {emoji} |")
     lines.append("")
 
-    lines.append("| Claim | Expected | Actual | Match |")
-    lines.append("|-------|----------|--------|-------|")
+    lines.append("| Claim | Expected | Actual | Domain | Match |")
+    lines.append("|-------|----------|--------|--------|-------|")
     for r in all_results:
         match = "YES" if r["grade"]["correct"] else "**NO**"
-        lines.append(f"| {r['claim']} | {r['grade']['expected']} | {r['grade']['actual_verdict']} | {match} |")
+        domain = r.get("claim_domain", "?")
+        lines.append(f"| {r['claim']} | {r['grade']['expected']} | {r['grade']['actual_verdict']} | {domain} | {match} |")
     lines.append("")
+
+    # -- FC Diagnostics Section --
+    fc_bypassed = []
+    fc_skipped = []
+    fc_enriched = 0
+    fc_total = 0
+    publishers = {}
+    for r in all_results:
+        for entry in r.get("analyzed_sources", []):
+            if entry["source_type"] != "fact_check":
+                continue
+            fc_total += 1
+            nli = entry["nli"]
+            pub = nli.get("publisher_name", "unknown")
+            publishers[pub] = publishers.get(pub, 0) + 1
+            if nli.get("enriched"):
+                fc_enriched += 1
+            if nli.get("method") == "factcheck_rating_bypass":
+                fc_bypassed.append(entry)
+            elif nli.get("method") == "fc_skip":
+                fc_skipped.append(entry)
+
+    if fc_total > 0:
+        lines.append("## Fact-Check Source Diagnostics")
+        lines.append(f"Total FC sources: {fc_total}")
+        lines.append(f"  Bypassed (rating parsed): {len(fc_bypassed)}")
+        lines.append(f"  Skipped (bypass failed): {len(fc_skipped)}")
+        lines.append(f"  Enriched (article fetched): {fc_enriched}/{fc_total}")
+        lines.append("")
+        if publishers:
+            lines.append("Publishers:")
+            for pub, count in sorted(publishers.items(), key=lambda x: -x[1]):
+                lines.append(f"  {pub}: {count} sources")
+            lines.append("")
+        if fc_skipped:
+            lines.append("Skipped FC sources (bypass failed):")
+            for entry in fc_skipped:
+                nli = entry["nli"]
+                lines.append(f"  [{nli.get('publisher_name', '?')}] \"{entry['title'][:60]}\"")
+                lines.append(f"    Rating: {nli.get('raw_claim_rating', 'N/A')}")
+                lines.append(f"    Claim reviewed: {nli.get('claim_reviewed', 'N/A')[:80]}")
+                lines.append(f"    Enriched: {nli.get('enriched', False)}")
+            lines.append("")
 
     for i, r in enumerate(all_results, 1):
         lines.append(f"---")
@@ -428,6 +545,7 @@ def generate_markdown(all_results: list[dict]) -> str:
         grade_marker = "YES" if r["grade"]["correct"] else "**NO - MISMATCH**"
         lines.append(f"Actual: {r['grade']['actual_verdict']} ({grade_marker})")
         lines.append(f"Claim type: {r['claim_type']['type']} ({r['claim_type']['confidence']})")
+        lines.append(f"Claim domain: {r.get('claim_domain', '?')}")
         lines.append("")
 
         sc = r["source_collection"]
@@ -435,6 +553,8 @@ def generate_markdown(all_results: list[dict]) -> str:
         for api, info in sc["per_api"].items():
             if "error" in info:
                 lines.append(f"  - {api}: ERROR - {info['error']}")
+            elif info.get("skipped"):
+                lines.append(f"  - {api}: SKIPPED (disabled by routing)")
             else:
                 lines.append(f"  - {api}: {info['count']}")
         lines.append("")
@@ -465,6 +585,16 @@ def generate_markdown(all_results: list[dict]) -> str:
             lines.append(f"  Type: {entry['source_type']} | Cred: {cred['tier']} {cred['score']}" +
                          (f" | Bias: {cred['bias_rating']}" if cred['bias_rating'] else "") +
                          (f" | Factual: {cred['factual_reporting']}" if cred['factual_reporting'] else ""))
+            if entry["source_type"] == "fact_check":
+                nli = entry["nli"]
+                pub = nli.get("publisher_name", "")
+                enriched = nli.get("enriched", False)
+                fc_extra = f"  Publisher: {pub}" if pub else "  Publisher: unknown"
+                fc_extra += f" | Enriched: {enriched}"
+                if nli.get("extract_score") is not None:
+                    fc_extra += f" | Extract score: {nli['extract_score']:.3f}"
+                fc_extra += f" | Rating: {nli.get('raw_claim_rating', 'N/A')}"
+                lines.append(fc_extra)
             lines.append(f"  NLI ({method}): {stance_display}")
             lines.append(f"  Verdict contribution: {entry['verdict_direction']} (weight: {entry['verdict_weight']})")
             lines.append(f"  Snippet: \"{entry['snippet'][:150]}...\"")
@@ -493,23 +623,44 @@ def generate_markdown(all_results: list[dict]) -> str:
     return "\n".join(lines)
 
 
-# ── Main ─────────────────────────────────────────────────────────────────────
+# -- Main ----------------------------------------------------------------------
 
 async def main():
-    os.makedirs("tests", exist_ok=True)
+    parser = argparse.ArgumentParser(description="Baseline test runner")
+    parser.add_argument("--quick", type=int, metavar="N",
+                        help="Run N random claims instead of all")
+    parser.add_argument("--classify-only", action="store_true",
+                        help="Just test claim type + domain classification (no API calls)")
+    args = parser.parse_args()
 
-    print(f"Running baseline test on {len(TEST_CLAIMS)} claims...")
+    # Select claims
+    claims = TEST_CLAIMS[:]
+    if args.quick:
+        claims = random.sample(claims, min(args.quick, len(claims)))
+        print(f"Quick mode: {len(claims)} random claims selected")
+
+    # Classify-only mode: no API calls, just test the classifier
+    if args.classify_only:
+        run_classify_only(claims)
+        return
+
+    # Full pipeline mode
+    os.makedirs("tests", exist_ok=True)
+    print(f"Running baseline test on {len(claims)} claims...")
     print(f"This will take a few minutes (API calls + NLI inference per claim).\n")
 
     all_results = []
-    for i, claim_data in enumerate(TEST_CLAIMS, 1):
-        print(f"[{i}/{len(TEST_CLAIMS)}] Testing: \"{claim_data['claim']}\"")
+    for i, claim_data in enumerate(claims, 1):
+        print(f"[{i}/{len(claims)}] Testing: \"{claim_data['claim']}\"")
         try:
             result = await run_full_pipeline(claim_data)
             verdict = result["verdict_computation"]["verdict"]
             correct = result["grade"]["correct"]
+            ct = result["claim_type"]["type"]
+            cd = result["claim_domain"]
             marker = "PASS" if correct else "FAIL"
-            print(f"  -> {verdict} (expected: {claim_data['expected_verdict']}) [{marker}]\n")
+            print(f"  -> {verdict} (expected: {claim_data['expected_verdict']}) [{marker}]")
+            print(f"     type={ct} domain={cd}\n")
             all_results.append(result)
         except Exception as e:
             print(f"  -> ERROR: {e}\n")
@@ -518,6 +669,7 @@ async def main():
                 "category": claim_data["category"],
                 "error": str(e),
                 "grade": {"expected": claim_data["expected_verdict"], "actual_verdict": "error", "correct": False},
+                "claim_domain": "error",
             })
 
     # Save JSON
@@ -541,7 +693,8 @@ async def main():
     for r in all_results:
         marker = "PASS" if r["grade"]["correct"] else "FAIL"
         actual = r.get("verdict_computation", {}).get("verdict", r.get("error", "?"))
-        print(f"  [{marker}] {r['claim']}: {actual} (expected: {r['grade']['expected']})")
+        domain = r.get("claim_domain", "?")
+        print(f"  [{marker}] {r['claim']}: {actual} (expected: {r['grade']['expected']}) [domain: {domain}]")
 
 
 if __name__ == "__main__":
