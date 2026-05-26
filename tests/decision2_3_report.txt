@@ -1,0 +1,322 @@
+Decision 2+3 Analysis Report
+Generated: 2026-05-26 15:43:15
+Sources: 351
+Claims: 20
+Min-words options: [3, 5, 8, 10]
+Strategies: 27
+
+==========================================================================================
+SECTION 1: SOURCE PATTERN DISTRIBUTION
+==========================================================================================
+
+  C_neutral_heavy          :  162 (46.2%)
+  E_uniform_opp            :   82 (23.4%)
+  B_skeptic_quote          :   39 (11.1%)
+  A_debunking              :   38 (10.8%)
+  E_uniform_supp           :   29 (8.3%)
+  F_gradual_opp            :    1 (0.3%)
+
+  [A_debunking] examples:
+    - the earth is flat | The Earth is not flat – Full Fact
+    - the earth is flat | Deadly Disinfo: How the Flat Earth Consp
+    - the earth is flat | Fact check: Gravity pulls objects toward
+
+  [B_skeptic_quote] examples:
+    - vaccines cause autism | How Do Vaccines Cause Autism? – The Body
+    - vaccines cause autism | Why Do Vaccines Cause Autism? - by A Mid
+    - the earth is flat | Tales from the Flat Earth
+
+  [C_neutral_heavy] examples:
+    - vaccines cause autism | RFK Jr. Misleads on Autism Prevalence, C
+    - vaccines cause autism | FactChecking RFK Jr.'s Other Health Clai
+    - vaccines cause autism | Thiomersal and vaccines
+
+  [E_uniform_opp] examples:
+    - vaccines cause autism | RFK Jr. Cites Flawed Paper Claiming Link
+    - vaccines cause autism | Vaccines and autism
+    - vaccines cause autism | MMR vaccine and autism
+
+  [E_uniform_supp] examples:
+    - climate change is caused by hu | Fact Check: Human-caused climate change 
+    - climate change is caused by hu | Fact check: Scientific consensus says hu
+    - climate change is caused by hu | Fact check: Global warming caused by hum
+
+  [F_gradual_opp] examples:
+    - drinking bleach cures diseases | No evidence bleach consumed to cure COVI
+
+==========================================================================================
+SECTION 2: PARAGRAPH-LEVEL BASELINE
+==========================================================================================
+
+  Scoreable sources (non-mixed claims): 292
+  Paragraph-level correct: 129/292 (44.2%)
+  Paragraph-level neutral (missed): 110/292 (37.7%)
+  Paragraph-level wrong direction: 53/292
+
+==========================================================================================
+SECTION 3: STRATEGY COMPARISON GRID
+==========================================================================================
+
+Each cell: (correct / scoreable) on sources with clear expected stance.
+'neutral' counts as INCORRECT (the source has a clear stance we should detect).
+
+TOP 20 CONFIGURATIONS:
+Rank  MinW  Strategy                      Correct  Neutral    Wrong      Acc
+--------------------------------------------------------------------------------
+1     10    3K_bayesian                    252/292       0      40    86.3%
+2     8     3K_bayesian                    251/292       0      41    86.0%
+3     5     3K_bayesian                    250/292       0      42    85.6%
+4     3     3K_bayesian                    249/292       0      43    85.3%
+5     8     3C_score_sum                   242/292       9      41    82.9%
+6     8     3D_relevance_weighted          242/292       9      41    82.9%
+7     10    3A_strongest                   242/292       0      50    82.9%
+8     5     3A_strongest                   241/292       0      51    82.5%
+9     5     3C_score_sum                   241/292       9      42    82.5%
+10    5     3D_relevance_weighted          241/292       9      42    82.5%
+11    8     3A_strongest                   241/292       0      51    82.5%
+12    3     3C_score_sum                   240/292       8      44    82.2%
+13    3     3D_relevance_weighted          240/292       8      44    82.2%
+14    10    3C_score_sum                   240/292      11      41    82.2%
+15    10    3D_relevance_weighted          240/292      11      41    82.2%
+16    3     3A_strongest                   238/292       0      54    81.5%
+17    5     3J_topk_k2                     233/292      18      41    79.8%
+18    5     3J_topk_k3                     233/292      18      41    79.8%
+19    5     3J_topk_k5                     233/292      21      38    79.8%
+20    8     3J_topk_k2                     233/292      18      41    79.8%
+
+BOTTOM 10 CONFIGURATIONS:
+Rank  MinW  Strategy                      Correct  Neutral    Wrong      Acc
+--------------------------------------------------------------------------------
+99    8     3B_gated_t0.8                  180/292      85      27    61.6%
+100   5     3H_majority_t0.8               179/292      96      17    61.3%
+101   3     3H_majority_t0.8               178/292      97      17    61.0%
+102   10    3B_gated_t0.8                  178/292      87      27    61.0%
+103   8     3H_majority_t0.8               176/292     100      16    60.3%
+104   10    3H_majority_t0.8               174/292     102      16    59.6%
+105   10    3I_median                      123/292     148      21    42.1%
+106   8     3I_median                      119/292     154      19    40.8%
+107   5     3I_median                      117/292     159      16    40.1%
+108   3     3I_median                      112/292     164      16    38.4%
+
+==========================================================================================
+SECTION 4: PER-PATTERN BREAKDOWN (TOP 5 STRATEGIES)
+==========================================================================================
+
+  #1: mw=10, 3K_bayesian (overall 86.3%)
+    A_debunking              :  30/34  (88%)
+    B_skeptic_quote          :  30/36  (83%)
+    C_neutral_heavy          :  94/120 (78%)
+    E_uniform_opp            :  77/78  (99%)
+    E_uniform_supp           :  20/23  (87%)
+    F_gradual_opp            :   1/1   (100%)
+
+  #2: mw=8, 3K_bayesian (overall 86.0%)
+    A_debunking              :  30/34  (88%)
+    B_skeptic_quote          :  29/36  (81%)
+    C_neutral_heavy          :  94/120 (78%)
+    E_uniform_opp            :  77/78  (99%)
+    E_uniform_supp           :  20/23  (87%)
+    F_gradual_opp            :   1/1   (100%)
+
+  #3: mw=5, 3K_bayesian (overall 85.6%)
+    A_debunking              :  31/34  (91%)
+    B_skeptic_quote          :  29/36  (81%)
+    C_neutral_heavy          :  92/120 (77%)
+    E_uniform_opp            :  77/78  (99%)
+    E_uniform_supp           :  20/23  (87%)
+    F_gradual_opp            :   1/1   (100%)
+
+  #4: mw=3, 3K_bayesian (overall 85.3%)
+    A_debunking              :  31/34  (91%)
+    B_skeptic_quote          :  28/36  (78%)
+    C_neutral_heavy          :  92/120 (77%)
+    E_uniform_opp            :  77/78  (99%)
+    E_uniform_supp           :  20/23  (87%)
+    F_gradual_opp            :   1/1   (100%)
+
+  #5: mw=8, 3C_score_sum (overall 82.9%)
+    A_debunking              :  30/34  (88%)
+    B_skeptic_quote          :  26/36  (72%)
+    C_neutral_heavy          :  88/120 (73%)
+    E_uniform_opp            :  77/78  (99%)
+    E_uniform_supp           :  20/23  (87%)
+    F_gradual_opp            :   1/1   (100%)
+
+==========================================================================================
+SECTION 5: MIN-WORDS IMPACT
+==========================================================================================
+
+Average accuracy across all strategies, per min-words value:
+
+  min_words= 3: avg=70.9%  best=85.3%  worst=38.4%
+  min_words= 5: avg=71.5%  best=85.6%  worst=40.1%
+  min_words= 8: avg=70.9%  best=86.0%  worst=40.8%
+  min_words=10: avg=70.4%  best=86.3%  worst=42.1%
+
+==========================================================================================
+SECTION 6: STRATEGY IMPACT (averaged across min-words)
+==========================================================================================
+
+  3K_bayesian                 : 85.8%
+  3C_score_sum                : 82.4%
+  3D_relevance_weighted       : 82.4%
+  3A_strongest                : 82.4%
+  3J_topk_k2                  : 79.5%
+  3J_topk_k3                  : 79.4%
+  3J_topk_k5                  : 78.9%
+  3C_score_mean               : 77.5%
+  3G_filtered_sum_t0.4        : 74.2%
+  3F_count_vote_t0.5          : 72.4%
+  3E_max_count_t0.5           : 72.3%
+  3G_filtered_sum_t0.5        : 72.1%
+  3B_gated_t0.5               : 71.1%
+  3F_count_vote_t0.6          : 69.8%
+  3G_filtered_sum_t0.6        : 69.8%
+  3E_max_count_t0.6           : 69.7%
+  3B_gated_t0.6               : 69.3%
+  3H_majority_t0.5            : 67.0%
+  3F_count_vote_t0.7          : 66.8%
+  3E_max_count_t0.7           : 66.7%
+  3H_majority_t0.6            : 66.4%
+  3G_filtered_sum_t0.7        : 66.4%
+  3B_gated_t0.7               : 65.8%
+  3H_majority_t0.7            : 63.5%
+  3B_gated_t0.8               : 61.8%
+  3H_majority_t0.8            : 60.5%
+  3I_median                   : 40.3%
+
+==========================================================================================
+SECTION 7: SOURCES WHERE TOP STRATEGIES DISAGREE
+==========================================================================================
+
+Shows sources where the top 3 strategies produce different stances.
+Helps identify which strategy is actually correct on contested cases.
+
+  Claim: sugar makes children hyperactive
+  Source: Perceptions of non-sugar sweeteners and front-of-package labels among 
+  Pattern: C_neutral_heavy
+  Expected: opposing
+  Paragraph: neutral
+                         mw=10,3K_bayesian: opposing
+                          mw=8,3K_bayesian: supporting
+                          mw=5,3K_bayesian: supporting
+
+  Claim: the great wall of china is visible from space
+  Source: Great Wall of China
+  Pattern: C_neutral_heavy
+  Expected: opposing
+  Paragraph: opposing
+                         mw=10,3K_bayesian: opposing
+                          mw=8,3K_bayesian: opposing
+                          mw=5,3K_bayesian: supporting
+  Top non-neutral sentences:
+    [opposing   S:0.002 O:0.985] Sydney: Picador Pan Macmillan.
+    [opposing   S:0.008 O:0.977] From the Moon
+The Great Wall of China cannot be seen by the naked human eye from the Moon which orbi
+
+  Claim: the earth revolves around the sun
+  Source: Lunar phase
+  Pattern: A_debunking
+  Expected: supporting
+  Paragraph: supporting
+                         mw=10,3K_bayesian: opposing
+                          mw=8,3K_bayesian: opposing
+                          mw=5,3K_bayesian: supporting
+  Top non-neutral sentences:
+    [supporting S:0.995 O:0.001] This is due to the Earth's orbit around the Sun.
+    [supporting S:0.964 O:0.013] Solar and lunar eclipses are not observed every month because the plane of the Moon's orbit around t
+    [opposing   S:0.004 O:0.946] [edit] The phases are not caused by the Earth's shadow falling on the Moon, as some people believe.
+
+  Claim: the earth revolves around the sun
+  Source: Study of the "Earth-Moon" System
+  Pattern: E_uniform_opp
+  Expected: supporting
+  Paragraph: opposing
+                         mw=10,3K_bayesian: supporting
+                          mw=8,3K_bayesian: opposing
+                          mw=5,3K_bayesian: opposing
+  Top non-neutral sentences:
+    [opposing   S:0.002 O:0.993] The Earth and the Moon revolve around the barycenter.
+    [opposing   S:0.003 O:0.958] The incorrectness of the statement that the Moon revolves around the Earth is noted.
+    [opposing   S:0.001 O:0.945] The moon revolves around the common center of mass of the system.
+
+  Claim: the moon landing was faked
+  Source: Is there any truth to the moon landing being faked, and did America ha
+  Pattern: E_uniform_opp
+  Expected: opposing
+  Paragraph: opposing
+                         mw=10,3K_bayesian: supporting
+                          mw=8,3K_bayesian: opposing
+                          mw=5,3K_bayesian: opposing
+  Top non-neutral sentences:
+    [opposing   S:0.027 O:0.684] Answer (1 of 15): There is zero truth to the notion that the moon landings were faked.
+    [supporting S:0.595 O:0.018] It would have been easier to go to the moon and back in 1969 than to fake it.
+
+  Claim: christopher columbus discovered america
+  Source: Voyages of Christopher Columbus
+  Pattern: C_neutral_heavy
+  Expected: opposing
+  Paragraph: neutral
+                         mw=10,3K_bayesian: supporting
+                          mw=8,3K_bayesian: opposing
+                          mw=5,3K_bayesian: opposing
+  Top non-neutral sentences:
+    [opposing   S:0.001 O:0.863] - ^ Yewell, John; Chris Dodge (1992).
+    [opposing   S:0.061 O:0.527] Portuguese Studies.
+    [opposing   S:0.010 O:0.512] :Popular Myths about America from Columbus to Clinton.
+
+  Claim: christopher columbus discovered america
+  Source: Christopher Columbus in the Americas | History | Research Starters | E
+  Pattern: C_neutral_heavy
+  Expected: opposing
+  Paragraph: opposing
+                         mw=10,3K_bayesian: opposing
+                          mw=8,3K_bayesian: opposing
+                          mw=5,3K_bayesian: supporting
+
+  Claim: the average human body temperature is 98.6 degrees fahrenheit
+  Source: Fahrenheit
+  Pattern: B_skeptic_quote
+  Expected: opposing
+  Paragraph: neutral
+                         mw=10,3K_bayesian: opposing
+                          mw=8,3K_bayesian: supporting
+                          mw=5,3K_bayesian: supporting
+  Top non-neutral sentences:
+    [supporting S:0.918 O:0.013] It is for this reason that normal human body temperature is approximately 98.6 °F (oral temperature)
+    [opposing   S:0.022 O:0.814] He then re-calibrated his scale using the melting point of ice and normal human body temperature (wh
+
+==========================================================================================
+SECTION 8: PARAGRAPH vs BEST SENTENCE-LEVEL
+==========================================================================================
+
+  Best sentence config: mw=10, 3K_bayesian
+  Both correct:          119
+  Only paragraph correct: 10 (sentence-level REGRESSIONS)
+  Only sentence correct:  133 (sentence-level WINS)
+  Both wrong:            30
+  Net improvement:       +123
+
+  REGRESSIONS (paragraph correct, sentence wrong):
+      sugar makes children hyperacti | Sugar: Does it Really Cause Hyperactivit | sent=supporting
+      smoking causes lung cancer | Does Marijuana Contain More Tar Than Cig | sent=opposing
+      smoking causes lung cancer | Lung Cancer Risk Factors | Smoking & Lun | sent=opposing
+      smoking causes lung cancer | 10 of the Worst Diseases Smoking Causes  | sent=opposing
+      the earth revolves around the  | NASA does not support Imam of Ahle Sunna | sent=opposing
+      the earth revolves around the  | Lunar phase | sent=opposing
+      the moon landing was faked | Is there any truth to the moon landing b | sent=supporting
+      christopher columbus discovere | Origin theories of Christopher Columbus | sent=supporting
+      christopher columbus discovere | Christopher Columbus | Biography, Nation | sent=supporting
+      the average human body tempera | When is body temperature too low? - Harv | sent=supporting
+
+  WINS (sentence correct, paragraph wrong):
+      vaccines cause autism | RFK Jr. Cites Flawed Paper Claiming Link | para=neutral
+      vaccines cause autism | RFK Jr. Misleads on Autism Prevalence, C | para=neutral
+      vaccines cause autism | Vaccines and autism | para=neutral
+      vaccines cause autism | MMR vaccine and autism | para=neutral
+      vaccines cause autism | Causes of autism | para=neutral
+      vaccines cause autism | Thiomersal and vaccines | para=neutral
+      vaccines cause autism | Brian Hooker (bioengineer) | para=neutral
+      vaccines cause autism | Vaccine Induced Autoimmunity May Cause A | para=neutral
+      vaccines cause autism | Evidence Showing Childhood Vaccinations  | para=neutral
+      vaccines cause autism | “I Thought It Was Better to Be Safe Than | para=neutral

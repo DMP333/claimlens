@@ -9,7 +9,7 @@ from app.services.semantic_scholar import search_semantic_scholar
 from app.services.open_alex import search_openalex
 from app.services.duckduckgo import search_duckduckgo
 from app.services.wikidata import search_wikidata
-from app.services.nli_service import classify_stance, compute_relevance
+from app.services.nli_service import classify_stance, classify_stance_sentences, compute_relevance
 from app.services.credibility_service import score_all_sources
 
 
@@ -431,7 +431,7 @@ async def analyze_sources(claim: str, raw_sources: list[Source]) -> list[SourceR
         # "about X" means "supports X" (e.g. "Flat Earth" article classified as supporting flat earth)
         # Snippet/abstract contains the actual argument, which NLI can classify correctly
         premise = source.snippet if source.snippet else source.title
-        stance, confidence = classify_stance(premise, claim)
+        stance, confidence, sent_details = classify_stance_sentences(premise, claim)
 
         results.append(
             SourceResult(
@@ -443,7 +443,7 @@ async def analyze_sources(claim: str, raw_sources: list[Source]) -> list[SourceR
                 credibility_score=cred["credibility_score"],
                 bias_rating=cred["bias_rating"],
                 factual_reporting=cred["factual_reporting"],
-                support_summary=f"NLI: {stance} ({confidence:.2f})",
+                support_summary=f"Sentence-NLI: {stance} ({confidence:.2f}, {len(sent_details)} sents)",
             )
         )
     return results
