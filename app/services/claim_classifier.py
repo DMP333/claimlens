@@ -51,10 +51,7 @@ _OPINION_KEYWORDS = {
     # Moral/ethical judgments
     "immoral", "unethical", "evil", "righteous",
     "corrupt", "dishonest",
-    # Safety/risk evaluators
-    "dangerous", "unsafe", "harmful", "toxic", "risky",
-    "safe",
-    # Health evaluators
+    # Health evaluators (subjective)
     "unhealthy", "wholesome",
     # Quality evaluators
     "wasteful", "pointless", "useless", "worthless",
@@ -119,6 +116,7 @@ def classify_claim_type(claim: str) -> tuple[str, float]:
     """
     claim_lower = claim.lower().strip()
     words = claim_lower.split()
+    words_set = set(re.sub(r'[.,!?;:\'"()\[\]]', '', w) for w in words)
 
     # Layer 1a: phrase matching
     for phrase in _OPINION_PHRASES:
@@ -137,7 +135,8 @@ def classify_claim_type(claim: str) -> tuple[str, float]:
     has_comparative = any(
         tag in ("JJR", "JJS", "RBR", "RBS") for _, tag in tags
     )
-    if has_comparative and not _has_statistical_context(claim_lower):
+    has_scientific = bool(words_set & _SCIENTIFIC_TERMS)
+    if has_comparative and not _has_statistical_context(claim_lower) and not has_scientific:
         return ("opinion", 0.85)
 
     # Layer 3: default to factual
@@ -161,6 +160,7 @@ _SCIENTIFIC_TERMS = {
     "cell", "cells", "organism",
     "brain", "tongue", "blood", "muscle", "bone",
     "eye", "eyes", "heart", "lung", "lungs", "liver", "kidney", "skin",
+    "body", "head", "hair", "teeth", "tooth",
     "blind", "deaf", "taste", "smell", "vision", "hearing",
     "bat", "bats", "spider", "spiders", "shark", "whale",
     "photosynthesis", "ecosystem", "biodiversity",
@@ -181,7 +181,7 @@ _SCIENTIFIC_TERMS = {
     "breakfast", "meal",
     # ----- Physics / chemistry -----
     "light", "gravity", "atom", "atoms", "energy",
-    "temperature", "boil", "boils", "boiling",
+    "temperature", "boil", "boils", "boiling", "heat",
     "freeze", "freezes", "freezing", "melt", "melting",
     "radiation", "quantum", "particle", "molecule",
     "speed", "velocity", "force", "mass", "weight",

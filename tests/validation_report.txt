@@ -1,0 +1,366 @@
+Phase 2 Validation Report
+Generated: 2026-05-26 17:42:04
+Total claims: 48
+Seen (in Set A): 11
+Unseen (truly held-back): 37
+Errors (pipeline failed): 0
+
+================================================================================
+SECTION 1: PIPELINE VERDICT ACCURACY (using default 3K strategy)
+================================================================================
+
+  ALL     : 27/48 (56.2%)
+  SEEN    : 7/11 (63.6%)
+  UNSEEN  : 20/37 (54.1%)
+
+  By category:
+    factual_true        : 4/10 (40.0%)
+    factual_false       : 14/18 (77.8%)
+    opinion             : 7/8 (87.5%)
+    contested           : 2/10 (20.0%)
+    current_event       : 0/2 (0.0%)
+
+  Per-claim results:
+    OK strongly supported        (exp: strongly supported  ) | climate change is real 
+    OK strongly supported        (exp: strongly supported  ) | evolution is real 
+    XX likely opposed            (exp: strongly supported  ) | water boils at 100 degrees celsius 
+    XX likely opposed            (exp: strongly supported  ) | the speed of light is constant 
+    OK strongly supported        (exp: strongly supported  ) | smoking causes lung cancer [SEEN]
+    XX likely opposed            (exp: strongly supported  ) | antibiotics do not work against viruses 
+    XX likely opposed            (exp: strongly supported  ) | humans share about 98% of DNA with chimpanzees 
+    OK strongly opposed          (exp: strongly opposed    ) | the earth is flat [SEEN]
+    OK strongly opposed          (exp: strongly opposed    ) | vaccines cause autism [SEEN]
+    OK likely opposed            (exp: strongly opposed    ) | the moon landing was faked [SEEN]
+    OK strongly opposed          (exp: strongly opposed    ) | 5G causes COVID 
+    OK strongly opposed          (exp: strongly opposed    ) | we only use 10% of our brains [SEEN]
+    OK strongly opposed          (exp: strongly opposed    ) | goldfish have a 3 second memory [SEEN]
+    XX contested                 (exp: strongly opposed    ) | the Great Wall of China is visible from space [SEEN]
+    XX sources lean opposing     (exp: strongly opposed    ) | MSG is dangerous to consume 
+    OK likely opposed            (exp: strongly opposed    ) | eating carrots improves your eyesight 
+    OK likely opposed            (exp: strongly opposed    ) | the Amazon rainforest produces about 20% of the wo 
+    OK strongly opposed          (exp: strongly opposed    ) | the Great Wall of China is the only man-made struc [SEEN]
+    OK sources divided           (exp: opinion             ) | LeBron James is the greatest basketball player of  
+    OK sources lean opposing     (exp: opinion             ) | pineapple belongs on pizza 
+    OK sources lean opposing     (exp: opinion             ) | democracy is the best form of government 
+    OK sources lean opposing     (exp: opinion             ) | capitalism is better than socialism 
+    OK sources lean supporting   (exp: opinion             ) | the Beatles are the greatest band of all time 
+    OK sources lean opposing     (exp: opinion             ) | cats are better pets than dogs 
+    OK sources lean supporting   (exp: opinion             ) | college education is worth the cost 
+    XX sources lean opposing     (exp: contested           ) | sugar is worse than fat for health 
+    XX sources lean supporting   (exp: contested           ) | nuclear energy is safe [SEEN]
+    XX sources lean opposing     (exp: contested           ) | remote work is more productive than office work 
+    XX strongly opposed          (exp: contested           ) | AI will replace most jobs 
+    OK contested                 (exp: contested           ) | the United States economy is in a recession 
+    XX strongly opposed          (exp: contested           ) | violent video games cause real world violence [SEEN]
+    OK sources divided           (exp: contested           ) | social media is harmful to mental health 
+    XX sources lean supporting   (exp: contested           ) | organic food is healthier than conventional food [SEEN]
+    XX sources lean supporting   (exp: contested           ) | immigration is good for the economy 
+    XX likely supported          (exp: contested           ) | China has the world's largest economy 
+    XX likely opposed            (exp: contested           ) | inflation in the United States is under control 
+    OK strongly opposed          (exp: strongly opposed    ) | bats are blind 
+    OK strongly opposed          (exp: strongly opposed    ) | bulls are enraged by the color red 
+    XX sources divided           (exp: strongly opposed    ) | you lose most body heat through your head 
+    OK strongly opposed          (exp: strongly opposed    ) | shaving makes hair grow back thicker 
+    XX strongly supported        (exp: strongly opposed    ) | the Sahara desert is the largest desert on earth 
+    OK strongly opposed          (exp: strongly opposed    ) | Einstein failed math in school 
+    OK strongly opposed          (exp: strongly opposed    ) | dogs can only see in black and white 
+    OK likely supported          (exp: strongly supported  ) | the sun is a star 
+    XX likely opposed            (exp: strongly supported  ) | octopuses have three hearts 
+    XX strongly opposed          (exp: strongly supported  ) | honey never expires 
+    XX strongly supported        (exp: contested           ) | universal basic income reduces poverty 
+    XX likely opposed            (exp: opinion             ) | cryptocurrency is a good long-term investment 
+
+================================================================================
+SECTION 2: STRATEGY COMPARISON (3K vs 3A vs 3J)
+================================================================================
+
+  Strategy               All            Seen          Unseen
+  ------------------------------------------------------------
+  3K             26/48 (54%)      8/11 (73%)     18/37 (49%)
+  3A             31/48 (65%)      9/11 (82%)     22/37 (59%)
+  3J             30/48 (62%)      8/11 (73%)     22/37 (59%)
+
+================================================================================
+SECTION 3: PARAGRAPH-LEVEL vs SENTENCE-LEVEL (per-source)
+================================================================================
+
+  Per-source accuracy (factual claims only, n=417):
+    Paragraph-level: 197/417 (47.2%)
+    Sentence-level (3K): 295/417 (70.7%)
+    Only paragraph correct: 54
+    Only sentence correct: 152
+    Net improvement: +98
+
+================================================================================
+SECTION 4: SENTENCE-LEVEL ERROR PATTERNS (for fine-tuning)
+================================================================================
+
+  MYTH-RESTATING SENTENCES: 99
+  (False-claim debunking sources where NLI reads myth setup as 'supporting')
+    [S:0.955] the earth is flat | This would mean people on the "edge" of the flat Earth would fall sideways.
+    [S:0.900] the earth is flat | "The world is flat and I can’t get past the firmament!"
+    [S:0.935] the earth is flat | So the moon landing had to be faked because you can't get past the firmament because the w
+    [S:0.923] the earth is flat | Recently, Lesley Stahl, of “60 Minutes,” revealed that, in an interview after the 2016 ele
+    [S:0.751] the moon landing was faked | moon landing hoax” conspiracy theory in a Telegram post on May 7.
+    [S:0.972] the moon landing was faked | “If in fact the main motivation for believing in the moon hoax ... is you don’t trust the 
+    [S:0.954] the moon landing was faked | It could have been scary.” The implication of this short clip is that Mr Aldrin was admitt
+    [S:0.915] the moon landing was faked | During "Into The Wild Green Yonder" President Nixon's head admits that the Moon landing wa
+    [S:0.825] the moon landing was faked | This hypothesis implies that reasoning biases should be more closely associated with belie
+    [S:0.955] the moon landing was faked | Given an implausible event for which there is lots of evidence (Apollo 11) and a plausible
+    [S:0.938] the moon landing was faked | “The point of moon-hoax theory is to show how powerful the American government was in term
+    [S:0.811] the moon landing was faked | In this list I have presented some of the proposed evidence to suggest that the moon landi
+    [S:0.949] the moon landing was faked | One compelling argument for the moon landing hoax is the total lack of stars in any of the
+    [S:0.718] the moon landing was faked | New conspiracy theorist claims to have proof Apollo moon landing was fake
+The first Americ
+    [S:0.938] 5G causes COVID | The post further claims that Covid-19 is caused by 5G mobile technology and that it can be
+    ... and 84 more
+
+  WEAK NEGATION CANDIDATES: 71
+  (Sentences with negation words classified as neutral, expected opposing)
+    [O:0.478 N:0.521] neg=['not'] | While the efficacy for many vaccines has been demonstrated in some form, such as
+    [O:0.468 N:0.531] neg=['no'] | All the other studies were done, showed no connection whatsoever again and again
+    [O:0.463 N:0.530] neg=['without'] | NASA officially states the wall is "difficult or impossible to see from Earth or
+    [O:0.460 N:0.540] neg=['not'] | 12
+- ^ Namely, some physicists have questioned whether or not the evidence for d
+    [O:0.457 N:0.495] neg=['failed'] | However, there is a longstanding rumor that Einstein failed grade school math.
+    [O:0.449 N:0.551] neg=['not'] | A 2019 meta-analysis found that while many in vitro and in vivo studies detected
+    [O:0.440 N:0.550] neg=['no'] | Russell claims "with extraordinary few exceptions no educated person in the hist
+    [O:0.437 N:0.561] neg=['no'] | There is no accepted scientific evidence that exposure to thiomersal is a factor
+    [O:0.434 N:0.550] neg=['no'] | He claims that rockets cannot work in space because there is no air.
+    [O:0.425 N:0.565] neg=['not'] | Secondly, even though other objects are visible at this distance, according to S
+    [O:0.423 N:0.568] neg=['lack'] | A dog’s color spectrum vision is limited because of the lack of cones in the eye
+    [O:0.422 N:0.576] neg=['no'] | A retrospective cohort study on 109,863 children in the United Kingdom found no 
+    [O:0.408 N:0.589] neg=['false'] | They also pointed out that some believers were motivated to spread false ideas, 
+    [O:0.392 N:0.606] neg=['not'] | An ecological analysis that studied 956 Danish children diagnosed with autism li
+    [O:0.388 N:0.607] neg=['no'] | MYTH: According to all known laws of aviation, there is no way a bee should be a
+    ... and 56 more
+
+  NO-SIGNAL SOURCES: 70
+  (All sentences classified neutral, no stance signal at all)
+    climate change is real | Is climate change a real phenomenon or just a natu (1 sents)
+    climate change is real | Serious - Do you think climate change is real? | C (19 sents)
+    climate change is real | Sounds like Climate Change is Very Real - Peaceful (7 sents)
+    water boils at 100 degrees celsius | Radiation in the coffee cup (7 sents)
+    smoking causes lung cancer | Can marijuana smoking cause lung cancer? (17 sents)
+    smoking causes lung cancer | Smoking-related interstitial fibrosis (SRIF) (15 sents)
+    smoking causes lung cancer | Health effects of smoking tobacco (16 sents)
+    smoking causes lung cancer | Smoking in China (14 sents)
+    smoking causes lung cancer | Implications of the Immune Landscape in COPD and L (6 sents)
+    smoking causes lung cancer | Global cancer statistics 2022: GLOBOCAN estimates  (9 sents)
+    ... and 60 more
+
+================================================================================
+SECTION 5: WRONG VERDICTS - DETAILED DIAGNOSIS
+================================================================================
+
+  WRONG: water boils at 100 degrees celsius
+    Got: likely opposed | Expected: strongly supported | Category: factual_true
+    Sources: 15
+    Set: Truly unseen
+    Source stances: {'opposing': 9, 'supporting': 5, 'neutral': 1}
+    Source: Celsius | S:1 N:10 O:2
+      Top: [sup 0.979] Older definitions of the Celsius temperature scale once defined the boiling poin
+    Source: Fahrenheit | S:0 N:9 O:2
+      Top: [opp 0.993] Fahrenheit soon after observed that water boils at about 212 degrees using this 
+
+  WRONG: the speed of light is constant
+    Got: likely opposed | Expected: strongly supported | Category: factual_true
+    Sources: 23
+    Set: Truly unseen
+    Source stances: {'opposing': 18, 'supporting': 4, 'neutral': 1}
+    Source: Speed of light | S:0 N:9 O:9
+      Top: [opp 0.997] However, it has been suggested in various theories that the speed of light may h
+    Source: Variable speed of light | S:0 N:6 O:7
+      Top: [opp 0.999] The apparent speed of light will change in a gravity field and, in particular, g
+
+  WRONG: antibiotics do not work against viruses
+    Got: likely opposed | Expected: strongly supported | Category: factual_true
+    Sources: 30
+    Set: Truly unseen
+    Source stances: {'supporting': 7, 'opposing': 19, 'neutral': 4}
+    Source: Consuming antibiotics cannot treat Covid-19 | Fact | S:1 N:15 O:5
+      Top: [sup 0.985] The US Centers for Disease Control and Prevention (CDC) states antibiotics do no
+    Source: No, COVID-19 won’t respond to antibiotics, despite | S:3 N:13 O:1
+      Top: [sup 0.994] Antibiotics do not work against viruses; they only work on bacterial infections.
+
+  WRONG: humans share about 98% of DNA with chimpanzees
+    Got: likely opposed | Expected: strongly supported | Category: factual_true
+    Sources: 17
+    Set: Truly unseen
+    Source stances: {'opposing': 10, 'supporting': 7}
+    Source: Chimpanzee | S:0 N:16 O:1
+      Top: [opp 0.742] In addition, a 2012 study comparing brain tissue found that chimpanzees and huma
+    Source: Human evolution | S:0 N:16 O:0
+
+  WRONG: the Great Wall of China is visible from space
+    Got: contested | Expected: strongly opposed | Category: factual_false
+    Sources: 16
+    Set: Set A overlap [SEEN]
+    Source stances: {'opposing': 9, 'supporting': 6, 'neutral': 1}
+    Source: Is the Great Wall of China Visible from the Moon? | S:3 N:1 O:3
+      Top: [sup 0.985] (The Great Wall of China can be discerned in radar images taken from space, but 
+    Source: Artificial structures visible from space | S:2 N:13 O:1
+      Top: [sup 0.949] - ^ JPL, April 18, 1996, Space Radar Reveals Ancient Segments of China's Great W
+
+  WRONG: MSG is dangerous to consume
+    Got: sources lean opposing | Expected: strongly opposed | Category: factual_false
+    Sources: 15
+    Set: Truly unseen
+    Source stances: {'opposing': 11, 'supporting': 3, 'neutral': 1}
+    Source: Fact check: MSG doesn't cause neurological disorde | S:0 N:13 O:2
+      Top: [opp 0.960] Claims that it can be dangerous to human health are based on flawed scientific s
+    Source: Brain damage link to MSG a salty dose of misinform | S:0 N:14 O:4
+      Top: [opp 0.998] Food safety authorities, scientific studies and experts say MSG is safe to consu
+
+  WRONG: sugar is worse than fat for health
+    Got: sources lean opposing | Expected: contested | Category: contested
+    Sources: 25
+    Set: Truly unseen
+    Source stances: {'opposing': 20, 'supporting': 2, 'neutral': 3}
+    Source: Diet food | S:0 N:13 O:1
+      Top: [opp 0.890] Such foods are usually intended to assist in weight loss or a change in body typ
+    Source: Trans fat | S:0 N:11 O:0
+
+  WRONG: nuclear energy is safe
+    Got: sources lean supporting | Expected: contested | Category: contested
+    Sources: 24
+    Set: Set A overlap [SEEN]
+    Source stances: {'opposing': 6, 'supporting': 16, 'neutral': 2}
+    Source: Nuclear power | S:1 N:11 O:3
+      Top: [sup 0.987] Nuclear power is a safe and sustainable energy source that reduces carbon emissi
+    Source: Pro-nuclear energy movement | S:0 N:8 O:0
+
+  WRONG: remote work is more productive than office work
+    Got: sources lean opposing | Expected: contested | Category: contested
+    Sources: 17
+    Set: Truly unseen
+    Source stances: {'opposing': 11, 'supporting': 2, 'neutral': 4}
+    Source: Remote work | S:0 N:9 O:5
+      Top: [opp 0.995] A 2008 study found that face-to-face interactions are associated with higher lev
+    Source: Work (human activity) | S:0 N:11 O:0
+
+  WRONG: AI will replace most jobs
+    Got: strongly opposed | Expected: contested | Category: contested
+    Sources: 26
+    Set: Truly unseen
+    Source stances: {'opposing': 21, 'supporting': 2, 'neutral': 3}
+    Source: Artificial intelligence | S:0 N:15 O:0
+    Source: AI boom | S:0 N:13 O:0
+
+  WRONG: violent video games cause real world violence
+    Got: strongly opposed | Expected: contested | Category: contested
+    Sources: 26
+    Set: Set A overlap [SEEN]
+    Source stances: {'opposing': 26}
+    Source: The Facts on Media Violence | S:0 N:15 O:1
+      Top: [opp 0.597] That leaves only evidence from cross-sectional studies and longitudinal studies.
+    Source: Fact check: Studies refute attempts to link video  | S:0 N:12 O:2
+      Top: [opp 0.964] - Washington Post, Aug. 9, 2019, Video games don’t cause mass shootings.
+
+  WRONG: organic food is healthier than conventional food
+    Got: sources lean supporting | Expected: contested | Category: contested
+    Sources: 26
+    Set: Set A overlap [SEEN]
+    Source stances: {'supporting': 21, 'opposing': 2, 'neutral': 3}
+    Source: Organic food | S:0 N:14 O:0
+    Source: Food system | S:0 N:14 O:0
+
+  WRONG: immigration is good for the economy
+    Got: sources lean supporting | Expected: contested | Category: contested
+    Sources: 18
+    Set: Truly unseen
+    Source stances: {'opposing': 3, 'supporting': 13, 'neutral': 2}
+    Source: Analysis | President Trump's claim that low-skille | S:0 N:3 O:1
+      Top: [opp 0.977] Among those hit the hardest in recent years have been immigrants and, very impor
+    Source: Economic impact of immigration to Canada | S:0 N:11 O:2
+      Top: [opp 0.983] It unfortunately opens the door to exploitation and furthermore, according to ma
+
+  WRONG: China has the world's largest economy
+    Got: likely supported | Expected: contested | Category: current_event
+    Sources: 22
+    Set: Truly unseen
+    Source stances: {'supporting': 12, 'opposing': 8, 'neutral': 2}
+    Source: Economy of China | S:0 N:15 O:0
+    Source: China | S:1 N:9 O:0
+      Top: [sup 0.914] Making up around one-fifth of the world's economy, China is the second-wealthies
+
+  WRONG: inflation in the United States is under control
+    Got: likely opposed | Expected: contested | Category: current_event
+    Sources: 16
+    Set: Truly unseen
+    Source stances: {'supporting': 4, 'opposing': 9, 'neutral': 3}
+    Source: President Donald Trump says the US has ‘no inflati | S:1 N:13 O:1
+      Top: [opp 0.881] And both shelter and tuition/child care remain more expensive today than a year 
+    Source: Has inflation eased under Trump? It depends on the | S:0 N:15 O:1
+      Top: [opp 0.775] Under Trump, wages are outpacing inflation
+Price increases matter most to people
+
+  WRONG: you lose most body heat through your head
+    Got: sources divided | Expected: strongly opposed | Category: factual_false
+    Sources: 12
+    Set: Truly unseen
+    Source stances: {'opposing': 7, 'supporting': 4, 'neutral': 1}
+    Source: Thermoregulation | S:0 N:11 O:0
+    Source: Do You Really Lose Most of Your Body's Heat Throug | S:0 N:14 O:3
+      Top: [opp 0.995] Policy
+The truth is, you won’t squander anywhere close to 50% of your body heat 
+
+  WRONG: the Sahara desert is the largest desert on earth
+    Got: strongly supported | Expected: strongly opposed | Category: factual_false
+    Sources: 20
+    Set: Truly unseen
+    Source stances: {'supporting': 15, 'opposing': 3, 'neutral': 2}
+    Source: Sahara Desert (ecoregion) | S:0 N:16 O:0
+    Source: Sahara | S:0 N:9 O:0
+
+  WRONG: octopuses have three hearts
+    Got: likely opposed | Expected: strongly supported | Category: factual_true
+    Sources: 18
+    Set: Truly unseen
+    Source stances: {'opposing': 9, 'supporting': 5, 'neutral': 4}
+    Source: Cephalopod | S:0 N:12 O:0
+    Source: Blue-ringed octopus | S:0 N:15 O:1
+      Top: [opp 0.783] Evidence of female preference of larger males is apparent, although no male pref
+
+  WRONG: honey never expires
+    Got: strongly opposed | Expected: strongly supported | Category: factual_true
+    Sources: 11
+    Set: Truly unseen
+    Source stances: {'opposing': 10, 'supporting': 1}
+    Source: Honeyblood | S:2 N:4 O:8
+      Top: [opp 0.997] During this period McVicar took a break to complete her dentistry degree, with r
+    Source: Does Honey Go Bad? | Food Network | S:2 N:7 O:8
+      Top: [opp 0.997] “Make sure the cap is tightly on to minimize exposure to oxygen,” Amidor says.
+
+  WRONG: universal basic income reduces poverty
+    Got: strongly supported | Expected: contested | Category: contested
+    Sources: 22
+    Set: Truly unseen
+    Source stances: {'supporting': 18, 'opposing': 4}
+    Source: Fact-checking Andrew Yang on universal basic incom | S:1 N:12 O:0
+      Top: [sup 0.599] "I am now convinced that the simplest approach will prove to be the most effecti
+    Source: Universal basic income | S:1 N:12 O:0
+      Top: [sup 0.649] A 2022 update of this review confirmed these findings based on a body of evidenc
+
+  WRONG: cryptocurrency is a good long-term investment
+    Got: likely opposed | Expected: opinion | Category: opinion
+    Sources: 27
+    Set: Truly unseen
+    Source stances: {'opposing': 17, 'supporting': 7, 'neutral': 3}
+    Source: Cryptocurrency | S:0 N:16 O:1
+      Top: [opp 0.952] This precludes the cryptocurrency from any usage whatsoever, permanently, thus r
+    Source: Cryptocurrency bubble | S:0 N:14 O:1
+      Top: [opp 0.962] Economic analysis of these market cycles suggests that cryptocurrency price dyna
+
+================================================================================
+SECTION 6: SUMMARY
+================================================================================
+
+  Pipeline verdict accuracy (all): 27/48 (56.2%)
+  Pipeline verdict accuracy (unseen only): 20/37 (54.1%)
+  Per-source improvement over paragraph: +98 sources
+  Paragraph per-source accuracy: 47.2%
+  Sentence (3K) per-source accuracy: 70.7%
+  Myth-restating errors (fine-tuning target): 99
+  Weak negation candidates (fine-tuning target): 71
+  No-signal sources: 70

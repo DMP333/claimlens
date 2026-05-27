@@ -1,0 +1,1314 @@
+EVERY MISCLASSIFIED SENTENCE: 434 total
+Generated from validation_data.json (48 claims, 9532 sentences mw>=10)
+Only factual_true and factual_false claims (28 claims)
+
+==========================================================================================
+SUMMARY
+==========================================================================================
+
+  NEGATED_CLAIM            :  110  [NLI_LIMITATION]
+  MYTH_RESTATING           :   79  [NLI_LIMITATION]
+  NLI_MISREAD_OPP          :   73  [NLI_LIMITATION]
+  WEAK_NEGATION            :   57  [NLI_LIMITATION]
+  NLI_MISREAD_SUPP         :   49  [NLI_LIMITATION]
+  CAVEAT_AS_OPPOSING       :   40  [NLI_LIMITATION]
+  TANGENTIAL_SOURCE        :   22  [SOURCE_QUALITY]
+  CITATION_NOISE           :    3  [SOURCE_QUALITY]
+  QUOTE_ATTRIBUTION        :    1  [NLI_LIMITATION]
+
+  Total: 434
+  NLI limitation: 409
+  Source quality: 25
+
+==========================================================================================
+CAVEAT_AS_OPPOSING (40 sentences)
+Root cause: NLI LIMITATION
+Reason: NLI reads exception/caveat as opposing
+==========================================================================================
+
+  CLAIM: climate change is real
+  Expected: supporting | Errors: 3
+
+    Source [fact_check]: 'Unequivocal' Evidence that Humans Cause Climate C
+      [O S:0.001 N:0.011 O:0.987] In the video shared in these posts, Coleman said: “Climate change is not happening.
+      [O S:0.011 N:0.286 O:0.702] One Instagram post has the headline, “Weather Channel Founder Goes Savage on CNN for Network’s Climate Change Fake News.
+
+    Source [web]: Is Climate Change really real or is Earth heating 
+      [O S:0.013 N:0.197 O:0.790] : r/climatechange - RedditWhat is the most convincing science that climate change is NOT real?More results from www.redd
+
+  CLAIM: humans share about 98% of DNA with chimpanzees
+  Expected: supporting | Errors: 2
+
+    Source [web]: Human-Chimps don’t share 98.8% of DNA, but less th
+      [O S:0.002 N:0.004 O:0.995] Political fallout: If humans and chimps share 86-88% of DNA, and gorillas only share 73% of our DNA, how much do differe
+      [O S:0.019 N:0.019 O:0.962] Human-Chimps don’t share 98.8% of DNA, but less than 88%.
+
+  CLAIM: octopuses have three hearts
+  Expected: supporting | Errors: 4
+
+    Source [encyclopedia]: Blue-ringed octopus
+      [O S:0.001 N:0.215 O:0.783] Evidence of female preference of larger males is apparent, although no male preference of females is shown.
+
+    Source [encyclopedia]: California two-spot octopus
+      [O S:0.001 N:0.435 O:0.564] This octopus is named for the false eye spot (ocellus) under each real eye.
+
+    Source [encyclopedia]: Common octopus
+      [O S:0.015 N:0.474 O:0.510] O. vulgaris has four different fluids found within its body: blood, pericardial fluid, urine, and renal fluid.
+
+    Source [web]: Ten Wild Facts About Octopuses: They Have Three He
+      [O S:0.001 N:0.228 O:0.771] Harmon Courage described it as a “cow patty—flattened out into a globular splat,” but a close examination revealed the t
+
+  CLAIM: the speed of light is constant
+  Expected: supporting | Errors: 22
+
+    Source [web]: Constant in Maths - GeeksforGeeks
+      [O S:0.002 N:0.100 O:0.898] They are often represented by symbols and can change value depending on the situation.
+
+    Source [academic]: Dilaton-induced variations in Planck constant and 
+      [O S:0.003 N:0.012 O:0.985] We reveal a novel aspect of scale-invariant actions that allow matter to couple with a dilaton field: The dynamics of th
+
+    Source [encyclopedia]: Formulations of special relativity
+      [O S:0.003 N:0.020 O:0.978] They claim that there are versions of relativity which are consistent with experiment but have a definition of time wher
+
+    Source [encyclopedia]: Physical constant
+      [O S:0.002 N:0.061 O:0.937] Thus, it was meaningful to experimentally measure the speed of light in SI units prior to 1983, but it is not so now.
+      [O S:0.034 N:0.143 O:0.823] For example, a "change" in the speed of light c would be meaningless if accompanied by a corresponding change in the ele
+
+    Source [encyclopedia]: Special relativity
+      [O S:0.001 N:0.009 O:0.991] Equations generalizing the electromagnetic effects found that finite propagation speed of the E and B fields required ce
+
+    Source [web]: Speed of Light Calculator
+      [O S:0.000 N:0.001 O:0.999] The speed of light changes when going through different mediums.
+      [O S:0.025 N:0.318 O:0.657] This means that light can travel around the earth more than 448
+times in a minute.
+
+    Source [encyclopedia]: Speed of light
+      [O S:0.000 N:0.003 O:0.996] The observed change in the moon's orbital period is caused by the difference in the time it takes light to traverse the 
+      [O S:0.000 N:0.011 O:0.989] Although this argument fails when aberration of light is taken into account, the latter was not recognized until the fol
+      [O S:0.001 N:0.066 O:0.933] The actual delay in this experiment would have been about 11 microseconds.
+      [O S:0.003 N:0.390 O:0.607] No conclusive evidence for such changes has been found, but they remain the subject of ongoing research.
+
+    Source [academic]: The Speed of Light Is Not Constant in Basic Big Ba
+      [O S:0.000 N:0.002 O:0.998] If we accept standard Big Bang theory (and thus the combination of General Relativity and the FLRW metric), a variable s
+      [O S:0.000 N:0.014 O:0.986] The explicit form of this time dependence will then be determined by the specific problem.
+      [O S:0.012 N:0.119 O:0.869] Also it is argued that the combination of the FLRW metric and Einstein’s field equations of General Relativity is incons
+
+    Source [academic]: The Speed of Light in Vacuum is not Constant in An
+      [O S:0.000 N:0.001 O:0.999] The speed of light relative to (multiple or single) celestial bodies depends on the mass of celestial bodies and (mutual
+      [O S:0.000 N:0.001 O:0.999] The analysis results for various cases show that there will be different vacuum light speeds relative to the same observ
+
+    Source [encyclopedia]: Variable speed of light
+      [O S:0.000 N:0.001 O:0.999] The apparent speed of light will change in a gravity field and, in particular, go to zero at an event horizon as viewed 
+      [O S:0.006 N:0.025 O:0.969] Variable speed of light
+A variable speed of light (VSL) is a feature of a family of hypotheses stating that the speed of
+      [O S:0.001 N:0.033 O:0.966] Dicke assumed that both frequencies and wavelengths could vary, which since resulted in a relative change of c. Dicke as
+      [O S:0.014 N:0.052 O:0.934] Attempts to incorporate a variable speed of light into physics were made by Robert Dicke in 1957, and by several researc
+      [O S:0.006 N:0.287 O:0.708] VSL should not be confused with faster than light theories, which depends on a medium's refractive index or its measurem
+
+  CLAIM: the sun is a star
+  Expected: supporting | Errors: 2
+
+    Source [encyclopedia]: Sun
+      [O S:0.142 N:0.280 O:0.578] It will then have reached the red clump or horizontal branch, but a star of the Sun's metallicity does not evolve bluewa
+
+    Source [web]: Sun vs Star. What’s The Difference? - Little Astro
+      [O S:0.007 N:0.182 O:0.811] As you could imagine from such a big number, there are stars of many different types, ages, sizes, and temperatures.
+
+  CLAIM: water boils at 100 degrees celsius
+  Expected: supporting | Errors: 7
+
+    Source [web]: Boiling Point of Water - What Temperature Does Wat
+      [O S:0.118 N:0.020 O:0.863] Boiling Water at Room Temperature
+Most people assume water only boils at 100°C (212°F), but it actually boils at room te
+      [O S:0.006 N:0.243 O:0.751] For every 150 m (500 ft) increase in elevation, water’s boiling point decreases about half a degree Celsius or single de
+
+    Source [web]: Does Water Always Boil at 100 Degrees? Exploring t
+      [O S:0.000 N:0.001 O:0.999] As a result, water there boils at roughly 95 degrees Celsius — a noticeable difference that can influence everything fro
+
+    Source [encyclopedia]: Fahrenheit
+      [O S:0.001 N:0.006 O:0.993] Fahrenheit soon after observed that water boils at about 212 degrees using this scale.
+
+    Source [web]: What does water change to above 100 degrees Celsiu
+      [O S:0.001 N:0.003 O:0.996] To change liquid water into a solid, you need to lower the temperature below 0 degrees Celsius to freeze it.
+
+    Source [web]: Why does water boil at 121 degrees? - Answers
+      [O S:0.000 N:0.001 O:0.999] Water boils at 121 degrees Celsius under normal atmospheric pressure, which is approximately 1 atmosphere or 101.3 kilop
+      [O S:0.001 N:0.341 O:0.658] Water can be put under pressure and heated higher than 212, but it does not boil while it is heated under pressure.
+
+==========================================================================================
+CITATION_NOISE (3 sentences)
+Root cause: SOURCE QUALITY
+Reason: Citation/reference text misclassified
+==========================================================================================
+
+  CLAIM: the sun is a star
+  Expected: supporting | Errors: 3
+
+    Source [encyclopedia]: A Star Brighter Than the Sun
+      [O S:0.004 N:0.020 O:0.976] - ^ a b c d e f g h "A Star Brighter Than The Sun English Dub Credits".
+      [O S:0.027 N:0.392 O:0.581] - ^ a b c d e Hodgkins, Crystalyn (August 8, 2025).
+
+    Source [encyclopedia]: The Sun and the Star
+      [O S:0.003 N:0.017 O:0.980] - ^ a b c "The Sun and the Star: A Nico di Angelo Adventure Book Review Common Sense Media".
+
+==========================================================================================
+MYTH_RESTATING (79 sentences)
+Root cause: NLI LIMITATION
+Reason: NLI reads claim-restating text as supporting
+==========================================================================================
+
+  CLAIM: Einstein failed math in school
+  Expected: opposing | Errors: 3
+
+    Source [web]: Albert Einstein Failed School Math, by Dr.... | Cr
+      [S S:0.997 N:0.003 O:0.000] By the way, Dad, you must be aware that Albert Einstein was a complete failure in math when he was in school.
+
+    Source [encyclopedia]: Andrei Zelevinsky
+      [S S:0.968 N:0.031 O:0.001] - ^ A. Zelevinsky's cv Archived April 16, 2013, at the Wayback Machine
+- ^ You failed your math test, comrade Einstein
+-
+
+    Source [web]: Einstein Was a Poor Student - Fact or Myth?
+      [S S:0.967 N:0.031 O:0.002] - Making the Grade
+- Is it true that Albert Einstein failed in mathematics many times during his school days?
+
+  CLAIM: bats are blind
+  Expected: opposing | Errors: 2
+
+    Source [academic]: Il volo cieco dei pipistrelli. 1793, Lazzaro Spall
+      [S S:0.775 N:0.221 O:0.004] Spallanzani carried on his researches on the blind flight of bats mainly in Scandiano, in the summer of 1793 and 1794, t
+
+    Source [web]: When a myth came true: Blindness in bats - De Gruy
+      [S S:0.988 N:0.011 O:0.002] “Echolocating animals have a complex multi-scale perception of the world and our findings of blind bats in nature sugges
+
+  CLAIM: bulls are enraged by the color red
+  Expected: opposing | Errors: 2
+
+    Source [web]: Mythbuster: Do Bulls Hate the Color Red? - STEAM A
+      [S S:0.989 N:0.011 O:0.001] The image is iconic, so deeply ingrained in our culture that it seems like a fundamental truth: Bulls are infuriated by 
+
+    Source [web]: TIL that Bulls don't actually hate the colour red.
+      [S S:0.971 N:0.025 O:0.004] Sep 2, 2019 · TIL Bulls are colorblind, and can't see the color red, it is the movement that angers them during matador 
+
+  CLAIM: dogs can only see in black and white
+  Expected: opposing | Errors: 1
+
+    Source [web]: Dogs can see in color. - Health and Genetics - For
+      [S S:0.994 N:0.006 O:0.001] Jul 23, 2013 · Dogs can only see in black and white.
+
+  CLAIM: eating carrots improves your eyesight
+  Expected: opposing | Errors: 5
+
+    Source [web]: Are Carrots Good for Your Eyes?
+      [S S:0.783 N:0.215 O:0.003] It’s commonly said that carrots keep your eyes healthy and improve night vision.
+      [S S:0.731 N:0.268 O:0.001] It has long been believed that eating carrots promotes eye health and improves your eyesight, especially at night.
+
+    Source [web]: Carrots Can't Help You See in the Dark. Here's How
+      [S S:0.889 N:0.109 O:0.003] In truth, the Royal Air Force relied on top-secret radar
+Research suggests that eating carrots can boost eye health—but 
+
+    Source [fact_check]: Does Eating Carrots Improve Your Vision?
+      [S S:0.792 N:0.205 O:0.002] Carrots have long been touted for their efficacy in improving eyesight, and generations of kids have been admonished to 
+
+    Source [web]: Fact or Fiction?: Carrots Improve Your Vision | Sc
+      [S S:0.734 N:0.264 O:0.002] The answer is yes, under certain conditions, eating carrots will help improve eyesight.
+
+  CLAIM: goldfish have a 3 second memory
+  Expected: opposing | Errors: 9
+
+    Source [web]: Do goldfish have a 3-second memory? Learn how memo
+      [S S:0.939 N:0.058 O:0.003] You may have heard that goldfish only have a memory of 3 seconds.
+
+    Source [encyclopedia]: Goldfish
+      [S S:0.936 N:0.061 O:0.002] MythBuster Results: A goldfish's memory lasts only three seconds
+- ^ Demonstrated in a 1994 public experiment at the Pal
+
+    Source [web]: Hi friend, which one is right? 1. Goldfish have a 
+      [S S:0.991 N:0.008 O:0.001] Goldfish have a 3 second memory or goldfish have 3 second memories.
+      [S S:0.991 N:0.008 O:0.001] Goldfish have a 3 second memory or goldfish have 3 second memories.
+      [S S:0.969 N:0.027 O:0.003] "Goldfish have a 3-second memory" means that goldfish have a MEMORY CAPACITY that lasts only 3 seconds.
+      [S S:0.950 N:0.045 O:0.005] means that goldfish have many memories, many remembrances, many THINGS they remember, and each one of these memories las
+
+    Source [web]: MythBuster: Goldfish Have a 3-Second Memory — STEA
+      [S S:0.812 N:0.178 O:0.010] MythBuster: Goldfish Have a 3-Second Memory
+You’ve probably heard it, or even said it yourself.
+
+    Source [web]: Unraveling 10 Misconceptions You Didn’t Know Were 
+      [S S:0.947 N:0.049 O:0.004] **Goldfish Have a 3-Second Memory:** Contrary to the belief that goldfish have a memory span of only three seconds, stud
+
+    Source [web]: Where did the goldfish three second memory myth...
+      [S S:0.983 N:0.016 O:0.001] Hence where the 3 second memory of a goldfish derived.
+
+  CLAIM: shaving makes hair grow back thicker
+  Expected: opposing | Errors: 6
+
+    Source [web]: 10 myths you probably learned as a kid, debunked -
+      [S S:0.792 N:0.061 O:0.147] Shaving Makes Hair Grow Back Thicker and Darker
+Shaving doesn’t change hair thickness, color, or growth rate.
+
+    Source [web]: Does Hair Grow Back Thicker After Shaving? - L’Oré
+      [S S:0.934 N:0.063 O:0.003] Whether you shave your legs or facial hair or both, you may have heard the famous rumor that hair grows back thicker aft
+      [S S:0.787 N:0.197 O:0.015] The good news is, the rumor that hair grows back thicker after shaving is just that — a rumor.
+
+    Source [web]: Does shaving make hair grow back thicker and darke
+      [S S:0.863 N:0.132 O:0.004] Hair might appear thicker after shaving because the razor slices it at the surface, leaving behind a blunt edge (1).
+
+    Source [encyclopedia]: Hair
+      [S S:0.727 N:0.261 O:0.012] Hair in areas that have been waxed consistently is known to grow back finer and thinner, especially compared to hair tha
+
+    Source [encyclopedia]: Shaving
+      [S S:0.841 N:0.105 O:0.054] For example, teenagers may start shaving their face or legs at around 16, but as they age, hair will start to grow more 
+
+  CLAIM: the Amazon rainforest produces about 20% of the world's oxygen
+  Expected: opposing | Errors: 11
+
+    Source [web]: Climate Change Series Part 1 – Rainforests Absorb,
+      [S S:0.998 N:0.002 O:0.000] The Amazon Rainforest, the largest rainforest in the world, produces approximately 20 percent of the world’s oxygen, whi
+
+    Source [web]: Does the amazon provide 20% of our oxygen?
+      [S S:0.740 N:0.257 O:0.002] One thing I am often asked on is to comment on the statement that "the Amazon provides 20% of our oxygen", a statement n
+
+    Source [web]: How Much Oxygen is Produced by the Amazon Rainfore
+      [S S:0.957 N:0.043 O:0.001] Here’s the breakdown:
+- 20% of Earth’s oxygen comes from the Amazon, but this includes oxygen used by all living organis
+      [S S:0.956 N:0.043 O:0.001] Scientists estimate the Amazon generates around 2 billion tons of oxygen per year—roughly 20% of the world’s total oxyge
+      [S S:0.830 N:0.098 O:0.072] 📊 The Numbers in Perspective
+Metric Amazon Rainforest Global Average
+Annual Oxygen Production ~2 billion tons ~10 billio
+
+    Source [web]: No, The Amazon Rainforest Doesn't Produce 20% Of T
+      [S S:0.840 N:0.159 O:0.001] "The Amazon produces 20% of the world's oxygen," Al Jazeera correspondent Heidi Zhou-Castro said.
+
+    Source [web]: No, the Amazon fires won't deplete the Earth's oxy
+      [S S:0.967 N:0.032 O:0.001] French President Emmanuel Macron tweeted on Aug. 22 that "the Amazon rain forest – the lungs which produces 20% of our p
+      [S S:0.967 N:0.032 O:0.001] French President Emmanuel Macron tweeted on Aug. 22 that "the Amazon rain forest – the lungs which produces 20% of our p
+
+    Source [fact_check]: Take a breath: the Amazon does not produce 20% of 
+      [S S:0.879 N:0.119 O:0.002] The Amazon rainforest - the lungs which produces 20% of our planet’s oxygen - is on fire.
+
+    Source [web]: VERIFY: Is the Amazon Forest responsible for 20% o
+      [S S:0.888 N:0.110 O:0.002] Now there’s another claim making the rounds: That the Amazon forest is responsible for 20 percent of the world’s free ox
+
+    Source [web]: Why the Amazon rainforest doesn’t really produce 2
+      [S S:0.984 N:0.015 O:0.001] The Amazon rainforest is often called the “lungs of the Earth” and credited with producing some 20 percent of the world’
+
+  CLAIM: the Great Wall of China is the only man-made structure visible from space
+  Expected: opposing | Errors: 6
+
+    Source [web]: Is The Great Wall Of China The Only Man-Made Struc
+      [S S:0.982 N:0.017 O:0.001] It’s been said that of all the things made by man, only the Great Wall of China could be visible from a spaceship far ab
+
+    Source [web]: PPT - The Great Wall of China PowerPoint Presentat
+      [S S:0.992 N:0.008 O:0.001] Great Wall of China is the only man-made structure visible from space.
+      [S S:0.992 N:0.008 O:0.001] Seeing from space Great Wall of China is the only man-made structure visible from space.
+
+    Source [web]: The Great Wall of China Isn't Visible from Space -
+      [S S:0.985 N:0.014 O:0.001] The Whole Bushel
+Perhaps the most famous fact about the Great Wall of China is that it is the only man-made structure th
+
+    Source [web]: Travel Pics Theme: Y for You should see the view |
+      [S S:0.712 N:0.284 O:0.004] They say the Great Wall of China is the only man-made structure visible from space.
+
+    Source [web]: What makes the Great Wall of China the only man-ma
+      [S S:0.955 N:0.043 O:0.001] What makes the Great Wall of China the only man-made object visible from space?
+
+  CLAIM: the Great Wall of China is visible from space
+  Expected: opposing | Errors: 13
+
+    Source [encyclopedia]: Artificial structures visible from space
+      [S S:0.949 N:0.049 O:0.002] - ^ JPL, April 18, 1996, Space Radar Reveals Ancient Segments of China's Great Wall
+- ^ Miller, David; Schor, Paulo; Pet
+
+    Source [web]: Can You See the Great Wall of China from Space? - 
+      [S S:0.977 N:0.022 O:0.001] NASA has confirmed
+that US astronaut Leroy Chiao took what is thought to be the first verifiable image of the Great Wall
+
+    Source [academic]: Claim Verification: "The Great Wall of China is th
+      [S S:0.980 N:0.019 O:0.002] Automated fact-verification of the claim: "The Great Wall of China is the only man-made object visible from space with t
+
+    Source [web]: Fact or Fiction: The Great Wall of China Is Visibl
+      [S S:0.984 N:0.015 O:0.001] The following image was taken from the ISS in 2004 and shows the visible sections of the Great Wall of China.
+      [S S:0.949 N:0.049 O:0.002] Fact or Fiction: The Great Wall of China Is Visible From Space
+It’s a commonly held belief that the Great Wall of China 
+
+    Source [web]: Great Wall - NASA
+      [S S:0.959 N:0.040 O:0.001] The Great Wall of China and Inner Mongolia are featured in this image photographed by Expedition 10 Commander Leroy Chia
+
+    Source [web]: Is China's Great Wall Visible from Space? | Scient
+      [S S:0.983 N:0.016 O:0.001] Choose a legend: The Great Wall of China is the one of the few man-made structures visible from orbit.
+
+    Source [fact_check]: Is the Great Wall of China Visible from the Moon?
+      [S S:0.985 N:0.014 O:0.002] (The Great Wall of China can be discerned in radar images taken from space, but not in ordinary photographs.)
+      [S S:0.828 N:0.097 O:0.076] The claim that China's Great Wall is the only man-made object that can be seen from the moon with the naked eye is one o
+      [S S:0.770 N:0.217 O:0.012] The Great Wall of China extends for some 1,500 miles (although it is actually a series of walls rather than one contiguo
+
+    Source [web]: The Great Wall of China isn’t visible from space a
+      [S S:0.979 N:0.021 O:0.001] The Great Wall of China can be seen from space
+This is perhaps the most popular astronomy myth of all time.
+
+    Source [web]: What makes the Great Wall of China the only man-ma
+      [S S:0.977 N:0.021 O:0.002] What makes the Great Wall of China the only man-made object visible from space?
+      [S S:0.750 N:0.242 O:0.008] If you slowly zoom in using a space camera, the Houston airport, for instance, is visible long before the Great Wall of 
+
+  CLAIM: the Sahara desert is the largest desert on earth
+  Expected: opposing | Errors: 3
+
+    Source [web]: Sahara | Location, History, Map, Countries, Animal
+      [S S:0.904 N:0.093 O:0.004] Sahara, (from Arabic ṣaḥrāʾ, “desert”) largest hot desert in the world.
+
+    Source [academic]: Saharan rainfall climatology and its relationship 
+      [S S:0.940 N:0.057 O:0.002] The Sahara is the largest and driest of the hot deserts on Earth, with regions where rainfall reaches the surface on ave
+
+    Source [web]: What makes the Sahara the largest desert in the wo
+      [S S:0.976 N:0.023 O:0.002] What makes the Sahara the largest desert in the world?
+
+  CLAIM: the earth is flat
+  Expected: opposing | Errors: 2
+
+    Source [fact_check]: Fact check: Gravity pulls objects toward the cente
+      [S S:0.955 N:0.043 O:0.002] This would mean people on the "edge" of the flat Earth would fall sideways.
+
+    Source [web]: Looking for Life on a Flat Earth | The New Yorker
+      [S S:0.923 N:0.064 O:0.013] Recently, Lesley Stahl, of “60 Minutes,” revealed that, in an interview after the 2016 election, Donald Trump told her t
+
+  CLAIM: the moon landing was faked
+  Expected: opposing | Errors: 6
+
+    Source [web]: 10 Reasons the Moon Landings Could Be a Hoax - Lis
+      [S S:0.949 N:0.049 O:0.002] One compelling argument for the moon landing hoax is the total lack of stars in any of the photographic/video evidence.
+      [S S:0.811 N:0.186 O:0.003] In this list I have presented some of the proposed evidence to suggest that the moon landings were hoaxes.
+
+    Source [fact_check]: Former Russian Space Chief Repeats False Moon Land
+      [S S:0.751 N:0.243 O:0.006] moon landing hoax” conspiracy theory in a Telegram post on May 7.
+
+    Source [encyclopedia]: Moon landing conspiracy theories in popular cultur
+      [S S:0.915 N:0.080 O:0.005] During "Into The Wild Green Yonder" President Nixon's head admits that the Moon landing was faked - it was really carrie
+
+    Source [web]: New conspiracy theorist claims to have proof Apoll
+      [S S:0.718 N:0.277 O:0.005] New conspiracy theorist claims to have proof Apollo moon landing was fake
+The first American walked on the moon almost 5
+
+    Source [academic]: Of Tinfoil Hats and Thinking Caps: Reasoning is Mo
+      [S S:0.825 N:0.170 O:0.005] This hypothesis implies that reasoning biases should be more closely associated with belief in implausible conspiracy th
+
+  CLAIM: we only use 10% of our brains
+  Expected: opposing | Errors: 2
+
+    Source [fact_check]: Do We Only Use 10% of our Brains?
+      [S S:0.768 N:0.215 O:0.018] The spot featured a full-screen blurb that read, "Men only use ten percent of their brains."
+
+    Source [web]: Do we only use 10 percent of our brain? - MIT McGo
+      [S S:0.911 N:0.084 O:0.005] Movies like “Limitless” and “Lucy” play on the notion that humans use only 10 percent of their brains—and those who unlo
+
+  CLAIM: you lose most body heat through your head
+  Expected: opposing | Errors: 8
+
+    Source [web]: Do We Lose Heat Through Our Heads? - WebMD
+      [S S:0.989 N:0.010 O:0.001] Q: Mom always said to wear a hat in the cold because we lose 80% of our body heat through our head.
+      [S S:0.908 N:0.083 O:0.009] In our January-February 2011 issue, we asked Richard Ingebretsen, MD, PhD, a wilderness medicine expert at the Universit
+
+    Source [web]: Do You Lose Half of Your Body Heat from Your Head?
+      [S S:0.958 N:0.029 O:0.013] You lose half of your body heat through your head, making it the most important part of your body to cover in frigid tem
+
+    Source [web]: Do You Lose Most of Your Body Heat Through Your He
+      [S S:0.905 N:0.092 O:0.003] Is it true that you lose most of your body heat through your head?
+
+    Source [web]: Lose 40% of Your Body Heat Through Your Head - Bad
+      [S S:0.981 N:0.018 O:0.001] It’s very likely that your mum once told you to “keep your beanie on, because you lose most of your heat through your he
+
+    Source [web]: Scientists debunk the myth that you lose most heat
+      [S S:0.986 N:0.013 O:0.001] After all, most of our body heat is lost through our heads – or so we are led to believe.
+      [S S:0.918 N:0.080 O:0.002] Because it was the only part of their bodies left uncovered, most of their heat was lost through their heads.
+
+    Source [web]: The great cold head myth: Where you really lose yo
+      [S S:0.887 N:0.112 O:0.001] “You lose most of the heat from your head,” the saying goes.
+
+==========================================================================================
+NEGATED_CLAIM (110 sentences)
+Root cause: NLI LIMITATION
+Reason: Claim has negation, NLI confused by double negative
+==========================================================================================
+
+  CLAIM: antibiotics do not work against viruses
+  Expected: supporting | Errors: 69
+
+    Source [academic]: An Instant Update on Viruses
+      [O S:0.001 N:0.009 O:0.991] Furthermore, there is the widespread belief that viruses are similar to bacteria and may thus be fought off with antibio
+
+    Source [encyclopedia]: Antibiotic
+      [O S:0.001 N:0.036 O:0.963] For example, antibacterial selection for strains having previously acquired antibacterial-resistance genes was demonstra
+      [O S:0.001 N:0.129 O:0.870] - ^ a b c Antibacterial agents in clinical development: an analysis of the antibacterial clinical development pipeline, 
+
+    Source [encyclopedia]: Antibiotic misuse
+      [O S:0.001 N:0.015 O:0.984] - Despite acute respiratory-tract infections being mainly caused by viruses, as many as 75% of cases are treated with an
+      [O S:0.001 N:0.062 O:0.936] In a study of 32 States in 2011, antibiotics and anti-infectives accounted for nearly 24 percent of ADEs that were prese
+      [O S:0.001 N:0.231 O:0.769] - Swimmer's ear should be treated with antibiotic eardrops, not oral antibiotics.
+      [O S:0.028 N:0.230 O:0.742] Most cases of bronchitis (90–95%) are viral as well, passing after a few weeks—the use of antibiotics against bronchitis
+      [O S:0.001 N:0.394 O:0.606] Antibiotics should also be used at the lowest dose for the shortest course.
+
+    Source [web]: Antibiotics - Johns Hopkins Medicine
+      [O S:0.003 N:0.099 O:0.897] Talk with your healthcare provider about antibiotics and find out about the differences between viruses and bacteria, an
+
+    Source [web]: Antibiotics: Not always the answer - Mayo Clinic H
+      [O S:0.009 N:0.147 O:0.844] If you take antibiotics for a viral infection, you are putting yourself at risk for side effects.
+      [O S:0.001 N:0.372 O:0.627] Your healthcare team may run blood tests, collect a urine sample or perform a throat swab to help answer this question.
+
+    Source [academic]: Bacteriophage-antibiotic combination therapy again
+      [O S:0.000 N:0.006 O:0.994] The occurrence of bacterial phage resistance did not result in therapeutic failure, possibly due to phage-induced virule
+      [O S:0.000 N:0.014 O:0.986] He was treated by a bacteriophage-antibiotic intravenous combination therapy for 86 days.
+      [O S:0.000 N:0.033 O:0.967] It was associated with objective clinical and microbiological improvement, eventually allowing for liver retransplantati
+      [O S:0.001 N:0.059 O:0.940] They report on the clinical and microbiological improvement, and present their investigation on how bacterial phage resi
+      [O S:0.001 N:0.061 O:0.939] This salvage therapy was well tolerated, without antibody-mediated phage neutralization.
+      [O S:0.001 N:0.113 O:0.886] In this study, authors use combinatory bacteriophage-antibiotic therapy, as treatment for extensively drug-resistant Pse
+      [O S:0.004 N:0.117 O:0.878] Phage therapy is one of them and consists in using selected bacteriophage viruses – viruses who specifically prey on bac
+      [O S:0.001 N:0.262 O:0.737] Post-operative bacterial infections are a leading cause of mortality and morbidity after ongoing liver transplantation.
+
+    Source [fact_check]: Consuming antibiotics cannot treat Covid-19 | Fact
+      [O S:0.000 N:0.029 O:0.970] He claims that the method works within hours and also immunises people against future Covid-19 infections.
+      [O S:0.001 N:0.045 O:0.954] However, the WHO notes that those hospitalised with Covid-19 may receive antibiotics as the disease can cause other bact
+      [O S:0.017 N:0.059 O:0.923] Consuming antibiotics cannot treat Covid-19
+- Published on October 4, 2021 at 06:34
+- By AFP Thailand
+A video of a man c
+      [O S:0.001 N:0.079 O:0.920] Regarding the method explained in the video clip, Dr Thira added: "Mixing [amoxicillin] with water does not necessarily 
+      [O S:0.009 N:0.267 O:0.725] Health experts told AFP that amoxicillin has not been proven as an effective medicine for treating Covid-19.
+
+    Source [academic]: Genome Features and <i>In Vitro</i> Activity again
+      [O S:0.000 N:0.077 O:0.922] plantarum 8 RA 3, and B. bifidum 791 showed a pronounced activity against influenza A viruses in MDCK cells.
+      [O S:0.002 N:0.103 O:0.895] The aim of this work was to analyze the complete genome of probiotic bacteria Lactobacillus plantarum 8 RA 3, Lactobacil
+      [O S:0.001 N:0.159 O:0.840] Activity against the SARS‐CoV‐2 virus was demonstrated only by the L. fermentum 90 TC 4 strain in VERO cells.
+
+    Source [academic]: Genome Features and In Vitro Activity against Infl
+      [O S:0.000 N:0.056 O:0.944] Cultures of L. fermentum 90 TC 4, L. plantarum 8 RA 3, and B. bifidum 791 showed a pronounced activity against influenza
+      [O S:0.002 N:0.104 O:0.894] Purpose The aim of this work was to analyze the complete genome of probiotic bacteria Lactobacillus plantarum 8 RA 3, La
+      [O S:0.001 N:0.186 O:0.813] Activity against the SARS-CoV-2 virus was demonstrated only by the L. fermentum 90 TC 4 strain in VERO cells.
+
+    Source [academic]: Infected burn wound healing using Hydroxy-propyl-m
+      [O S:0.000 N:0.029 O:0.971] These results at the microscopic level indicated the recovery of the tissue and the removal of the infection.
+      [O S:0.001 N:0.048 O:0.951] The effects of the Hydroxy-propyl-methyl cellulose (HPMC) gel containing phage were investigated compared to gentamicin.
+      [O S:0.001 N:0.054 O:0.946] Pathologic samples of different groups confirmed therapeutic results of phages.
+      [O S:0.001 N:0.406 O:0.593] Meanwhile, the complications due to their widespread use in humans should be investigated in more details.
+
+    Source [academic]: Klebsiella pneumoniae Phage M198 and Its Therapeut
+      [O S:0.000 N:0.003 O:0.997] They have already been successfully applied in a number of cases, and it is expected that the need for anti-Klebsiella p
+      [O S:0.000 N:0.004 O:0.996] Since in some phage therapy cases, phages are administered in combination with antibiotics, here, we also screen for pos
+      [O S:0.000 N:0.004 O:0.996] We found that phage M198 has good lytic activity against clinical isolates; it does not have any indications of a temper
+      [O S:0.002 N:0.376 O:0.623] The rapid worldwide spread of antibiotic resistance is quickly becoming an increasingly concerning problem for human hea
+      [O S:0.004 N:0.478 O:0.518] Klebsiella-targeting phages are among the most promising alternative therapy options.
+
+    Source [fact_check]: No, COVID-19 won’t respond to antibiotics, despite
+      [O S:0.003 N:0.277 O:0.720] Our Sources
+Facebook, post, May 11, 2020
+Email, Dr. Aurelio Sonzogni, Department of Pathology, Papa Giovanni XXIII Hospi
+
+    Source [academic]: Repositioning of Antibiotics in the Treatment of V
+      [O S:0.000 N:0.000 O:1.000] These antibiotics have demonstrated antiviral activity against both RNA and DNA viruses, including the recent pandemic v
+      [O S:0.000 N:0.001 O:0.999] Among the main antibiotics that have demonstrated antiviral activity are macrolides and glycopeptides.
+      [O S:0.000 N:0.001 O:0.999] Some of these antibiotics were selected in addition to its antiviral activity for their immunomodulatory and anti-inflam
+      [O S:0.000 N:0.001 O:0.999] Of the antibiotics that present antiviral activity, in many cases the mechanisms of action are not exactly known.
+      [O S:0.001 N:0.001 O:0.998] In addition, several antibiotics from the group of tetracyclines, fluoroquinolones, cephalosporins and aminoglycosides h
+      [O S:0.001 N:0.005 O:0.995] The use of these antibiotics to combat viral infections remains controversial and is not generally accepted, since clini
+      [O S:0.001 N:0.008 O:0.991] Hence is necessary to present the studies carried out on antibiotics that can be repositioned in the future as antiviral
+      [O S:0.001 N:0.008 O:0.991] However, antibiotics are among the drugs that have been studied for possible antiviral activities.
+      [O S:0.001 N:0.009 O:0.990] Therefore, the aim of this work is to carry out a review of the studies of antibiotics that could be repositioned for th
+
+    Source [academic]: Studies on Comparative Analysis of Antimicrobial S
+      [O S:0.001 N:0.066 O:0.934] In the course of this work, Disc diffusion method was used to determine the antimicrobial strengths of the various antib
+
+    Source [academic]: Targeting bacterial persistence with bacteriophage
+      [O S:0.001 N:0.159 O:0.840] Additionally, combining phages with antibiotics or resuscitation-inducing compounds has shown promising potential for ov
+      [O S:0.004 N:0.288 O:0.709] Phage-derived enzymes, such as depolymerases and endolysins, enhance biofilm degradation, whereas specific phages induce
+
+    Source [web]: Viral Infections - Why Don't Antibiotics Kill Viru
+      [O S:0.000 N:0.026 O:0.974] For example, for uncomplicated UTI in women fosfomycin is a medicine that can be given in one single dose, but trimethop
+      [O S:0.000 N:0.033 O:0.966] The thinking was that antibiotic resistance could occur if you stop short of your full course of therapy.
+      [O S:0.001 N:0.261 O:0.739] Common antibiotic side effects include nausea, vomiting, diarrhea, vaginal yeast infections, and more.
+
+    Source [academic]: Virucidal Activity of the Drug «Thymogen®», a Nasa
+      [O S:0.000 N:0.002 O:0.998] The virucidal activity of the drug Thymogen®, a dosed nasal spray, was revealed against the respiratory syncytial virus 
+      [O S:0.000 N:0.005 O:0.995] The virucidal effect of the drug Thymogen®, a dosed nasal spray, was studied in vitro on the Vero (ATCC CCL-81) cell cul
+      [O S:0.000 N:0.009 O:0.990] The work was carried out in two stages: a study of the cytotoxicity of Thymogen® followed by a study of the virucidal ef
+      [O S:0.000 N:0.013 O:0.986] The obtained data may serve as a basis for conducting appropriate clinical studies on the use of the drug Thymogen®, a d
+      [O S:0.000 N:0.028 O:0.972] The aim of the work was to study of the virucidal activity of the drug Thymogen®, a dosed nasal spray, against human res
+      [O S:0.004 N:0.432 O:0.565] The cytotoxicity assessment of the drug Thymogen®, a dosed nasal spray, allowed the use of a working range of drug conce
+      [O S:0.005 N:0.439 O:0.556] RSV infection does not result in the development of stable immunity, which necessitates the search for effective methods
+
+    Source [web]: Why Don’t Antibiotics Work on Viruses | Dragonfly 
+      [O S:0.004 N:0.442 O:0.554] They work on structures like cell walls, something viruses do not have.
+
+    Source [web]: Why Don’t Antibiotics Work on Viruses? - ScienceIn
+      [O S:0.015 N:0.045 O:0.940] Each antiviral tends to work against a narrow range of viruses, unlike broad-spectrum antibiotics that can hit many type
+      [O S:0.001 N:0.138 O:0.860] Still others interfere with viral enzymes like polymerases (which copy the viral genome) or proteases (which cut viral p
+      [O S:0.018 N:0.161 O:0.821] An antibiotic that destroys a cell wall has no target because the virus doesn’t have one.
+      [O S:0.016 N:0.337 O:0.647] Because viruses are so deeply entangled with host cell biology, designing antivirals is harder than designing antibiotic
+
+    Source [web]: Why Don’t Doctors Give Antibiotics for Viral Infec
+      [O S:0.008 N:0.154 O:0.837] Risks of Taking Antibiotics for Viral Infections
+Taking antibiotics when you do not actually need them may feel harmless
+
+    Source [web]: Why are antibiotics ineffective against viruses? -
+      [O S:0.001 N:0.276 O:0.722] Moreover, an incorrect use can also increase the risk of side effects, interactions with other medicines, and secondary 
+
+  CLAIM: honey never expires
+  Expected: supporting | Errors: 41
+
+    Source [web]: Did You Know… Honey Is the Only Food That Never Ex
+      [O S:0.000 N:0.003 O:0.997] Like one of those facts you hear and immediately question.
+
+    Source [web]: Does Honey Ever Go Bad or Expire? - HelloFresh
+      [O S:0.002 N:0.035 O:0.963] Whether you purchase your honey from a local beekeeper, online, or at your local grocery store, here are some things to 
+
+    Source [web]: Does Honey Expire—Ever? - Mill
+      [O S:0.000 N:0.003 O:0.997] Some supermarket honeys may contain added sweeteners like corn syrup, which makes the honey less shelf stable.
+      [O S:0.001 N:0.012 O:0.988] How to store honey
+Oxygen, water, heat: These are the enemies of long-lasting, delicious honey.
+      [O S:0.000 N:0.034 O:0.966] If you aren't into crystalized honey, however, here’s a quick fix: Place your honey jar or bottle in a bowl of warm wate
+      [O S:0.032 N:0.054 O:0.914] It is still safe to eat, but it just won’t last forever like pure honey will.
+      [O S:0.006 N:0.171 O:0.824] What’s the key to long lasting — or even immortal — honey?
+      [O S:0.002 N:0.296 O:0.703] Honey crystallizes when the sugar separates from the water content and forms sugary little lumps.
+      [O S:0.002 N:0.338 O:0.660] While it might not present as the most beautiful honey, crystalized honey is still perfectly safe to eat.
+
+    Source [web]: Does Honey Go Bad? | Food Network
+      [O S:0.000 N:0.003 O:0.997] “Make sure the cap is tightly on to minimize exposure to oxygen,” Amidor says.
+      [O S:0.000 N:0.005 O:0.995] (Remember not to dip a spoon into the jar if it’s been somewhere else, like in your tea, jam jar or nut butter.)
+      [O S:0.000 N:0.018 O:0.982] “After that time, it remains safe but the quality may not be as good.
+      [O S:0.001 N:0.035 O:0.965] Plus, how to store honey and what to do if it crystalizes.
+      [O S:0.001 N:0.164 O:0.835] Honey’s color and flavor vary based on the nectar collected by the bees.
+      [O S:0.002 N:0.198 O:0.800] “If the temperature is too hot where the honey is stored, it can change the color and flavor of the honey.” Storing hone
+      [O S:0.008 N:0.298 O:0.694] Jar of honey that's been sitting in the pantry for several years, we're looking at you.
+      [O S:0.004 N:0.494 O:0.501] To reheat crystalized honey in a pan, place the honey container with its lid on in a small saucepan.
+
+    Source [encyclopedia]: Honeyblood
+      [O S:0.000 N:0.003 O:0.997] During this period McVicar took a break to complete her dentistry degree, with replacement drummer Rah Morriss filling i
+      [O S:0.000 N:0.015 O:0.985] - ^ Peaks in Scotland:
+- Honeyblood: "2014-07-20 Top 100 Scottish Albums Archive".
+      [O S:0.001 N:0.015 O:0.985] Retrieved 12 July 2019.
+: CS1 maint: numeric names: authors list (link) - ^ "Shona McVicar of Honeyblood Modern Drummer 
+      [O S:0.001 N:0.027 O:0.972] - ^ "HONEYBLOOD full Official Chart History Official Charts Company".
+      [O S:0.002 N:0.036 O:0.961] Babes Never Die (2016–2017)
+[edit] In the winter of 2015, Tweeddale and Myers recorded their second album Babes Never Di
+      [O S:0.010 N:0.373 O:0.617] They played showcases for the likes of The Skinny and Vice, and festivals including the Great Escape, Wide Days in Edinb
+      [O S:0.413 N:0.071 O:0.517] - Babes Never Die: "2016-11-11 Top 100 Scottish Albums Archive".
+      [O S:0.024 N:0.472 O:0.504] Their first EP, Thrift Shop, was recorded in a bathroom on a four-track tape-deck, and included a cover of the Karen Per
+
+    Source [web]: If honey doesn't expire, why does my bottle of hon
+      [O S:0.000 N:0.002 O:0.998] Legally, they have to tell you it won't be at its best after a while, and the expiry date is more for the store than the
+
+    Source [web]: Why Honey does not expire | Bharat Honey (100% Nat
+      [O S:0.000 N:0.001 O:0.999] It may get spoiled in a few conditions due to mishandling at the time of honey extraction and the way honey is stored.
+      [O S:0.000 N:0.002 O:0.998] moreover, unripe honey does not produce hydrogen peroxide which also leads to its lesser shelf life.
+      [O S:0.000 N:0.004 O:0.996] If fermented, the smell or taste of honey may resemble some alcohol, then don’t use that honey.
+      [O S:0.000 N:0.005 O:0.994] - If improperly stored, the fermentation of Honey may occur.
+      [O S:0.000 N:0.013 O:0.987] However, certain factors affect the colour and texture of honey in the following conditions:
+1.
+      [O S:0.001 N:0.014 O:0.985] Keep an eye on proper storage to increase the shelf life of natural honey, because improper storage may damage honey.
+      [O S:0.000 N:0.017 O:0.983] This makes honey hygroscopic, causing drying out or killing of microbes in contact with honey.
+      [O S:0.002 N:0.031 O:0.967] Changes occur in aged honey
+If the storage of honey is for a longer period, the following changes may occur.
+      [O S:0.001 N:0.050 O:0.949] Fermentation of honey
+Fermentation of Honey occurs in two conditions:
+- Unripe honey.
+      [O S:0.002 N:0.190 O:0.808] If honey is extracted in unripe condition:
+Ripe honey has lesser moisture when compared to unripe honey.
+      [O S:0.003 N:0.272 O:0.726] All the water is dried out by the bees during the process of making honey.
+
+    Source [web]: Why doesn't honey go off? - BBC Science Focus Maga
+      [O S:0.000 N:0.002 O:0.998] - Is it safe to eat yoghurt past its best-before date?
+      [O S:0.002 N:0.126 O:0.872] Once the nectar is deposited in the honeycomb, the bees fan it furiously with their wings to speed up the water’s evapor
+      [O S:0.001 N:0.157 O:0.842] Here, the bees transfer the nectar to other worker bees, which repeatedly drink and regurgitate the liquid, reducing its
+      [O S:0.002 N:0.221 O:0.778] - Am I helping or hindering the bee population by eating honey?
+
+==========================================================================================
+NLI_MISREAD_OPP (73 sentences)
+Root cause: NLI LIMITATION
+Reason: NLI incorrectly reads as opposing
+==========================================================================================
+
+  CLAIM: climate change is real
+  Expected: supporting | Errors: 4
+
+    Source [fact_check]: Cherry-picked ocean data does not prove climate ch
+      [O S:0.000 N:0.002 O:0.998] WHAT WAS CLAIMED
+An ocean temperature decrease between 2013-2022 proves global warming is a hoax.
+      [O S:0.001 N:0.004 O:0.996] "The UN climate hoax continues without shame despite examples like this: There's no global warming & never will be.
+      [O S:0.004 N:0.039 O:0.957] "A study of ocean temperatures from 2013-2022 is another nail in the coffin of global warming," its caption reads.
+
+    Source [fact_check]: Climate crisis is real and stems from human activi
+      [O S:0.001 N:0.007 O:0.992] The Earth has more than enough land and ocean plant life to metabolize it,” a popular Facebook post said, adding, “Globa
+
+  CLAIM: evolution is real
+  Expected: supporting | Errors: 2
+
+    Source [web]: Evolution is not real
+      [O S:0.004 N:0.056 O:0.940] (YES)
+That is the main reason for why I believe that the theory of evolution is wrong.
+
+    Source [web]: Why Cultural Evolution Is Real (And What It Is) –
+      [O S:0.012 N:0.170 O:0.818] This short introduction will pull together a few themes and compelling stories from this large field and present some of
+
+  CLAIM: humans share about 98% of DNA with chimpanzees
+  Expected: supporting | Errors: 1
+
+    Source [web]: Human-Chimps don’t share 98.8% of DNA, but less th
+      [O S:0.001 N:0.101 O:0.898] …
+The total structural divergence between human and ape genomes — including all insertions, deletions, duplications, inv
+
+  CLAIM: smoking causes lung cancer
+  Expected: supporting | Errors: 5
+
+    Source [academic]: CYP2A6 activity and cigarette consumption interact
+      [O S:0.018 N:0.403 O:0.579] However, not all smokers develop lung cancer, highlighting the importance of the interaction between host susceptibility
+
+    Source [web]: Lung Cancer Risk Factors - CDC
+      [O S:0.003 N:0.416 O:0.581] Radiation therapy to the chest
+Cancer survivors who had radiation therapy to the chest are at higher risk of lung cancer
+
+    Source [web]: Lung Cancer Risk Factors | Smoking & Lung Cancer
+      [O S:0.002 N:0.343 O:0.655] We do know that smoking marijuana will irritate your lungs and possibly increase your risk of getting more lung infectio
+
+    Source [encyclopedia]: Lung cancer
+      [O S:0.011 N:0.473 O:0.516] In the 1950s radon and its breakdown products became established as causes of lung cancer in miners.
+
+    Source [fact_check]: Smoking had been identified as a causative factor 
+      [O S:0.000 N:0.007 O:0.993] The post's text reads: "'Cigarette smoking does not cause cancer' —Centers For Disease Control (CDC), 1958.
+
+  CLAIM: the speed of light is constant
+  Expected: supporting | Errors: 33
+
+    Source [academic]: An accurate analysis of the Michelson‐Morley exper
+      [O S:0.003 N:0.142 O:0.855] Thus, Michelson anticipated observing an outcome that understandably would not occur.
+
+    Source [academic]: Asymmetry theory derived from the principle of con
+      [O S:0.000 N:0.002 O:0.998] Doppler Effect is simply a phenomenon of observed “time dilation” and one general formula covers traditional and transve
+      [O S:0.000 N:0.009 O:0.991] A formula for observed “time dilation”, which resolves the “twin paradox”.2.
+      [O S:0.015 N:0.329 O:0.657] Asymmetry Theory is comprehensive, self-consistent and in harmony with all existing experiments.
+
+    Source [academic]: Constraining a possible time-variation of the spee
+      [O S:0.001 N:0.009 O:0.991] In order to explore the results deeply, we split the SGL sample into five sub-samples according to the lens stellar velo
+      [O S:0.001 N:0.015 O:0.984] In this paper, we propose a new method to investigate a possible time variation of the speed of light ( c ) along with t
+      [O S:0.004 N:0.149 O:0.847] We also consider the runaway dilaton model to describe a possible time-variation of α .
+
+    Source [academic]: Constraints on variation in the speed of light bas
+      [O S:0.000 N:0.002 O:0.998] ABSTRACT We consider the possibility of a varying speed of light based on a unit of length defined with a rigid rod or a
+      [O S:0.000 N:0.003 O:0.997] We relate changes in the speed of light in atomic units of length to changes in G measured in the two systems.
+      [O S:0.008 N:0.093 O:0.899] Reported experimental data that constrain yearly changes in G are sufficient to bound changes in c. Experimental constra
+
+    Source [web]: How do Maxwell's equations indicate that the speed
+      [O S:0.001 N:0.044 O:0.955] Contextual Notes
+The discussion acknowledges limitations in the mathematical treatment of moving media and the historica
+
+    Source [web]: I heard that the speed of light is the same to any
+      [O S:0.051 N:0.197 O:0.752] Because if you throw it at 5mph, the ball will not reach me, because you are moving forwards at 5mph, and throwing the b
+
+    Source [academic]: QUANTIZATION OF THE GRAVITATIONAL FIELD. THEORETIC
+      [O S:0.000 N:0.009 O:0.991] It is proportional to the mass of the gravitating object.
+      [O S:0.001 N:0.101 O:0.898] If we imagine a gravitating object as a material point, then the geometric picture of a standing gravitational wave can 
+      [O S:0.010 N:0.199 O:0.791] The physical nature of the quantum gravitational field is the kinematic gravitational viscosity of the gravitational fie
+      [O S:0.009 N:0.254 O:0.737] The quantum of the gravitational field is the square of the speed of light in a vacuum.
+      [O S:0.018 N:0.323 O:0.660] It is shown that a standing gravitational wave has a quantum character.
+
+    Source [web]: Speed of Light Calculator
+      [O S:0.001 N:0.009 O:0.990] Hence, the
+speed of light
+Determine the time that the light has traveled.
+      [O S:0.001 N:0.010 O:0.989] For example, light travels slower in water than in air.
+      [O S:0.001 N:0.041 O:0.958] Apply the speed of light formula:
+speed of light = distance / time
+How far can the speed of light travel in 1 minute?
+
+    Source [encyclopedia]: Speed of light
+      [O S:0.000 N:0.003 O:0.997] However, it has been suggested in various theories that the speed of light may have changed over time.
+      [O S:0.000 N:0.008 O:0.992] In models of the expanding universe, the farther galaxies are from each other, the faster they drift apart.
+      [O S:0.002 N:0.041 O:0.957] From this effect he determined that light must travel 10,210 times faster than the Earth in its orbit (the modern figure
+      [O S:0.043 N:0.236 O:0.721] Since such misalignment had not been observed, Descartes concluded the speed of light was infinite.
+      [O S:0.006 N:0.427 O:0.567] A 2011 experiment where neutrinos were observed to travel faster than light turned out to be due to experimental error.
+
+    Source [academic]: The Speed of Light Is Not Constant in Basic Big Ba
+      [O S:0.000 N:0.002 O:0.998] Starting from the basic assumptions and equations of Big Bang theory, we present a simple mathematical proof that this t
+      [O S:0.001 N:0.002 O:0.998] A decrease of 2.1 cm/s per year of the present-day speed of light is predicted.
+      [O S:0.001 N:0.020 O:0.979] This is consistent with the observed acceleration of the expansion of the Universe, as determined from high-redshift sup
+      [O S:0.004 N:0.080 O:0.915] It is argued that more precise laboratory measurements of the present-day speed of light (and its evolution) should be c
+
+    Source [academic]: The Speed of Light in Vacuum is not Constant in An
+      [O S:0.001 N:0.022 O:0.978] (3) It provides a possible explanation mechanism for high-energy astrophysical phenomena such as superluminal and ray bu
+      [O S:0.003 N:0.332 O:0.665] The photons are then degraded step by step to balance the proportion of photons and various sub-photons in the cosmic so
+
+    Source [encyclopedia]: Variable speed of light
+      [O S:0.001 N:0.005 O:0.995] Various alternative theories of gravitation and cosmology, many of them non-mainstream, incorporate variations in the lo
+      [O S:0.002 N:0.063 O:0.935] In deriving the gravitational redshift due to a spherically symmetric massive body, a radial speed of light dr/dt can be
+
+  CLAIM: the sun is a star
+  Expected: supporting | Errors: 20
+
+    Source [encyclopedia]: A Star Brighter Than the Sun
+      [O S:0.003 N:0.018 O:0.979] "A Star Brighter Than the Sun Anime Reveals More Cast, October 2 Debut in 1st Promo Video".
+      [O S:0.003 N:0.019 O:0.978] "A Star Brighter Than the Sun Anime Reveals New Cast Member, Ending Song Artist in 2nd Promo Video".
+      [O S:0.005 N:0.026 O:0.968] "A Star Brighter Than the Sun Anime Season 2 Announced".
+      [O S:0.011 N:0.061 O:0.928] "Amazon's Prime Video to Stream A Star Brighter Than the Sun Anime".
+      [O S:0.029 N:0.161 O:0.810] A Star Brighter Than the Sun
+A Star Brighter Than the Sun
+太陽よりも眩しい星 (Taiyō Yori mo Mabushii Hoshi)
+Written by Kazune Kaw
+
+    Source [web]: Is a Sun a Star or a Planet? How We Know — and Wha
+      [O S:0.008 N:0.321 O:0.671] Read More: Scientists Are Still Pondering These Mysteries of the Moon
+Mapping the Night Sky
+The IAU was founded in 1919,
+
+    Source [web]: Our Sun is a Star - Facts About the Sun | Explorat
+      [O S:0.002 N:0.027 O:0.972] The red light indicates areas that are only half as hot as those in green.
+      [O S:0.015 N:0.055 O:0.930] (NASA/LMSAL)
+The Sun is like an onion: it has layers.
+      [O S:0.106 N:0.289 O:0.606] The Sun is a huge ball of hot, churning, unpredictable supercharged gasses called plasma.
+
+    Source [web]: Sun vs Star. What’s The Difference? - Little Astro
+      [O S:0.002 N:0.009 O:0.989] There are stars out there that are hundreds of times bigger than the Sun, and there are stars that are 10 times smaller.
+
+    Source [web]: Sun | Definition, Composition, Properties, Tempera
+      [O S:0.002 N:0.004 O:0.994] The Sun is not, as is often said, a small star.
+
+    Source [encyclopedia]: The Sun Is Also a Star
+      [O S:0.011 N:0.118 O:0.871] She meets with Jeremy, who offers to set up a new trial for their case for the next day.
+      [O S:0.064 N:0.118 O:0.818] "Cinthya Carmona Joins 'The Tax Collector'; Cathy Shim Cast In 'The Sun Is Also a Star'; Jake Allyn In 'Kill Me Twice'".
+      [O S:0.028 N:0.337 O:0.635] Daniel goes back to his parents' shop and gets into a fight with Charles.
+      [O S:0.037 N:0.406 O:0.557] The day before their deportation to Jamaica, she tearfully pleads their case in the immigration office.
+
+    Source [encyclopedia]: The Sun and the Star
+      [O S:0.004 N:0.031 O:0.965] "The Sun and the Star: A Nico di Angelo Adventure".
+      [O S:0.030 N:0.072 O:0.898] Publication history
+[edit] Originals
+[edit] The Sun and the Star was originally published in American English by Disney-
+      [O S:0.013 N:0.446 O:0.541] She is an American girl with honey blonde, curly or wavy hair, and stormy gray eyes.
+      [O S:0.043 N:0.426 O:0.531] She is the deuteragonist of the Percy Jackson & the Olympians series, a main character in The Heroes of Olympus series, 
+
+    Source [web]: The sun: Facts about the bright star at the center
+      [O S:0.078 N:0.279 O:0.643] M. H., "An Introduction to the Sun and Stars," Cambridge University Press, .
+
+  CLAIM: water boils at 100 degrees celsius
+  Expected: supporting | Errors: 8
+
+    Source [web]: At what degree water starts to boil? - Answers
+      [O S:0.002 N:0.011 O:0.988] At 212 degrees Fahrenheit, water starts to boil and convert into steam.
+
+    Source [encyclopedia]: Celsius
+      [O S:0.001 N:0.085 O:0.915] Thus, if a temperature interval is, say, 10 K or 10 °C (which may be written 10 kelvins or 10 degrees Celsius), it must 
+      [O S:0.001 N:0.150 O:0.849] In his paper Observations of two persistent degrees on a thermometer, he recounted his experiments showing that the melt
+
+    Source [web]: Water Boiling Point Explained: Why 100°C Isn't Alw
+      [O S:0.000 N:0.049 O:0.951] Imagine baking cookies at "50 degrees to boiling" – chaos averted.
+
+    Source [web]: What does water change to above 100 degrees Celsiu
+      [O S:0.000 N:0.002 O:0.998] When its temperature drops below 0 degrees Celsius, it freezes and turns into a solid (ice).
+      [O S:0.000 N:0.008 O:0.992] Water at 50 degrees Celsius is in the liquid state.
+      [O S:0.001 N:0.013 O:0.987] At temperatures above 0 degrees Celsius, water is in a liquid state.
+
+    Source [web]: Why does water boil at 121 degrees? - Answers
+      [O S:0.004 N:0.008 O:0.988] Water boils at 212 F. The boiling cools it and keeps it from getting hotter than that.
+
+==========================================================================================
+NLI_MISREAD_SUPP (49 sentences)
+Root cause: NLI LIMITATION
+Reason: NLI incorrectly reads as supporting
+==========================================================================================
+
+  CLAIM: 5G causes COVID
+  Expected: opposing | Errors: 3
+
+    Source [fact_check]: 'Bombshell' 5G COVID studies tank upon closer insp
+      [S S:0.893 N:0.102 O:0.004] WHAT WAS CLAIMED
+The US government has admitted 5G radiation causes COVID-19.
+      [S S:0.806 N:0.188 O:0.006] The claim was made in an article by misinformation website NewsPunch, headlined "U.S. Government Admits '5G Radiation Ca
+
+    Source [web]: COVID-19 and the 5G Conspiracy Theory: Social Netw
+      [S S:0.977 N:0.021 O:0.002] #Coronavirus caused by 5G.” This user was in group 4 in the network graph outlined in Figure 1 and had sent a total of 3
+
+  CLAIM: MSG is dangerous to consume
+  Expected: opposing | Errors: 3
+
+    Source [web]: CCTS Bionutrition: MSG | Food Additive or Health H
+      [S S:0.950 N:0.049 O:0.002] However, MSG has received a bad reputation in several media outlets as a “toxic ingredient” that is harmful to health.In
+
+    Source [fact_check]: Viral online posts claiming MSG is unsafe for cons
+      [S S:0.974 N:0.026 O:0.001] According to a BFAD statement, too much intake of 'vetsin' or MSG causes adverse effects on health that could lead to de
+      [S S:0.883 N:0.109 O:0.008] According to BFAD, 'vetsin' is a food additive that has extremely harmful or 'fatal' effects to health if consumed witho
+
+  CLAIM: bats are blind
+  Expected: opposing | Errors: 1
+
+    Source [web]: Are Bats Really Blind? | Britannica
+      [S S:0.769 N:0.218 O:0.014] - Related Topics:
+Being as blind as a bat doesn’t sound so bad now, does it?
+
+  CLAIM: bulls are enraged by the color red
+  Expected: opposing | Errors: 4
+
+    Source [web]: Do bulls really dislike the color red? If so, how 
+      [S S:0.875 N:0.110 O:0.015] If so, why do they attack?Is it true that the colour red enrages a bull (but presumably not a cow as in ...More results 
+      [S S:0.673 N:0.242 O:0.085] They become enraged by the torment and pain they receive from being stabbed by picas and bandoleers.Is it true that bull
+
+    Source [web]: Mythbuster: Do Bulls Hate the Color Red? - STEAM A
+      [S S:0.591 N:0.401 O:0.008] The idea that bulls have a fiery temper specifically for the color red is just another example of how an appealing, dram
+
+    Source [web]: What is it about red that makes bulls so angry?
+      [S S:0.982 N:0.017 O:0.001] What is it about red that makes bulls so angry?
+
+  CLAIM: dogs can only see in black and white
+  Expected: opposing | Errors: 1
+
+    Source [web]: Is it true that dogs can only see in black and whi
+      [S S:0.514 N:0.450 O:0.036] Is it true that dogs can only see in black and white?
+
+  CLAIM: eating carrots improves your eyesight
+  Expected: opposing | Errors: 3
+
+    Source [web]: Are Carrots Good for Your Eyes?
+      [S S:0.602 N:0.398 O:0.001] High in antioxidants that benefit eye health
+Carrots are a rich source of beta-carotene and lutein, which are antioxidan
+
+    Source [web]: Carrots Can't Help You See in the Dark. Here's How
+      [S S:0.557 N:0.441 O:0.002] “I have no evidence they fell for it, other than that the use of carrots to help with eye health was well ingrained in t
+
+    Source [web]: Fact or Fiction?: Carrots Improve Your Vision | Sc
+      [S S:0.609 N:0.379 O:0.012] One randomized control study in 2005 examined how consumption of roughly 4.5 ounces of cooked carrots six days a week st
+
+  CLAIM: shaving makes hair grow back thicker
+  Expected: opposing | Errors: 3
+
+    Source [web]: Does Hair Grow Back Thicker After Shaving? - L’Oré
+      [S S:0.586 N:0.358 O:0.056] Again, the regrowth phase can often create the illusion of hair that is growing in thicker — and therefore darker — sinc
+
+    Source [web]: Will hair removal make my hair grow back thicker? 
+      [S S:0.726 N:0.274 O:0.001] Compare health insurance
+I'm interested in getting more information to compare health insurance options.
+      [S S:0.668 N:0.331 O:0.001] Discover AXA Health insurance
+Cost of health insurance
+I'm interested in finding out more about health insurance costs.
+
+  CLAIM: the Amazon rainforest produces about 20% of the world's oxygen
+  Expected: opposing | Errors: 3
+
+    Source [fact_check]: Amazon fires are destructive, but they aren't depl
+      [S S:0.623 N:0.226 O:0.152] French President Emmanuel Macron tweeted on Aug. 22 that “the Amazon rain forest – the lungs which produces 20% of our p
+
+    Source [web]: VERIFY: Is the Amazon Forest responsible for 20% o
+      [S S:0.568 N:0.429 O:0.003] THE QUESTION:
+Does the Amazon forest really produce 20 percent of the world’s oxygen supply?
+
+    Source [web]: Why the Amazon rainforest doesn’t really produce 2
+      [S S:0.549 N:0.438 O:0.013] Malhi and Coe reckon it stems from the fact that the Amazon contributes around 20 percent of the oxygen produced by phot
+
+  CLAIM: the Great Wall of China is the only man-made structure visible from space
+  Expected: opposing | Errors: 1
+
+    Source [web]: Great Wall of China – kevindowie.com
+      [S S:0.530 N:0.448 O:0.022] How many times have we heard that the Great Wall of China is the only man made structure visible from space?
+
+  CLAIM: the Great Wall of China is visible from space
+  Expected: opposing | Errors: 4
+
+    Source [encyclopedia]: Artificial structures visible from space
+      [S S:0.583 N:0.414 O:0.003] The centimetre-band Spaceborne Imaging Radar of STS-59 and STS-68 was able to detect not only the Great Wall but also in
+
+    Source [web]: Can You See the Great Wall of China from Space? - 
+      [S S:0.636 N:0.363 O:0.002] Canadian astronaut Chris Hadfield, who spent five months aboard the International Space Station in 2012-2013, reiterated
+
+    Source [web]: Fact or Fiction: The Great Wall of China Is Visibl
+      [S S:0.681 N:0.273 O:0.046] This led to the belief that Martian structures seen from the Earth were artificial constructions and that if they were v
+
+    Source [encyclopedia]: Great Wall of China
+      [S S:0.694 N:0.304 O:0.002] Leroy Chiao, a Chinese-American astronaut, took a photograph from the International Space Station that shows the wall.
+
+  CLAIM: the earth is flat
+  Expected: opposing | Errors: 10
+
+    Source [fact_check]: Deadly Disinfo: How the Flat Earth Conspiracy Doom
+      [S S:0.686 N:0.309 O:0.005] I’m telling you, I’ve been there, it’s flat.”
+In a trailer for the 2019 documentary Rocketman, about Hughes’ experiments
+
+    Source [fact_check]: Earth is round and Elon Musk didn't say it was fla
+      [S S:0.900 N:0.095 O:0.004] "The world is flat and I can’t get past the firmament!"
+
+    Source [fact_check]: Earth isn't flat, and shooting stars fly every dir
+      [S S:0.663 N:0.318 O:0.019] Because the Earth is not a ball.”
+The post was shared more than 20,000 times in nearly a month.
+
+    Source [encyclopedia]: Flat Earth
+      [S S:0.513 N:0.474 O:0.013] "A Chinese Eratosthenes of the Flat Earth: A Study of a Fragment of Cosmology in Huai Nan Tzu 淮南子".
+      [S S:0.508 N:0.479 O:0.013] "A Chinese Eratosthenes of the Flat Earth: A Study of a Fragment of Cosmology in Huai Nan tzu 淮 南 子".
+
+    Source [web]: Flat Earthers: What They Believe and Why | Scienti
+      [S S:0.935 N:0.060 O:0.005] So the moon landing had to be faked because you can't get past the firmament because the world is flat and under a dome.
+      [S S:0.505 N:0.469 O:0.026] So this is where I think it gets quite important for me because, uh, when I spent time at the, at the, the flat earth co
+      [S S:0.501 N:0.483 O:0.016] So one of things that really surprised me actually at the, at the convention that I went to was how little material was 
+
+    Source [fact_check]: The Earth is not flat – Full Fact
+      [S S:0.543 N:0.447 O:0.010] A caption on the post says: “Earth is flat and satellites are fake”.
+
+    Source [web]: The Flat Earth Wiki
+      [S S:0.555 N:0.441 O:0.004] This website is dedicated to unravelling the true mysteries of the universe and demonstrating that the earth is flat and
+
+  CLAIM: the moon landing was faked
+  Expected: opposing | Errors: 10
+
+    Source [fact_check]: 'Fake' moon landing claim orbits the simple facts
+      [S S:0.525 N:0.468 O:0.007] WHAT WAS CLAIMED
+Newspaper photos of the moon landing published on the same day could not have been transported and deve
+
+    Source [fact_check]: Former Russian Space Chief Repeats False Moon Land
+      [S S:0.972 N:0.026 O:0.003] “If in fact the main motivation for believing in the moon hoax ... is you don’t trust the government, you don’t trust ou
+
+    Source [web]: Millions Still Believe the 1969 Moon Landing Was a
+      [S S:0.647 N:0.344 O:0.008] That number remained relatively high throughout the '70s, when several books were published and a 1978 film about a phon
+
+    Source [encyclopedia]: Moon landing conspiracy theories
+      [S S:0.636 N:0.359 O:0.005] We Never Went to the Moon: America's Thirty Billion Dollar Swindle.
+
+    Source [encyclopedia]: Moon landing conspiracy theories in popular cultur
+      [S S:0.638 N:0.353 O:0.008] Hugh Dennis jokingly suggested that the "faked Moon landing" Boyle was actually thinking of was "the one with Wallace & 
+      [S S:0.636 N:0.359 O:0.005] We Never Went to the Moon: America's Thirty Billion Dollar Swindle.
+
+    Source [web]: One giant ... lie? Why so many people still think 
+      [S S:0.955 N:0.043 O:0.003] Given an implausible event for which there is lots of evidence (Apollo 11) and a plausible event for which there is zero
+      [S S:0.938 N:0.050 O:0.012] “The point of moon-hoax theory is to show how powerful the American government was in terms of making people believe thi
+      [S S:0.547 N:0.444 O:0.009] Despite the extraordinary volume of evidence (including 382kg of moon rock collected across six missions; corroboration 
+
+    Source [fact_check]: WikiLeaks has not released the footage of NASA’s m
+      [S S:0.632 N:0.361 O:0.007] A video allegedly released by WikiLeaks, allegedly showing NASA’s “faked” moon landing shot in the Nevada Desert, is cir
+
+  CLAIM: we only use 10% of our brains
+  Expected: opposing | Errors: 2
+
+    Source [fact_check]: Do We Only Use 10% of our Brains?
+      [S S:0.950 N:0.046 O:0.004] On more than one occasion I've heard psychics tell their audiences, "We only use ten percent of our minds.
+
+    Source [web]: Do We Really Use Only 10 Percent of Our Brain? - B
+      [S S:0.989 N:0.010 O:0.002] It’s one of Hollywood’s favorite bits of pseudoscience: human beings use only 10 percent of their brain, and awakening t
+
+  CLAIM: you lose most body heat through your head
+  Expected: opposing | Errors: 1
+
+    Source [web]: Scientists debunk the myth that you lose most heat
+      [S S:0.625 N:0.300 O:0.076] They traced the origins of the hat-wearing advice back to a US army survival manual from 1970 which strongly recommended
+
+==========================================================================================
+QUOTE_ATTRIBUTION (1 sentences)
+Root cause: NLI LIMITATION
+Reason: NLI reads reported claim as supporting
+==========================================================================================
+
+  CLAIM: 5G causes COVID
+  Expected: opposing | Errors: 1
+
+    Source [fact_check]: Hoax linking Covid-19 to bacteria and 5G mobile te
+      [S S:0.938 N:0.061 O:0.001] The post further claims that Covid-19 is caused by 5G mobile technology and that it can be cured with aspirin.
+
+==========================================================================================
+TANGENTIAL_SOURCE (22 sentences)
+Root cause: SOURCE QUALITY
+Reason: Source unrelated to claim
+==========================================================================================
+
+  CLAIM: 5G causes COVID
+  Expected: opposing | Errors: 1
+
+    Source [web]: The conspiracy of Covid-19 and 5G: Spatial analysi
+      [S S:0.515 N:0.434 O:0.051] False Claim: 3G, 4G and 5G Caused SARS, Swine Flu and the New Coronavirus.https://www.reuters.com/article/uk-factcheck-3
+
+  CLAIM: MSG is dangerous to consume
+  Expected: opposing | Errors: 2
+
+    Source [encyclopedia]: Anthony William
+      [S S:0.985 N:0.014 O:0.001] He also describes six foods which he considers to be “life-challenging.” He contends that dairy “bogs down the liver”; e
+
+    Source [encyclopedia]: Glutamate flavoring
+      [S S:0.695 N:0.304 O:0.002] Several complex mechanisms in the brain provide a protection against a possible oversupply of glutamate there, because t
+
+  CLAIM: eating carrots improves your eyesight
+  Expected: opposing | Errors: 2
+
+    Source [encyclopedia]: Carrot
+      [S S:0.547 N:0.372 O:0.081] A rumour spread during the Second World War purporting to explain that British pilots had improved night vision from eat
+
+    Source [academic]: HOW 6 BENEFITS OF CARROT JUICE YOU NEVER KNEW!
+      [S S:0.519 N:0.480 O:0.001] Vitamin A Booster\nVitamin A plays an important role in eyesight.&amp;nbsp;Red-orange colored foods such as carrots, pum
+
+  CLAIM: humans share about 98% of DNA with chimpanzees
+  Expected: supporting | Errors: 2
+
+    Source [encyclopedia]: Bonobo
+      [O S:0.001 N:0.379 O:0.620] DNA evidence suggests the bonobo and common chimpanzee species diverged approximately 890,000–860,000 years ago followin
+
+    Source [encyclopedia]: Chimpanzee
+      [O S:0.001 N:0.257 O:0.742] In addition, a 2012 study comparing brain tissue found that chimpanzees and humans diverged significantly in gene regula
+
+  CLAIM: octopuses have three hearts
+  Expected: supporting | Errors: 2
+
+    Source [encyclopedia]: California two-spot octopus
+      [O S:0.002 N:0.129 O:0.870] These ocelli are an iridescent blue, chain-link circle, set in a circle of black.
+      [O S:0.004 N:0.237 O:0.759] Evidence of play behavior in captive California two-spot octopuses, Octopus bimaculoides.
+
+  CLAIM: smoking causes lung cancer
+  Expected: supporting | Errors: 1
+
+    Source [encyclopedia]: Tobacco packaging warning messages
+      [O S:0.004 N:0.137 O:0.859] LAYANAN BERHENTI MEROKOK (0800-177-6565) Warning: Because of smoking, I now have throat cancer.
+
+  CLAIM: the moon landing was faked
+  Expected: opposing | Errors: 1
+
+    Source [fact_check]: Video clips don't show Buzz Aldrin admitting he ne
+      [S S:0.954 N:0.045 O:0.001] It could have been scary.” The implication of this short clip is that Mr Aldrin was admitting that the journey itself ne
+
+  CLAIM: the speed of light is constant
+  Expected: supporting | Errors: 4
+
+    Source [encyclopedia]: Formulations of special relativity
+      [O S:0.001 N:0.003 O:0.996] (Note that this does not apply in non-inertial frames, indeed between accelerating frames the speed of light cannot be c
+      [O S:0.006 N:0.374 O:0.619] Others differ in their approach to the geometry of spacetime and the linear transformations between frames of reference.
+
+    Source [encyclopedia]: Special relativity
+      [O S:0.001 N:0.068 O:0.931] This changed Newton's mechanics situations involving all motions, especially velocities close to that of light: 18 (know
+      [O S:0.005 N:0.393 O:0.602] Analysis of the collision products, the sum of whose masses may vastly exceed the masses of the incident particles, requ
+
+  CLAIM: the sun is a star
+  Expected: supporting | Errors: 3
+
+    Source [web]: Sun: Facts - NASA Science
+      [O S:0.004 N:0.068 O:0.927] (Imagine walking away from a bonfire only to get warmer.)
+      [O S:0.014 N:0.100 O:0.886] Potential for Life
+The Sun could not harbor life as we know it because of its extreme temperatures and radiation.
+      [O S:0.018 N:0.303 O:0.679] That is approximately 8 times the density of gold (19.3 g/cm³) or 13 times the density of lead (11.3 g/cm³).
+
+  CLAIM: water boils at 100 degrees celsius
+  Expected: supporting | Errors: 4
+
+    Source [encyclopedia]: Fahrenheit
+      [O S:0.004 N:0.179 O:0.817] "On the Fahrenheit scale, do 0 and 100 have any special significance?".
+
+    Source [encyclopedia]: Nucleate boiling
+      [O S:0.000 N:0.003 O:0.997] Between 10 and 30 °C (18 and 54 °F) above TS, a second flow regime may be observed.
+      [O S:0.000 N:0.003 O:0.997] When the temperature difference is between approximately 4 to 10 °C (7.2 to 18.0 °F) above TS, isolated bubbles form at 
+
+    Source [web]: What is the Boiling Point of Water? - WorldAtlasWa
+      [O S:0.000 N:0.001 O:0.999] For instance, the boiling of water at Mount Everest is 68 degrees Celsius or 154 Fahrenheit.
+
+==========================================================================================
+WEAK_NEGATION (57 sentences)
+Root cause: NLI LIMITATION
+Reason: Negation present but NLI defaults to neutral
+==========================================================================================
+
+  CLAIM: 5G causes COVID
+  Expected: opposing | Errors: 6
+
+    Source [encyclopedia]: 5G
+      [N S:0.001 N:0.551 O:0.449] A 2019 meta-analysis found that while many in vitro and in vivo studies detected biological responses to radiofrequency 
+
+    Source [web]: COVID-19 and the 5G Conspiracy Theory: Social Netw
+      [N S:0.005 N:0.784 O:0.211] Content analysis revealed that, of 233 sample tweets, 34.8% (n=81) contained views that 5G and COVID-19 were linked, 32.
+
+    Source [web]: Factors associated with the myth about 5G network 
+      [N S:0.001 N:0.673 O:0.327] It is important that researchers interpret the finding that education is linked to the myth of 5G technology with cautio
+
+    Source [fact_check]: Fresh false claims about COVID-19 vaccine and 5G t
+      [N S:0.002 N:0.620 O:0.378] Coronavirus acronym
+The Facebook post's caption states in part: “COVID 19 =means Certificate Of Vaccination Identity wit
+
+    Source [fact_check]: Hoax linking Covid-19 to bacteria and 5G mobile te
+      [N S:0.002 N:0.827 O:0.171] Aspirin not a cure for Covid-19
+According to the post, the Italian doctors said that aspirin could treat Covid-19, howev
+
+    Source [web]: The conspiracy of Covid-19 and 5G: Spatial analysi
+      [N S:0.002 N:0.823 O:0.175] The intuition of the spatial is present, but the causal mechanism is not – and indeed conspiratorial thinking thrives pa
+
+  CLAIM: Einstein failed math in school
+  Expected: opposing | Errors: 5
+
+    Source [web]: Albert Einstein Did Not Fail at Mathematics in Sch
+      [N S:0.094 N:0.653 O:0.253] Einstein was shown the article in Ripley’s, which had the title “Greatest living mathematician failed in mathematics.” B
+
+    Source [web]: Did Einstein Really Fail Math Class?
+      [N S:0.049 N:0.495 O:0.457] However, there is a longstanding rumor that Einstein failed grade school math.
+      [N S:0.029 N:0.790 O:0.181] Origin of the Story That Einstein Failed Math
+The rumor that Einstein failed math in the fourth grade is not true.
+
+    Source [encyclopedia]: General relativity
+      [N S:0.001 N:0.540 O:0.460] 12
+- ^ Namely, some physicists have questioned whether or not the evidence for dark matter is, in fact, evidence for dev
+
+    Source [web]: Things You Learned in School That Are Wrong - Busi
+      [N S:0.005 N:0.607 O:0.388] MYTH: According to all known laws of aviation, there is no way a bee should be able to fly.
+
+  CLAIM: MSG is dangerous to consume
+  Expected: opposing | Errors: 2
+
+    Source [fact_check]: Brain damage link to MSG a salty dose of misinform
+      [N S:0.006 N:0.685 O:0.309] "There is a controversy around MSG, but based on this and other review studies, it seems unlikely that normal dietary in
+
+    Source [web]: CCTS Bionutrition: MSG | Food Additive or Health H
+      [N S:0.006 N:0.724 O:0.270] The term ‘Chinese Restaurant Syndrome’ was believed by many to be a racist term and after campaigns to remove this termi
+
+  CLAIM: bats are blind
+  Expected: opposing | Errors: 1
+
+    Source [academic]: Gait mechanics of a blind echolocating rodent: Imp
+      [N S:0.001 N:0.562 O:0.437] While there is considerable debate about the relative importance of the visual system specifics, there is little doubt t
+
+  CLAIM: bulls are enraged by the color red
+  Expected: opposing | Errors: 1
+
+    Source [web]: Why Do Bulls Charge When they See Red? - Live Scie
+      [N S:0.006 N:0.819 O:0.175] That person stood still while two cowboys — not in red — moved around the ring.
+
+  CLAIM: dogs can only see in black and white
+  Expected: opposing | Errors: 1
+
+    Source [web]: Can Dogs See in Color? | Heart + Paw
+      [N S:0.009 N:0.568 O:0.423] A dog’s color spectrum vision is limited because of the lack of cones in the eye, but they more than make up for it in t
+
+  CLAIM: eating carrots improves your eyesight
+  Expected: opposing | Errors: 1
+
+    Source [web]: Fact or Fiction?: Carrots Improve Your Vision | Sc
+      [N S:0.006 N:0.602 O:0.392] Most eye problems stem from vision-impairment caused by issues such as genetics, aging or diabetes that cannot be aided 
+
+  CLAIM: goldfish have a 3 second memory
+  Expected: opposing | Errors: 2
+
+    Source [web]: Goldfish three-second memory myth busted - ABC New
+      [N S:0.004 N:0.702 O:0.294] "It seemed pretty impractical for a species to evolve without these capabilities."
+      [N S:0.004 N:0.844 O:0.152] But a 15-year-old schoolboy from Adelaide has just debunked that theory.
+
+  CLAIM: shaving makes hair grow back thicker
+  Expected: opposing | Errors: 1
+
+    Source [fact_check]: Does Shaving Hair Make It Grow Back Thicker?
+      [N S:0.002 N:0.742 O:0.256] Use a brush for styling only; not to "exercise" the scalp.
+
+  CLAIM: the Amazon rainforest produces about 20% of the world's oxygen
+  Expected: opposing | Errors: 1
+
+    Source [web]: How Much Oxygen is Produced by the Amazon Rainfore
+      [N S:0.282 N:0.547 O:0.171] - Debunking the “Amazon Produces 20% of Earth’s Oxygen” Myth
+- The Science: How Photosynthesis Works in the Amazon
+- Who
+
+  CLAIM: the Great Wall of China is the only man-made structure visible from space
+  Expected: opposing | Errors: 2
+
+    Source [web]: Can You Really See the Great Wall of China from Sp
+      [N S:0.002 N:0.843 O:0.154] The Origin of the Myth
+The notion that the Great Wall of China is visible from space likely dates back to the early 20th
+
+    Source [fact_check]: Is the Great Wall of China Visible from the Moon?
+      [N S:0.011 N:0.565 O:0.425] Secondly, even though other objects are visible at this distance, according to Shuttle astronaut Jay Apt, the Great Wall
+
+  CLAIM: the Great Wall of China is visible from space
+  Expected: opposing | Errors: 3
+
+    Source [academic]: Claim Verification: "The Great Wall of China is th
+      [N S:0.006 N:0.530 O:0.463] NASA officially states the wall is "difficult or impossible to see from Earth orbit without high-powered lenses" (B1).
+
+    Source [encyclopedia]: History of the Great Wall of China
+      [N S:0.030 N:0.633 O:0.337] Examples of this myth's growth are the false but widespread belief that the Great Wall of China is visible from the Moon
+
+    Source [web]: Is it Really Possible to See the Great Wall of Chi
+      [N S:0.004 N:0.820 O:0.176] Moreover, natural sun reflection would be very unlikely due to the type of material it was built with (limestone, clay, 
+
+  CLAIM: the earth is flat
+  Expected: opposing | Errors: 11
+
+    Source [fact_check]: Earth isn't flat, and shooting stars fly every dir
+      [N S:0.047 N:0.786 O:0.167] Meteors 'streak out' in all directions
+The Instagram post’s flat Earth claim rests on the idea that meteors, also known 
+
+    Source [fact_check]: Fact check: False claim laser tests prove Earth is
+      [N S:0.018 N:0.607 O:0.375] Fact check roundup: Debunking the flawed science behind flat Earth claims
+Scale of laser test is too small to show the E
+
+    Source [web]: Flat Earthers: What They Believe and Why | Scienti
+      [N S:0.037 N:0.732 O:0.230] So, uh, I, I've, I've had lots of conversation with flat earthers and when you bring up those visual pieces of evidence,
+      [N S:0.039 N:0.741 O:0.221] And I've mentioned that I came across the flat earth movement and people would always say to me, there's nobody who actu
+
+    Source [web]: Is the Earth Flat? | Answers in Genesis
+      [N S:0.015 N:0.550 O:0.434] He claims that rockets cannot work in space because there is no air.
+
+    Source [encyclopedia]: Modern flat Earth beliefs
+      [N S:0.003 N:0.589 O:0.408] They also pointed out that some believers were motivated to spread false ideas, and that because these ideas are unconst
+      [N S:0.004 N:0.619 O:0.377] Similar experiments involving lasers projected across a long, flat surface are deemed unreliable due to not taking into 
+
+    Source [encyclopedia]: Myth of the flat Earth
+      [N S:0.010 N:0.550 O:0.440] Russell claims "with extraordinary few exceptions no educated person in the history of Western Civilization from the thi
+      [N S:0.011 N:0.821 O:0.168] Myth of the flat Earth
+The myth of the flat Earth, or the flat-Earth error, is a modern historical misconception that Eu
+
+    Source [fact_check]: No, navigation by 'ancients' does not show Earth i
+      [N S:0.009 N:0.663 O:0.327] USA TODAY reached out to the Instagram user who shared the post for comment but did not immediately receive a response.
+      [N S:0.016 N:0.782 O:0.202] "Celestial navigation might be the only feasible method to guide spacecraft to the far reach of the solar system, where 
+
+  CLAIM: the moon landing was faked
+  Expected: opposing | Errors: 3
+
+    Source [fact_check]: 'Fake' moon landing claim orbits the simple facts
+      [N S:0.039 N:0.608 O:0.353] The Verdict
+The claim the moon landing was faked - as images that appeared in the newspapers the same day could not have
+
+    Source [web]: 10 Reasons the Moon Landings Could Be a Hoax - Lis
+      [N S:0.013 N:0.791 O:0.196] On any video footage or photograph of the landings, no crater is visible, almost as though the module was simply placed 
+
+    Source [web]: Was the Moon landing faked? (Spoiler Alert: No) | 
+      [N S:0.014 N:0.701 O:0.285] The most compelling argument against the Moon landings being fake is what aerospace engineer Jay Windley describes as a 
+
+  CLAIM: vaccines cause autism
+  Expected: opposing | Errors: 11
+
+    Source [web]: Autism and Vaccines - CDC
+      [N S:0.005 N:0.804 O:0.191] After reviewing the study, AHRQ determined that there was insufficient evidence of an association of the HepB vaccine an
+
+    Source [encyclopedia]: MMR vaccine and autism
+      [N S:0.001 N:0.531 O:0.468] All the other studies were done, showed no connection whatsoever again and again and again.
+
+    Source [encyclopedia]: Thiomersal and vaccines
+      [N S:0.002 N:0.576 O:0.422] A retrospective cohort study on 109,863 children in the United Kingdom found no association between TCVs and autism, but
+      [N S:0.002 N:0.606 O:0.392] An ecological analysis that studied 956 Danish children diagnosed with autism likewise did not show an association betwe
+      [N S:0.002 N:0.695 O:0.303] These reviews determined that no evidence exists to establish thiomersal as the cause of autism or other neurodevelopmen
+      [N S:0.012 N:0.691 O:0.297] Almost all of these studies have found no association between thiomersal-containing vaccines (TCVs) and autism, and stud
+
+    Source [academic]: Vaccine Induced Autoimmunity May Cause Autism and 
+      [N S:0.001 N:0.521 O:0.478] While the efficacy for many vaccines has been demonstrated in some form, such as prevention of infection or reduction in
+      [N S:0.001 N:0.756 O:0.243] For many drugs, the risks, and especially the long-term risks, have not been thoroughly studied and therefore the risk v
+
+    Source [encyclopedia]: Vaccines and autism
+      [N S:0.001 N:0.561 O:0.437] There is no accepted scientific evidence that exposure to thiomersal is a factor in causing autism.
+      [N S:0.001 N:0.815 O:0.184] A study by the CDC exploring mercury poisoning in vaccines concluded no signs of poisoning were present.
+
+    Source [academic]: “I Thought It Was Better to Be Safe Than Sorry”: F
+      [N S:0.012 N:0.818 O:0.170] Reasons for vaccine hesitancy included beliefs that vaccines cause autism, concerns that the vaccination may be traumati
+
+  CLAIM: we only use 10% of our brains
+  Expected: opposing | Errors: 5
+
+    Source [web]: Beyond the Myth That We Use Only 10 Percent of Our
+      [N S:0.043 N:0.693 O:0.264] Evolution of the human brain and the myth of its ten-percent use.
+
+    Source [web]: Do We Only Use 10% of Our Brain? The Real Story
+      [N S:0.001 N:0.622 O:0.378] The real wonder is not in the idea of untapped brain regions but in the astonishing complexity and adaptability of the o
+
+    Source [fact_check]: Do We Only Use 10% of our Brains?
+      [N S:0.025 N:0.704 O:0.272] Variants of the 10% Myth
+The myth is not simply a static, misunderstood factoid.
+
+    Source [web]: Do We Really Use Only 10% of Our Brain? What Neuro
+      [N S:0.014 N:0.755 O:0.231] The 10% brain myth was fueled by influential figures and popular media.
+
+    Source [web]: How much of our brain do we actually use? Brain fa
+      [N S:0.013 N:0.691 O:0.295] The 10 percent myth was also debunked in a
+One common brain imaging technique, called functional magnetic resonance imag
+
+  CLAIM: you lose most body heat through your head
+  Expected: opposing | Errors: 1
+
+    Source [web]: Do you lose most heat from your head? - BBC
+      [N S:0.040 N:0.600 O:0.361] I worry about him: what about the popular myth that you lose most of your body heat through your head?
+

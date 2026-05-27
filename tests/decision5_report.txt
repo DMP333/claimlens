@@ -1,0 +1,307 @@
+Decision 5 Analysis Report
+Generated: 2026-05-26 16:30:06
+Scoreable sources: 292
+Filter configs: 10
+Strategies: ['3K', '3A', '3J']
+
+================================================================================
+SECTION 1: 5B PATTERN FILTER IMPACT
+================================================================================
+
+  Total sentences (mw>=10): 3659
+  Removed by 5B: 85 (2.3%)
+  Removed by label:
+    neutral     : 67
+    opposing    : 13
+    supporting  : 5
+
+  *** FALSE REMOVALS (non-neutral removed by 5B): 18 ***
+    [opposing   0.951] the earth is flat | More from the Fact-Check Team: How we pick and research claims Email newsletter 
+    [opposing   0.620] the earth is flat | More from the Fact-Check Team: How we pick and research claims Email newsletter 
+    [opposing   0.552] the earth is flat | - ^ a b c d Anchassi, Omar (December 14, 2022).
+    [opposing   0.997] humans only use 10 percent of  | [edit] Neurologist Barry Gordon refuted the theory, stating: "We use virtually e
+    [supporting 0.655] sugar makes children hyperacti | [DOI] [PubMed] [Google Scholar]
+- 16.Wolraich M, Milich R, Stumbo P, Schultz F. 
+    [supporting 0.936] the great wall of china is vis | - ^ JPL, April 18, 1996, Space Radar Reveals Ancient Segments of China's Great W
+    [supporting 0.964] climate change is caused by hu | More from the Fact-Check Team: How we pick and research claims Email newsletter 
+    [supporting 0.734] the earth revolves around the  | [edit] It might be expected that once every month, when the Moon passes between 
+    [opposing   0.946] the earth revolves around the  | [edit] The phases are not caused by the Earth's shadow falling on the Moon, as s
+    [supporting 0.991] the earth revolves around the  | Why The Earth Rotates Around The Sun last modified March 24, 2022. https://www.s
+    [opposing   0.786] 5G towers cause cancer | [edit] Antennas of cell sites can be installed on existing masts, towers and chi
+    [opposing   0.992] 5G towers cause cancer | - ^ "Man who thinks street lights cause cancer called Gateshead councillors 'bab
+    [opposing   0.970] drinking bleach cures diseases | - ^ ""Church of Bleach" family gets years in prison for deadly "miracle" solutio
+    [opposing   0.944] drinking bleach cures diseases | - ^ "Leaders of "Genesis II Church of Health and Healing," who sold toxic bleach
+    [opposing   0.961] drinking bleach cures diseases | - ^ Barr L, Deliso M. "Florida family sentenced to federal prison for selling 'd
+    ... and 3 more
+
+================================================================================
+SECTION 2: 5C RELEVANCE FILTER IMPACT
+================================================================================
+
+  Threshold > 0.2:
+    Removed: 684/3659 (18.7%)
+    Sources emptied (all sents removed): 0
+    Removed by label: neutral=617  opposing=67  supporting=0
+    *** FALSE REMOVALS: 67 non-neutral sentences ***
+      [opposing   0.954 rel=0.105] vaccines cause autism | Environmental agents
+[edit] Teratogens are environmental agents that c
+      [opposing   0.964 rel=0.142] vaccines cause autism | We cannot let disinformation campaigns get in the way of global public
+      [opposing   0.529 rel=-0.018] the earth is flat | The post has more than 13,000 likes and has been shared almost 5,000 t
+      [opposing   0.980 rel=-0.049] the earth is flat | The second document assesses flight capabilities following damage to t
+      [opposing   0.995 rel=0.094] the earth is flat | Our verdict
+There are many man-made satellites currently in orbit, pla
+      ... and 62 more
+
+  Threshold > 0.3:
+    Removed: 1057/3659 (28.9%)
+    Sources emptied (all sents removed): 0
+    Removed by label: neutral=926  opposing=129  supporting=2
+    *** FALSE REMOVALS: 131 non-neutral sentences ***
+      [opposing   0.954 rel=0.105] vaccines cause autism | Environmental agents
+[edit] Teratogens are environmental agents that c
+      [opposing   0.964 rel=0.142] vaccines cause autism | We cannot let disinformation campaigns get in the way of global public
+      [opposing   0.529 rel=-0.018] the earth is flat | The post has more than 13,000 likes and has been shared almost 5,000 t
+      [opposing   0.980 rel=-0.049] the earth is flat | The second document assesses flight capabilities following damage to t
+      [opposing   0.870 rel=0.203] the earth is flat | The spokesperson explained that any aircraft, even a supersonic jet fi
+      ... and 126 more
+
+  Threshold > 0.4:
+    Removed: 1594/3659 (43.6%)
+    Sources emptied (all sents removed): 4
+    Removed by label: neutral=1369  opposing=213  supporting=12
+    *** FALSE REMOVALS: 225 non-neutral sentences ***
+      [opposing   0.954 rel=0.105] vaccines cause autism | Environmental agents
+[edit] Teratogens are environmental agents that c
+      [opposing   0.964 rel=0.142] vaccines cause autism | We cannot let disinformation campaigns get in the way of global public
+      [opposing   0.552 rel=0.325] vaccines cause autism | This paper reviews preclinical and clinical data, and outlines genetic
+      [opposing   0.529 rel=-0.018] the earth is flat | The post has more than 13,000 likes and has been shared almost 5,000 t
+      [opposing   0.980 rel=-0.049] the earth is flat | The second document assesses flight capabilities following damage to t
+      ... and 220 more
+
+  Threshold > 0.5:
+    Removed: 2210/3659 (60.4%)
+    Sources emptied (all sents removed): 16
+    Removed by label: neutral=1845  opposing=326  supporting=39
+    *** FALSE REMOVALS: 365 non-neutral sentences ***
+      [opposing   0.974 rel=0.476] vaccines cause autism | Different vaccines and vaccine ingredients have been repeatedly tested
+      [opposing   0.761 rel=0.448] vaccines cause autism | In 2012, the Cochrane Library published a review of dozens of scientif
+      [opposing   0.507 rel=0.490] vaccines cause autism | Structural variants in individuals with autism are much larger and fou
+      [opposing   0.954 rel=0.105] vaccines cause autism | Environmental agents
+[edit] Teratogens are environmental agents that c
+      [opposing   0.964 rel=0.142] vaccines cause autism | We cannot let disinformation campaigns get in the way of global public
+      ... and 360 more
+
+================================================================================
+SECTION 3: ACCURACY COMPARISON
+================================================================================
+
+Filter                     3K       3A       3J
+--------------------------------------------------
+  none                    252/292 (86.3%)    242/292 (82.9%)    231/292 (79.1%)
+  5B_pattern              250/292 (85.6%)    241/292 (82.5%)    230/292 (78.8%)
+  5C_rel>0.2              247/292 (84.6%)    239/292 (81.8%)    227/292 (77.7%)
+  5C_rel>0.3              240/292 (82.2%)    233/292 (79.8%)    222/292 (76.0%)
+  5C_rel>0.4              229/292 (78.4%)    222/292 (76.0%)    214/292 (73.3%)
+  5C_rel>0.5              211/292 (72.3%)    207/292 (70.9%)    200/292 (68.5%)
+  5B+5C_rel>0.2           246/292 (84.2%)    237/292 (81.2%)    226/292 (77.4%)
+  5B+5C_rel>0.3           240/292 (82.2%)    231/292 (79.1%)    221/292 (75.7%)
+  5B+5C_rel>0.4           229/292 (78.4%)    221/292 (75.7%)    213/292 (72.9%)
+  5B+5C_rel>0.5           210/292 (71.9%)    205/292 (70.2%)    199/292 (68.2%)
+
+================================================================================
+SECTION 4: REGRESSIONS AND IMPROVEMENTS vs BASELINE (no filter)
+================================================================================
+
+  Strategy: 3K
+  Filter                Improvements   Regressions    Net
+  -------------------------------------------------------
+  5B_pattern                    0             2     -2
+  5C_rel>0.2                    1             6     -5
+  5C_rel>0.3                    0            12    -12
+  5C_rel>0.4                    3            26    -23
+  5C_rel>0.5                    2            43    -41
+  5B+5C_rel>0.2                 2             8     -6
+  5B+5C_rel>0.3                 0            12    -12
+  5B+5C_rel>0.4                 3            26    -23
+  5B+5C_rel>0.5                 2            44    -42
+
+  Strategy: 3A
+  Filter                Improvements   Regressions    Net
+  -------------------------------------------------------
+  5B_pattern                    0             1     -1
+  5C_rel>0.2                    2             5     -3
+  5C_rel>0.3                    2            11     -9
+  5C_rel>0.4                    2            22    -20
+  5C_rel>0.5                    5            40    -35
+  5B+5C_rel>0.2                 1             6     -5
+  5B+5C_rel>0.3                 2            13    -11
+  5B+5C_rel>0.4                 2            23    -21
+  5B+5C_rel>0.5                 5            42    -37
+
+  Strategy: 3J
+  Filter                Improvements   Regressions    Net
+  -------------------------------------------------------
+  5B_pattern                    0             1     -1
+  5C_rel>0.2                    1             5     -4
+  5C_rel>0.3                    1            10     -9
+  5C_rel>0.4                    1            18    -17
+  5C_rel>0.5                    4            35    -31
+  5B+5C_rel>0.2                 0             5     -5
+  5B+5C_rel>0.3                 0            10    -10
+  5B+5C_rel>0.4                 1            19    -18
+  5B+5C_rel>0.5                 4            36    -32
+
+================================================================================
+SECTION 5: DETAILED REGRESSIONS (what filter broke)
+================================================================================
+
+  5B_pattern + 3K: 2 regressions
+    the great wall of china is vis | Ming Great Wall
+      base=opposing -> filtered=supporting (expected opposing)
+      removed 2 sents (0 non-neutral)
+        [neutral    rel=0.293] - Mote, Frederick W. (1999), Imperial China: 900-1800, Cambr
+        [neutral    rel=0.292] - Wakeman, Frederic (1985), The Great Enterprise: The Manchu
+    the moon landing was faked | Man on the Moon (R.E.M. song)
+      base=opposing -> filtered=supporting (expected opposing)
+      removed 7 sents (0 non-neutral)
+        [neutral    rel=0.277] - ^ Man on the Moon (US cassette single sleeve).
+        [neutral    rel=0.335] - ^ Man on the Moon (US CD single liner notes).
+        [neutral    rel=0.367] - ^ Man on the Moon (UK CD1 liner notes).
+
+  5C_rel>0.3 + 3K: 12 regressions
+    the earth is flat | Deadly Disinfo: How the Flat Earth Conspiracy Doom
+      base=opposing -> filtered=supporting (expected opposing)
+      removed 7 sents (2 non-neutral)
+        [opposing   rel=0.020] “I know about aerodynamics and fluid dynamics and how things
+        [neutral    rel=0.132] There’s no difference between science and science fiction.”
+
+        [neutral    rel=-0.023] Anti-vaccine sentiments are typically driven by the false cl
+    the earth is flat | Flat Earthers: What They Believe and Why | Scienti
+      base=opposing -> filtered=supporting (expected opposing)
+      removed 6 sents (1 non-neutral)
+        [neutral    rel=0.043] I've been given talks about pseudoscience for the last kind 
+        [neutral    rel=0.033] Uh, this is, I think it was a study by the American Academy 
+        [neutral    rel=0.279] Um, and so when, my favorite things about Mark Sargent's the
+    the earth is flat | The Flat Earth Wiki
+      base=opposing -> filtered=supporting (expected opposing)
+      removed 7 sents (3 non-neutral)
+        [neutral    rel=0.099] If you don't know something, and cannot understand it by fir
+        [neutral    rel=0.145] We must, at the very least, know exactly how conclusions wer
+        [opposing   rel=0.043] It’s changed from the learned conjectures by our ancestors o
+    humans only use 10 percent of  | Do we only use 10 percent of our brain? - MindHub 
+      base=opposing -> filtered=supporting (expected opposing)
+      removed 3 sents (0 non-neutral)
+        [neutral    rel=0.109] There are various speculations regarding the origin of this 
+        [neutral    rel=0.185] However, when this is read in its proper context, it certain
+        [neutral    rel=0.113] This attractive idea embedded itself in popular culture aide
+    the great wall of china is vis | Artificial structures visible from space
+      base=opposing -> filtered=supporting (expected opposing)
+      removed 6 sents (1 non-neutral)
+        [neutral    rel=0.257] Metropolitan areas are clearly visible at night, particularl
+        [neutral    rel=0.123] It is sometimes referred to as the "Plastic sea" ("Mar de pl
+        [opposing   rel=0.019] This area produces much of the fruit and vegetables that are
+    the great wall of china is vis | Ming Great Wall
+      base=opposing -> filtered=supporting (expected opposing)
+      removed 6 sents (0 non-neutral)
+        [neutral    rel=0.001] Because of low productivity on military farms and the need f
+        [neutral    rel=0.280] This took the form of building fortresses and walls along th
+        [neutral    rel=0.281] These workers were paid significantly more by the emperor be
+    the great wall of china is vis | Forget the Great Wall: the human landmark astronau
+      base=opposing -> filtered=supporting (expected opposing)
+      removed 4 sents (1 non-neutral)
+        [neutral    rel=0.235] Built from local stone and soil, it mimics the color and tex
+        [opposing   rel=0.267] Why Almería stands out so clearly
+Visibility from orbit depe
+        [neutral    rel=0.013] The intensity of the farming puts pressure on local water ta
+    climate change is caused by hu | Climate Change is not caused by human activity, sa
+      base=supporting -> filtered=opposing (expected supporting)
+      removed 4 sents (0 non-neutral)
+        [neutral    rel=0.265] Haringey Lib Dems have severely criticised comments by Justi
+        [neutral    rel=0.055] “It just shows that David Cameron’s attempt to re-brand the 
+        [neutral    rel=0.213] No matter how many trees they have in their logo, their pron
+    the earth revolves around the  | Study of the "Earth-Moon" System
+      base=supporting -> filtered=opposing (expected supporting)
+      removed 2 sents (0 non-neutral)
+        [neutral    rel=0.123] It is shown that, like any system of physical bodies, this s
+        [neutral    rel=0.147] The expediency of using libration points for the constructio
+    the moon landing was faked | Moon landing conspiracy theories
+      base=opposing -> filtered=supporting (expected opposing)
+      removed 3 sents (1 non-neutral)
+        [neutral    rel=0.087] As a result, its upper management team was questioned by Sen
+        [opposing   rel=0.275] In fact, by the time of the launch of the first crewed Earth
+        [neutral    rel=0.036] - Bennett, Mary; Percy, David S. (2001) [First published 199
+
+  5B+5C_rel>0.3 + 3K: 12 regressions
+    the earth is flat | Deadly Disinfo: How the Flat Earth Conspiracy Doom
+      base=opposing -> filtered=supporting (expected opposing)
+      removed 7 sents (2 non-neutral)
+        [opposing   rel=0.020] “I know about aerodynamics and fluid dynamics and how things
+        [neutral    rel=0.132] There’s no difference between science and science fiction.”
+
+        [neutral    rel=-0.023] Anti-vaccine sentiments are typically driven by the false cl
+    the earth is flat | Flat Earthers: What They Believe and Why | Scienti
+      base=opposing -> filtered=supporting (expected opposing)
+      removed 6 sents (1 non-neutral)
+        [neutral    rel=0.043] I've been given talks about pseudoscience for the last kind 
+        [neutral    rel=0.033] Uh, this is, I think it was a study by the American Academy 
+        [neutral    rel=0.279] Um, and so when, my favorite things about Mark Sargent's the
+    the earth is flat | The Flat Earth Wiki
+      base=opposing -> filtered=supporting (expected opposing)
+      removed 7 sents (3 non-neutral)
+        [neutral    rel=0.099] If you don't know something, and cannot understand it by fir
+        [neutral    rel=0.145] We must, at the very least, know exactly how conclusions wer
+        [opposing   rel=0.043] It’s changed from the learned conjectures by our ancestors o
+    humans only use 10 percent of  | Do we only use 10 percent of our brain? - MindHub 
+      base=opposing -> filtered=supporting (expected opposing)
+      removed 3 sents (0 non-neutral)
+        [neutral    rel=0.109] There are various speculations regarding the origin of this 
+        [neutral    rel=0.185] However, when this is read in its proper context, it certain
+        [neutral    rel=0.113] This attractive idea embedded itself in popular culture aide
+    the great wall of china is vis | Ming Great Wall
+      base=opposing -> filtered=supporting (expected opposing)
+      removed 6 sents (0 non-neutral)
+        [neutral    rel=0.001] Because of low productivity on military farms and the need f
+        [neutral    rel=0.280] This took the form of building fortresses and walls along th
+        [neutral    rel=0.281] These workers were paid significantly more by the emperor be
+    the great wall of china is vis | Forget the Great Wall: the human landmark astronau
+      base=opposing -> filtered=supporting (expected opposing)
+      removed 4 sents (1 non-neutral)
+        [neutral    rel=0.235] Built from local stone and soil, it mimics the color and tex
+        [opposing   rel=0.267] Why Almería stands out so clearly
+Visibility from orbit depe
+        [neutral    rel=0.013] The intensity of the farming puts pressure on local water ta
+    climate change is caused by hu | Climate Change is not caused by human activity, sa
+      base=supporting -> filtered=opposing (expected supporting)
+      removed 4 sents (0 non-neutral)
+        [neutral    rel=0.265] Haringey Lib Dems have severely criticised comments by Justi
+        [neutral    rel=0.055] “It just shows that David Cameron’s attempt to re-brand the 
+        [neutral    rel=0.213] No matter how many trees they have in their logo, their pron
+    the earth revolves around the  | Study of the "Earth-Moon" System
+      base=supporting -> filtered=opposing (expected supporting)
+      removed 2 sents (0 non-neutral)
+        [neutral    rel=0.123] It is shown that, like any system of physical bodies, this s
+        [neutral    rel=0.147] The expediency of using libration points for the constructio
+    the moon landing was faked | Moon landing conspiracy theories
+      base=opposing -> filtered=supporting (expected opposing)
+      removed 3 sents (1 non-neutral)
+        [neutral    rel=0.087] As a result, its upper management team was questioned by Sen
+        [opposing   rel=0.275] In fact, by the time of the launch of the first crewed Earth
+        [neutral    rel=0.036] - Bennett, Mary; Percy, David S. (2001) [First published 199
+    the moon landing was faked | Man on the Moon (R.E.M. song)
+      base=opposing -> filtered=supporting (expected opposing)
+      removed 13 sents (0 non-neutral)
+        [neutral    rel=0.190] There are repeated mentions of Andy Kaufman, including refer
+        [neutral    rel=0.131] He was kind of an ephemeral figure at that point so he was t
+        [neutral    rel=0.213] The melody sounds a whole lot like a lower-key remake of "Fa
+
+================================================================================
+SECTION 6: RELEVANCE SCORE DISTRIBUTION BY SENTENCE LABEL
+================================================================================
+
+  supporting   (n= 281): mean=0.640  median=0.644  min=0.238  max=0.955
+  neutral      (n=2741): mean=0.388  median=0.400  min=-0.099  max=0.904
+  opposing     (n= 637): mean=0.491  median=0.495  min=-0.119  max=0.904
+
+  If supporting/opposing sentences have HIGHER relevance than neutral,
+  then 5C filtering can remove noise without removing signal.
+  If they overlap heavily, 5C will cause false removals.
