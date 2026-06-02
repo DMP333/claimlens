@@ -1,0 +1,443 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loaded 1178 sources (92 contaminated)
+
+################################################################################
+MODEL 1: Bi-encoder (current approach)
+################################################################################
+
+Scoring with bi-encoder on title_only...
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 5116.22it/s]
+Batches:   0%|          | 0/19 [00:00<?, ?it/s]Batches:   5%|▌         | 1/19 [00:00<00:02,  6.21it/s]Batches:  16%|█▌        | 3/19 [00:00<00:01, 11.33it/s]Batches:  37%|███▋      | 7/19 [00:00<00:00, 21.03it/s]Batches:  79%|███████▉  | 15/19 [00:00<00:00, 39.89it/s]Batches: 100%|██████████| 19/19 [00:00<00:00, 31.96it/s]
+Batches:   0%|          | 0/19 [00:00<?, ?it/s]Batches:  16%|█▌        | 3/19 [00:00<00:00, 22.57it/s]Batches:  37%|███▋      | 7/19 [00:00<00:00, 30.48it/s]Batches:  58%|█████▊    | 11/19 [00:00<00:00, 32.66it/s]Batches:  84%|████████▍ | 16/19 [00:00<00:00, 37.26it/s]Batches: 100%|██████████| 19/19 [00:00<00:00, 35.13it/s]
+  Done in 7.5s
+
+================================================================================
+EVALUATION: bi-encoder / title_only (input: title_only)
+================================================================================
+
+Score Distribution:
+  Contaminated (92): mean=0.5293, median=0.5686
+  Clean (1086):         mean=0.6706, median=0.6895
+  ROC AUC: 0.7004 (1.0=perfect, 0.5=random)
+
+  Best F1: 0.256 at threshold 0.4832
+  Precision: 0.182, Recall: 0.435
+  Catches 40/92 contaminated, loses 180/1086 clean
+
+  By Source Type:
+    encyclopedia   : catches 17/30 contam, loses 47/180 clean
+    academic       : catches 19/20 contam, loses 80/224 clean
+    web            : catches 3/15 contam, loses 28/563 clean
+    knowledge_graph: catches 1/27 contam, loses 19/69 clean
+
+  TRUE POSITIVES (caught contamination) (40 total, showing 5):
+    Score=0.4810 [encyclopedia] "dogs can only see in black and whit" -> "Black dog (folklore)"
+    Score=0.4745 [academic] "sugar makes children hyperactive" -> "Initial development of the Sugar‐Sweetened Fruit Drink "
+    Score=0.4734 [web] "the sun is a star" -> "Curious Kids: Is there anything hotter than the Sun?"
+    Score=0.4697 [knowledge_graph] "AI will replace most jobs" -> "Jobs"
+    Score=0.4687 [web] "LeBron James is the greatest basket" -> "Top 5 Strongest NBA Players Ever — In-Game Strength - T"
+
+  FALSE POSITIVES (wrongly filtered clean) (180 total, showing 5):
+    Score=0.4830 [academic] "the Sahara desert is the largest de" -> "Spatial and Temporal Variation of the Near-Surface Wind"
+    Score=0.4825 [encyclopedia] "vaccines cause autism" -> "Thiomersal and vaccines"
+    Score=0.4818 [web] "evolution is real" -> "88 | Neil Shubin on Evolution, Genes, and Dramatic Tran"
+    Score=0.4810 [encyclopedia] "you lose most body heat through you" -> "Thermoregulation"
+    Score=0.4807 [academic] "antibiotics do not work against vir" -> "Studies on Comparative Analysis of Antimicrobial Streng"
+
+  FALSE NEGATIVES (missed contamination) (52 total, showing 5):
+    Score=0.4864 [web] "the sun is a star" -> "Exploring love on its own terms with the team behind "T"
+    Score=0.4926 [web] "evolution is real" -> "3 Creationist Deceptions That Made Me Realize Evolution"
+    Score=0.4955 [encyclopedia] "honey never expires" -> "Honeyblood"
+    Score=0.5201 [encyclopedia] "smoking causes lung cancer" -> "Smoking-related interstitial fibrosis (SRIF)"
+    Score=0.5507 [encyclopedia] "octopuses have three hearts" -> "California two-spot octopus"
+
+Scoring with bi-encoder on snippet_only...
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 10050.79it/s]
+Batches:   0%|          | 0/19 [00:00<?, ?it/s]Batches:  37%|███▋      | 7/19 [00:00<00:00, 67.68it/s]Batches:  89%|████████▉ | 17/19 [00:00<00:00, 85.77it/s]Batches: 100%|██████████| 19/19 [00:00<00:00, 84.53it/s]
+Batches:   0%|          | 0/19 [00:00<?, ?it/s]Batches:  16%|█▌        | 3/19 [00:00<00:00, 21.41it/s]Batches:  32%|███▏      | 6/19 [00:00<00:00, 25.55it/s]Batches:  47%|████▋     | 9/19 [00:00<00:00, 26.90it/s]Batches:  63%|██████▎   | 12/19 [00:00<00:00, 27.13it/s]Batches:  79%|███████▉  | 15/19 [00:00<00:00, 27.29it/s]Batches: 100%|██████████| 19/19 [00:00<00:00, 30.21it/s]Batches: 100%|██████████| 19/19 [00:00<00:00, 28.11it/s]
+  Done in 2.6s
+
+================================================================================
+EVALUATION: bi-encoder / snippet_only (input: snippet_only)
+================================================================================
+
+Score Distribution:
+  Contaminated (92): mean=0.2256, median=0.2081
+  Clean (1086):         mean=0.5572, median=0.5860
+  ROC AUC: 0.8696 (1.0=perfect, 0.5=random)
+
+  Best F1: 0.457 at threshold 0.0940
+  Precision: 0.529, Recall: 0.402
+  Catches 37/92 contaminated, loses 33/1086 clean
+
+  By Source Type:
+    encyclopedia   : catches 3/30 contam, loses 8/180 clean
+    academic       : catches 1/20 contam, loses 2/224 clean
+    web            : catches 11/15 contam, loses 13/563 clean
+    knowledge_graph: catches 22/27 contam, loses 10/69 clean
+
+  TRUE POSITIVES (caught contamination) (37 total, showing 5):
+    Score=0.0916 [encyclopedia] "MSG is dangerous to consume" -> "Anthony William"
+    Score=0.0901 [knowledge_graph] "the United States economy is in a r" -> "Recession"
+    Score=0.0876 [knowledge_graph] "pineapple belongs on pizza" -> "Pizza"
+    Score=0.0857 [knowledge_graph] "cats are better pets than dogs" -> "Cats"
+    Score=0.0837 [knowledge_graph] "AI will replace most jobs" -> "Jobs"
+
+  FALSE POSITIVES (wrongly filtered clean) (33 total, showing 5):
+    Score=0.0906 [web] "inflation in the United States is u" -> "Current U.S. Inflation Rate Is 3.8%: Chart and Why It M"
+    Score=0.0792 [web] "drinking bleach cures diseases" -> "fortune.com/well/2023/02/02/drinking-bleach-can-be-dead"
+    Score=0.0787 [encyclopedia] "you lose most body heat through you" -> "Thermoregulation"
+    Score=0.0777 [encyclopedia] "vaccines cause autism" -> "MMR vaccine and autism"
+    Score=0.0736 [encyclopedia] "immigration is good for the economy" -> "History of immigration to the United States"
+
+  FALSE NEGATIVES (missed contamination) (55 total, showing 5):
+    Score=0.0951 [knowledge_graph] "democracy is the best form of gover" -> "Democracy"
+    Score=0.1399 [knowledge_graph] "goldfish have a three second memory" -> "Goldfish"
+    Score=0.1429 [knowledge_graph] "goldfish have a 3 second memory" -> "Goldfish"
+    Score=0.1626 [encyclopedia] "octopuses have three hearts" -> "California two-spot octopus"
+    Score=0.1628 [encyclopedia] "smoking causes lung cancer" -> "Smoking-related interstitial fibrosis (SRIF)"
+
+Scoring with bi-encoder on title_plus_snippet...
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 9270.87it/s]
+Batches:   0%|          | 0/19 [00:00<?, ?it/s]Batches:  32%|███▏      | 6/19 [00:00<00:00, 58.96it/s]Batches:  84%|████████▍ | 16/19 [00:00<00:00, 78.60it/s]Batches: 100%|██████████| 19/19 [00:00<00:00, 78.05it/s]
+Batches:   0%|          | 0/19 [00:00<?, ?it/s]Batches:  11%|█         | 2/19 [00:00<00:01, 15.74it/s]Batches:  21%|██        | 4/19 [00:00<00:00, 17.63it/s]Batches:  37%|███▋      | 7/19 [00:00<00:00, 21.07it/s]Batches:  58%|█████▊    | 11/19 [00:00<00:00, 23.87it/s]Batches:  74%|███████▎  | 14/19 [00:00<00:00, 23.71it/s]Batches:  89%|████████▉ | 17/19 [00:00<00:00, 24.47it/s]Batches: 100%|██████████| 19/19 [00:00<00:00, 23.56it/s]
+  Done in 2.8s
+
+================================================================================
+EVALUATION: bi-encoder / title_plus_snippet (input: title_plus_snippet)
+================================================================================
+
+Score Distribution:
+  Contaminated (92): mean=0.4410, median=0.4157
+  Clean (1086):         mean=0.6367, median=0.6622
+  ROC AUC: 0.8155 (1.0=perfect, 0.5=random)
+
+  Best F1: 0.348 at threshold 0.4372
+  Precision: 0.251, Recall: 0.565
+  Catches 52/92 contaminated, loses 155/1086 clean
+
+  By Source Type:
+    encyclopedia   : catches 20/30 contam, loses 65/180 clean
+    academic       : catches 15/20 contam, loses 55/224 clean
+    web            : catches 2/15 contam, loses 11/563 clean
+    knowledge_graph: catches 15/27 contam, loses 24/69 clean
+
+  TRUE POSITIVES (caught contamination) (52 total, showing 5):
+    Score=0.4371 [knowledge_graph] "pineapple belongs on pizza" -> "Pizza"
+    Score=0.4298 [encyclopedia] "water boils at 100 degrees celsius" -> "Nucleate boiling"
+    Score=0.4292 [knowledge_graph] "nuclear energy is safe" -> "Nuclear Energy"
+    Score=0.4235 [encyclopedia] "dogs can only see in black and whit" -> "Black dog (folklore)"
+    Score=0.4210 [knowledge_graph] "the sun is a star" -> "Star"
+
+  FALSE POSITIVES (wrongly filtered clean) (155 total, showing 5):
+    Score=0.4371 [encyclopedia] "climate change is real" -> "Climate change denial"
+    Score=0.4368 [encyclopedia] "the earth is flat" -> "Flat Earth"
+    Score=0.4363 [academic] "democracy is the best form of gover" -> "Trust made the difference for democracies in COVID-19"
+    Score=0.4363 [academic] "AI will replace most jobs" -> "Artificial intelligence impact on banks clients and emp"
+    Score=0.4361 [knowledge_graph] "we only use 10% of our brains" -> "Our brains electric"
+
+  FALSE NEGATIVES (missed contamination) (40 total, showing 5):
+    Score=0.4373 [knowledge_graph] "octopuses have three hearts" -> "The Three Hearts"
+    Score=0.4392 [academic] "the average human body temperature " -> "Thermal Earring"
+    Score=0.4425 [encyclopedia] "smoking causes lung cancer" -> "Smoking-related interstitial fibrosis (SRIF)"
+    Score=0.4575 [encyclopedia] "Einstein failed math in school" -> "General relativity"
+    Score=0.4583 [knowledge_graph] "cats are better pets than dogs" -> "Cats"
+
+################################################################################
+MODEL 2: Cross-encoder
+################################################################################
+
+Scoring with cross-encoder on title_only...
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 6057.46it/s]
+Batches:   0%|          | 0/37 [00:00<?, ?it/s]Batches:   5%|▌         | 2/37 [00:00<00:01, 19.35it/s]Batches:  16%|█▌        | 6/37 [00:00<00:01, 29.08it/s]Batches:  30%|██▉       | 11/37 [00:00<00:00, 37.14it/s]Batches:  41%|████      | 15/37 [00:00<00:00, 37.19it/s]Batches:  59%|█████▉    | 22/37 [00:00<00:00, 43.55it/s]Batches:  76%|███████▌  | 28/37 [00:00<00:00, 48.23it/s]Batches:  95%|█████████▍| 35/37 [00:00<00:00, 52.03it/s]Batches: 100%|██████████| 37/37 [00:00<00:00, 44.28it/s]
+  Done in 3.2s
+
+================================================================================
+EVALUATION: cross-encoder / title_only (input: title_only)
+================================================================================
+
+Score Distribution:
+  Contaminated (92): mean=-4.1772, median=-3.9258
+  Clean (1086):         mean=0.6157, median=1.1661
+  ROC AUC: 0.7125 (1.0=perfect, 0.5=random)
+
+  Best F1: 0.244 at threshold -5.8655
+  Precision: 0.168, Recall: 0.446
+  Catches 41/92 contaminated, loses 203/1086 clean
+
+  By Source Type:
+    encyclopedia   : catches 18/30 contam, loses 58/180 clean
+    academic       : catches 18/20 contam, loses 80/224 clean
+    web            : catches 2/15 contam, loses 38/563 clean
+    knowledge_graph: catches 3/27 contam, loses 17/69 clean
+
+  TRUE POSITIVES (caught contamination) (41 total, showing 5):
+    Score=-5.8656 [encyclopedia] "smoking causes lung cancer" -> "Smoking-related interstitial fibrosis (SRIF)"
+    Score=-6.1153 [academic] "sugar makes children hyperactive" -> "Identification of Microplastic Polymers in Packaged Sug"
+    Score=-6.1215 [knowledge_graph] "pineapple belongs on pizza" -> "Pizza"
+    Score=-6.1215 [knowledge_graph] "pineapple belongs on pizza" -> "Pizza"
+    Score=-6.2762 [encyclopedia] "honey never expires" -> "Honeyblood"
+
+  FALSE POSITIVES (wrongly filtered clean) (203 total, showing 5):
+    Score=-5.8716 [academic] "China has the world's largest econo" -> "The impact of China's low-carbon transition on economy,"
+    Score=-5.8772 [knowledge_graph] "democracy is the best form of gover" -> "government"
+    Score=-5.9009 [web] "lightning never strikes the same pl" -> "Lightning Myths"
+    Score=-5.9266 [web] "the average human body temperature " -> "What a Normal Body Temperature Is - Cleveland Clinic He"
+    Score=-5.9517 [fact_check] "antibiotics do not work against vir" -> "Consuming antibiotics cannot treat Covid-19 | Fact Chec"
+
+  FALSE NEGATIVES (missed contamination) (51 total, showing 5):
+    Score=-5.5012 [web] "the sun is a star" -> "Exploring love on its own terms with the team behind "T"
+    Score=-5.4880 [encyclopedia] "water boils at 100 degrees celsius" -> "Nucleate boiling"
+    Score=-5.1797 [academic] "antibiotics do not work against vir" -> "Genome Features and In Vitro Activity against Influenza"
+    Score=-4.7237 [encyclopedia] "octopuses have three hearts" -> "Blue-ringed octopus"
+    Score=-4.2223 [knowledge_graph] "you lose most body heat through you" -> "Body Heat"
+
+Scoring with cross-encoder on snippet_only...
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 10488.76it/s]
+Batches:   0%|          | 0/37 [00:00<?, ?it/s]Batches:   8%|▊         | 3/37 [00:00<00:01, 27.47it/s]Batches:  16%|█▌        | 6/37 [00:00<00:01, 27.42it/s]Batches:  32%|███▏      | 12/37 [00:00<00:00, 37.72it/s]Batches:  46%|████▌     | 17/37 [00:00<00:00, 41.63it/s]Batches:  62%|██████▏   | 23/37 [00:00<00:00, 44.56it/s]Batches:  86%|████████▋ | 32/37 [00:00<00:00, 54.23it/s]Batches: 100%|██████████| 37/37 [00:00<00:00, 47.15it/s]
+  Done in 3.1s
+
+================================================================================
+EVALUATION: cross-encoder / snippet_only (input: snippet_only)
+================================================================================
+
+Score Distribution:
+  Contaminated (92): mean=-8.7965, median=-11.1583
+  Clean (1086):         mean=-0.5593, median=0.2269
+  ROC AUC: 0.8288 (1.0=perfect, 0.5=random)
+
+  Best F1: 0.404 at threshold -11.2307
+  Precision: 0.362, Recall: 0.457
+  Catches 42/92 contaminated, loses 74/1086 clean
+
+  By Source Type:
+    encyclopedia   : catches 6/30 contam, loses 18/180 clean
+    academic       : catches 2/20 contam, loses 9/224 clean
+    web            : catches 10/15 contam, loses 27/563 clean
+    knowledge_graph: catches 24/27 contam, loses 19/69 clean
+
+  TRUE POSITIVES (caught contamination) (42 total, showing 5):
+    Score=-11.2363 [encyclopedia] "octopuses have three hearts" -> "California two-spot octopus"
+    Score=-11.2383 [knowledge_graph] "nuclear energy is safe" -> "Nuclear Energy"
+    Score=-11.2388 [knowledge_graph] "the United States economy is in a r" -> "Recession's Greetings"
+    Score=-11.2493 [academic] "capitalism is better than socialism" -> "Cows, Moonshine, Pheasants … versus Soybeans"
+    Score=-11.2528 [knowledge_graph] "cats are better pets than dogs" -> "Cats"
+
+  FALSE POSITIVES (wrongly filtered clean) (74 total, showing 5):
+    Score=-11.2368 [encyclopedia] "capitalism is better than socialism" -> "Authoritarian socialism"
+    Score=-11.2374 [encyclopedia] "octopuses have three hearts" -> "Cephalopod"
+    Score=-11.2407 [web] "nuclear energy is safe" -> "Will Nuclear Energy be in Your Building’s Future? - Mil"
+    Score=-11.2424 [encyclopedia] "immigration is good for the economy" -> "History of immigration to the United States"
+    Score=-11.2448 [web] "sugar is worse than fat for health" -> "Consumption of a diet high in fat and sugar is associat"
+
+  FALSE NEGATIVES (missed contamination) (50 total, showing 5):
+    Score=-11.2278 [academic] "shaving makes hair grow back thicke" -> "A Novel Follicular Unit Excision Device for All-Purpose"
+    Score=-11.1975 [encyclopedia] "humans share about 98% of DNA with " -> "Timeline of human evolution"
+    Score=-11.1807 [academic] "bats are blind" -> "Emergence of Maps in the Memories of Blind Navigation A"
+    Score=-11.1667 [encyclopedia] "goldfish have a three second memory" -> "Goodbye Mr. Fish"
+    Score=-11.1498 [academic] "the Amazon rainforest produces abou" -> "Ecosystem services provided by marine and freshwater ph"
+
+Scoring with cross-encoder on title_plus_snippet...
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 9500.63it/s]
+Batches:   0%|          | 0/37 [00:00<?, ?it/s]Batches:   5%|▌         | 2/37 [00:00<00:02, 17.14it/s]Batches:  14%|█▎        | 5/37 [00:00<00:01, 22.80it/s]Batches:  22%|██▏       | 8/37 [00:00<00:01, 24.40it/s]Batches:  32%|███▏      | 12/37 [00:00<00:00, 29.47it/s]Batches:  51%|█████▏    | 19/37 [00:00<00:00, 41.82it/s]Batches:  65%|██████▍   | 24/37 [00:00<00:00, 38.87it/s]Batches:  81%|████████  | 30/37 [00:00<00:00, 44.31it/s]Batches: 100%|██████████| 37/37 [00:00<00:00, 50.07it/s]Batches: 100%|██████████| 37/37 [00:00<00:00, 40.31it/s]
+  Done in 3.2s
+
+================================================================================
+EVALUATION: cross-encoder / title_plus_snippet (input: title_plus_snippet)
+================================================================================
+
+Score Distribution:
+  Contaminated (92): mean=-5.1550, median=-6.7042
+  Clean (1086):         mean=2.4559, median=4.4623
+  ROC AUC: 0.8016 (1.0=perfect, 0.5=random)
+
+  Best F1: 0.333 at threshold -2.6911
+  Precision: 0.210, Recall: 0.793
+  Catches 73/92 contaminated, loses 274/1086 clean
+
+  By Source Type:
+    encyclopedia   : catches 24/30 contam, loses 99/180 clean
+    academic       : catches 18/20 contam, loses 87/224 clean
+    web            : catches 6/15 contam, loses 33/563 clean
+    knowledge_graph: catches 25/27 contam, loses 51/69 clean
+
+  TRUE POSITIVES (caught contamination) (73 total, showing 5):
+    Score=-2.7378 [encyclopedia] "social media is harmful to mental h" -> "Mental illness in media"
+    Score=-2.8359 [web] "LeBron James is the greatest basket" -> "Top 5 Strongest NBA Players Ever — In-Game Strength - T"
+    Score=-2.8624 [encyclopedia] "water boils at 100 degrees celsius" -> "Nucleate boiling"
+    Score=-2.8723 [knowledge_graph] "octopuses have three hearts" -> "The Three Hearts"
+    Score=-2.8903 [academic] "the earth is flat" -> "Mapping Tidal Flats of the Bohai and Yellow Seas Using "
+
+  FALSE POSITIVES (wrongly filtered clean) (274 total, showing 5):
+    Score=-2.6956 [knowledge_graph] "capitalism is better than socialism" -> "socialism"
+    Score=-2.7372 [encyclopedia] "cryptocurrency is a good long-term " -> "Cryptocurrency"
+    Score=-2.7869 [academic] "antibiotics do not work against vir" -> "Studies on Comparative Analysis of Antimicrobial Streng"
+    Score=-2.8106 [web] "5G causes COVID" -> "The conspiracy linking 5G to coronavirus just will not "
+    Score=-2.8445 [web] "inflation in the United States is u" -> "American Workers Win Big as Inflation Remains Low, Wage"
+
+  FALSE NEGATIVES (missed contamination) (19 total, showing 5):
+    Score=-2.6372 [knowledge_graph] "the United States economy is in a r" -> "United States economy growth revised up to 0.4% in last"
+    Score=-2.1989 [encyclopedia] "dogs can only see in black and whit" -> "Black dog (folklore)"
+    Score=-0.7384 [academic] "antibiotics do not work against vir" -> "Targeting bacterial persistence with bacteriophages: a "
+    Score=0.6897 [web] "college education is worth the cost" -> "Is Higher Education Worth the Cost? Is Tuition Increasi"
+    Score=1.7229 [knowledge_graph] "the United States economy is in a r" -> "United States economy shrinks by 0.1% in last quarter o"
+
+################################################################################
+MODEL 3: NLI-as-relevance (DeBERTa)
+################################################################################
+
+Scoring with NLI-as-relevance on title_only...
+Loading weights:   0%|          | 0/202 [00:00<?, ?it/s]Loading weights: 100%|██████████| 202/202 [00:00<00:00, 7218.99it/s]
+  400/1178...
+  800/1178...
+  Done in 59.7s
+
+================================================================================
+EVALUATION: NLI-relevance / title_only (input: title_only)
+================================================================================
+
+Score Distribution:
+  Contaminated (92): mean=0.1037, median=0.0051
+  Clean (1086):         mean=0.3596, median=0.0511
+  ROC AUC: 0.7066 (1.0=perfect, 0.5=random)
+
+  Best F1: 0.242 at threshold 0.0056
+  Precision: 0.158, Recall: 0.522
+  Catches 48/92 contaminated, loses 256/1086 clean
+
+  By Source Type:
+    encyclopedia   : catches 16/30 contam, loses 88/180 clean
+    academic       : catches 14/20 contam, loses 71/224 clean
+    web            : catches 3/15 contam, loses 63/563 clean
+    knowledge_graph: catches 15/27 contam, loses 29/69 clean
+
+  TRUE POSITIVES (caught contamination) (48 total, showing 5):
+    Score=0.0053 [encyclopedia] "college education is worth the cost" -> "Fort Worth, Texas"
+    Score=0.0051 [encyclopedia] "goldfish have a 3 second memory" -> "Goldfish"
+    Score=0.0051 [knowledge_graph] "goldfish have a 3 second memory" -> "Goldfish"
+    Score=0.0051 [knowledge_graph] "goldfish have a 3 second memory" -> "Goldfish"
+    Score=0.0046 [academic] "organic food is healthier than conv" -> "A Review of Organic Waste Treatment Using Black Soldier"
+
+  FALSE POSITIVES (wrongly filtered clean) (256 total, showing 5):
+    Score=0.0056 [web] "China has the world's largest econo" -> "Ranked: The World’s 50 Largest Economies by GDP in 2026"
+    Score=0.0056 [encyclopedia] "remote work is more productive than" -> "Remote work"
+    Score=0.0055 [web] "drinking bleach cures diseases" -> "People are still drinking bleach—and vomiting and poopi"
+    Score=0.0055 [knowledge_graph] "cryptocurrency is a good long-term " -> "cryptocurrency wallet"
+    Score=0.0055 [encyclopedia] "universal basic income reduces pove" -> "Universal basic income by country"
+
+  FALSE NEGATIVES (missed contamination) (44 total, showing 5):
+    Score=0.0060 [encyclopedia] "inflation in the United States is u" -> "Inflation"
+    Score=0.0060 [knowledge_graph] "inflation in the United States is u" -> "Inflation"
+    Score=0.0076 [knowledge_graph] "bats are blind" -> "Bats"
+    Score=0.0076 [knowledge_graph] "bats are blind" -> "Bats"
+    Score=0.0084 [web] "the sun is a star" -> "Exploring love on its own terms with the team behind "T"
+
+Scoring with NLI-as-relevance on snippet_only...
+Loading weights:   0%|          | 0/202 [00:00<?, ?it/s]Loading weights: 100%|██████████| 202/202 [00:00<00:00, 13210.41it/s]
+  400/1178...
+  800/1178...
+  Done in 80.4s
+
+================================================================================
+EVALUATION: NLI-relevance / snippet_only (input: snippet_only)
+================================================================================
+
+Score Distribution:
+  Contaminated (92): mean=0.0446, median=0.0032
+  Clean (1086):         mean=0.3500, median=0.0388
+  ROC AUC: 0.7638 (1.0=perfect, 0.5=random)
+
+  Best F1: 0.262 at threshold 0.0082
+  Precision: 0.157, Recall: 0.793
+  Catches 73/92 contaminated, loses 393/1086 clean
+
+  By Source Type:
+    encyclopedia   : catches 21/30 contam, loses 105/180 clean
+    academic       : catches 14/20 contam, loses 110/224 clean
+    web            : catches 12/15 contam, loses 121/563 clean
+    knowledge_graph: catches 26/27 contam, loses 51/69 clean
+
+  TRUE POSITIVES (caught contamination) (73 total, showing 5):
+    Score=0.0081 [knowledge_graph] "pineapple belongs on pizza" -> "Pizza"
+    Score=0.0076 [web] "college education is worth the cost" -> "Is Higher Education Worth the Cost? Is Tuition Increasi"
+    Score=0.0075 [knowledge_graph] "bulls are enraged by the color red" -> "Bulls"
+    Score=0.0072 [encyclopedia] "antibiotics do not work against vir" -> "Pneumonia"
+    Score=0.0070 [knowledge_graph] "octopuses have three hearts" -> "Three Hearts"
+
+  FALSE POSITIVES (wrongly filtered clean) (393 total, showing 5):
+    Score=0.0082 [knowledge_graph] "sugar is worse than fat for health" -> "obesity"
+    Score=0.0081 [web] "capitalism is better than socialism" -> "What is better: socialism or capitalism? - Quora"
+    Score=0.0080 [academic] "antibiotics do not work against vir" -> "Repositioning of Antibiotics in the Treatment of Viral "
+    Score=0.0080 [web] "christopher columbus discovered ame" -> "Christopher Columbus Discovered America in 1497"
+    Score=0.0080 [academic] "cryptocurrency is a good long-term " -> "Whether Cryptocurrency is a threat or a revolution? An "
+
+  FALSE NEGATIVES (missed contamination) (19 total, showing 5):
+    Score=0.0083 [academic] "sugar makes children hyperactive" -> "Identification of Microplastic Polymers in Packaged Sug"
+    Score=0.0098 [knowledge_graph] "capitalism is better than socialism" -> "Capitalism"
+    Score=0.0100 [academic] "bats are blind" -> "Gait mechanics of a blind echolocating rodent: Implicat"
+    Score=0.0103 [encyclopedia] "social media is harmful to mental h" -> "Mental illness in media"
+    Score=0.0108 [academic] "humans share about 98% of DNA with " -> "The structure, function and evolution of a complete hum"
+
+Scoring with NLI-as-relevance on title_plus_snippet...
+Loading weights:   0%|          | 0/202 [00:00<?, ?it/s]Loading weights: 100%|██████████| 202/202 [00:00<00:00, 16042.14it/s]
+  400/1178...
+  800/1178...
+  Done in 102.9s
+
+================================================================================
+EVALUATION: NLI-relevance / title_plus_snippet (input: title_plus_snippet)
+================================================================================
+
+Score Distribution:
+  Contaminated (92): mean=0.1388, median=0.0050
+  Clean (1086):         mean=0.4948, median=0.4855
+  ROC AUC: 0.7350 (1.0=perfect, 0.5=random)
+
+  Best F1: 0.278 at threshold 0.0131
+  Precision: 0.173, Recall: 0.717
+  Catches 66/92 contaminated, loses 316/1086 clean
+
+  By Source Type:
+    encyclopedia   : catches 25/30 contam, loses 107/180 clean
+    academic       : catches 15/20 contam, loses 104/224 clean
+    web            : catches 2/15 contam, loses 46/563 clean
+    knowledge_graph: catches 24/27 contam, loses 56/69 clean
+
+  TRUE POSITIVES (caught contamination) (66 total, showing 5):
+    Score=0.0126 [knowledge_graph] "the United States economy is in a r" -> "United States economy growth revised up to 0.4% in last"
+    Score=0.0115 [knowledge_graph] "democracy is the best form of gover" -> "Democracy"
+    Score=0.0109 [academic] "capitalism is better than socialism" -> "Cows, Moonshine, Pheasants … versus Soybeans"
+    Score=0.0107 [encyclopedia] "social media is harmful to mental h" -> "Mental illness in media"
+    Score=0.0100 [academic] "humans share about 98% of DNA with " -> "The structure, function and evolution of a complete hum"
+
+  FALSE POSITIVES (wrongly filtered clean) (316 total, showing 5):
+    Score=0.0127 [encyclopedia] "shaving makes hair grow back thicke" -> "Hair removal"
+    Score=0.0125 [encyclopedia] "remote work is more productive than" -> "Remote work"
+    Score=0.0125 [encyclopedia] "capitalism is better than socialism" -> "Authoritarian socialism"
+    Score=0.0122 [encyclopedia] "vaccines cause autism" -> "Brian Hooker (bioengineer)"
+    Score=0.0121 [encyclopedia] "nuclear energy is safe" -> "Pro-nuclear energy movement"
+
+  FALSE NEGATIVES (missed contamination) (26 total, showing 5):
+    Score=0.0146 [academic] "antibiotics do not work against vir" -> "Klebsiella pneumoniae Phage M198 and Its Therapeutic Po"
+    Score=0.0203 [encyclopedia] "the sun is a star" -> "The Sun and the Star"
+    Score=0.0252 [academic] "antibiotics do not work against vir" -> "Genome Features and In Vitro Activity against Influenza"
+    Score=0.0355 [knowledge_graph] "the United States economy is in a r" -> "Recession's Greetings"
+    Score=0.0424 [web] "the sun is a star" -> "Exploring love on its own terms with the team behind "T"
+
+================================================================================
+FINAL COMPARISON
+================================================================================
+
+  Approach                                      |    AUC |     F1 | Threshold
+  ----------------------------------------------+--------+--------+----------
+  bi-encoder / snippet_only                     | 0.8696 |  0.457 |    0.0940
+  cross-encoder / snippet_only                  | 0.8288 |  0.404 |  -11.2307
+  bi-encoder / title_plus_snippet               | 0.8155 |  0.348 |    0.4372
+  cross-encoder / title_plus_snippet            | 0.8016 |  0.333 |   -2.6911
+  NLI-relevance / snippet_only                  | 0.7638 |  0.262 |    0.0082
+  NLI-relevance / title_plus_snippet            | 0.7350 |  0.278 |    0.0131
+  cross-encoder / title_only                    | 0.7125 |  0.244 |   -5.8655
+  NLI-relevance / title_only                    | 0.7066 |  0.242 |    0.0056
+  bi-encoder / title_only                       | 0.7004 |  0.256 |    0.4832
+
+Results saved to filter_test_results.json

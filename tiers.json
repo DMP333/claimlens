@@ -1,0 +1,374 @@
+{
+  "5G causes COVID": {
+    "tier": "A",
+    "truth": false,
+    "note": "",
+    "reviewed": true
+  },
+  "5G towers cause cancer": {
+    "tier": "A",
+    "truth": false,
+    "note": "",
+    "reviewed": true
+  },
+  "AI will replace most jobs": {
+    "tier": "B",
+    "truth": null,
+    "note": "",
+    "reviewed": true
+  },
+  "China has the world's largest economy": {
+    "tier": "B",
+    "truth": null,
+    "note": "",
+    "reviewed": true
+  },
+  "Einstein failed math in school": {
+    "tier": "A",
+    "truth": false,
+    "note": "",
+    "reviewed": true
+  },
+  "LeBron James is the greatest basketball player of all time": {
+    "tier": "B",
+    "truth": null,
+    "note": "",
+    "reviewed": true
+  },
+  "MSG is dangerous to consume": {
+    "tier": "A",
+    "truth": false,
+    "note": "",
+    "reviewed": true
+  },
+  "antibiotics do not work against viruses": {
+    "tier": "A",
+    "truth": true,
+    "note": "",
+    "reviewed": true
+  },
+  "bats are blind": {
+    "tier": "A",
+    "truth": false,
+    "note": "",
+    "reviewed": true
+  },
+  "bulls are enraged by the color red": {
+    "tier": "A",
+    "truth": false,
+    "note": "",
+    "reviewed": true
+  },
+  "capitalism is better than socialism": {
+    "tier": "B",
+    "truth": null,
+    "note": "",
+    "reviewed": true
+  },
+  "cats are better pets than dogs": {
+    "tier": "B",
+    "truth": null,
+    "note": "",
+    "reviewed": true
+  },
+  "christopher columbus discovered america": {
+    "tier": "A",
+    "truth": false,
+    "note": "",
+    "reviewed": true
+  },
+  "climate change is caused by human activity": {
+    "tier": "A",
+    "truth": true,
+    "note": "",
+    "reviewed": true
+  },
+  "climate change is real": {
+    "tier": "A",
+    "truth": true,
+    "note": "",
+    "reviewed": true
+  },
+  "college education is worth the cost": {
+    "tier": "B",
+    "truth": null,
+    "note": "",
+    "reviewed": true
+  },
+  "cracking your knuckles causes arthritis": {
+    "tier": "A",
+    "truth": false,
+    "note": "",
+    "reviewed": true
+  },
+  "cryptocurrency is a good long-term investment": {
+    "tier": "B",
+    "truth": null,
+    "note": "",
+    "reviewed": true
+  },
+  "democracy is the best form of government": {
+    "tier": "B",
+    "truth": null,
+    "note": "",
+    "reviewed": true
+  },
+  "dogs can only see in black and white": {
+    "tier": "A",
+    "truth": false,
+    "note": "",
+    "reviewed": true
+  },
+  "drinking bleach cures diseases": {
+    "tier": "A",
+    "truth": false,
+    "note": "",
+    "reviewed": true
+  },
+  "eating carrots improves your eyesight": {
+    "tier": "B",
+    "truth": null,
+    "note": "",
+    "reviewed": true
+  },
+  "evolution is real": {
+    "tier": "A",
+    "truth": true,
+    "note": "",
+    "reviewed": true
+  },
+  "goldfish have a 3 second memory": {
+    "tier": "A",
+    "truth": false,
+    "note": "",
+    "reviewed": true
+  },
+  "goldfish have a three second memory": {
+    "tier": "A",
+    "truth": false,
+    "note": "",
+    "reviewed": true
+  },
+  "honey never expires": {
+    "tier": "A",
+    "truth": true,
+    "note": "",
+    "reviewed": true
+  },
+  "humans only use 10 percent of their brain": {
+    "tier": "A",
+    "truth": false,
+    "note": "",
+    "reviewed": true
+  },
+  "humans share about 98% of DNA with chimpanzees": {
+    "tier": "A",
+    "truth": true,
+    "note": "",
+    "reviewed": true
+  },
+  "immigration is good for the economy": {
+    "tier": "B",
+    "truth": null,
+    "note": "",
+    "reviewed": true
+  },
+  "inflation in the United States is under control": {
+    "tier": "B",
+    "truth": null,
+    "note": "",
+    "reviewed": true
+  },
+  "lemmings commit mass suicide": {
+    "tier": "A",
+    "truth": false,
+    "note": "",
+    "reviewed": true
+  },
+  "lightning never strikes the same place twice": {
+    "tier": "A",
+    "truth": false,
+    "note": "",
+    "reviewed": true
+  },
+  "nuclear energy is safe": {
+    "tier": "B",
+    "truth": null,
+    "note": "",
+    "reviewed": true
+  },
+  "octopuses have three hearts": {
+    "tier": "A",
+    "truth": true,
+    "note": "",
+    "reviewed": true
+  },
+  "organic food is healthier than conventional food": {
+    "tier": "B",
+    "truth": null,
+    "note": "",
+    "reviewed": true
+  },
+  "pineapple belongs on pizza": {
+    "tier": "B",
+    "truth": null,
+    "note": "",
+    "reviewed": true
+  },
+  "remote work is more productive than office work": {
+    "tier": "B",
+    "truth": null,
+    "note": "",
+    "reviewed": true
+  },
+  "shaving makes hair grow back thicker": {
+    "tier": "A",
+    "truth": false,
+    "note": "",
+    "reviewed": true
+  },
+  "smoking causes lung cancer": {
+    "tier": "A",
+    "truth": true,
+    "note": "",
+    "reviewed": true
+  },
+  "social media is harmful to mental health": {
+    "tier": "B",
+    "truth": null,
+    "note": "",
+    "reviewed": true
+  },
+  "sugar is worse than fat for health": {
+    "tier": "B",
+    "truth": null,
+    "note": "",
+    "reviewed": true
+  },
+  "sugar makes children hyperactive": {
+    "tier": "A",
+    "truth": false,
+    "note": "",
+    "reviewed": true
+  },
+  "the Amazon rainforest produces about 20% of the world's oxygen": {
+    "tier": "A",
+    "truth": false,
+    "note": "",
+    "reviewed": true
+  },
+  "the Beatles are the greatest band of all time": {
+    "tier": "B",
+    "truth": null,
+    "note": "",
+    "reviewed": true
+  },
+  "the Great Wall of China is the only man-made structure visible from space": {
+    "tier": "A",
+    "truth": false,
+    "note": "",
+    "reviewed": true
+  },
+  "the Great Wall of China is visible from space": {
+    "tier": "A",
+    "truth": false,
+    "note": "",
+    "reviewed": true
+  },
+  "the Sahara desert is the largest desert on earth": {
+    "tier": "A",
+    "truth": false,
+    "note": "",
+    "reviewed": true
+  },
+  "the United States economy is in a recession": {
+    "tier": "B",
+    "truth": null,
+    "note": "",
+    "reviewed": true
+  },
+  "the average human body temperature is 98.6 degrees fahrenheit": {
+    "tier": "A",
+    "truth": false,
+    "note": "",
+    "reviewed": true
+  },
+  "the earth is flat": {
+    "tier": "A",
+    "truth": false,
+    "note": "",
+    "reviewed": true
+  },
+  "the earth revolves around the sun": {
+    "tier": "A",
+    "truth": true,
+    "note": "",
+    "reviewed": true
+  },
+  "the great wall of china is visible from space": {
+    "tier": "A",
+    "truth": false,
+    "note": "",
+    "reviewed": true
+  },
+  "the moon landing was faked": {
+    "tier": "A",
+    "truth": false,
+    "note": "",
+    "reviewed": true
+  },
+  "the speed of light is constant": {
+    "tier": "A",
+    "truth": true,
+    "note": "",
+    "reviewed": true
+  },
+  "the sun is a star": {
+    "tier": "A",
+    "truth": true,
+    "note": "",
+    "reviewed": true
+  },
+  "universal basic income reduces poverty": {
+    "tier": "B",
+    "truth": null,
+    "note": "",
+    "reviewed": true
+  },
+  "vaccines cause autism": {
+    "tier": "A",
+    "truth": false,
+    "note": "",
+    "reviewed": true
+  },
+  "video games cause violence": {
+    "tier": "A",
+    "truth": false,
+    "note": "",
+    "reviewed": true
+  },
+  "violent video games cause real world violence": {
+    "tier": "A",
+    "truth": false,
+    "note": "",
+    "reviewed": true
+  },
+  "water boils at 100 degrees celsius": {
+    "tier": "A",
+    "truth": true,
+    "note": "",
+    "reviewed": true
+  },
+  "we only use 10% of our brains": {
+    "tier": "A",
+    "truth": false,
+    "note": "",
+    "reviewed": true
+  },
+  "you lose most body heat through your head": {
+    "tier": "B",
+    "truth": null,
+    "note": "",
+    "reviewed": true
+  }
+}

@@ -1,0 +1,1406 @@
+{
+  "accuracy": 0.7294633077765608,
+  "poison_frac": 0.25301204819277107,
+  "poison": [
+    [
+      "5G causes COVID",
+      "neutral",
+      "opposing",
+      0.94,
+      "A 2020 study that monitored data from Google Trends showed that searches related to coronavirus and 5G started at different times, but peaked in the same week of April 5 in six countries."
+    ],
+    [
+      "5G causes COVID",
+      "neutral",
+      "opposing",
+      0.87,
+      "The same year, the University of Surrey founded the 5G Innovation Centre, funded by \u00a3"
+    ],
+    [
+      "5G causes COVID",
+      "neutral",
+      "opposing",
+      0.98,
+      "Mobile network service use is growing, especially after the Covid-19 pandemic."
+    ],
+    [
+      "5G causes COVID",
+      "neutral",
+      "opposing",
+      0.99,
+      "To improve the quality of mobile network services, 5G comes as a network service ecosystem with low latency, which is 1ms"
+    ],
+    [
+      "5G causes COVID",
+      "neutral",
+      "opposing",
+      0.99,
+      "The outbreak of COVID-19 has led to a reduction in a number of services and activities, but it has also accelerated the development of communication and connectivity technologies as well as touchless"
+    ],
+    [
+      "5G causes COVID",
+      "neutral",
+      "opposing",
+      0.64,
+      "The UK's mobile networks have reported 20 cases of masts being targeted in suspected ar"
+    ],
+    [
+      "5G causes COVID",
+      "opposing",
+      "neutral",
+      0.99,
+      "There\u2019s no evidence to support the theory that 5G network"
+    ],
+    [
+      "5G causes COVID",
+      "opposing",
+      "neutral",
+      0.86,
+      "Fake news around the dangers of 5G technology and its links to coronavirus have spread online and on social media, despite the lack of any scientific evidence."
+    ],
+    [
+      "5G causes COVID",
+      "opposing",
+      "neutral",
+      0.64,
+      "When the coronavirus spread around the world, conspiracy theorists started spreading inaccurate theories about 5G."
+    ],
+    [
+      "5G towers cause cancer",
+      "neutral",
+      "opposing",
+      0.95,
+      "A 2020 study that monitored data from Google Trends showed that searches related to coronavirus and 5G started at different times, but peaked in the same week of April 5 in six countries."
+    ],
+    [
+      "5G towers cause cancer",
+      "neutral",
+      "opposing",
+      0.76,
+      "The WHO states that \"A large number of studies have been performed over the last two decades to assess whether mobile phones pose a potential health risk."
+    ],
+    [
+      "5G towers cause cancer",
+      "opposing",
+      "neutral",
+      0.94,
+      "This is far lower in energy compared to ionizing radiation."
+    ],
+    [
+      "5G towers cause cancer",
+      "opposing",
+      "neutral",
+      0.99,
+      "The National Cancer Institute and the World Health Organization (WHO) emphasize that there is no conclusive evidence linking non-ionizing ra"
+    ],
+    [
+      "5G towers cause cancer",
+      "neutral",
+      "opposing",
+      0.82,
+      "5G technology is the latest mobile wireless communications technology, due to be rolled out in Australia from 2019."
+    ],
+    [
+      "5G towers cause cancer",
+      "neutral",
+      "opposing",
+      0.79,
+      "Like all mobile technologies, 5G uses radiofrequency (RF) electromagnetic energy to"
+    ],
+    [
+      "Einstein failed math in school",
+      "neutral",
+      "opposing",
+      0.63,
+      "- There is no evidence that iron maidens were used for tortur"
+    ],
+    [
+      "Einstein failed math in school",
+      "neutral",
+      "supporting",
+      0.87,
+      "March 8, 2023 - Einstein's genius supposedly had at least one glaring flaw -- that he failed math at some point in his educational career."
+    ],
+    [
+      "Einstein failed math in school",
+      "neutral",
+      "opposing",
+      0.99,
+      "We might not have a solid grasp on what exactly E = mc\u00b2 means or why it\u2019s important, but anybody who successfully makes a ma"
+    ],
+    [
+      "Einstein failed math in school",
+      "neutral",
+      "opposing",
+      0.93,
+      "Now this was very advanced, because the students would normally study calculus when they were 15 years ol"
+    ],
+    [
+      "Einstein failed math in school",
+      "neutral",
+      "supporting",
+      0.79,
+      "One widely held belief about Einstein is that he failed math as a student, an assertion that is made, often accompanied by the phrase \"as everyone knows,\" by scores of books a"
+    ],
+    [
+      "MSG is dangerous to consume",
+      "opposing",
+      "neutral",
+      0.76,
+      "Feb 21, 2024 \u00b7 No , it's not bad for you, unless you decide to overdose on it."
+    ],
+    [
+      "MSG is dangerous to consume",
+      "opposing",
+      "neutral",
+      1.0,
+      "10 comments\n- scarletsmama1InactivePosted 07-04-11\nmonosodium glutamate is no different than salt."
+    ],
+    [
+      "MSG is dangerous to consume",
+      "opposing",
+      "neutral",
+      0.99,
+      "Although some consumers claim they experience what is known as the MSG symptom complex after ingesting the additive, studies are quickly highlighted to assert the absence of link between MSG and the s"
+    ],
+    [
+      "antibiotics do not work against viruses",
+      "supporting",
+      "neutral",
+      0.84,
+      "Antibiotics, which work against bacteria, have no impact, but antiviral drugs can treat life-threatening infections."
+    ],
+    [
+      "antibiotics do not work against viruses",
+      "neutral",
+      "opposing",
+      0.97,
+      "Vaccinations against Haemophilus influenzae and Streptococcus pneumoniae have good evidence to support their use."
+    ],
+    [
+      "antibiotics do not work against viruses",
+      "neutral",
+      "opposing",
+      0.92,
+      "There is strong evidence for vaccinating children under the age of 2 against Streptoco"
+    ],
+    [
+      "antibiotics do not work against viruses",
+      "neutral",
+      "opposing",
+      0.6,
+      "In this case there are antibiotics that are used to co"
+    ],
+    [
+      "antibiotics do not work against viruses",
+      "neutral",
+      "opposing",
+      0.62,
+      "The rapid worldwide spread of antibiotic resistance is quickly becoming an increasingly concerning problem for human healthcare."
+    ],
+    [
+      "antibiotics do not work against viruses",
+      "neutral",
+      "opposing",
+      0.74,
+      "Post-operative bacterial infections are a leading cause of mortality and morbidity after ongoing liver transplantation."
+    ],
+    [
+      "antibiotics do not work against viruses",
+      "neutral",
+      "supporting",
+      0.89,
+      "READ ABOUT OUR LATEST COVID-19 INFORMATION\nRead MorePeople often wonder: \u201cWhy don\u2019t antibiotics work on viruses?\u201d It\u2019s a common question, especially when symptoms like a runny nose, sore throat, sinus"
+    ],
+    [
+      "antibiotics do not work against viruses",
+      "supporting",
+      "neutral",
+      0.55,
+      "March 29, 2023 - Viruses are surrounded by a protective protein coating; they don\u2019t have cell walls that can be attacked by antibiotics like bacteria does."
+    ],
+    [
+      "bats are blind",
+      "neutral",
+      "opposing",
+      0.87,
+      "Bats (order Chiroptera ) are winged mammals, the only mammals capable of true and sustained flight."
+    ],
+    [
+      "bats are blind",
+      "neutral",
+      "opposing",
+      0.67,
+      "Bats are more agile in flight than most birds, flying with their long spread-out digits covered with"
+    ],
+    [
+      "bats are blind",
+      "neutral",
+      "opposing",
+      0.87,
+      "In comic books, the superheroes have fascinating powers and abilities that help them to deal with all kinds of challenges that arise in their daily lives."
+    ],
+    [
+      "bats are blind",
+      "neutral",
+      "opposing",
+      0.96,
+      "Arboreal mammals have evolved a range of biomechanical adaptations that allow them to navigate trees effectively."
+    ],
+    [
+      "bats are blind",
+      "neutral",
+      "opposing",
+      0.98,
+      "One such feature that has received considerable attention is the importance of vision"
+    ],
+    [
+      "bats are blind",
+      "neutral",
+      "supporting",
+      0.79,
+      "Spallanzani carried on his researches on the blind flight of bats mainly in Scandiano, in the summer of 1793 and 1794, thanks to the great number of Chiroptera (bats) in the Rocca basement and in the"
+    ],
+    [
+      "bats are blind",
+      "neutral",
+      "opposing",
+      1.0,
+      "New echolocator Echolocation is a well demonstrated convergent sensory mode in bats and toothed whales."
+    ],
+    [
+      "bats are blind",
+      "neutral",
+      "opposing",
+      1.0,
+      "Abstract Echolocating bats adapt their emissions to succeed in noisy environments."
+    ],
+    [
+      "bats are blind",
+      "neutral",
+      "opposing",
+      0.59,
+      "In the present study we investigated if echolocating humans can detect a sound-reflecting surface in the presence of"
+    ],
+    [
+      "bats are blind",
+      "neutral",
+      "opposing",
+      1.0,
+      "Decades of research into intelligent animal navigation posits that organisms build and maintain internal spatial representations (or maps) 1 of their environment, that enables the organism to determin"
+    ],
+    [
+      "bats are blind",
+      "neutral",
+      "opposing",
+      1.0,
+      "Bats hunt in the dark using echolocation, meaning they use echoes of self-produced sounds bouncing off objects to help them navigate."
+    ],
+    [
+      "bats are blind",
+      "opposing",
+      "neutral",
+      0.77,
+      "This suggests that vision is still an important means of sensory perc"
+    ],
+    [
+      "bulls are enraged by the color red",
+      "opposing",
+      "neutral",
+      0.93,
+      "They are red-green colour blind \u2014 cattle have only two cone types, sensitive at about 445 nm (blue) and 555 nm (yellow-gree"
+    ],
+    [
+      "bulls are enraged by the color red",
+      "opposing",
+      "neutral",
+      0.76,
+      "The long-standing cultural image of a raging bull charging a matador\u2019s red cape is one of the most enduring myths in animal behavior."
+    ],
+    [
+      "bulls are enraged by the color red",
+      "opposing",
+      "neutral",
+      0.85,
+      "The belief that bulls hate the color red is understandably common, but it is also a myth."
+    ],
+    [
+      "bulls are enraged by the color red",
+      "opposing",
+      "neutral",
+      0.98,
+      "Contrary to popular belief, bulls do not specifically target or attack the"
+    ],
+    [
+      "bulls are enraged by the color red",
+      "opposing",
+      "neutral",
+      0.99,
+      "May 18, 2026 \u00b7 Bulls, on the other hand, have dichromatic vision with only two types of cones."
+    ],
+    [
+      "bulls are enraged by the color red",
+      "opposing",
+      "neutral",
+      1.0,
+      "Because they lack the long-wavelength cone required to detect red light, they cannot perceive red in the"
+    ],
+    [
+      "bulls are enraged by the color red",
+      "opposing",
+      "neutral",
+      0.61,
+      "The image of an enraged bull charging a matador\u2019s crimson cape is deeply fixed in popular culture, yet this spectacle is based on a biological misconception."
+    ],
+    [
+      "bulls are enraged by the color red",
+      "opposing",
+      "neutral",
+      0.7,
+      "For example:\nIt\u2019s the motion of the cape in bullfighting, not the color, that enrage"
+    ],
+    [
+      "christopher columbus discovered america",
+      "opposing",
+      "neutral",
+      0.72,
+      "In 1837, Danish philologist Carl Christian Rafn published Antiquitates American\u00e6, which introduced Americans to the Vinland sagas\u2014medieval texts that suggest that Norse explorers \u201cdiscovered\u201d North Am"
+    ],
+    [
+      "christopher columbus discovered america",
+      "neutral",
+      "supporting",
+      0.59,
+      "From a civil liberties point of view, the claim that Christopher Columbus discovered America contains several problematic implications."
+    ],
+    [
+      "climate change is caused by human activity",
+      "neutral",
+      "supporting",
+      0.79,
+      "Surveys of scientists' views on climate change \u2013 with a focus on human caused climate change \u2013 have been undertaken since the 1970s."
+    ],
+    [
+      "climate change is caused by human activity",
+      "neutral",
+      "supporting",
+      0.99,
+      "Anthropogenic climate change is caused by human activity, as opposed to changes in climate that may have resulted as part of Earth's natural processes."
+    ],
+    [
+      "climate change is caused by human activity",
+      "neutral",
+      "supporting",
+      0.8,
+      "Climate change can be caused by various anthropogenic or natural factors that influence atmospheric changes."
+    ],
+    [
+      "climate change is caused by human activity",
+      "supporting",
+      "neutral",
+      0.99,
+      "In this study, how shoreline change responses to global climate change and human activity at the Shandong Peninsula was quantified by analyzing shoreline locations, inshore erosion/accretion rates, an"
+    ],
+    [
+      "climate change is caused by human activity",
+      "supporting",
+      "neutral",
+      0.99,
+      "Soil moisture (SM) serves as a vital indicator reflecting environmental water conditions, but significant uncertainties still persist regarding how human activity and climate change affect SM."
+    ],
+    [
+      "climate change is caused by human activity",
+      "supporting",
+      "neutral",
+      0.91,
+      "Human activity and climate change triggered the expansion of rocky desertification in the karst areas of Southwestern China"
+    ],
+    [
+      "climate change is caused by human activity",
+      "supporting",
+      "neutral",
+      0.97,
+      "March 3, 2026 - (This type of climate change is ... beings.\u201d) The unchecked burning of fossil fuels over the past 150 years has drastically increased the presence of atmospheric greenhouse gases, most"
+    ],
+    [
+      "climate change is caused by human activity",
+      "supporting",
+      "neutral",
+      0.81,
+      "Yes, by increasing the abundance of greenhouse gases in the atmosphere, human activities are amplifying Earth\u2019s natural greenhouse effect."
+    ],
+    [
+      "climate change is caused by human activity",
+      "supporting",
+      "neutral",
+      0.99,
+      "This adds enormous amounts of greenhouse gases to those naturally"
+    ],
+    [
+      "climate change is real",
+      "supporting",
+      "neutral",
+      0.93,
+      "The scientific consensus is that they cannot explain the observed warming trend."
+    ],
+    [
+      "climate change is real",
+      "neutral",
+      "supporting",
+      0.73,
+      "13 hours ago - Climate change can also be used more broadly to include changes to the climate that have happened throughout Earth's history as result of natural processes."
+    ],
+    [
+      "climate change is real",
+      "neutral",
+      "supporting",
+      0.98,
+      "The Earth\u2019s climate has always changed\nOver the course of Earth\u2019s 4.5-billion-year history, the climate has changed a lot, this is true."
+    ],
+    [
+      "climate change is real",
+      "neutral",
+      "supporting",
+      0.68,
+      "Despite decades of scientific research, climate change remains one of the most misunderstood issues of our time."
+    ],
+    [
+      "cracking your knuckles causes arthritis",
+      "neutral",
+      "supporting",
+      0.92,
+      "Whether you\u2019re a habitual knuckle cracker or cringe at the thought, you\u2019ve probably heard that cracking your knuckles enlarges them or causes arthritis in your fingers."
+    ],
+    [
+      "cracking your knuckles causes arthritis",
+      "opposing",
+      "neutral",
+      0.98,
+      "The truth \u2013 and the myth \u2013 behind the cracking knuckles debate\nCracking your knuckles may aggravate the people around you, but it probably won't raise your risk"
+    ],
+    [
+      "cracking your knuckles causes arthritis",
+      "neutral",
+      "opposing",
+      1.0,
+      "For many people, cracking stiff joints can help relieve tension and discomfort."
+    ],
+    [
+      "cracking your knuckles causes arthritis",
+      "neutral",
+      "opposing",
+      0.86,
+      "Knuckle cracking is a common habit many people find satisfying."
+    ],
+    [
+      "dogs can only see in black and white",
+      "neutral",
+      "opposing",
+      0.98,
+      "Breed standards use this terminology in the description of the ideal external appearance of each breed, although similar characteristics may be described with different terms in different breeds."
+    ],
+    [
+      "dogs can only see in black and white",
+      "neutral",
+      "opposing",
+      0.8,
+      "The most common myth about dog vision is that dogs can only see in black and white\u2014and therefore, don\u2019t have any color vision."
+    ],
+    [
+      "dogs can only see in black and white",
+      "neutral",
+      "supporting",
+      0.8,
+      "May 22, 2025 ... And then there's this long-held belief: Dogs only see in black and white."
+    ],
+    [
+      "dogs can only see in black and white",
+      "neutral",
+      "opposing",
+      0.69,
+      "Contact us Developers Policy & Safety How YouTube works Test new features NFL Sunday Ticket \u00a9 2026 Google LLC"
+    ],
+    [
+      "dogs can only see in black and white",
+      "neutral",
+      "supporting",
+      0.64,
+      "For most of your life, you have probably believed that dogs can\u2019t see light yellow, because you\u2019ve heard that they only see in black and white."
+    ],
+    [
+      "drinking bleach cures diseases",
+      "neutral",
+      "opposing",
+      0.97,
+      "Below are examples of intrinsic sources of stains:\n- Tooth wear and aging: Tooth wear is a progressive loss of enamel and dentine due to tooth erosion, abrasion and attrition."
+    ],
+    [
+      "drinking bleach cures diseases",
+      "neutral",
+      "opposing",
+      0.59,
+      "Should you worry about drinking a mouthful of bleach ..."
+    ],
+    [
+      "evolution is real",
+      "supporting",
+      "neutral",
+      0.89,
+      "Evolutionary biologists have continued to study various aspects of evolution by forming and testing hypotheses as well as constructing theories based on evidence from the field or laboratory and on da"
+    ],
+    [
+      "evolution is real",
+      "supporting",
+      "neutral",
+      0.79,
+      "Evolution is often thought of as the slow work of millennia upon millennia, subtly altering genomes as species slowly adapt to environmental changes or pressures generation after generation."
+    ],
+    [
+      "evolution is real",
+      "opposing",
+      "neutral",
+      0.99,
+      "Neither can be either confirmed or falsified by the scientific method, since neither can be tested or observed experimentally, and therefore either one must be accepted on faith!"
+    ],
+    [
+      "goldfish have a 3 second memory",
+      "neutral",
+      "supporting",
+      0.96,
+      "Most goldfish keepers will have heard the \u201cfact\u201d that goldfish memory spans are just three second"
+    ],
+    [
+      "goldfish have a 3 second memory",
+      "opposing",
+      "neutral",
+      0.77,
+      "The prevalent myth that goldfish only have a three-second memory does goldfish a great disservice, says Ellen Husain."
+    ],
+    [
+      "goldfish have a 3 second memory",
+      "opposing",
+      "neutral",
+      0.84,
+      "We have all been told that before\u2026\nWell in fact no they don\u2019t."
+    ],
+    [
+      "goldfish have a 3 second memory",
+      "opposing",
+      "neutral",
+      1.0,
+      "This idea was challenged by a study that found that goldfish remember t"
+    ],
+    [
+      "goldfish have a 3 second memory",
+      "opposing",
+      "neutral",
+      0.82,
+      "A 2022 study at Ben-Gurion University even trained goldfish to \u201cdrive\u201d a wheeled tank toward a target on land \u2014 a feat that requires much more than three seconds of working memory."
+    ],
+    [
+      "goldfish have a 3 second memory",
+      "neutral",
+      "opposing",
+      0.92,
+      "Why goldfish having a three-second memory is a myth\u2026 ..."
+    ],
+    [
+      "goldfish have a 3 second memory",
+      "opposing",
+      "neutral",
+      0.94,
+      "Many of us have believed this is true, but what if I tell you that it\u2019s actually wrong?"
+    ],
+    [
+      "goldfish have a 3 second memory",
+      "opposing",
+      "neutral",
+      1.0,
+      "In fact, goldfish actually have very good memories for fish."
+    ],
+    [
+      "goldfish have a 3 second memory",
+      "opposing",
+      "neutral",
+      0.63,
+      "They can be trained to respond various ways to certai"
+    ],
+    [
+      "goldfish have a 3 second memory",
+      "neutral",
+      "supporting",
+      0.81,
+      "MythBuster: Goldfish Have a 3-Second Memory\nYou\u2019ve probably heard it, or even said it yourself."
+    ],
+    [
+      "goldfish have a three second memory",
+      "opposing",
+      "neutral",
+      0.98,
+      "But unbeknownst to most, it's a belief that's entirely false."
+    ],
+    [
+      "goldfish have a three second memory",
+      "opposing",
+      "neutral",
+      0.86,
+      "A 2022 study at Ben-Gurion University even trained goldfish to \u201cdrive\u201d a wheeled tank toward a target on land \u2014 a feat that requires much more than three seconds of working memory."
+    ],
+    [
+      "goldfish have a three second memory",
+      "supporting",
+      "neutral",
+      1.0,
+      "Goldfish are known for their orange hues and terrible memories."
+    ],
+    [
+      "goldfish have a three second memory",
+      "opposing",
+      "neutral",
+      0.75,
+      "The prevalent myth that goldfish only have a three-second memory does goldfish a great disservice, says Ellen Husain."
+    ],
+    [
+      "goldfish have a three second memory",
+      "neutral",
+      "opposing",
+      0.93,
+      "This widely accepted notion has persisted in popular culture despite lacking any"
+    ],
+    [
+      "goldfish have a three second memory",
+      "neutral",
+      "supporting",
+      0.6,
+      "When people picture goldfish, the first thing that usually comes to mind is the old saying that they can only remember things for three seconds."
+    ],
+    [
+      "goldfish have a three second memory",
+      "neutral",
+      "opposing",
+      0.57,
+      "Contact us Developers Policy & Safety How YouTube works Test new features NFL Sunday Ticket \u00a9 2026 Google LLC"
+    ],
+    [
+      "goldfish have a three second memory",
+      "opposing",
+      "neutral",
+      0.88,
+      "But a 15-year-old schoolboy from Adelaide has just debunked that theory."
+    ],
+    [
+      "goldfish have a three second memory",
+      "opposing",
+      "neutral",
+      1.0,
+      "He has conducted a simple experiment, which proves that the humble goldfish is smarter than we think."
+    ],
+    [
+      "honey never expires",
+      "neutral",
+      "opposing",
+      1.0,
+      "The National Honey Board says that over time honey may \u201cdarken and lose ..."
+    ],
+    [
+      "honey never expires",
+      "neutral",
+      "opposing",
+      0.96,
+      "Plus, how to store honey and what to do if it crystalizes."
+    ],
+    [
+      "honey never expires",
+      "supporting",
+      "neutral",
+      0.61,
+      "Honey can last for thousands of years in sealed pots \u2013 it\u2019s even been discovered in Ancient Egyptian tombs."
+    ],
+    [
+      "honey never expires",
+      "neutral",
+      "opposing",
+      1.0,
+      "Like one of those facts you hear and immediately question."
+    ],
+    [
+      "honey never expires",
+      "neutral",
+      "opposing",
+      0.99,
+      "However, certain factors affect the colour and texture of honey in the following conditions:\n1."
+    ],
+    [
+      "honey never expires",
+      "neutral",
+      "opposing",
+      0.99,
+      "Contact us Developers Policy & Safety How YouTube works Test new features NFL Sunday Ticket \u00a9 2026 Google LLC"
+    ],
+    [
+      "honey never expires",
+      "neutral",
+      "supporting",
+      0.82,
+      "When we think of foods that don\u2019t expire, the most famous example that comes to mind is honey."
+    ],
+    [
+      "honey never expires",
+      "supporting",
+      "opposing",
+      1.0,
+      "Legally, they have to tell you it won't be at its best after a while, and the expiry date is more for the store than the consumer."
+    ],
+    [
+      "humans only use 10 percent of their brain",
+      "neutral",
+      "supporting",
+      0.92,
+      "Adding to that mystery is the contention that humans \"only\" employ 10 percent of their brain."
+    ],
+    [
+      "humans only use 10 percent of their brain",
+      "neutral",
+      "opposing",
+      0.97,
+      "Posted May 15, 2025 Reviewed by Michelle Quirk\nKey points\n- The entire brain is active in dai"
+    ],
+    [
+      "humans only use 10 percent of their brain",
+      "opposing",
+      "supporting",
+      0.99,
+      "It\u2019s one of Hollywood\u2019s favorite bits of pseudoscience: human beings use only 10 percent of their brain, and awakening the remaining 90 percent\u2014supposedl"
+    ],
+    [
+      "humans only use 10 percent of their brain",
+      "opposing",
+      "neutral",
+      0.99,
+      "Well, Morgan Freeman, even though I love your voice and your acting, your character couldn\u2019t be further from the truth."
+    ],
+    [
+      "humans only use 10 percent of their brain",
+      "neutral",
+      "opposing",
+      0.98,
+      "August 29, 2018 - It was the basis of the movie Lucy (2014), which depicted what supposedly would happen if a person actually used all 100% of her brainpower."
+    ],
+    [
+      "humans share about 98% of DNA with chimpanzees",
+      "neutral",
+      "opposing",
+      0.85,
+      "DNA evidence suggests the bonobo and common chimpanzee species diverged approximately 890,000\u2013860,000 years ago following separation of these two populations possibly because of acidification and the"
+    ],
+    [
+      "humans share about 98% of DNA with chimpanzees",
+      "supporting",
+      "neutral",
+      0.74,
+      "For example, the sequence divergence varies between 0% to 2.66% between non-coding, non-repetitive genomic regions of humans and chimpanzees."
+    ],
+    [
+      "humans share about 98% of DNA with chimpanzees",
+      "supporting",
+      "neutral",
+      1.0,
+      "Through DNA, scientists have uncovered startling evidence: not only are humans closely related to primates like chimpanzees, bonobos, and gorillas, but our genetic divergence is shockingly recent in e"
+    ],
+    [
+      "lemmings commit mass suicide",
+      "opposing",
+      "neutral",
+      0.85,
+      "This false impression popularized via nature documentaries and folklore is not always best scientifically inaccurate however also a striking instance of how sensationalism can distort herbal phenomena"
+    ],
+    [
+      "lemmings commit mass suicide",
+      "opposing",
+      "neutral",
+      0.56,
+      "It\u2019s widely believed that lemmings commit mass suicide by leaping to their deaths from cliffs."
+    ],
+    [
+      "lightning never strikes the same place twice",
+      "neutral",
+      "supporting",
+      0.98,
+      "Automated fact-verification of the claim: \"Lightning never strikes the same place twice.\""
+    ],
+    [
+      "lightning never strikes the same place twice",
+      "opposing",
+      "neutral",
+      1.0,
+      "Verdict: DISPROVED Key Findings The claim is a well-known myth explicitly debunked by every major meteorologic"
+    ],
+    [
+      "lightning never strikes the same place twice",
+      "neutral",
+      "opposing",
+      0.99,
+      "July 28, 2015 - This eventually resulted in the discovery of \"dark matter,\" which is comprised of those previously struck places in spacetime."
+    ],
+    [
+      "lightning never strikes the same place twice",
+      "neutral",
+      "supporting",
+      0.86,
+      "MythBuster: Lightning Never Strikes the Same Place Twice\nLightning is unpredictable."
+    ],
+    [
+      "lightning never strikes the same place twice",
+      "neutral",
+      "supporting",
+      0.91,
+      "It is often said that lightning never strikes the same place twice."
+    ],
+    [
+      "lightning never strikes the same place twice",
+      "opposing",
+      "neutral",
+      0.99,
+      "This expression has entered common parlance, but from a scientific point of view, it is completely false."
+    ],
+    [
+      "octopuses have three hearts",
+      "supporting",
+      "neutral",
+      1.0,
+      "Compared to many other animals, octopuses have rather a complicated circulatory system to ensure oxygenated blood reaches the extremities of their multi-limbed body."
+    ],
+    [
+      "octopuses have three hearts",
+      "supporting",
+      "neutral",
+      0.93,
+      "Two pump blood to the gills for oxygenation, while the third pumps oxygenated blood to the rest of the body."
+    ],
+    [
+      "octopuses have three hearts",
+      "neutral",
+      "supporting",
+      0.84,
+      "Three hearts have an octopus ... Do u know how many hearts octopus has ?"
+    ],
+    [
+      "octopuses have three hearts",
+      "neutral",
+      "supporting",
+      0.93,
+      "Its hard to believe that an octopus has three hearts ."
+    ],
+    [
+      "shaving makes hair grow back thicker",
+      "neutral",
+      "opposing",
+      0.99,
+      "Shaving cream is a cosmetic preparation which is designed to soften facial and body"
+    ],
+    [
+      "shaving makes hair grow back thicker",
+      "opposing",
+      "neutral",
+      0.57,
+      "Jul 30, 2021 ... Shaving removes the dead portion of hair, not the living section lying below the skin's surface, so it is unlikely to affect the rate or type of growth."
+    ],
+    [
+      "shaving makes hair grow back thicker",
+      "neutral",
+      "opposing",
+      0.66,
+      "Take me as an example\u2026 I started growing bald ..."
+    ],
+    [
+      "shaving makes hair grow back thicker",
+      "supporting",
+      "neutral",
+      1.0,
+      "In studying the effects of various physical and chemical treatments on hair growth after shaving, repeated shaving was in itself clearly shown to stimulate ..."
+    ],
+    [
+      "smoking causes lung cancer",
+      "supporting",
+      "neutral",
+      0.97,
+      "A strong relationship between cigarette smoke exposure and chronic obstructive pulmonary disease (COPD) as well as lung cancer has"
+    ],
+    [
+      "smoking causes lung cancer",
+      "supporting",
+      "neutral",
+      0.78,
+      "Key points\n- Cigarette smoking is the number one risk factor for lung cancer."
+    ],
+    [
+      "smoking causes lung cancer",
+      "supporting",
+      "neutral",
+      1.0,
+      "Cigarette smoke contains thousands of chemicals, many of which are carcinogens."
+    ],
+    [
+      "smoking causes lung cancer",
+      "neutral",
+      "opposing",
+      0.71,
+      "Every time tobacco is inhaled, it creates conditions in the body almost ideally suited"
+    ],
+    [
+      "smoking causes lung cancer",
+      "supporting",
+      "neutral",
+      1.0,
+      "Having a history of lung disease and poorer lung function increases one's risk for cancer.Footnote 14Footnote 15\nApproximately 1 in 15 Canadians will be diagnosed with lung cancer, mainly caused by sm"
+    ],
+    [
+      "smoking causes lung cancer",
+      "supporting",
+      "neutral",
+      0.7,
+      "Smoking cigarettes is the single biggest risk factor for lung cancer."
+    ],
+    [
+      "smoking causes lung cancer",
+      "supporting",
+      "neutral",
+      0.83,
+      "Tobacco use is the largest preventable cause of cancer and cancer mortality, responsible for approximately one-third of all cancer deaths annually.1 Sufficient evidence has been accumulated to infer a"
+    ],
+    [
+      "smoking causes lung cancer",
+      "supporting",
+      "neutral",
+      1.0,
+      "Smoking cigarettes can kill you, but before you die, you could experience some pretty terrible diseases and health conditions from smoking."
+    ],
+    [
+      "sugar makes children hyperactive",
+      "opposing",
+      "neutral",
+      0.99,
+      "That might be hard to believe when you\u2019ve watched a group of kids bounce off the walls at a birthday party, but decades of controlled research hav"
+    ],
+    [
+      "sugar makes children hyperactive",
+      "opposing",
+      "neutral",
+      0.91,
+      "The Sweet Truth The sugar-hyperactivity myth is based on a single study from the mid 1970s, in which a doctor removed the sugar from one child's diet and that child's behavior improved."
+    ],
+    [
+      "sugar makes children hyperactive",
+      "opposing",
+      "neutral",
+      0.6,
+      "The Sugar-Hyperactivity Myth: A Sweet Tale of Misconception\nThe idea tha"
+    ],
+    [
+      "sugar makes children hyperactive",
+      "neutral",
+      "supporting",
+      0.95,
+      "Ask any parent returning from a birthday party with kids and they\u2019ll swear that yes, of course, without doubt sugar makes their children hyperactive."
+    ],
+    [
+      "the Amazon rainforest produces about 20% of the world's oxygen",
+      "opposing",
+      "neutral",
+      0.61,
+      "A persistent myth surrounding the Amazon rainforest, that it contributes a whopping 20% of the world\u2019s oxygen, is a considerable overstatement."
+    ],
+    [
+      "the Amazon rainforest produces about 20% of the world's oxygen",
+      "opposing",
+      "neutral",
+      0.59,
+      "Why the Amazon doesn\u2019t really produce 20% of the world\u2019s oxygen\nThe myth that the Amazon rainforest forms the \u201clungs of the Earth\u201d is overstated."
+    ],
+    [
+      "the Amazon rainforest produces about 20% of the world's oxygen",
+      "neutral",
+      "supporting",
+      0.94,
+      "So, we all came across a number of photos, videos, and articles that state Amazon Rainforest produces 20% of the planet\u2019s oxygen."
+    ],
+    [
+      "the Great Wall of China is the only man-made structure visible from space",
+      "opposing",
+      "neutral",
+      0.99,
+      "From the Moon\nThe Great Wall of China cannot be seen by the naked human eye from the Moon which orbits around Earth at an average distance of 384,399 kilometres (238,854 mi)."
+    ],
+    [
+      "the Great Wall of China is the only man-made structure visible from space",
+      "neutral",
+      "opposing",
+      0.71,
+      "The walls were as tall as 2.75 metres (9 ft 0 in) at places when they were discovered, and may have been around 2 metres (6 ft"
+    ],
+    [
+      "the Great Wall of China is the only man-made structure visible from space",
+      "neutral",
+      "supporting",
+      0.96,
+      "What makes the Great Wall of China the only man-made object visible from space?"
+    ],
+    [
+      "the Great Wall of China is the only man-made structure visible from space",
+      "opposing",
+      "neutral",
+      1.0,
+      "May 6, 2025 \u00b7 Wikipedia says the claim the Great Wall can be seen from space and even the moon is actually from the 18th century.The Great Wall of China is ______ from space."
+    ],
+    [
+      "the Great Wall of China is the only man-made structure visible from space",
+      "neutral",
+      "opposing",
+      0.96,
+      "Choose a legend: The Great Wall of China is the one of the few man-made structures visible from orbit."
+    ],
+    [
+      "the Great Wall of China is the only man-made structure visible from space",
+      "opposing",
+      "neutral",
+      1.0,
+      "The Great Wall myth: a 300-year-old guess\nThe idea that the Great Wall of China is visible from the Moon didn\u2019t start with the space age; it likely traces back to 18th century writers who were simply"
+    ],
+    [
+      "the Great Wall of China is visible from space",
+      "neutral",
+      "opposing",
+      0.7,
+      "The walls were as tall as 2.75 metres (9 ft 0 in) at places when they were discovered, and may have been around 2 metres (6 ft"
+    ],
+    [
+      "the Great Wall of China is visible from space",
+      "neutral",
+      "supporting",
+      0.98,
+      "Automated fact-verification of the claim: \"The Great Wall of China is the only man-made object visible from space with the naked eye.\""
+    ],
+    [
+      "the Great Wall of China is visible from space",
+      "opposing",
+      "neutral",
+      0.86,
+      "May 6, 2025 \u00b7 Despite myths to the contrary, the wall isn't visible from the moon, and is difficult or impossible to see from Earth orbit without the high- ...I thought it was a myth that you can see"
+    ],
+    [
+      "the Great Wall of China is visible from space",
+      "opposing",
+      "neutral",
+      0.99,
+      "Jan 18, 2022 \u00b7 The Great Wall of China is itself NOT very visible from space; it's certainly long enough, but it's no wider on average than a fairly narrow ...My history teacher insists The Great Wall"
+    ],
+    [
+      "the Great Wall of China is visible from space",
+      "opposing",
+      "neutral",
+      0.99,
+      "Nov 16, 2006 \u00b7 Astronauts report it is not easily visible to the naked eye, unlike large cities or airports."
+    ],
+    [
+      "the Great Wall of China is visible from space",
+      "neutral",
+      "supporting",
+      0.6,
+      "Arthur Waldron traced the origin the \u201cGreat Wall can be seen from the moon\u201d myth in the book \u201cGreat Wall of China.\u201d It was popularized by a 1932 Ripley\u2019s Believe it or Not column (republished many tim"
+    ],
+    [
+      "the Great Wall of China is visible from space",
+      "supporting",
+      "neutral",
+      0.96,
+      "Cecil seems to think long thin things like highways, canals and Great Walls would be the most visible man-made objects from space."
+    ],
+    [
+      "the Great Wall of China is visible from space",
+      "neutral",
+      "opposing",
+      0.8,
+      "I would offer the largest man-made lakes, such as Powell, which would"
+    ],
+    [
+      "the Sahara desert is the largest desert on earth",
+      "opposing",
+      "supporting",
+      0.94,
+      "The Sahara is the largest and driest of the hot deserts on Earth, with regions where rainfall reaches the surface on average less than once a year."
+    ],
+    [
+      "the Sahara desert is the largest desert on earth",
+      "neutral",
+      "supporting",
+      0.98,
+      "What makes the Sahara the largest desert in the world?"
+    ],
+    [
+      "the average human body temperature is 98.6 degrees fahrenheit",
+      "opposing",
+      "neutral",
+      0.8,
+      "The 98.6\u00b0F standard is over 150 years old, and research shows average body temperature has since shifted."
+    ],
+    [
+      "the average human body temperature is 98.6 degrees fahrenheit",
+      "opposing",
+      "neutral",
+      0.7,
+      "Long thought to be 98.6 degrees Fahrenheit, the measurement is highly personal and varies depending on time of day, among other factors, new research"
+    ],
+    [
+      "the earth is flat",
+      "opposing",
+      "neutral",
+      0.95,
+      "The claims of modern flat Earth proponents are not based on scientific know"
+    ],
+    [
+      "the earth is flat",
+      "opposing",
+      "neutral",
+      0.88,
+      "Myth of the flat Earth\nThe myth of the flat Earth, or the flat-Earth error, is a modern historical misconception that European scholars and educated people during the Middle Ages believed the Earth to"
+    ],
+    [
+      "the earth is flat",
+      "neutral",
+      "opposing",
+      1.0,
+      "Because of the increasing anthropogenic interruption and sea level rise, tidal f"
+    ],
+    [
+      "the earth is flat",
+      "neutral",
+      "opposing",
+      0.95,
+      "This was a magical revelation for the Greeks and the Egyptians, who were able to see from the motions of the stars and the way the Sun moved."
+    ],
+    [
+      "the earth is flat",
+      "neutral",
+      "opposing",
+      0.98,
+      "They saw the way the Sun\u2019s shadow worked in different plac"
+    ],
+    [
+      "the earth is flat",
+      "neutral",
+      "supporting",
+      0.76,
+      "Sean Bryant, Science Reference Specialist, Science, Technology and Business Division\nNote: This guide is adapted from a 1998 reference list created by Ruth Freitag titled \"The Flat Earth and its Advoc"
+    ],
+    [
+      "the earth is flat",
+      "neutral",
+      "supporting",
+      0.82,
+      "Flat earth\nThe concept of a flat Earth posits that the planet is not a spherical object but rather a flat disc."
+    ],
+    [
+      "the earth revolves around the sun",
+      "neutral",
+      "opposing",
+      0.94,
+      "A lunar day is equal to one lunar month (one synodic orbit around Earth) due to it being tidally locked to Earth."
+    ],
+    [
+      "the earth revolves around the sun",
+      "neutral",
+      "opposing",
+      0.79,
+      "Since the Moon is not tidally locked to the Sun, lunar daylight and night times both o"
+    ],
+    [
+      "the earth revolves around the sun",
+      "supporting",
+      "neutral",
+      0.98,
+      "Sun is the center of the solar system and all the planets are revolving around the Sun."
+    ],
+    [
+      "the earth revolves around the sun",
+      "neutral",
+      "supporting",
+      0.72,
+      "1 In 4 Americans Thinks The Sun Goes Around The Earth, Survey Says\nA quarter of Americans surveyed could not correctly answer that the Earth revolves around the sun and not the other way around, accor"
+    ],
+    [
+      "the earth revolves around the sun",
+      "neutral",
+      "opposing",
+      0.73,
+      "Poll: Sun Revolves Around the Earth\nAccording to a July 1999 Gallop Poll, 18% of Americans still believe that the sun revolves around the earth.POLL RELEASES\nNew Poll Gauges Americans' General Knowled"
+    ],
+    [
+      "the earth revolves around the sun",
+      "neutral",
+      "supporting",
+      0.98,
+      "An animal could not learn that the world is round, that the earth revolves round the sun, or the construction of the electric telegraph."
+    ],
+    [
+      "the great wall of china is visible from space",
+      "neutral",
+      "opposing",
+      0.85,
+      "The walls were as tall as 2.75 metres (9 ft 0 in) at places when they were discovered, and may have been around 2 metres (6 ft"
+    ],
+    [
+      "the great wall of china is visible from space",
+      "neutral",
+      "supporting",
+      0.98,
+      "Automated fact-verification of the claim: \"The Great Wall of China is the only man-made object visible from space with the naked eye.\""
+    ],
+    [
+      "the great wall of china is visible from space",
+      "neutral",
+      "supporting",
+      0.98,
+      "Choose a legend: The Great Wall of China is the one of the few man-made structures visible from orbit."
+    ],
+    [
+      "the great wall of china is visible from space",
+      "opposing",
+      "neutral",
+      0.95,
+      "It\u2019s a very thin line, almost the same colour as the landscape."
+    ],
+    [
+      "the great wall of china is visible from space",
+      "opposing",
+      "neutral",
+      1.0,
+      "Someone on the webmaster world forum thought the same thing, and another person pointed them to the snopes article showing that the claim was false."
+    ],
+    [
+      "the great wall of china is visible from space",
+      "supporting",
+      "neutral",
+      0.94,
+      "cartoon called it \u201cthe mightiest work of man, the only one that would be visible to the"
+    ],
+    [
+      "the great wall of china is visible from space",
+      "neutral",
+      "supporting",
+      0.95,
+      "The myth regarding the Great Wall of China can be seen from outer space and has been circulated for hundreds of years."
+    ],
+    [
+      "the moon landing was faked",
+      "neutral",
+      "supporting",
+      0.92,
+      "During \"Into The Wild Green Yonder\" President Nixon's head admits that the Moon landing was faked - it was really carried out on Venus."
+    ],
+    [
+      "the moon landing was faked",
+      "supporting",
+      "neutral",
+      0.81,
+      "It's now been nearly four decades since Neil Armstrong took his \"giant leap for mankind\" \u2014 if, that is, he ever set foot off this planet."
+    ],
+    [
+      "the moon landing was faked",
+      "opposing",
+      "neutral",
+      0.95,
+      "What in the World\nWhat in the World\nWhy some people claim the Moon landing was faked\nAvailable for over a year\nAmerican astronauts Neil Armstrong and Buzz Aldrin landed on the Moon in 1969."
+    ],
+    [
+      "the moon landing was faked",
+      "opposing",
+      "neutral",
+      0.92,
+      "Why is it unlikely the Moon landing was filmed on Earth?"
+    ],
+    [
+      "the speed of light is constant",
+      "supporting",
+      "neutral",
+      0.99,
+      "Experiments such as the Kennedy\u2013Thorndike experiment and the Ives\u2013Stilwell experiment have shown this postulate to match experimental observations."
+    ],
+    [
+      "the speed of light is constant",
+      "neutral",
+      "opposing",
+      0.62,
+      "Others differ in their approach to the geometry of spacetime and the linear transformations between frames of reference."
+    ],
+    [
+      "the speed of light is constant",
+      "neutral",
+      "opposing",
+      0.93,
+      "This changed Newton's mechanics situations involving all motions, especially velocities close to that of light: 18 (known as relativistic velocities)."
+    ],
+    [
+      "the speed of light is constant",
+      "opposing",
+      "neutral",
+      0.92,
+      "This paper shows how the miscalculated result of an experiment caused the birth of the theory of relativity."
+    ],
+    [
+      "the speed of light is constant",
+      "opposing",
+      "neutral",
+      0.97,
+      "Abstract The possible time variation of the fundamental constants of nature has been an active subject of research since the large-number hypothesis was proposed by Dirac."
+    ],
+    [
+      "the speed of light is constant",
+      "neutral",
+      "opposing",
+      0.83,
+      "Before we can discuss how to travel faster than light, we need to understand why this is a problem in the first place."
+    ],
+    [
+      "the speed of light is constant",
+      "neutral",
+      "supporting",
+      0.88,
+      "Discussion Overview\nThe discussion revolves around the constancy of the speed of light, exploring its implications in physics, historical experiments that support this constancy, and the theoretical f"
+    ],
+    [
+      "the speed of light is constant",
+      "opposing",
+      "neutral",
+      0.62,
+      "Speed of Light May Not Be Constant, Physicists Say\nThe speed of light is constant, or so textbooks say."
+    ],
+    [
+      "the sun is a star",
+      "neutral",
+      "opposing",
+      0.94,
+      "Beckles\nCover artist Khadijah Khatib\nSeries The Nico di Angelo Adventures\nPublisher More publishers:\nPublication date May 2, 2023 (English) More dates:\nMedia ty"
+    ],
+    [
+      "the sun is a star",
+      "neutral",
+      "supporting",
+      0.97,
+      "The Sun Is Also a Star\nDirected by Ry Russo-Young\nScreenplay by Tracy Oliver\nCinematography Autumn Durald\nMusic by Herdis Stef\u00e1nsd\u00f3ttir\nDistributed by Warner Bros. Pictures\nRelease date\nThe Sun Is Als"
+    ],
+    [
+      "the sun is a star",
+      "neutral",
+      "opposing",
+      0.87,
+      "Entertainment\n\u2018The Sun Is Also A Star\u2019 Is A Fictional Love Story With Very Real Stakes\nSome of the most heartwarming love stories are based on true events."
+    ],
+    [
+      "the sun is a star",
+      "neutral",
+      "opposing",
+      0.72,
+      "Contact us Developers Policy & Safety How YouTube works Test new features NFL Sunday Ticket \u00a9 2026 Google LLC"
+    ]
+  ]
+}

@@ -1,0 +1,374 @@
+{
+  "5G causes COVID": {
+    "negation": "It is not true that 5G causes COVID",
+    "method": "periphrastic",
+    "auto_confidence": 0.5,
+    "reviewed": true
+  },
+  "5G towers cause cancer": {
+    "negation": "5G towers do not cause cancer",
+    "method": "verb-VBP",
+    "auto_confidence": 0.8,
+    "reviewed": true
+  },
+  "AI will replace most jobs": {
+    "negation": "AI will not replace most jobs",
+    "method": "insert-aux",
+    "auto_confidence": 0.85,
+    "reviewed": true
+  },
+  "China has the world's largest economy": {
+    "negation": "China does not have the world's largest economy",
+    "method": "have-neg",
+    "auto_confidence": 0.85,
+    "reviewed": true
+  },
+  "Einstein failed math in school": {
+    "negation": "Einstein did not fail math in school",
+    "method": "verb-VBD",
+    "auto_confidence": 0.6,
+    "reviewed": true
+  },
+  "LeBron James is the greatest basketball player of all time": {
+    "negation": "LeBron James is not the greatest basketball player of all time",
+    "method": "insert-aux",
+    "auto_confidence": 0.85,
+    "reviewed": true
+  },
+  "MSG is dangerous to consume": {
+    "negation": "MSG is not dangerous to consume",
+    "method": "insert-aux",
+    "auto_confidence": 0.85,
+    "reviewed": true
+  },
+  "antibiotics do not work against viruses": {
+    "negation": "antibiotics work against viruses",
+    "method": "affirm",
+    "auto_confidence": 0.7,
+    "reviewed": true
+  },
+  "bats are blind": {
+    "negation": "bats are not blind",
+    "method": "insert-aux",
+    "auto_confidence": 0.85,
+    "reviewed": true
+  },
+  "bulls are enraged by the color red": {
+    "negation": "bulls are not enraged by the color red",
+    "method": "insert-aux",
+    "auto_confidence": 0.85,
+    "reviewed": true
+  },
+  "capitalism is better than socialism": {
+    "negation": "capitalism is not better than socialism",
+    "method": "insert-aux",
+    "auto_confidence": 0.85,
+    "reviewed": true
+  },
+  "cats are better pets than dogs": {
+    "negation": "cats are not better pets than dogs",
+    "method": "insert-aux",
+    "auto_confidence": 0.85,
+    "reviewed": true
+  },
+  "christopher columbus discovered america": {
+    "negation": "christopher columbus did not discover america",
+    "method": "verb-VBD",
+    "auto_confidence": 0.6,
+    "reviewed": true
+  },
+  "climate change is caused by human activity": {
+    "negation": "climate change is not caused by human activity",
+    "method": "insert-aux",
+    "auto_confidence": 0.85,
+    "reviewed": true
+  },
+  "climate change is real": {
+    "negation": "climate change is not real",
+    "method": "insert-aux",
+    "auto_confidence": 0.85,
+    "reviewed": true
+  },
+  "college education is worth the cost": {
+    "negation": "college education is not worth the cost",
+    "method": "insert-aux",
+    "auto_confidence": 0.85,
+    "reviewed": true
+  },
+  "cracking your knuckles causes arthritis": {
+    "negation": "cracking your knuckles does not cause arthritis",
+    "method": "verb-VBZ",
+    "auto_confidence": 0.8,
+    "reviewed": true
+  },
+  "cryptocurrency is a good long-term investment": {
+    "negation": "cryptocurrency is not a good long-term investment",
+    "method": "insert-aux",
+    "auto_confidence": 0.85,
+    "reviewed": true
+  },
+  "democracy is the best form of government": {
+    "negation": "democracy is not the best form of government",
+    "method": "insert-aux",
+    "auto_confidence": 0.85,
+    "reviewed": true
+  },
+  "dogs can only see in black and white": {
+    "negation": "dogs cannot see only in black and white",
+    "method": "modal",
+    "auto_confidence": 0.6,
+    "reviewed": true
+  },
+  "drinking bleach cures diseases": {
+    "negation": "It is not true that drinking bleach cures diseases",
+    "method": "periphrastic",
+    "auto_confidence": 0.5,
+    "reviewed": true
+  },
+  "eating carrots improves your eyesight": {
+    "negation": "eating carrots does not improve your eyesight",
+    "method": "verb-VBZ",
+    "auto_confidence": 0.8,
+    "reviewed": true
+  },
+  "evolution is real": {
+    "negation": "evolution is not real",
+    "method": "insert-aux",
+    "auto_confidence": 0.85,
+    "reviewed": true
+  },
+  "goldfish have a 3 second memory": {
+    "negation": "goldfish do not have a 3 second memory",
+    "method": "have-neg",
+    "auto_confidence": 0.85,
+    "reviewed": true
+  },
+  "goldfish have a three second memory": {
+    "negation": "goldfish do not have a three second memory",
+    "method": "have-neg",
+    "auto_confidence": 0.85,
+    "reviewed": true
+  },
+  "honey never expires": {
+    "negation": "honey expires",
+    "method": "affirm",
+    "auto_confidence": 0.7,
+    "reviewed": true
+  },
+  "humans only use 10 percent of their brain": {
+    "negation": "humans do not use only 10 percent of their brain",
+    "method": "verb-VBP",
+    "auto_confidence": 0.8,
+    "reviewed": true
+  },
+  "humans share about 98% of DNA with chimpanzees": {
+    "negation": "It is not true that humans share about 98% of DNA with chimpanzees",
+    "method": "periphrastic",
+    "auto_confidence": 0.5,
+    "reviewed": true
+  },
+  "immigration is good for the economy": {
+    "negation": "immigration is not good for the economy",
+    "method": "insert-aux",
+    "auto_confidence": 0.85,
+    "reviewed": true
+  },
+  "inflation in the United States is under control": {
+    "negation": "inflation in the United States is not under control",
+    "method": "insert-aux",
+    "auto_confidence": 0.85,
+    "reviewed": true
+  },
+  "lemmings commit mass suicide": {
+    "negation": "lemmings do not commit mass suicide",
+    "method": "verb-VBP",
+    "auto_confidence": 0.8,
+    "reviewed": true
+  },
+  "lightning never strikes the same place twice": {
+    "negation": "lightning strikes the same place twice",
+    "method": "affirm",
+    "auto_confidence": 0.7,
+    "reviewed": true
+  },
+  "nuclear energy is safe": {
+    "negation": "nuclear energy is not safe",
+    "method": "insert-aux",
+    "auto_confidence": 0.85,
+    "reviewed": true
+  },
+  "octopuses have three hearts": {
+    "negation": "octopuses do not have three hearts",
+    "method": "have-neg",
+    "auto_confidence": 0.85,
+    "reviewed": true
+  },
+  "organic food is healthier than conventional food": {
+    "negation": "organic food is not healthier than conventional food",
+    "method": "insert-aux",
+    "auto_confidence": 0.85,
+    "reviewed": true
+  },
+  "pineapple belongs on pizza": {
+    "negation": "It is not true that pineapple belongs on pizza",
+    "method": "periphrastic",
+    "auto_confidence": 0.5,
+    "reviewed": true
+  },
+  "remote work is more productive than office work": {
+    "negation": "remote work is not more productive than office work",
+    "method": "insert-aux",
+    "auto_confidence": 0.85,
+    "reviewed": true
+  },
+  "shaving makes hair grow back thicker": {
+    "negation": "shaving does not make hair grow back thicker",
+    "method": "verb-VBZ",
+    "auto_confidence": 0.8,
+    "reviewed": true
+  },
+  "smoking causes lung cancer": {
+    "negation": "It is not true that smoking causes lung cancer",
+    "method": "periphrastic",
+    "auto_confidence": 0.5,
+    "reviewed": true
+  },
+  "social media is harmful to mental health": {
+    "negation": "social media is not harmful to mental health",
+    "method": "insert-aux",
+    "auto_confidence": 0.85,
+    "reviewed": true
+  },
+  "sugar is worse than fat for health": {
+    "negation": "sugar is not worse than fat for health",
+    "method": "insert-aux",
+    "auto_confidence": 0.85,
+    "reviewed": true
+  },
+  "sugar makes children hyperactive": {
+    "negation": "sugar does not make children hyperactive",
+    "method": "verb-VBZ",
+    "auto_confidence": 0.8,
+    "reviewed": true
+  },
+  "the Amazon rainforest produces about 20% of the world's oxygen": {
+    "negation": "the Amazon rainforest does not produce about 20% of the world's oxygen",
+    "method": "verb-VBZ",
+    "auto_confidence": 0.8,
+    "reviewed": true
+  },
+  "the Beatles are the greatest band of all time": {
+    "negation": "the Beatles are not the greatest band of all time",
+    "method": "insert-aux",
+    "auto_confidence": 0.85,
+    "reviewed": true
+  },
+  "the Great Wall of China is the only man-made structure visible from space": {
+    "negation": "the Great Wall of China is not the only man-made structure visible from space",
+    "method": "insert-aux",
+    "auto_confidence": 0.85,
+    "reviewed": true
+  },
+  "the Great Wall of China is visible from space": {
+    "negation": "the Great Wall of China is not visible from space",
+    "method": "insert-aux",
+    "auto_confidence": 0.85,
+    "reviewed": true
+  },
+  "the Sahara desert is the largest desert on earth": {
+    "negation": "the Sahara desert is not the largest desert on earth",
+    "method": "insert-aux",
+    "auto_confidence": 0.85,
+    "reviewed": true
+  },
+  "the United States economy is in a recession": {
+    "negation": "the United States economy is not in a recession",
+    "method": "insert-aux",
+    "auto_confidence": 0.85,
+    "reviewed": true
+  },
+  "the average human body temperature is 98.6 degrees fahrenheit": {
+    "negation": "the average human body temperature is not 98.6 degrees fahrenheit",
+    "method": "insert-aux",
+    "auto_confidence": 0.85,
+    "reviewed": true
+  },
+  "the earth is flat": {
+    "negation": "the earth is not flat",
+    "method": "insert-aux",
+    "auto_confidence": 0.85,
+    "reviewed": true
+  },
+  "the earth revolves around the sun": {
+    "negation": "the earth does not revolve around the sun",
+    "method": "verb-VBZ",
+    "auto_confidence": 0.8,
+    "reviewed": true
+  },
+  "the great wall of china is visible from space": {
+    "negation": "the great wall of china is not visible from space",
+    "method": "insert-aux",
+    "auto_confidence": 0.85,
+    "reviewed": true
+  },
+  "the moon landing was faked": {
+    "negation": "the moon landing was not faked",
+    "method": "insert-aux",
+    "auto_confidence": 0.85,
+    "reviewed": true
+  },
+  "the speed of light is constant": {
+    "negation": "the speed of light is not constant",
+    "method": "insert-aux",
+    "auto_confidence": 0.85,
+    "reviewed": true
+  },
+  "the sun is a star": {
+    "negation": "the sun is not a star",
+    "method": "insert-aux",
+    "auto_confidence": 0.85,
+    "reviewed": true
+  },
+  "universal basic income reduces poverty": {
+    "negation": "It is not true that universal basic income reduces poverty",
+    "method": "periphrastic",
+    "auto_confidence": 0.5,
+    "reviewed": true
+  },
+  "vaccines cause autism": {
+    "negation": "vaccines do not cause autism",
+    "method": "verb-VBP",
+    "auto_confidence": 0.8,
+    "reviewed": true
+  },
+  "video games cause violence": {
+    "negation": "video games do not cause violence",
+    "method": "verb-VBP",
+    "auto_confidence": 0.8,
+    "reviewed": true
+  },
+  "violent video games cause real world violence": {
+    "negation": "violent video games do not cause real world violence",
+    "method": "verb-VBP",
+    "auto_confidence": 0.8,
+    "reviewed": true
+  },
+  "water boils at 100 degrees celsius": {
+    "negation": "water do not boils at 100 degrees celsius",
+    "method": "verb-VBP",
+    "auto_confidence": 0.8,
+    "reviewed": true
+  },
+  "we only use 10% of our brains": {
+    "negation": "it is not true that we only use 10% of our brains",
+    "method": "verb-VBP",
+    "auto_confidence": 0.8,
+    "reviewed": true
+  },
+  "you lose most body heat through your head": {
+    "negation": "you do not lose most body heat through your head",
+    "method": "verb-VBP",
+    "auto_confidence": 0.8,
+    "reviewed": true
+  }
+}

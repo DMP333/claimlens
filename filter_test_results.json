@@ -1,0 +1,65 @@
+[
+  {
+    "approach": "bi-encoder / title_only",
+    "input": "title_only",
+    "auc": 0.7004213708063096,
+    "f1": 0.25641025641025644,
+    "thresh": 0.48315873742103577
+  },
+  {
+    "approach": "bi-encoder / snippet_only",
+    "input": "snippet_only",
+    "auc": 0.8696152614300585,
+    "f1": 0.45679012345679015,
+    "thresh": 0.09400175511837006
+  },
+  {
+    "approach": "bi-encoder / title_plus_snippet",
+    "input": "title_plus_snippet",
+    "auc": 0.81548762911362,
+    "f1": 0.3478260869565218,
+    "thresh": 0.43715667724609375
+  },
+  {
+    "approach": "cross-encoder / title_only",
+    "input": "title_only",
+    "auc": 0.7125370325886781,
+    "f1": 0.244047619047619,
+    "thresh": -5.865476131439209
+  },
+  {
+    "approach": "cross-encoder / snippet_only",
+    "input": "snippet_only",
+    "auc": 0.8287793258067099,
+    "f1": 0.4038461538461538,
+    "thresh": -11.230709075927734
+  },
+  {
+    "approach": "cross-encoder / title_plus_snippet",
+    "input": "title_plus_snippet",
+    "auc": 0.8015753863399793,
+    "f1": 0.3325740318906606,
+    "thresh": -2.691124677658081
+  },
+  {
+    "approach": "NLI-relevance / title_only",
+    "input": "title_only",
+    "auc": 0.7065717831691888,
+    "f1": 0.24242424242424246,
+    "thresh": 0.00560760498046875
+  },
+  {
+    "approach": "NLI-relevance / snippet_only",
+    "input": "snippet_only",
+    "auc": 0.7637621106573784,
+    "f1": 0.2616487455197133,
+    "thresh": 0.00821685791015625
+  },
+  {
+    "approach": "NLI-relevance / title_plus_snippet",
+    "input": "title_plus_snippet",
+    "auc": 0.7349817839698936,
+    "f1": 0.27848101265822783,
+    "thresh": 0.0130615234375
+  }
+]

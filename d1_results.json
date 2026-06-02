@@ -1,0 +1,154 @@
+{
+  "tally": {
+    "confident_nonneutral": 355,
+    "to_neutral": 99,
+    "flip": 237,
+    "same_polarity": 19
+  },
+  "offenders": [
+    {
+      "claim": "AI will replace most jobs",
+      "neg": "AI will not replace most jobs",
+      "sent": "We are not talking about a crisis here, but a dissolution.",
+      "claim_label": "opposing",
+      "claim_conf": 0.948,
+      "neg_label": "opposing",
+      "neg_conf": 0.971
+    },
+    {
+      "claim": "antibiotics do not work against viruses",
+      "neg": "antibiotics work against viruses",
+      "sent": "Post-operative bacterial infections are a leading cause of mortality and morbidity after ongoing liver transplantation.",
+      "claim_label": "opposing",
+      "claim_conf": 0.737,
+      "neg_label": "opposing",
+      "neg_conf": 0.99
+    },
+    {
+      "claim": "goldfish have a 3 second memory",
+      "neg": "goldfish do not have a 3 second memory",
+      "sent": "In fact, goldfish can retain memories for at least three months, can be trained, a",
+      "claim_label": "opposing",
+      "claim_conf": 0.952,
+      "neg_label": "opposing",
+      "neg_conf": 0.912
+    },
+    {
+      "claim": "goldfish have a three second memory",
+      "neg": "goldfish do not have a three second memory",
+      "sent": "In fact, goldfish can retain memories for at least three months, can be trained, a",
+      "claim_label": "opposing",
+      "claim_conf": 0.885,
+      "neg_label": "opposing",
+      "neg_conf": 0.902
+    },
+    {
+      "claim": "goldfish have a three second memory",
+      "neg": "goldfish do not have a three second memory",
+      "sent": "This widely accepted notion has persisted in popular culture despite lacking any",
+      "claim_label": "opposing",
+      "claim_conf": 0.933,
+      "neg_label": "opposing",
+      "neg_conf": 0.88
+    },
+    {
+      "claim": "goldfish have a three second memory",
+      "neg": "goldfish do not have a three second memory",
+      "sent": "Contact us Developers Policy & Safety How YouTube works Test new features NFL Sunday Ticket \u00a9 2026 Google LLC",
+      "claim_label": "opposing",
+      "claim_conf": 0.574,
+      "neg_label": "opposing",
+      "neg_conf": 0.806
+    },
+    {
+      "claim": "honey never expires",
+      "neg": "honey expires",
+      "sent": "Plus, how to store honey and what to do if it crystalizes.",
+      "claim_label": "opposing",
+      "claim_conf": 0.965,
+      "neg_label": "opposing",
+      "neg_conf": 0.869
+    },
+    {
+      "claim": "honey never expires",
+      "neg": "honey expires",
+      "sent": "Like one of those facts you hear and immediately question.",
+      "claim_label": "opposing",
+      "claim_conf": 0.997,
+      "neg_label": "opposing",
+      "neg_conf": 0.985
+    },
+    {
+      "claim": "honey never expires",
+      "neg": "honey expires",
+      "sent": "Contact us Developers Policy & Safety How YouTube works Test new features NFL Sunday Ticket \u00a9 2026 Google LLC",
+      "claim_label": "opposing",
+      "claim_conf": 0.994,
+      "neg_label": "opposing",
+      "neg_conf": 0.979
+    },
+    {
+      "claim": "the Great Wall of China is visible from space",
+      "neg": "the Great Wall of China is not visible from space",
+      "sent": "The walls were as tall as 2.75 metres (9 ft 0 in) at places when they were discovered, and may have been around 2 metres (6 ft",
+      "claim_label": "opposing",
+      "claim_conf": 0.703,
+      "neg_label": "opposing",
+      "neg_conf": 0.862
+    },
+    {
+      "claim": "the earth revolves around the sun",
+      "neg": "the earth does not revolve around the sun",
+      "sent": "Poll: Sun Revolves Around the Earth\nAccording to a July 1999 Gallop Poll, 18% of Americans still believe that the sun revolves around the earth.POLL RELEASES\nNew Poll Gauges Americans' General Knowled",
+      "claim_label": "opposing",
+      "claim_conf": 0.733,
+      "neg_label": "opposing",
+      "neg_conf": 0.714
+    },
+    {
+      "claim": "the great wall of china is visible from space",
+      "neg": "the great wall of china is not visible from space",
+      "sent": "The walls were as tall as 2.75 metres (9 ft 0 in) at places when they were discovered, and may have been around 2 metres (6 ft",
+      "claim_label": "opposing",
+      "claim_conf": 0.852,
+      "neg_label": "opposing",
+      "neg_conf": 0.919
+    },
+    {
+      "claim": "the great wall of china is visible from space",
+      "neg": "the great wall of china is not visible from space",
+      "sent": "Even from low Earth orbit the Great Wall of China is extremely hard to spot with the naked eye.",
+      "claim_label": "opposing",
+      "claim_conf": 0.972,
+      "neg_label": "opposing",
+      "neg_conf": 0.838
+    },
+    {
+      "claim": "the sun is a star",
+      "neg": "the sun is not a star",
+      "sent": "Beckles\nCover artist Khadijah Khatib\nSeries The Nico di Angelo Adventures\nPublisher More publishers:\nPublication date May 2, 2023 (English) More dates:\nMedia ty",
+      "claim_label": "opposing",
+      "claim_conf": 0.943,
+      "neg_label": "opposing",
+      "neg_conf": 0.705
+    },
+    {
+      "claim": "the sun is a star",
+      "neg": "the sun is not a star",
+      "sent": "Entertainment\n\u2018The Sun Is Also A Star\u2019 Is A Fictional Love Story With Very Real Stakes\nSome of the most heartwarming love stories are based on true events.",
+      "claim_label": "opposing",
+      "claim_conf": 0.872,
+      "neg_label": "opposing",
+      "neg_conf": 0.968
+    },
+    {
+      "claim": "the sun is a star",
+      "neg": "the sun is not a star",
+      "sent": "His ideas were met with disapproval and he was finally\nimprisoned for impiety, because his ideas did not f",
+      "claim_label": "opposing",
+      "claim_conf": 0.736,
+      "neg_label": "opposing",
+      "neg_conf": 0.776
+    }
+  ]
+}

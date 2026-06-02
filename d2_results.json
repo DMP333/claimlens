@@ -1,0 +1,11 @@
+{
+  "contam_neutralization": true,
+  "tierA_correct": {
+    "3K": 28,
+    "3A": 27,
+    "3J": 25,
+    "3N": 31,
+    "3R": 29
+  },
+  "total_A": 41
+}

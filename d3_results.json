@@ -1,0 +1,416 @@
+{
+  "3K": [
+    [
+      "5G causes COVID",
+      0.0,
+      0.0
+    ],
+    [
+      "5G towers cause cancer",
+      0.0,
+      0.05
+    ],
+    [
+      "Einstein failed math in school",
+      0.231,
+      0.188
+    ],
+    [
+      "MSG is dangerous to consume",
+      0.083,
+      0.133
+    ],
+    [
+      "antibiotics do not work against viruses",
+      0.167,
+      0.185
+    ],
+    [
+      "bats are blind",
+      0.048,
+      0.042
+    ],
+    [
+      "bulls are enraged by the color red",
+      0.5,
+      0.462
+    ],
+    [
+      "christopher columbus discovered america",
+      0.389,
+      0.381
+    ],
+    [
+      "climate change is caused by human activity",
+      0.8,
+      0.75
+    ],
+    [
+      "climate change is real",
+      1.0,
+      1.0
+    ],
+    [
+      "cracking your knuckles causes arthritis",
+      0.111,
+      0.167
+    ],
+    [
+      "dogs can only see in black and white",
+      0.25,
+      0.267
+    ],
+    [
+      "drinking bleach cures diseases",
+      0.154,
+      0.188
+    ],
+    [
+      "evolution is real",
+      1.0,
+      1.0
+    ],
+    [
+      "goldfish have a 3 second memory",
+      0.182,
+      0.143
+    ],
+    [
+      "goldfish have a three second memory",
+      0.083,
+      0.067
+    ],
+    [
+      "honey never expires",
+      0.364,
+      0.286
+    ],
+    [
+      "humans only use 10 percent of their brain",
+      0.417,
+      0.333
+    ],
+    [
+      "humans share about 98% of DNA with chimpanzees",
+      0.353,
+      0.35
+    ],
+    [
+      "lemmings commit mass suicide",
+      0.222,
+      0.25
+    ],
+    [
+      "lightning never strikes the same place twice",
+      0.417,
+      0.333
+    ],
+    [
+      "octopuses have three hearts",
+      0.385,
+      0.312
+    ],
+    [
+      "shaving makes hair grow back thicker",
+      0.286,
+      0.292
+    ],
+    [
+      "smoking causes lung cancer",
+      0.815,
+      0.8
+    ],
+    [
+      "sugar makes children hyperactive",
+      0.4,
+      0.391
+    ],
+    [
+      "the Amazon rainforest produces about 20% of the world's oxygen",
+      0.6,
+      0.667
+    ],
+    [
+      "the Great Wall of China is the only man-made structure visible from space",
+      0.154,
+      0.125
+    ],
+    [
+      "the Great Wall of China is visible from space",
+      0.286,
+      0.353
+    ],
+    [
+      "the Sahara desert is the largest desert on earth",
+      0.706,
+      0.7
+    ],
+    [
+      "the average human body temperature is 98.6 degrees fahrenheit",
+      0.357,
+      0.412
+    ],
+    [
+      "the earth is flat",
+      0.462,
+      0.375
+    ],
+    [
+      "the earth revolves around the sun",
+      0.733,
+      0.778
+    ],
+    [
+      "the great wall of china is visible from space",
+      0.533,
+      0.556
+    ],
+    [
+      "the moon landing was faked",
+      0.5,
+      0.471
+    ],
+    [
+      "the speed of light is constant",
+      0.261,
+      0.269
+    ],
+    [
+      "the sun is a star",
+      0.583,
+      0.533
+    ],
+    [
+      "vaccines cause autism",
+      0.105,
+      0.136
+    ],
+    [
+      "video games cause violence",
+      0.692,
+      0.621
+    ],
+    [
+      "violent video games cause real world violence",
+      0.125,
+      0.111
+    ],
+    [
+      "water boils at 100 degrees celsius",
+      0.357,
+      0.294
+    ],
+    [
+      "we only use 10% of our brains",
+      0.444,
+      0.333
+    ]
+  ],
+  "3N": [
+    [
+      "5G causes COVID",
+      0.0,
+      0.0
+    ],
+    [
+      "5G towers cause cancer",
+      0.0,
+      0.0
+    ],
+    [
+      "Einstein failed math in school",
+      0.25,
+      0.25
+    ],
+    [
+      "MSG is dangerous to consume",
+      0.0,
+      0.0
+    ],
+    [
+      "antibiotics do not work against viruses",
+      0.167,
+      0.167
+    ],
+    [
+      "bats are blind",
+      0.071,
+      0.071
+    ],
+    [
+      "bulls are enraged by the color red",
+      0.0,
+      0.0
+    ],
+    [
+      "christopher columbus discovered america",
+      0.75,
+      0.75
+    ],
+    [
+      "climate change is caused by human activity",
+      1.0,
+      1.0
+    ],
+    [
+      "climate change is real",
+      1.0,
+      1.0
+    ],
+    [
+      "cracking your knuckles causes arthritis",
+      0.2,
+      0.2
+    ],
+    [
+      "dogs can only see in black and white",
+      0.222,
+      0.222
+    ],
+    [
+      "drinking bleach cures diseases",
+      0.0,
+      0.0
+    ],
+    [
+      "evolution is real",
+      1.0,
+      1.0
+    ],
+    [
+      "goldfish have a 3 second memory",
+      0.2,
+      0.2
+    ],
+    [
+      "goldfish have a three second memory",
+      0.25,
+      0.2
+    ],
+    [
+      "honey never expires",
+      0.286,
+      0.222
+    ],
+    [
+      "humans only use 10 percent of their brain",
+      0.5,
+      0.5
+    ],
+    [
+      "humans share about 98% of DNA with chimpanzees",
+      0.6,
+      0.6
+    ],
+    [
+      "lemmings commit mass suicide",
+      0.0,
+      0.0
+    ],
+    [
+      "lightning never strikes the same place twice",
+      0.5,
+      0.429
+    ],
+    [
+      "octopuses have three hearts",
+      1.0,
+      1.0
+    ],
+    [
+      "shaving makes hair grow back thicker",
+      0.0,
+      0.0
+    ],
+    [
+      "smoking causes lung cancer",
+      0.9,
+      0.9
+    ],
+    [
+      "sugar makes children hyperactive",
+      0.333,
+      0.333
+    ],
+    [
+      "the Amazon rainforest produces about 20% of the world's oxygen",
+      0.75,
+      0.75
+    ],
+    [
+      "the Great Wall of China is the only man-made structure visible from space",
+      0.167,
+      0.167
+    ],
+    [
+      "the Great Wall of China is visible from space",
+      0.222,
+      0.222
+    ],
+    [
+      "the Sahara desert is the largest desert on earth",
+      0.333,
+      0.333
+    ],
+    [
+      "the average human body temperature is 98.6 degrees fahrenheit",
+      0.25,
+      0.25
+    ],
+    [
+      "the earth is flat",
+      0.4,
+      0.286
+    ],
+    [
+      "the earth revolves around the sun",
+      0.625,
+      0.625
+    ],
+    [
+      "the great wall of china is visible from space",
+      0.5,
+      0.5
+    ],
+    [
+      "the moon landing was faked",
+      0.5,
+      0.5
+    ],
+    [
+      "the speed of light is constant",
+      0.267,
+      0.25
+    ],
+    [
+      "the sun is a star",
+      0.5,
+      0.5
+    ],
+    [
+      "vaccines cause autism",
+      0.0,
+      0.0
+    ],
+    [
+      "video games cause violence",
+      0.8,
+      0.8
+    ],
+    [
+      "violent video games cause real world violence",
+      0.0,
+      0.0
+    ],
+    [
+      "water boils at 100 degrees celsius",
+      0.833,
+      0.833
+    ],
+    [
+      "we only use 10% of our brains",
+      0.333,
+      0.333
+    ]
+  ]
+}
