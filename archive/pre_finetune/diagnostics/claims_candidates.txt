@@ -1,0 +1,107 @@
+# CANDIDATE CLAIM POOL (draft, ~95 claims) for dataset expansion to 150.
+# These are drafted to NOT overlap your existing 62 claims, but the roster tool
+# will dedup against them anyway as a safety net. Review freely: delete weak ones,
+# add your own, rebalance categories. Lines starting with # and blank lines are ignored.
+# Keep claims as single, clear propositions. Favor topics with good web/Wikipedia/
+# academic coverage so retrieval returns real evidence.
+
+# ===== CHECKABLE TRUE (good for Tier A test claims, verdict ground truth = true) =====
+The human body has 206 bones in adulthood
+Sharks existed before trees did
+Mount Everest is the highest mountain above sea level
+Venus is the hottest planet in the solar system
+Bats are the only mammals capable of true flight
+Octopuses have blue blood
+Lightning is hotter than the surface of the sun
+Bananas are botanically classified as berries
+Water expands when it freezes
+The moon is slowly moving away from the Earth
+Saturn is less dense than water
+Tardigrades can survive exposure to the vacuum of space
+The Dead Sea is so salty that swimmers float easily
+Photosynthesis releases oxygen as a byproduct
+A day on Venus is longer than a year on Venus
+The Pacific is the largest ocean on Earth
+Antarctica is the driest continent on Earth
+Sound travels faster through water than through air
+Diamonds are made of carbon
+The Sahara region was green and vegetated thousands of years ago
+The human body is composed of roughly 60 percent water
+Spiders are arachnids rather than insects
+The shortest recorded war in history lasted less than an hour
+Honeybees communicate the location of food through a waggle dance
+The Great Barrier Reef is the largest living structure on Earth
+Light from the sun takes about eight minutes to reach Earth
+The Amazon River discharges more water than any other river
+Penguins live almost entirely in the Southern Hemisphere
+Mercury is the closest planet to the sun
+Helium is lighter than air
+The blue whale is the largest animal known to have ever existed
+Jupiter is the largest planet in the solar system
+The freezing point of water is zero degrees Celsius at sea level
+Global sea levels have risen over the past century
+Iron is attracted to magnets
+Earth's atmosphere is composed mostly of nitrogen
+Whales are mammals rather than fish
+The Earth's inner core is roughly as hot as the surface of the sun
+Most heat loss from a building occurs through poor insulation
+Mosquitoes kill more humans per year than any other animal
+
+# ===== CHECKABLE FALSE / DEBUNKED (verdict ground truth = false) =====
+Ostriches bury their heads in the sand when frightened
+Humans only have five senses
+People swallow several spiders a year while sleeping
+Napoleon Bonaparte was unusually short for his era
+Chameleons change color mainly to camouflage themselves
+Humans evolved directly from modern chimpanzees
+The tongue has separate zones for tasting sweet, sour, salty, and bitter
+A person must wait 24 hours before reporting someone missing
+Camels store water in their humps
+People are either left-brained or right-brained
+Sushi means raw fish
+Glass is actually a slow-flowing liquid
+Sunflowers track the sun across the sky throughout their lives
+Food is safe to eat if picked up within five seconds of dropping it
+Reading in dim light permanently damages your eyes
+Hair and fingernails continue to grow after death
+One dog year is equivalent to seven human years
+Eating turkey makes you sleepy because of its tryptophan
+Coffee stunts a child's growth
+Vikings wore horned helmets in battle
+The Coriolis effect determines which way water drains in a sink
+Microwaving food destroys most of its nutrients
+Swallowed chewing gum stays in your stomach for seven years
+A tooth left in cola overnight will completely dissolve
+The Big Bang was an explosion that happened at a single point in space
+Seasons are caused by the Earth's changing distance from the sun
+Mount Everest is the point on Earth closest to outer space
+Lightning rods prevent lightning from striking a building
+A full moon causes a measurable rise in crime and erratic behavior
+Bananas grow on trees
+Mice prefer cheese over other foods
+Touching a baby bird causes its mother to abandon it
+The blood in human veins is blue
+Eating before swimming causes dangerous cramps
+Dropping a penny from a skyscraper can kill a pedestrian below
+
+# ===== CONTESTED / OPINION / EMPIRICALLY DEBATED (verdict = divided, no truth label) =====
+Standardized tests accurately measure intelligence
+A four-day work week increases overall productivity
+Electric cars are better for the environment than gasoline cars
+Homework improves learning outcomes for students
+Tipping should be abolished in restaurants
+Self-driving cars are safer than human drivers
+Public funding of space exploration is worthwhile
+Keeping animals in zoos is ethical
+Renewable energy can fully replace fossil fuels
+Daylight saving time should be abolished
+Plant-based diets are healthier than diets that include meat
+Streaming services have benefited musicians financially
+Online learning is as effective as in-person learning
+Cities should make public transit free
+Working from home improves work-life balance
+Artificial intelligence will benefit society more than it harms it
+Banning smartphones in schools improves educational outcomes
+Professional athletes are overpaid
+Genetically modified crops are safe to eat
+Raising the minimum wage reduces overall employment

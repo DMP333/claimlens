@@ -1,0 +1,995 @@
+[
+  {
+    "claim": "5g causes covid",
+    "split": "train",
+    "origin": "existing",
+    "category": "existing"
+  },
+  {
+    "claim": "5g towers cause cancer",
+    "split": "train",
+    "origin": "existing",
+    "category": "existing"
+  },
+  {
+    "claim": "ai will replace most jobs",
+    "split": "train",
+    "origin": "existing",
+    "category": "existing"
+  },
+  {
+    "claim": "antibiotics do not work against viruses",
+    "split": "train",
+    "origin": "existing",
+    "category": "existing"
+  },
+  {
+    "claim": "bats are blind",
+    "split": "train",
+    "origin": "existing",
+    "category": "existing"
+  },
+  {
+    "claim": "bulls are enraged by the color red",
+    "split": "train",
+    "origin": "existing",
+    "category": "existing"
+  },
+  {
+    "claim": "capitalism is better than socialism",
+    "split": "train",
+    "origin": "existing",
+    "category": "existing"
+  },
+  {
+    "claim": "cats are better pets than dogs",
+    "split": "train",
+    "origin": "existing",
+    "category": "existing"
+  },
+  {
+    "claim": "china has the world's largest economy",
+    "split": "train",
+    "origin": "existing",
+    "category": "existing"
+  },
+  {
+    "claim": "christopher columbus discovered america",
+    "split": "train",
+    "origin": "existing",
+    "category": "existing"
+  },
+  {
+    "claim": "climate change is caused by human activity",
+    "split": "train",
+    "origin": "existing",
+    "category": "existing"
+  },
+  {
+    "claim": "climate change is real",
+    "split": "train",
+    "origin": "existing",
+    "category": "existing"
+  },
+  {
+    "claim": "college education is worth the cost",
+    "split": "train",
+    "origin": "existing",
+    "category": "existing"
+  },
+  {
+    "claim": "cracking your knuckles causes arthritis",
+    "split": "train",
+    "origin": "existing",
+    "category": "existing"
+  },
+  {
+    "claim": "cryptocurrency is a good long-term investment",
+    "split": "train",
+    "origin": "existing",
+    "category": "existing"
+  },
+  {
+    "claim": "democracy is the best form of government",
+    "split": "train",
+    "origin": "existing",
+    "category": "existing"
+  },
+  {
+    "claim": "dogs can only see in black and white",
+    "split": "train",
+    "origin": "existing",
+    "category": "existing"
+  },
+  {
+    "claim": "drinking bleach cures diseases",
+    "split": "train",
+    "origin": "existing",
+    "category": "existing"
+  },
+  {
+    "claim": "eating carrots improves your eyesight",
+    "split": "train",
+    "origin": "existing",
+    "category": "existing"
+  },
+  {
+    "claim": "einstein failed math in school",
+    "split": "train",
+    "origin": "existing",
+    "category": "existing"
+  },
+  {
+    "claim": "evolution is real",
+    "split": "train",
+    "origin": "existing",
+    "category": "existing"
+  },
+  {
+    "claim": "goldfish have a three second memory",
+    "split": "train",
+    "origin": "existing",
+    "category": "existing"
+  },
+  {
+    "claim": "honey never expires",
+    "split": "train",
+    "origin": "existing",
+    "category": "existing"
+  },
+  {
+    "claim": "humans only use 10 percent of their brain",
+    "split": "train",
+    "origin": "existing",
+    "category": "existing"
+  },
+  {
+    "claim": "humans share about 98% of dna with chimpanzees",
+    "split": "train",
+    "origin": "existing",
+    "category": "existing"
+  },
+  {
+    "claim": "immigration is good for the economy",
+    "split": "train",
+    "origin": "existing",
+    "category": "existing"
+  },
+  {
+    "claim": "inflation in the united states is under control",
+    "split": "train",
+    "origin": "existing",
+    "category": "existing"
+  },
+  {
+    "claim": "lebron james is the greatest basketball player of all time",
+    "split": "train",
+    "origin": "existing",
+    "category": "existing"
+  },
+  {
+    "claim": "lemmings commit mass suicide",
+    "split": "train",
+    "origin": "existing",
+    "category": "existing"
+  },
+  {
+    "claim": "lightning never strikes the same place twice",
+    "split": "train",
+    "origin": "existing",
+    "category": "existing"
+  },
+  {
+    "claim": "msg is dangerous to consume",
+    "split": "train",
+    "origin": "existing",
+    "category": "existing"
+  },
+  {
+    "claim": "nuclear energy is safe",
+    "split": "train",
+    "origin": "existing",
+    "category": "existing"
+  },
+  {
+    "claim": "octopuses have three hearts",
+    "split": "train",
+    "origin": "existing",
+    "category": "existing"
+  },
+  {
+    "claim": "organic food is healthier than conventional food",
+    "split": "train",
+    "origin": "existing",
+    "category": "existing"
+  },
+  {
+    "claim": "pineapple belongs on pizza",
+    "split": "train",
+    "origin": "existing",
+    "category": "existing"
+  },
+  {
+    "claim": "remote work is more productive than office work",
+    "split": "train",
+    "origin": "existing",
+    "category": "existing"
+  },
+  {
+    "claim": "shaving makes hair grow back thicker",
+    "split": "train",
+    "origin": "existing",
+    "category": "existing"
+  },
+  {
+    "claim": "smoking causes lung cancer",
+    "split": "train",
+    "origin": "existing",
+    "category": "existing"
+  },
+  {
+    "claim": "social media is harmful to mental health",
+    "split": "train",
+    "origin": "existing",
+    "category": "existing"
+  },
+  {
+    "claim": "sugar is worse than fat for health",
+    "split": "train",
+    "origin": "existing",
+    "category": "existing"
+  },
+  {
+    "claim": "sugar makes children hyperactive",
+    "split": "train",
+    "origin": "existing",
+    "category": "existing"
+  },
+  {
+    "claim": "the amazon rainforest produces about 20% of the world's oxygen",
+    "split": "train",
+    "origin": "existing",
+    "category": "existing"
+  },
+  {
+    "claim": "the average human body temperature is 98.6 degrees fahrenheit",
+    "split": "train",
+    "origin": "existing",
+    "category": "existing"
+  },
+  {
+    "claim": "the beatles are the greatest band of all time",
+    "split": "train",
+    "origin": "existing",
+    "category": "existing"
+  },
+  {
+    "claim": "the earth is flat",
+    "split": "train",
+    "origin": "existing",
+    "category": "existing"
+  },
+  {
+    "claim": "the earth revolves around the sun",
+    "split": "train",
+    "origin": "existing",
+    "category": "existing"
+  },
+  {
+    "claim": "the great wall of china is the only man-made structure visible from space",
+    "split": "train",
+    "origin": "existing",
+    "category": "existing"
+  },
+  {
+    "claim": "the moon landing was faked",
+    "split": "train",
+    "origin": "existing",
+    "category": "existing"
+  },
+  {
+    "claim": "the sahara desert is the largest desert on earth",
+    "split": "train",
+    "origin": "existing",
+    "category": "existing"
+  },
+  {
+    "claim": "the speed of light is constant",
+    "split": "train",
+    "origin": "existing",
+    "category": "existing"
+  },
+  {
+    "claim": "the sun is a star",
+    "split": "train",
+    "origin": "existing",
+    "category": "existing"
+  },
+  {
+    "claim": "the united states economy is in a recession",
+    "split": "train",
+    "origin": "existing",
+    "category": "existing"
+  },
+  {
+    "claim": "universal basic income reduces poverty",
+    "split": "train",
+    "origin": "existing",
+    "category": "existing"
+  },
+  {
+    "claim": "vaccines cause autism",
+    "split": "train",
+    "origin": "existing",
+    "category": "existing"
+  },
+  {
+    "claim": "violent video games cause real world violence",
+    "split": "train",
+    "origin": "existing",
+    "category": "existing"
+  },
+  {
+    "claim": "water boils at 100 degrees celsius",
+    "split": "train",
+    "origin": "existing",
+    "category": "existing"
+  },
+  {
+    "claim": "you lose most body heat through your head",
+    "split": "train",
+    "origin": "existing",
+    "category": "existing"
+  },
+  {
+    "claim": "bats are the only mammals capable of true flight",
+    "split": "train",
+    "origin": "new",
+    "category": "true",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "octopuses have blue blood",
+    "split": "train",
+    "origin": "new",
+    "category": "true",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "lightning is hotter than the surface of the sun",
+    "split": "train",
+    "origin": "new",
+    "category": "true",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "the moon is slowly moving away from the earth",
+    "split": "train",
+    "origin": "new",
+    "category": "true",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "photosynthesis releases oxygen as a byproduct",
+    "split": "train",
+    "origin": "new",
+    "category": "true",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "the sahara region was green and vegetated thousands of years ago",
+    "split": "train",
+    "origin": "new",
+    "category": "true",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "the amazon river discharges more water than any other river",
+    "split": "train",
+    "origin": "new",
+    "category": "true",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "mount everest is the highest mountain above sea level",
+    "split": "train",
+    "origin": "new",
+    "category": "true",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "venus is the hottest planet in the solar system",
+    "split": "train",
+    "origin": "new",
+    "category": "true",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "a day on venus is longer than a year on venus",
+    "split": "train",
+    "origin": "new",
+    "category": "true",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "bananas are botanically classified as berries",
+    "split": "train",
+    "origin": "new",
+    "category": "true",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "the blue whale is the largest animal known to have ever existed",
+    "split": "train",
+    "origin": "new",
+    "category": "true",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "whales are mammals rather than fish",
+    "split": "train",
+    "origin": "new",
+    "category": "true",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "global sea levels have risen over the past century",
+    "split": "train",
+    "origin": "new",
+    "category": "true",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "spiders are arachnids rather than insects",
+    "split": "train",
+    "origin": "new",
+    "category": "true",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "water expands when it freezes",
+    "split": "train",
+    "origin": "new",
+    "category": "true",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "sound travels faster through water than through air",
+    "split": "train",
+    "origin": "new",
+    "category": "true",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "light from the sun takes about eight minutes to reach earth",
+    "split": "train",
+    "origin": "new",
+    "category": "true",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "the earth's inner core is roughly as hot as the surface of the sun",
+    "split": "train",
+    "origin": "new",
+    "category": "true",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "most heat loss from a building occurs through poor insulation",
+    "split": "train",
+    "origin": "new",
+    "category": "true",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "mosquitoes kill more humans per year than any other animal",
+    "split": "train",
+    "origin": "new",
+    "category": "true",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "honeybees communicate the location of food through a waggle dance",
+    "split": "train",
+    "origin": "new",
+    "category": "true",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "mount everest is the point on earth closest to outer space",
+    "split": "train",
+    "origin": "new",
+    "category": "false",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "humans evolved directly from modern chimpanzees",
+    "split": "train",
+    "origin": "new",
+    "category": "false",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "bananas grow on trees",
+    "split": "train",
+    "origin": "new",
+    "category": "false",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "people swallow several spiders a year while sleeping",
+    "split": "train",
+    "origin": "new",
+    "category": "false",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "lightning rods prevent lightning from striking a building",
+    "split": "train",
+    "origin": "new",
+    "category": "false",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "seasons are caused by the earth's changing distance from the sun",
+    "split": "train",
+    "origin": "new",
+    "category": "false",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "a full moon causes a measurable rise in crime and erratic behavior",
+    "split": "train",
+    "origin": "new",
+    "category": "false",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "the blood in human veins is blue",
+    "split": "train",
+    "origin": "new",
+    "category": "false",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "the big bang was an explosion that happened at a single point in space",
+    "split": "train",
+    "origin": "new",
+    "category": "false",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "vikings wore horned helmets in battle",
+    "split": "train",
+    "origin": "new",
+    "category": "false",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "the coriolis effect determines which way water drains in a sink",
+    "split": "train",
+    "origin": "new",
+    "category": "false",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "microwaving food destroys most of its nutrients",
+    "split": "train",
+    "origin": "new",
+    "category": "false",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "swallowed chewing gum stays in your stomach for seven years",
+    "split": "train",
+    "origin": "new",
+    "category": "false",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "a tooth left in cola overnight will completely dissolve",
+    "split": "train",
+    "origin": "new",
+    "category": "false",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "mice prefer cheese over other foods",
+    "split": "train",
+    "origin": "new",
+    "category": "false",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "touching a baby bird causes its mother to abandon it",
+    "split": "train",
+    "origin": "new",
+    "category": "false",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "renewable energy can fully replace fossil fuels",
+    "split": "train",
+    "origin": "new",
+    "category": "contested",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "working from home improves work-life balance",
+    "split": "train",
+    "origin": "new",
+    "category": "contested",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "artificial intelligence will benefit society more than it harms it",
+    "split": "train",
+    "origin": "new",
+    "category": "contested",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "raising the minimum wage reduces overall employment",
+    "split": "train",
+    "origin": "new",
+    "category": "contested",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "a four-day work week increases overall productivity",
+    "split": "train",
+    "origin": "new",
+    "category": "contested",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "the human body has 206 bones in adulthood",
+    "split": "test",
+    "origin": "new",
+    "category": "true",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "sharks existed before trees did",
+    "split": "test",
+    "origin": "new",
+    "category": "true",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "the dead sea is so salty that swimmers float easily",
+    "split": "test",
+    "origin": "new",
+    "category": "true",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "the pacific is the largest ocean on earth",
+    "split": "test",
+    "origin": "new",
+    "category": "true",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "antarctica is the driest continent on earth",
+    "split": "test",
+    "origin": "new",
+    "category": "true",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "diamonds are made of carbon",
+    "split": "test",
+    "origin": "new",
+    "category": "true",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "the human body is composed of roughly 60 percent water",
+    "split": "test",
+    "origin": "new",
+    "category": "true",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "tardigrades can survive exposure to the vacuum of space",
+    "split": "test",
+    "origin": "new",
+    "category": "true",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "mercury is the closest planet to the sun",
+    "split": "test",
+    "origin": "new",
+    "category": "true",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "helium is lighter than air",
+    "split": "test",
+    "origin": "new",
+    "category": "true",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "jupiter is the largest planet in the solar system",
+    "split": "test",
+    "origin": "new",
+    "category": "true",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "the freezing point of water is zero degrees celsius at sea level",
+    "split": "test",
+    "origin": "new",
+    "category": "true",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "iron is attracted to magnets",
+    "split": "test",
+    "origin": "new",
+    "category": "true",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "earth's atmosphere is composed mostly of nitrogen",
+    "split": "test",
+    "origin": "new",
+    "category": "true",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "the shortest recorded war in history lasted less than an hour",
+    "split": "test",
+    "origin": "new",
+    "category": "true",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "the great barrier reef is the largest living structure on earth",
+    "split": "test",
+    "origin": "new",
+    "category": "true",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "penguins live almost entirely in the southern hemisphere",
+    "split": "test",
+    "origin": "new",
+    "category": "true",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "ostriches bury their heads in the sand when frightened",
+    "split": "test",
+    "origin": "new",
+    "category": "false",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "humans only have five senses",
+    "split": "test",
+    "origin": "new",
+    "category": "false",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "napoleon bonaparte was unusually short for his era",
+    "split": "test",
+    "origin": "new",
+    "category": "false",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "chameleons change color mainly to camouflage themselves",
+    "split": "test",
+    "origin": "new",
+    "category": "false",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "the tongue has separate zones for tasting sweet, sour, salty, and bitter",
+    "split": "test",
+    "origin": "new",
+    "category": "false",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "a person must wait 24 hours before reporting someone missing",
+    "split": "test",
+    "origin": "new",
+    "category": "false",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "camels store water in their humps",
+    "split": "test",
+    "origin": "new",
+    "category": "false",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "people are either left-brained or right-brained",
+    "split": "test",
+    "origin": "new",
+    "category": "false",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "sushi means raw fish",
+    "split": "test",
+    "origin": "new",
+    "category": "false",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "glass is actually a slow-flowing liquid",
+    "split": "test",
+    "origin": "new",
+    "category": "false",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "sunflowers track the sun across the sky throughout their lives",
+    "split": "test",
+    "origin": "new",
+    "category": "false",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "food is safe to eat if picked up within five seconds of dropping it",
+    "split": "test",
+    "origin": "new",
+    "category": "false",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "reading in dim light permanently damages your eyes",
+    "split": "test",
+    "origin": "new",
+    "category": "false",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "hair and fingernails continue to grow after death",
+    "split": "test",
+    "origin": "new",
+    "category": "false",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "one dog year is equivalent to seven human years",
+    "split": "test",
+    "origin": "new",
+    "category": "false",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "eating turkey makes you sleepy because of its tryptophan",
+    "split": "test",
+    "origin": "new",
+    "category": "false",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "coffee stunts a child's growth",
+    "split": "test",
+    "origin": "new",
+    "category": "false",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "standardized tests accurately measure intelligence",
+    "split": "test",
+    "origin": "new",
+    "category": "contested",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "electric cars are better for the environment than gasoline cars",
+    "split": "test",
+    "origin": "new",
+    "category": "contested",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "homework improves learning outcomes for students",
+    "split": "test",
+    "origin": "new",
+    "category": "contested",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "tipping should be abolished in restaurants",
+    "split": "test",
+    "origin": "new",
+    "category": "contested",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "self-driving cars are safer than human drivers",
+    "split": "test",
+    "origin": "new",
+    "category": "contested",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "public funding of space exploration is worthwhile",
+    "split": "test",
+    "origin": "new",
+    "category": "contested",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "keeping animals in zoos is ethical",
+    "split": "test",
+    "origin": "new",
+    "category": "contested",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "daylight saving time should be abolished",
+    "split": "test",
+    "origin": "new",
+    "category": "contested",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "plant-based diets are healthier than diets that include meat",
+    "split": "test",
+    "origin": "new",
+    "category": "contested",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "streaming services have benefited musicians financially",
+    "split": "test",
+    "origin": "new",
+    "category": "contested",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "online learning is as effective as in-person learning",
+    "split": "test",
+    "origin": "new",
+    "category": "contested",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "cities should make public transit free",
+    "split": "test",
+    "origin": "new",
+    "category": "contested",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "banning smartphones in schools improves educational outcomes",
+    "split": "test",
+    "origin": "new",
+    "category": "contested",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "professional athletes are overpaid",
+    "split": "test",
+    "origin": "new",
+    "category": "contested",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "genetically modified crops are safe to eat",
+    "split": "test",
+    "origin": "new",
+    "category": "contested",
+    "needs_retrieval": true
+  },
+  {
+    "claim": "dropping a penny from a skyscraper can kill a pedestrian below",
+    "split": "test",
+    "origin": "new",
+    "category": "false",
+    "needs_retrieval": true
+  }
+]
