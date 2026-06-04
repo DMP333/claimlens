@@ -1,0 +1,177 @@
+id,claim,sentence,old_llm_label
+0,remote work is more productive than office work,"Mouse shuffle
+[edit] The ""mouse shuffle"" refers to someone continuously moving their computer mouse around to keep their screen active, giving them the appearance of being at work.",neutral
+1,raising the minimum wage reduces overall employment,"However, there is no evidence that state minimum wage laws do so.""",opposing
+2,the average human body temperature is 98.6 degrees fahrenheit,"He then re-calibrated his scale using the melting point of ice and normal human body temperature (which were at 30 and 90 degrees); he adjusted the scale so that the melting point of ice would be 32 degrees, and body temperature 96 degrees, so that 64 intervals would separate the two, allowing him to mark degree lines on his instruments by simply bisecting the interval 6 times (since 64 = 26).",opposing
+3,msg is dangerous to consume,"The FDA labels all products with the additive MSG, but does not label products that have naturally occurring MSG.",neutral
+4,coffee stunts a child's growth,"However, there is no evidence that drinking coffee has any effect on height.",opposing
+5,napoleon bonaparte was unusually short for his era,"According to historian Martyn Lyons, Napoleon “was a short man, even by the standards of the day” (1994, 1).",supporting
+6,iron is attracted to magnets,The molten iron doesn't react to the magnet—it's only when the iron has cooled that anything seems to happen.,opposing
+7,immigration is good for the economy,"A study done by the IZA Journal of Development and Migration found that between 1991 and 2006, Canadian-educated immigrants and foreign-educated immigrants found that Canadian-educated immigrants who graduated from university had a large earnings gap with their Canadian-born counterparts both in the initial years after immigration and in the long run.",opposing
+8,humans evolved directly from modern chimpanzees,"In human genetic studies, the CHLCA is useful as an anchor point for calculating single-nucleotide polymorphism (SNP) rates in human populations where chimpanzees are used as an outgroup, that is, as the extant species most genetically similar to Homo sapiens.",opposing
+9,light from the sun takes about eight minutes to reach earth,"It can take them thousands or even tens of thousands of years to reach the surface of the Sun, before they embark on their 8m 20s journey to Earth.",supporting
+10,whales are mammals rather than fish,"These animals are found in every ocean, but this doesn't mean whales are fish.",supporting
+11,climate change is real,"The findings from existing literature indicate that AI has significantly improved predictive capacity, operational efficiency, and adaptive planning in climate-related contexts.",supporting
+12,vaccines cause autism,"Even with the overwhelming evidence that vaccines are safe and effective, some parents still decide not to have their children vaccinated or to delay ...",opposing
+13,college education is worth the cost,Some 47% say the cost is worth it only if someone doesn’t have to take out loans.,opposing
+14,humans only use 10 percent of their brain,"Neuroscience
+Beyond the Myth That We Use Only 10 Percent of Our Brains
+Your whole brain is always at work.",opposing
+15,ai will replace most jobs,"In India, AI is expected to bring both major opportunities and significant challenges.",neutral
+16,the sahara region was green and vegetated thousands of years ago,"Research published in PLOS One dated a complex burial ritual involving cattle on the Messak plateau to roughly 5,200 to 3,800 BC, right in the heart of the green period.",supporting
+17,working from home improves work-life balance,"Researchers polled 1,000 remote and hybrid employees in the U.S. about their productivity, wellness and other life facets.",neutral
+18,jupiter is the largest planet in the solar system,"Size and mass
+Jupiter is about eleven times wider than the Earth (11.208 R🜨); while its mass is 318 times that of Earth which is 2.5 times the mass of all the other planets in the Solar System combined.",supporting
+19,sugar makes children hyperactive,Numerous placebo-controlled studies have demonstrated sugar does not significantly impact children’s behaviour or attention span.,opposing
+20,online learning is as effective as in-person learning,"Blending the Best of Both Worlds
+For educators, there are lots of easy ways to integrate the best aspects of both in-person and online learning modalities.",neutral
+21,napoleon bonaparte was unusually short for his era,"One artist's cartoons changed history's perception forever
+The myth about Napoleon's short stature can be traced largely to one source: British propaganda.",opposing
+22,lebron james is the greatest basketball player of all time,"He has passed Abdul-Jabbar and is more than 11,000 points ahead of any active player behind him.",supporting
+23,social media is harmful to mental health,Findings: The results of the study indicated that social media addiction has widespread negative effects on students' mental health.,supporting
+24,people are either left-brained or right-brained,"Doi: 10.1371/journal.pone.0071275
+- Rogers M (2013) Researchers debunk myth of “right brain” and “left –brain” personality traits.",opposing
+25,plant-based diets are healthier than diets that include meat,"In the case of vegetarians and vegans, restrictive eating has been linked with a higher risk for depressive symptoms (meta-analysis of n ~50k participants21).",opposing
+26,octopuses have three hearts,"While a ‘systemic’ heart supplies the animal’s body, two ‘branchial’ hearts supply each of the two gills where the blood is oxygenated.",supporting
+27,humans only have five senses,"Most research around these two are focused on the instrument, the listener, and the player of the instrument.",neutral
+28,the amazon rainforest produces about 20% of the world's oxygen,"It provides 20% of the oxygen for the entire planet,"" CNN anchor Robyn Curnow said.",supporting
+29,swallowed chewing gum stays in your stomach for seven years,"If you swallow gum, rest assured that it won’t take seven years to digest.",opposing
+30,whales are mammals rather than fish,"Since they are mammals, they give birth to live young.",supporting
+31,climate change is caused by human activity,"About two-in-ten Republicans and Republican leaners (21%) say the same, a difference of 54 percentage points.",opposing
+32,immigration is good for the economy,Germany’s economy is creating jobs faster than the natives can fill them.,supporting
+33,daylight saving time should be abolished,"Researchers found that switching to permanent Standard Time was predicted to reduce cases of obesity by 2.6 million cases and stroke by 300,000 cases.",supporting
+34,a four-day work week increases overall productivity,- Compressed Hours – Employees work the same total hours as in a five-day week but over four longer days.,neutral
+35,sunflowers track the sun across the sky throughout their lives,The scientists discovered that the plants' stems allow them to track the sun.,supporting
+36,antibiotics do not work against viruses,"However, antibiotics are among the drugs that have been studied for possible antiviral activities.",opposing
+37,tipping should be abolished in restaurants,The reason was clear on reflection: Servers experienced an hourly wage drop from a range of $35-$45 to $20-$35.,opposing
+38,light from the sun takes about eight minutes to reach earth,"In 1666, Isaac Newton observed the Sun's light using a prism, and showed that it is made up of light of many colours.",neutral
+39,remote work is more productive than office work,"""The 'Mouse Shuffle,' A 2024 Workplace Trend, Has Employers Scratching Their Heads"".",neutral
+40,hair and fingernails continue to grow after death,Essential fatty acids play a large role in healthy skin as well as nails.,neutral
+41,diamonds are made of carbon,"It’s here, over billions of years, that carbon atoms fuse and crystallize into the structures we recognize as diamonds .",supporting
+42,honeybees communicate the location of food through a waggle dance,"The Science Behind the Dance
+The waggle dance has been studied extensively by scientists, with groundbreaking research conducted by Nobel laureate Karl von Frisch in the 20th century.",supporting
+43,light from the sun takes about eight minutes to reach earth,"Similarly, if the Sun were to suddenly vanish, the Earth would remain bathed in its light for another 8 minutes and 20 seconds before experiencing darkness.",supporting
+44,eating turkey makes you sleepy because of its tryptophan,"However, we don’t consume nearly enough turkey during a holiday smorgasbord — even if we go back for seconds — to create the amount of serotonin needed to make us sleepy, said Steven Malin, an associate professor in the department of kinesiology and health at Rutgers University in New Jersey.",opposing
+45,humans only have five senses,It’s our ear canals that are telling us that we are tilting backwards and this changes what we see.,neutral
+46,photosynthesis releases oxygen as a byproduct,The life-giving process continues to sustain biodiversity since autotrophs are foundational to nearly every food web on the planet.,neutral
+47,pineapple belongs on pizza,"Pineapple belongs on pizza because it introduces a sweet and acidic counterpoint that complements the savory and umami flavors already present, creating a more nuanced and ultimately more satisfying culinary experience.",supporting
+48,organic food is healthier than conventional food,"An estimated 90–100% of conventional chicken contains, at least, one form of antibiotic resistance microorganism, while organic chicken has been found to have a lower incidence at 84%.",supporting
+49,keeping animals in zoos is ethical,"- ^ ""The Moral Justification for Keeping Animals in Captivity"" (PDF).",neutral
+50,touching a baby bird causes its mother to abandon it,A thorough look at The Seattle Times archive reveals numerous reports on avian behaviour but none to validate the abandonment claim.,opposing
+51,the speed of light is constant,From his equations it was possible to calculate that the resulting electromagnetic field travels at a constant speed relative to all observers.,supporting
+52,glass is actually a slow-flowing liquid,"This gives them a melted look, but does not mean glass is a true liquid.",opposing
+53,online learning is as effective as in-person learning,"While that shift may have expedited one-to-one initiatives or raised awareness about the lack of internet access, inequitable education still exists, and should be top of mind as we plan ahead.",opposing
+54,sugar makes children hyperactive,"The researchers found that adolescents who ate a high-sugar breakfast, particularly those with teacher-reported hyperactivity, showed improved behavior on some measures when compared to children who ate a sugar-free breakfast.",supporting
+55,streaming services have benefited musicians financially,"Image: Unsplash/Filip
+- Worldwide recorded music revenues totalled $26.2 billion last year, up 9% from the previous year’s total of $24 billion, as this Statista chart shows.",supporting
+56,the coriolis effect determines which way water drains in a sink,"Author: Science Reference Section, Library of Congress
+Have a question?",neutral
+57,smoking causes lung cancer,"Clinical symptoms
+[edit] Most cases of SRIF are discovered incidentally by pathologists examining lung tissue from lungs that have been removed surgically from patients with lung cancer.",neutral
+58,electric cars are better for the environment than gasoline cars,EVs have a large potential for greenhouse gas emissions reductions when coupled with a low-carbon electricity sector.,supporting
+59,helium is lighter than air,"In 1972, the same phenomenon was observed in helium-3, but at temperatures much closer to absolute zero, by American physicists Douglas D. Osheroff, David M. Lee, and Robert C. Richardson.",neutral
+60,goldfish have a three second memory,"MYTH: Goldfish memory spans are just three seconds long
+FACT: Goldfish can remember things for months!",opposing
+61,iron is attracted to magnets,"2 weeks ago - Magnetism was first discovered in the ancient world when people noticed that lodestones, naturally magnetized pieces of the mineral magnetite, could attract iron.",supporting
+62,the earth's inner core is roughly as hot as the surface of the sun,"This means the core of our Earth is actually hotter than the surface of the Sun.Finding out that the Earth's inner core is actually 1000 degrees hotter than expected won't have any immediate repercussions, but that's just how science goes.",supporting
+63,smoking causes lung cancer,We know that smoking cigarettes increases your risk of cancer.,supporting
+64,ostriches bury their heads in the sand when frightened,"However, their heads are relatively small, and they do have a few behaviors that, from a distance, may look like they are burying their heads.",opposing
+65,renewable energy can fully replace fossil fuels,"The potential biofuel blends (FT-SPK, HEFA-SPK, ATJ-SPK and HFS-SIP) and their use as an alternative to kerosene-type fuels in the aviation industry have also been assessed.",neutral
+66,penguins live almost entirely in the southern hemisphere,"Food Availability: A Southern Bounty
+The Southern Ocean surrounding Antarctica is incredibly rich in marine life, especially krill.",supporting
+67,college education is worth the cost,"In 2023–24, the average published tuition and fees for full-time students at a public four-year in-state institution was $11,260, 2.5 percent higher year-over-year before adjusting for inflation.",opposing
+68,camels store water in their humps,"- ^ Makhdoomi, Dil M.; Gazi, Mohsin A.; ul Nabi, Showkat; Ahmed, Shakeel (2013).",neutral
+69,dogs can only see in black and white,"For example, a rainbow to a dog would be as follows: dark blue, light blue, light gray, light yellow, dark brownish yellow, and dark gray.",opposing
+70,remote work is more productive than office work,"Low Work-Life Balance and Increased Stress
+The rigid schedules and lack of flexibility associated with office work can lead to a low work-life balance, increased stress, and decreased happiness.",supporting
+71,capitalism is better than socialism,"According to Grossmann, capitalism would collapse after a series of business cycles, because of insufficient surplus value production.",neutral
+72,spiders are arachnids rather than insects,The rather large and well-sclerotized members of the oribatid family Ceratozetidae are abundant only in the best heated habitats with an extended vegetation season.,neutral
+73,the average human body temperature is 98.6 degrees fahrenheit,You can use an online tool from Stanford University to figure out your personal body temperature.,neutral
+74,organic food is healthier than conventional food,This ‘organic’ yield gap can vary by crop type and several other factors; studies suggest that it is in a magnitude of 20–25% under experimental conditions and up to 50% under practical farming conditions [8.Seufert V. Ramankutty N. Many shades of gray - the context-dependent performance of organic agriculture.Sci.,opposing
+75,touching a baby bird causes its mother to abandon it,This then causes the mother bird to become afraid of possible predators and to leave its children to the elements.,supporting
+76,water boils at 100 degrees celsius,"When you boil water on a mountain top, where air pressure is less than at sea level, you can boil water at a temperature less than 100 degrees Celsius.",opposing
+77,water expands when it freezes,Stresses globally increase while locally stalling at a value that is set by the local undercooling.,neutral
+78,bats are the only mammals capable of true flight,"In fact, bats are the only mammal capable of true flight.",supporting
+79,light from the sun takes about eight minutes to reach earth,"Conversely, at its farthest point, called aphelion, the light takes closer to 8 minutes and 30 seconds to complete the journey.",supporting
+80,banning smartphones in schools improves educational outcomes,"In focus groups, teachers described increased student engagement and stronger peer interaction due to reduced phone distractions as well.",supporting
+81,a full moon causes a measurable rise in crime and erratic behavior,You may also want to take a look at the New Moon on August 12.,neutral
+82,tipping should be abolished in restaurants,"Beller explains that disdain for this cost-shifting drove an anti-tipping movement in the early 1900s, culminating in several states passing legislation to ban tipping entirely.",supporting
+83,sugar is worse than fat for health,"However, when considering different age groups, younger individuals (age <40 y) consuming more UPF were more likely to have depressive symptoms than low consumers (OR = 3.50, 95% CI: 1.53-7.99).",neutral
+84,spiders are arachnids rather than insects,"Mental Health and Mental Disorders: An Encyclopedia of Conditions, Treatments, and Well-Being [3 volumes]: An Encyclopedia of Conditions, Treatments, and Well-Being.",neutral
+85,universal basic income reduces poverty,"The people reported that they were happier and healthier overall than other unemployed residents, but the experiment was widely declared a failure.",opposing
+86,sugar is worse than fat for health,"Categories can shape how individuals view themselves, as philosopher Ian Hacking has argued; they reinforce judgments about people who do not conform to a norm.",neutral
+87,pineapple belongs on pizza,"The tart fruit, optional addition of salty ham, and nutty mozzarella cheese give you a unique taste sensation that no other topping combination can match.",supporting
+88,climate change is caused by human activity,"Countering climate change
+As every tonne of CO2 emitted contributes to global warming, all emissions reductions contribute to slowing it down.",supporting
+89,streaming services have benefited musicians financially,"Between 2001 and 2010, physical music sales declined by more than 60 percent, wiping out $14 billion in annual revenue.",opposing
+90,seasons are caused by the earth's changing distance from the sun,"Although the effect of the Earth-sun distance has also been recognized, our study indicates that this ‘distance effect’ may be a more important effect on climate than had been recognized previously.”
+Chiang, Atwood and Broccoli and their colleagues reported their findings today in the journal Nature.",supporting
+91,whales are mammals rather than fish,These are the duck-billed platypus and four species of echidna.,neutral
+92,mice prefer cheese over other foods,Dr. David Holmes from Manchester Metropolitan University found that mice don’t like cheese at all.,opposing
+93,genetically modified crops are safe to eat,The studies reviewed present evidence to show that GM plants are nutritionally equivalent to their non-GM counterparts and can be safely used in food and feed.,supporting
+94,the earth revolves around the sun,"History of study
+[edit] Heliocentrism is the scientific model that first placed the Sun at the center of the Solar System and put the planets, including Earth, in its orbit.",supporting
+95,5g towers cause cancer,Viruses are submicroscopic physical objects and cannot be a form of radiation.,opposing
+96,lightning rods prevent lightning from striking a building,Multi-story buildings must be equipped with lightning protection to prevent direct lightning strikes.,opposing
+97,violent video games cause real world violence,"It was concluded that exposure to violent video games increases the risk of desensitization to violence, which in turn may increase aggression and decrease prosocial behavior.",supporting
+98,universal basic income reduces poverty,"- A basic income trilemma: affordability, adequacy, and the advantages of radically simplified welfare: Luke Martinelli, University of Bath.",neutral
+99,pineapple belongs on pizza,"The sweet, tropical flavour of pineapple can do just that!",neutral
+100,the dead sea is so salty that swimmers float easily,"The Australia pool (pictured) is said to have therapeutic properties greater than Dead Sea, one of the saltiest bodies of water on earth where humans can float thanks to the high concentration of dissolved mineral salts
+'It's free to visit and is the most insane feeling!'",supporting
+101,iron is attracted to magnets,Hemoglobin molecules that contain iron tend to repel from the magnet when attached to oxygen.,opposing
+102,you lose most body heat through your head,"""The real reason we lose heat through our head is because most of the time when we're outside in the cold, we're clothed,"" says Richard Ingebretsen, MD, PhD, an adjunct instructor in the department of internal medicine at the University of Utah School of Medicine.",opposing
+103,earth's atmosphere is composed mostly of nitrogen,"Observations showed that larger dust storms are usually the result of merging smaller dust storms, but the growth mechanism of the storm and the role of atmospheric feedbacks are still not well understood.",neutral
+104,the united states economy is in a recession,"“Not recessionary; not great.”
+And then there was the DOGE effect: Federal government spending went from 4% growth at the end of the Biden administration to a 5.1% contraction under Trump.",opposing
+105,lightning never strikes the same place twice,"The Empire State Building, for example, is hit on average 25 times per year, according to the National Weather Service.",opposing
+106,climate change is real,Scientists predict global temperature increases from human-made greenhouse gases will continue.,supporting
+107,the moon landing was faked,"In fact, by the time of the launch of the first crewed Earth-orbiting Apollo flight (Apollo 7), the USSR had made only nine spaceflights (seven with one cosmonaut, one with two, one with three) compared to 16 by the United States.",opposing
+108,the amazon rainforest produces about 20% of the world's oxygen,"That would mean the Amazon generates around 16 percent of oxygen produced on land, explains Malhi.",opposing
+109,lightning rods prevent lightning from striking a building,"With high rainfall in Indonesia, lightning strikes often occur and cause significant damage such as equipment damage, fires, and loss of life.",neutral
+110,streaming services have benefited musicians financially,"The court found that ""as much as eighty-seven percent of the files available on Napster may be copyrighted and more than seventy percent may be owned or administered by plaintiffs.""",neutral
+111,a four-day work week increases overall productivity,Employees will be less fatigued due to long working hours and will be more productive on the job.,supporting
+112,the beatles are the greatest band of all time,"External links
+[edit] - ""500 Greatest Songs of All Time"" by Rolling Stone magazine (updated version of the list)
+- ""Dylan track voted 'greatest song'"".",neutral
+113,humans share about 98% of dna with chimpanzees,"Modern humans and Neanderthals also share the FOXP2 gene variant associated with brain development and with speech in modern humans, indicating that Neanderthals may have been able to speak.",neutral
+114,the moon landing was faked,"In 2012, images were released showing five of the six Apollo missions' American flags erected on the Moon still standing.",opposing
+115,a person must wait 24 hours before reporting someone missing,"Missing People CCTV Footage: Andrew Gosden
+Missing People CCTV Footage: Andrew Gosden 2
+Subsequent investigations
+[edit] The family and the police investigated the possibility that Gosden had gone to London to meet someone he had met over the Internet; however, there was no evidence for this.",neutral
+116,the sahara desert is the largest desert on earth,This study comprehensively analyzed the spatial and temporal variation in the wind regime of the Sahara Desert from 1980 to 2019 using data from 17 meteorological stations to improve awareness of global atmospheric changes and the intensity of regional aeolian activities.,neutral
+117,diamonds are made of carbon,"While they may have that in common, neither coal nor diamonds are involved in the formation of each other.",neutral
+118,lebron james is the greatest basketball player of all time,"LeBron faced dynasties (Spurs, Warriors) and still won four titles.",supporting
+119,bats are blind,Most bats that are tested are unhealthy animals that end up found on the ground and are therefore easy to capture.,neutral
+120,bulls are enraged by the color red,"So, if movement and the matador's encroachment on its personal space is what triggers bulls, as opposed to the color red, why are muletas traditionally red?",opposing
+121,a four-day work week increases overall productivity,This can create pressure and stress on employees to get things completed when they have a reduced amount of time.,opposing
+122,the sahara region was green and vegetated thousands of years ago,"A Lake Larger Than the Caspian Sea
+Perhaps the most striking feature of the green Sahara was its water.",supporting
+123,global sea levels have risen over the past century,"Notably, sea levels relative to land along the northern Baltic Sea coast and — to a lesser degree — the northern Norwegian coast are sinking.",opposing
+124,social media is harmful to mental health,"Steve Blumenfield and Jeff Levin-Scherz, writing in the Harvard Business Review, claim that ""most published studies show telephonic mental health care is as effective as in-person care in treating depression, anxiety and obsessive-compulsive disorder.""",neutral
+125,goldfish have a three second memory,Research has demonstrated that their memory can last for several months.,opposing
+126,chameleons change color mainly to camouflage themselves,"If the female is available she won’t show much color and instead remains a greenish-brown, Milinkovitch says, indicating submission.",opposing
+127,eating carrots improves your eyesight,Parents or guardians are responsible for making decisions regarding a child's eye care.,neutral
+128,a full moon causes a measurable rise in crime and erratic behavior,"Much like the Moon is responsible for the ebb and flow of tides, because our brains are a significant source of water, Dutch researchers hypothesize the Moon’s gravitational pull could similarly have an effect on your brain, causing erratic behavior.",supporting
+129,eating carrots improves your eyesight,"""If you don't have AMD, we don't see a need to take high-dose supplements, but no matter what, it is always wise to focus on a good heart- and eye-healthy diet,"" Bernstein notes.",neutral
+130,shaving makes hair grow back thicker,"This leaves a blunt edge that, as it regrows, can feel coarser to the touch.",neutral
+131,hair and fingernails continue to grow after death,"The quantity of hairs depends on hair colour (before graying): an average blond-haired person has 150,000 hairs, a brown-haired person has 110,000, a black-haired person has 100,000, and a redhead has 90,000.",neutral
+132,cities should make public transit free,"The city concluded that, in comparison to ridership trends on comparable routes of the MBTA, the increase in ridership was directly attributable to the pilot program.",supporting
+133,universal basic income reduces poverty,"Currently, some people are reluctant to access social welfare programs due to the social stigma attached to receiving government assistance.",neutral
+134,the blue whale is the largest animal known to have ever existed,"It possesses a correspondingly large aorta, about 23 centimetres (9.1 in) in diameter.",neutral
+135,the moon is slowly moving away from the earth,"Around 70 million years ago, right at the end of the age of the dinosaurs, Earth made 372 rotations a year, not the 365 we have today, according to the research.",neutral
+136,people swallow several spiders a year while sleeping,"- Your open, moist mouth isn’t appealing to a spider.",opposing
+137,humans only have five senses,Humans are capable of distinctly recognizing and empathizing with emotion identified from bodily odors.,opposing
+138,microwaving food destroys most of its nutrients,And boiling vegetables is more likely to rob them of nutrients than either cooking them in the oven or microwaving them.,opposing
+139,renewable energy can fully replace fossil fuels,"As estimated, this palm oil biomass can generate approximately 5000 MW of electricity under 40% of operation efficiency.",supporting
+140,the united states economy is in a recession,The upshot: It feels like we’ve got a lot of recession energy.,supporting
+141,climate change is real,"Climate change — it's not game-over yet
+November 1, 2017The world is getting hotter.",supporting
+142,sharks existed before trees did,Zinc isotopic analysis revealed that megalodon saw a decrease in trophic level in the Atlantic Ocean during the early Pliocene.,neutral
+143,the amazon rainforest produces about 20% of the world's oxygen,So total global photosynthesis (land and sea) produces about 570 Pg of oxygen per year.,neutral
+144,the coriolis effect determines which way water drains in a sink,The Coriolis force is simply too weak to affect such small bodies of water.,opposing
+145,smoking causes lung cancer,Smoking intensity accounted for 82.3% of the effect of CYP2A6 activity on lung cancer risk but entirely mediated the genetic effect of rs56113850.,neutral
+146,college education is worth the cost,"At the same time, Sundeep Jain—former chief product officer of Uber and a former Google vice-president of product—was appointed to the board.",neutral
+147,remote work is more productive than office work,Studies show that Zoom exhaustion is felt by remote workers and can have an impact on one’s mental and physical health.,opposing
+148,the sahara region was green and vegetated thousands of years ago,"The inhabitants of this humid Sahara built settlements, raised livestock, navigated expansive bodies of water, and produced extensive rock art that reflects a deep bond with the landscape.",supporting
+149,organic food is healthier than conventional food,"Already today, with only 7.5% of the EU land under organic farming, Europe is a major importer of vegetable oil and feed protein (e.g., palm oil, soy), contributing to deforestation in Southeast Asia and South America [10.Qaim M. et alEnvironmental, economic, and social consequences of the oil palm boom.Annu.",opposing
