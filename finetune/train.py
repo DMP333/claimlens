@@ -32,10 +32,10 @@ from transformers.trainer_utils import get_last_checkpoint
 from datasets import Dataset
 from sklearn.metrics import f1_score, accuracy_score, recall_score, confusion_matrix
 
-MODEL_NAME = "MoritzLaurer/DeBERTa-v3-base-mnli-fever-anli"
+MODEL_NAME = os.environ.get("BASE_MODEL", "MoritzLaurer/DeBERTa-v3-base-mnli-fever-anli")
 LABEL2ID = {"supporting": 0, "neutral": 1, "opposing": 2}
 LABELS_ORDER = [0, 1, 2]
-MAX_LEN = 128
+MAX_LEN = int(os.environ.get("MAX_LEN", "128"))
 _LAST_CM = {}   # compute_metrics stashes the latest dev confusion matrix here
 
 
@@ -109,10 +109,10 @@ class LossTrainer(Trainer):
     def compute_loss(self, model, inputs, return_outputs=False, **kw):
         labels = inputs.pop("labels")
         outputs = model(**inputs)
-        logits = outputs.logits
+        logits = outputs.logits.float()   # compute loss in fp32 (dtype-safe + stable)
         w = self.register_buffer_weights
         if w is not None:
-            w = w.to(logits.device)
+            w = w.to(device=logits.device, dtype=logits.dtype)
         if self.loss_type == "focal":
             ce = F.cross_entropy(logits, labels, weight=w, reduction="none")
             pt = torch.exp(-ce)
@@ -134,6 +134,17 @@ def compute_metrics(eval_pred):
         "accuracy": accuracy_score(labels, preds),
         "recall_supporting": rec[0], "recall_neutral": rec[1], "recall_opposing": rec[2],
     }
+
+
+class NaNStopper(TrainerCallback):
+    def on_log(self, args, state, control, logs=None, **kw):
+        import math
+        if logs and ("loss" in logs):
+            v = logs["loss"]
+            if v is None or math.isnan(v) or math.isinf(v):
+                print(f"[NaN-STOP] train loss={v} at step {state.global_step}; aborting run.")
+                control.should_training_stop = True
+        return control
 
 
 class CSVLogger(TrainerCallback):
@@ -168,6 +179,13 @@ def main():
     ap.add_argument("--focal-gamma", type=float, default=2.0)
     ap.add_argument("--balance", choices=["none", "under", "over"], default="none")
     ap.add_argument("--arch", choices=["full", "lora"], default="full")
+    ap.add_argument("--lora-r", type=int, default=16)
+    ap.add_argument("--lora-alpha", type=int, default=32)
+    ap.add_argument("--lora-dropout", type=float, default=0.1)
+    ap.add_argument("--lora-targets", choices=["qkv", "all"], default="qkv",
+                    help="qkv = attention q/k/v only; all = q/k/v + every dense layer (more capacity)")
+    ap.add_argument("--freeze-layers", type=int, default=0,
+                    help="full arch only: freeze embeddings + this many bottom encoder layers")
     ap.add_argument("--seed", type=int, default=42)
     ap.add_argument("--csv", default=None, help="shared sweep log (default <output-dir>/../runs_log.csv)")
     args = ap.parse_args()
@@ -191,19 +209,32 @@ def main():
     model = AutoModelForSequenceClassification.from_pretrained(MODEL_NAME, num_labels=3)
     if args.arch == "lora":
         from peft import LoraConfig, get_peft_model, TaskType
+        tgts = ["query_proj", "key_proj", "value_proj"]
+        if args.lora_targets == "all":
+            tgts = tgts + ["dense"]   # adds attention-output + both FFN dense layers
         model = get_peft_model(model, LoraConfig(
-            task_type=TaskType.SEQ_CLS, r=16, lora_alpha=32, lora_dropout=0.1,
-            target_modules=["query_proj", "key_proj", "value_proj"]))
+            task_type=TaskType.SEQ_CLS, r=args.lora_r, lora_alpha=args.lora_alpha,
+            lora_dropout=args.lora_dropout, target_modules=tgts))
         model.print_trainable_parameters()
 
-    bf16 = torch.cuda.is_available() and torch.cuda.is_bf16_supported()
-    fp16 = torch.cuda.is_available() and not bf16
+    if args.arch == "full" and args.freeze_layers > 0:
+        n = args.freeze_layers
+        for name, p in model.named_parameters():
+            if ("embeddings" in name) or any(f".layer.{i}." in name for i in range(n)):
+                p.requires_grad = False
+        tr = sum(p.numel() for p in model.parameters() if p.requires_grad)
+        print(f"[freeze] froze embeddings + bottom {n} encoder layers | trainable params: {tr:,}")
+
+    use_amp = os.environ.get("AMP", "1") != "0"   # AMP=0 -> full fp32 (DeBERTa-v3 stable)
+    bf16 = use_amp and torch.cuda.is_available() and torch.cuda.is_bf16_supported()
+    fp16 = use_amp and torch.cuda.is_available() and not bf16
     # arg name moved eval -> eval_strategy across versions; pick whichever exists
     ev = "eval_strategy" if "eval_strategy" in inspect.signature(TrainingArguments.__init__).parameters else "evaluation_strategy"
     ta_kwargs = {
         "output_dir": args.output_dir, "num_train_epochs": args.epochs,
         "per_device_train_batch_size": args.batch_size, "per_device_eval_batch_size": 64,
-        "learning_rate": args.lr, "weight_decay": 0.01, "warmup_ratio": 0.06,
+        "learning_rate": args.lr, "weight_decay": 0.01, "warmup_ratio": 0.10,
+        "max_grad_norm": 1.0, "adam_epsilon": 1e-6,   # explicit grad clip + stable optimizer eps
         ev: "epoch", "save_strategy": "epoch", "save_total_limit": 2,
         "load_best_model_at_end": True, "metric_for_best_model": "macro_f1",
         "greater_is_better": True, "logging_steps": 50, "seed": args.seed,
@@ -220,10 +251,14 @@ def main():
         model=model, args=targs, train_dataset=train_ds, eval_dataset=dev_ds,
         compute_metrics=compute_metrics, data_collator=collator,
         loss_type=args.loss, weights=weights, focal_gamma=args.focal_gamma,
-        callbacks=[CSVLogger(csv_path, args.run_name, cfg)],
+        callbacks=[CSVLogger(csv_path, args.run_name, cfg), NaNStopper()],
         **proc_kw,
     )
 
+    pre = trainer.evaluate()
+    print(f"[WARM-START before training] dev macro_f1 {pre.get('eval_macro_f1'):.4f} | "
+          f"R supp {pre.get('eval_recall_supporting'):.3f} neut {pre.get('eval_recall_neutral'):.3f} "
+          f"opp {pre.get('eval_recall_opposing'):.3f}")
     last_ckpt = get_last_checkpoint(args.output_dir) if os.path.isdir(args.output_dir) else None
     trainer.train(resume_from_checkpoint=last_ckpt)   # resumes if a checkpoint exists on the volume
 
