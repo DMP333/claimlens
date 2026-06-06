@@ -183,7 +183,7 @@ def main():
     ap.add_argument("--lora-alpha", type=int, default=32)
     ap.add_argument("--lora-dropout", type=float, default=0.1)
     ap.add_argument("--lora-targets", choices=["qkv", "all"], default="qkv",
-                    help="qkv = attention q/k/v only; all = q/k/v + every dense layer (more capacity)")
+                    help="qkv = attention q/k/v only; all = q/k/v + every dense layer")
     ap.add_argument("--freeze-layers", type=int, default=0,
                     help="full arch only: freeze embeddings + this many bottom encoder layers")
     ap.add_argument("--seed", type=int, default=42)

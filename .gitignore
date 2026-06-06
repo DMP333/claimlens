@@ -218,3 +218,10 @@ __marimo__/
 # Streamlit
 .streamlit/secrets.toml
 .DS_Store
+finetune/*.tar.gz
+finetune_artifacts.tar.gz
+.env
+falseclaim/
+__pycache__/
+*.pyc
+.DS_Store
