@@ -1,185 +1,185 @@
 id,claim,sentence,gold,old,llm_label,fallback
-0,one dog year is equivalent to seven human years,A one year old Great Dane will look and live like a geriatric compared to a one year old Chihuahua.,neutral,opposing,neutral,0
-1,global sea levels have risen over the past century,Sea level continues to rise at a rate of about one-eighth of an inch per year.,supporting,supporting,supporting,0
-2,bananas are botanically classified as berries,"Bananas are considered berries, and calling them either fruits or berries is accurate.",supporting,supporting,supporting,0
-3,water boils at 100 degrees celsius,Older definitions of the Celsius temperature scale once defined the boiling point of water under one standard atmosphere as being precisely 100 °C.,supporting,supporting,neutral,0
-4,artificial intelligence will benefit society more than it harms it,The biggest gains appeared among students who were struggling the most.,supporting,supporting,neutral,0
-5,bulls are enraged by the color red,"According to the book ""Improving Animal Welfare"" by Temple Grandin, cattle lack the red retina receptor and can only see yellow, green, blue, and violet colors.",opposing,opposing,opposing,0
-6,dogs can only see in black and white,Colors are more muted for our canine companions than what we see.,neutral,neutral,opposing,0
-7,cryptocurrency is a good long-term investment,"Economic analysis of these market cycles suggests that cryptocurrency price dynamics are characteristic of speculative bubbles, driven more by market sentiment than by traditional economic fundamentals.",neutral,opposing,opposing,0
-8,whales are mammals rather than fish,"Whales do not have gills
-Because whales breath through blowholes and lungs, they do not have gills.",neutral,supporting,neutral,1
-9,cracking your knuckles causes arthritis,"June 8, 2020 - Shaina HuntsberryAnxiety, restlessness or just pure pleasure — there are lots of reasons why many find comfort in cracking their knuckles.",neutral,neutral,neutral,0
-10,organic food is healthier than conventional food,A 2012 meta-analysis determined that detectable pesticide residues were found in 7% of organic produce samples and 38% of conventional produce samples.,neutral,supporting,neutral,0
-11,the earth's inner core is roughly as hot as the surface of the sun,"Finally, there are “geomagnetic excursions:” shorter-lived but significant changes to the intensity of the magnetic field that last from a few centuries to a few tens of thousands of years.",neutral,neutral,neutral,0
-12,einstein failed math in school,"Einstein applied himself and later passed the entrance exam, earning a place at the prestigious school in Zurich.",neutral,opposing,opposing,0
-13,climate change is caused by human activity,"These include:
-- more people being exposed to extreme heat
-- higher sea levels as glaciers and ice-sheets melt
-- increased risks to food security in some regions due to more extreme weather
-- greater chances of some climate-sensitive diseases spreading, such as dengue
-- more species being threatened with extinction
-- the loss of virtually all coral reefs
-The call to restrict temperature rise to 1.5C was partly designed to avoid crossing so-called ""tipping points"".",neutral,neutral,neutral,0
-14,vikings wore horned helmets in battle,"The team finished with a 3–13 record, tied with the 1984 Vikings for the second-worst record in franchise history.",neutral,neutral,neutral,0
-15,honeybees communicate the location of food through a waggle dance,"""Apis florea in Europe: first report of the dwarfhoney bee in Malta"".",neutral,neutral,neutral,0
-16,goldfish have a three second memory,"Research has shown they are capable of operant conditioning (learning through consequences), spatial navigation, and even recognizing their owners.",opposing,opposing,opposing,0
-17,shaving makes hair grow back thicker,[edit] Androgenic hair provides tactile sensory input by transferring hair movement and vibration via the shaft to sensory nerves within the skin.,neutral,neutral,neutral,0
-18,the big bang was an explosion that happened at a single point in space,"Before Time and Space - The Big Bang (National Geographic)
-No explosion beats the Big Bang -- even if it was completely silent.",neutral,supporting,neutral,0
-19,universal basic income reduces poverty,"Setting a universal basic income at current benefit levels would be most likely to reduce poverty, mainly because take-up of a basic income is likely to be higher than for current means-tested benefits.",supporting,supporting,supporting,0
-20,whales are mammals rather than fish,"This, along with the shape of the flippers, allows the whales to make the abrupt turns necessary during bubble-feeding.",neutral,neutral,neutral,1
-21,napoleon bonaparte was unusually short for his era,Here's the kicker: studies trying to prove the Napoleon Complex actually exists have largely failed.,neutral,neutral,neutral,0
-22,penguins live almost entirely in the southern hemisphere,"Penguins and polar bears
-[edit] Despite what commercials and other popular sources may show, penguins and polar bears are found on opposite hemispheres.",neutral,supporting,neutral,0
-23,artificial intelligence will benefit society more than it harms it,Mainstream AI researchers have given a wide range of opinions on whether progress will be this rapid.,neutral,neutral,neutral,0
-24,glass is actually a slow-flowing liquid,"To reach equilibrium, the glass would need to ""relax"" back toward a liquid state.",neutral,supporting,supporting,0
-25,ai will replace most jobs,"Still, he said, not every job is destined for extinction.",neutral,opposing,opposing,0
-26,democracy is the best form of government,The political potential of sortition a study of the random selection of citizens for public office.,neutral,neutral,neutral,0
-27,a full moon causes a measurable rise in crime and erratic behavior,"For example, a study published in the Journal of Criminal Law and Criminology analyzed crime data over several years and found a modest increase in violent crimes during the full moon 1.",supporting,supporting,supporting,0
-28,climate change is real,"""Pensacola climate change task force meets to curb local global warming impact"".",neutral,supporting,neutral,0
-29,keeping animals in zoos is ethical,• Zoos and other animal use organisations should not make claims unjustified by measured impact.,neutral,opposing,neutral,0
-30,spiders are arachnids rather than insects,"Arachnids sit in Class Arachnida, home to about 120,000 described species, from spiders to scorpions.",neutral,supporting,neutral,0
-31,renewable energy can fully replace fossil fuels,The combination of technologies offers several advantages: the yield of biofuel nearly doubles by using bio-CO2 compared to bio-CH4 alone.,neutral,supporting,neutral,0
-32,hair and fingernails continue to grow after death,"In All Quiet on the Western Front, the author describes a friend’s fingernails growing in corkscrews after the burial.w22 Johnny Carson even perpetuated this myth with his joke, “For three days after death hair and fingernails continue to grow, but phone calls taper off.”w23 To quote the expert opinion of forensic anthropologist William Maples, “It is a powerful, disturbing image, but it is pure moonshine.",opposing,opposing,neutral,0
-33,working from home improves work-life balance,"Additionally, a 2012 study found that social isolation has been associated with decreased motivation.",neutral,opposing,neutral,0
-34,"the tongue has separate zones for tasting sweet, sour, salty, and bitter",Later research has revealed that taste bud seems to contain 50 to 100 receptors for each taste.,neutral,opposing,opposing,0
-35,octopuses have blue blood,"Since their blue blood is copper-based (hemocyanin) and not an efficient oxygen carrier, octopuses favor and move toward cooler, oxygen-rich water.",supporting,supporting,supporting,0
-36,people swallow several spiders a year while sleeping,"In the 1990s, a columnist writing about how easily false facts spread included the “eight spiders a year” claim as an example of how myths can travel quickly when repeated without evidence.",opposing,opposing,opposing,0
-37,spiders are arachnids rather than insects,"And how often, in mass media, we read or hear a phrase like ""spiders prey on other insects!""",neutral,opposing,opposing,0
-38,msg is dangerous to consume,"With one third the amount of sodium as table salt, she says MSG can reduce sodium content in snack food.",neutral,opposing,neutral,0
-39,the blood in human veins is blue,This continual chemical and color change allows forensic scientists to determine the time a blood drop was left at a crime scene.,neutral,neutral,neutral,0
-40,penguins live almost entirely in the southern hemisphere,"Both species can be found inland near lakes and rivers, however gulls have adapted well to human presence and can often be found in urban centers.",neutral,neutral,neutral,0
-41,climate change is caused by human activity,"Anthropogenic sulphate is the main element that influences atmospheric conditions through its direct and indirect effects, which delay global warming by increasing the albedo and the lifetime of clouds formed by water droplets.",neutral,supporting,neutral,0
-42,daylight saving time should be abolished,"The islands have never been part of the EU, so the decision to observe summer time was its own.",neutral,neutral,neutral,0
-43,the moon landing was faked,Cosmonaut Alexei Leonov later described listening to the Moon landing live.,neutral,opposing,opposing,0
-44,humans only have five senses,"Ultimately, they saw brain activity in the participants that resembled our response to other stimuli, like sight and sound.",neutral,opposing,neutral,0
-45,ai will replace most jobs,"Freethink says that 65% of retail jobs could be automated by that year, saying that this is largely due to technological advancements, rising costs and wages, tight labor markets, and reduced consumer spending.",neutral,supporting,neutral,0
-46,vikings wore horned helmets in battle,"We are also familiar with them from the Icelandic sagas, in which they are amongst the most feared of all Vikings.",neutral,neutral,neutral,0
-47,vikings wore horned helmets in battle,These visual associations were strong enough to overwhelm the lack of archaeological evidence for such things ever being used by the Vikings in real life.,opposing,opposing,opposing,0
-48,venus is the hottest planet in the solar system,"Until the mid-20th century, scientists thought that Venus was a verdant world—inspiring science-fictional stories of heroes battling megafauna in sprawling jungles.",neutral,neutral,neutral,0
-49,the amazon rainforest produces about 20% of the world's oxygen,"THE QUESTION:
-Does the Amazon forest really produce 20 percent of the world’s oxygen supply?",neutral,neutral,neutral,0
-50,photosynthesis releases oxygen as a byproduct,"Significance Anoxygenic photosynthesis by phototrophic sulfur bacteria is prevalent in microbial mat ecosystems and in restricted, highly stratified aquatic environments.",neutral,opposing,neutral,1
-51,banning smartphones in schools improves educational outcomes,"In schools where cell phones are banned, students are more likely to engage with one another during breaks and lunchtime, fostering interpersonal skills.",supporting,supporting,neutral,0
-52,the earth revolves around the sun,"This force acts universally, from the smallest particles to the largest galaxies.",neutral,neutral,neutral,0
-53,climate change is caused by human activity,Other greenhouse gases are emitted by human activities in smaller quantities.,neutral,supporting,supporting,0
-54,tipping should be abolished in restaurants,"On your list of headaches, tipping should not be one of them.",neutral,neutral,neutral,0
-55,sharks existed before trees did,The first trees are believed to have evolved around 375 million years ago during the Devonian Period.,neutral,supporting,neutral,1
-56,keeping animals in zoos is ethical,"He passed his photographs to the police, who raided the lab and arrested Taub.",neutral,opposing,neutral,0
-57,sugar is worse than fat for health,"They can cause inflammation, lead to clogged arteries and more, but they are also very common in a variety of fried foods, fast foods, and baked goods.",neutral,opposing,neutral,0
-58,the earth's inner core is roughly as hot as the surface of the sun,"The Center of the Earth Is as Hot as the Sun
-1,800 degrees warmer than we previously thought, the Earth’s core is super hot
-Crushed by the weight of the thousands of kilometers of liquid iron and sulfur, superheated metal and minerals and cool crustal rock above, the Earth’s core is under immense pressure.",supporting,supporting,supporting,0
-59,self-driving cars are safer than human drivers,"The driver assistance system continues to gain in popularity as its benefits have been studied and communicated widely: according to research, the ADAS system including emergency braking, lane keeping assistance, and blind-spot warning system, if all vehicles had been equipped with the system, it would have had prevented 40% of all passenger-vehicle crashes.",neutral,supporting,neutral,0
-60,renewable energy can fully replace fossil fuels,"However, since the 2008 financial crisis, many economies are still exploring diverse energy development models for economic growth, and the integration of renewable energy is seen as a necessity for sustained economic development.",neutral,opposing,neutral,0
-61,cities should make public transit free,"Years ago, Alex Steffen wrote: There is a direct relationship between the kinds of places we live, the transportation choices we have, and how much we drive.",neutral,neutral,neutral,0
-62,smoking causes lung cancer,"FINDINGS
-The findings reveal a significant increase in comorbidities among lung cancer patients over time, while this increase was less significant in the comparison cohort.",neutral,neutral,neutral,0
-63,climate change is caused by human activity,"By integrating normalized difference vegetation index (NDVI) and net primary productivity (NPP) based on the Euclidean distance method, a LDD index (LDDI) was introduced to detect LDD processes, and to explore its quantitative relationship with climate change and human activity in China from 1985 to 2015.",neutral,neutral,neutral,0
-64,global sea levels have risen over the past century,All official European Union website addresses are in the europa.eu domain.,neutral,neutral,neutral,0
-65,bananas are botanically classified as berries,"True berries also do not split or dry out as they mature, further aligning bananas with this definition.",supporting,supporting,supporting,0
-66,the coriolis effect determines which way water drains in a sink,"The spiral motion is generated by angular momentum already present in the water, often too subtle to notice before the drain is opened.",neutral,opposing,neutral,1
-67,raising the minimum wage reduces overall employment,"- Effects on Low-Skilled Workers: Newmark (2018), focusing on the least-skilled workers, finds strong evidence that minimum wage increases can lead to job losses in this demographic.",supporting,supporting,supporting,0
-68,the sahara region was green and vegetated thousands of years ago,"“The cyclic transformation of the Sahara Desert into savannah and woodland ecosystems is one of the most remarkable environmental changes on the planet.”
-The research was published in the journal Nature Communications, and chronicles the wet phases in the Sahara.",supporting,supporting,supporting,0
-69,glass is actually a slow-flowing liquid,"""When making machines as small as a cell, people have found that they're even more fragile than you might expect,"" Weeks said.",neutral,neutral,neutral,0
-70,sugar makes children hyperactive,"From the first camp of research, a
-Looking for longer-term effects, a systematic review and meta-analysis published in the Journal of Affective Disorders in 2019 assessed “evidence of the association between dietary patterns and ADHD.” The authors concluded that “a diet high in refined sugar and saturated fat can increase the risk” of ADHD and that a diet heavy in fruit and vegetables is protective.",neutral,supporting,neutral,0
-71,the sahara region was green and vegetated thousands of years ago,"How the Desert Returned
-Around 6,000 years ago, the orbital cycle began shifting sunlight away from Northern Hemisphere summers.",neutral,opposing,neutral,0
-72,humans only use 10 percent of their brain,"The quote is below:
-Most of us feel as if we lived habitually with a sort of cloud weighing on us, below our highest notch of clearness in discernment, sureness in reasoning, or firmness in deciding.",neutral,neutral,neutral,0
-73,sushi means raw fish,"It's a different area of Japanese cuisine and not related to sushi at all.""",neutral,neutral,neutral,0
-74,vikings wore horned helmets in battle,"This myth infiltrated popular imagination through mediums like Wagner’s operas, despite lacking historical basis.",opposing,opposing,opposing,0
-75,the sun is a star,"Because it is so close, we can learn more about other stars just by studying its activity and properties.",supporting,supporting,neutral,0
-76,electric cars are better for the environment than gasoline cars,"To illustrate how EVs create fewer emissions than their counterparts, Paltsev points to MIT’s Insights Into Future Mobility study from 2019.4 This study looked at comparable vehicles like the Toyota Camry and Honda Clarity across their gasoline, hybrid, plug-in hybrid, battery electric, and hydrogen fuel cell configurations.",neutral,supporting,supporting,0
-77,cats are better pets than dogs,"The study found that 4 million dogs entered shelters, with 2.4 million (or 60%) euthanized (p. 203).",neutral,opposing,neutral,0
-78,diamonds are made of carbon,"The way the carbon atoms are arranged in space, however, is different for the three materials, making them allotropes of carbon.",neutral,supporting,supporting,0
-79,einstein failed math in school,"And on returning, earn his place at the prestigious school in Zurich.",neutral,neutral,opposing,0
-80,evolution is real,It was not human consciousness that produced nature and ourselves.,neutral,neutral,neutral,0
-81,touching a baby bird causes its mother to abandon it,"This isn’t exactly the case, but overall you’ll want to leave them alone except for certain circumstances.",opposing,opposing,opposing,0
-82,mosquitoes kill more humans per year than any other animal,"stephensi) mosquito poses a huge risk to global progress against malaria because it thrives in urban environments, is resistant to common insecticides, and can transmit malaria year-round.",neutral,neutral,neutral,0
-83,reading in dim light permanently damages your eyes,"April 2, 2026 - Yes, it can—reading in the dark or in dim light can cause eye strain.",neutral,supporting,neutral,0
-84,helium is lighter than air,"Since a 12-inch balloon weighs less than this amount, a half-helium balloon will still float, though not as well as a completely filled one.",neutral,supporting,neutral,1
-85,octopuses have three hearts,The reason for this impressive cardiac hardware probably comes down to the unusual composition of their blood.,neutral,neutral,neutral,1
-86,the moon is slowly moving away from the earth,"This gives a gravitational tug forward, adding rotational energy to the Moon and increasing its orbit.",supporting,supporting,supporting,0
-87,sushi means raw fish,Fact- The etymology of the word sushi is unknown but the characters have definitely been put together more because of the way they sound rather than the meaning.,opposing,opposing,neutral,0
-88,glass is actually a slow-flowing liquid,"Describing it as a “slow-flowing liquid” is more poetic than factual, and modern science now gives us a much clearer understanding of its true nature.",opposing,opposing,opposing,0
-89,standardized tests accurately measure intelligence,"Friedman, John, et al ""Standardized Test Scores and Academic Performance at Ivy-Plus Colleges.""",neutral,neutral,neutral,0
-90,you lose most body heat through your head,The head only represents about 10% of the body's total surface area.,neutral,opposing,opposing,0
-91,social media is harmful to mental health,"This way, children can share their experiences without emphasizing a focus on their appearance.",neutral,neutral,neutral,0
-92,inflation in the united states is under control,"What Caused the Recent Price Surge
-The inflation spike beginning in 2021 resulted from complex, overlapping economic forces—a “perfect storm” that simultaneously boosted demand and constrained supply.",neutral,opposing,opposing,0
-93,cryptocurrency is a good long-term investment,"Abstract In recent years, the tendency of the number of financial institutions to include cryptocurrencies in their portfolios has accelerated.",neutral,supporting,neutral,0
-94,water expands when it freezes,This is why ice floats in cold drinks and why liquid beverages cooled in the freezer may explode.,supporting,supporting,neutral,1
-95,streaming services have benefited musicians financially,"This shift significantly impacted album sales, as the convenience and affordability of streaming services led to a decline in physical and digital sales.",opposing,opposing,neutral,0
-96,the sun is a star,"In 1868, Norman Lockyer hypothesised that these absorption lines were caused by a new element that he dubbed helium, after the Greek Sun god Helios.",neutral,neutral,neutral,0
-97,sugar is worse than fat for health,"When your sugar intake is too high, your body fails to produce an adequate amount of insulin to break it down.",neutral,supporting,neutral,0
-98,universal basic income reduces poverty,"However, the increased tax burden raises
-questions about long-term viability, as higher taxes could reduce disposable incomes, deter workforce
-participation, and, paradoxically, counter the economic dynamism UBI aims to foster.",neutral,opposing,neutral,0
-99,earth's atmosphere is composed mostly of nitrogen,"Applications
-The applications of nitrogen compounds are naturally extremely widely varied due to the huge size of this class: hence, only applications of pure nitrogen itself will be considered here.",neutral,neutral,neutral,0
-100,smoking causes lung cancer,"Results In the GSE12428 dataset, 225 upregulated genes and 565 downregulated genes were identified in cancer tissues; based on smoking status, 1 upregulated gene and 4 downregulated genes were identified.",neutral,neutral,neutral,0
-101,streaming services have benefited musicians financially,"Kanye West’s “DONDA 2” and the Stem Player
-Kanye West’s release of “DONDA 2” exclusively through his Stem Player was a pioneering move that bypassed traditional streaming services entirely.",neutral,opposing,neutral,0
-102,climate change is real,"Some organizations promoting climate change denial have asserted that scientists are increasingly rejecting climate change, but this is contradicted by research showing that 97% of published papers endorse the scientific consensus, and that percentage is increasing with time.",supporting,supporting,supporting,0
-103,photosynthesis releases oxygen as a byproduct,with of have with a that the an the to have effect on they This on plant as is for both photosynthetic electron and an of of in as an of Cell.,neutral,neutral,neutral,1
-104,cracking your knuckles causes arthritis,"However, a 2017 study found no difference in grip strength between the two groups.",neutral,neutral,neutral,0
-105,social media is harmful to mental health,"RESULTS: We found that youth engaged in a wide range of activities on social media from connecting with family and friends to participating in global movements, and these served as avenues for building positive mental health.",opposing,opposing,opposing,0
-106,chameleons change color mainly to camouflage themselves,"Future studies may shed light on additional functions of chameleon color change beyond camouflage, such as signaling, thermoregulation, and communication.",neutral,opposing,neutral,0
-107,antarctica is the driest continent on earth,Low-pressure systems near the coast can interact with katabatic winds to increase their strength.,neutral,neutral,neutral,0
-108,cracking your knuckles causes arthritis,"And if the sound becomes intolerable and you don't want to perpetuate the generations-old myth, Dr. Cassidy prescribes asking them to kindly stop, simply ignoring them or getting a good set of earplugs.",opposing,opposing,opposing,0
-109,cats are better pets than dogs,"Cats are cheap to maintain and buy than dogs
-It is obvious that cats are less expensive than dogs.",neutral,supporting,neutral,0
-110,cryptocurrency is a good long-term investment,The attacks demonstrated how the anonymity techniques are not sufficient safeguards.,neutral,opposing,neutral,0
-111,spiders are arachnids rather than insects,"The purpose of this review is to examine critically the role of whole genome duplication on the diversification of the extant arachnid orders, as well as assess functional datasets for evidence of subfunctionalization or neofunctionalization in chelicerates.",neutral,supporting,neutral,0
-112,bananas are botanically classified as berries,"Boatwright said the banana fruit was “botanically classified as a berry”.This group includes other fruits such as grapes, tomatoes, avocados and pomegranates.",supporting,supporting,supporting,0
-113,glass is actually a slow-flowing liquid,"Modern replication at the University of Cambridge Department of Physics confirmed no detectable “flow” over a 30-year period, with strains below the threshold of 10^−10 per year.",opposing,opposing,opposing,0
-114,humans only use 10 percent of their brain,"The same problem is encountered when dealing with marine mammals, which may have considerable body fat masses.",neutral,neutral,neutral,0
-115,sugar is worse than fat for health,"In summary, although excessive intake of either fat or sugar may lead an increased likelihood of weight gain, evidence leans toward regulating sugar consumption as more impactful for reducing excess bodyweight effectively and sustaining a balanced mass over time.",supporting,supporting,supporting,0
-116,sugar makes children hyperactive,"The results were clear: in the vast majority of studies, sugar consumption did not lead to increased hyperactivity or disruptive behaviour.",opposing,opposing,opposing,0
-117,humans only use 10 percent of their brain,"The myth's durability, Gordon says, stems from people's conceptions about their own brains: they see their own shortcomings as evidence of the existence of untapped gray matter.",neutral,opposing,opposing,0
-118,you lose most body heat through your head,"Advertisement
-But let’s get one thing straight: It’s best to wear a hat when it gets cold.",neutral,neutral,neutral,0
-119,the pacific is the largest ocean on earth,"The Pacific Ocean basin is also the oldest and deepest of all oceans with an average depth of 4,280 m (14,040 ft).",neutral,supporting,neutral,0
-120,5g towers cause cancer,"Background: Scientific literature, with no conflicts of interest, shows that even below the limits defined by the International Commission on Non-Ionizing Radiation Protection, microwaves from telecommunication technologies cause numerous health effects: neurological, oxidative stress, carcinogenicity, deoxyribonucleic acid and immune system damage, electro-hypersensitivity.",supporting,supporting,neutral,1
-121,banning smartphones in schools improves educational outcomes,"In particular, research from the London School of Economics found that student test scores improved by 6.41% in schools that implemented a mobile phone ban.",supporting,supporting,supporting,0
-122,streaming services have benefited musicians financially,"That’s a significant chunk of change and, remember, is only an estimate for a single market.",neutral,neutral,neutral,0
-123,china has the world's largest economy,"As the world’s second-largest economy, China’s solid internal logistics infrastructure and well-developed transportation systems are vital to maintaining and expanding its economic vitality.",opposing,opposing,opposing,0
-124,touching a baby bird causes its mother to abandon it,"The belief that mother birds will abandon their young if a human touches them is unfounded, but it does have benefits.",opposing,opposing,opposing,0
-125,the big bang was an explosion that happened at a single point in space,"But what's amazing is that in the entire universe, nothing is more powerful than the colossal explosion that created it all: The Big Bang.",neutral,supporting,neutral,0
-126,sound travels faster through water than through air,"In a similar way, standard sound is just a compression wave traveling through the atoms and bonds in a material.",neutral,neutral,neutral,0
-127,goldfish have a three second memory,"Scientific research has proven that these aquatic creatures possess a memory span of several months, with the ability to learn, remember tasks, recognize humans, and associate sounds with specific events.",opposing,opposing,opposing,0
-128,the amazon rainforest produces about 20% of the world's oxygen,One of the few things they all have in common?,neutral,neutral,neutral,0
-129,dogs can only see in black and white,"And here’s the same Frisco Ball toy, only in blue, which stands out more clearly against the grass:
-Next up, we ran the pink Frisco Puppy Toy through the same generator.",neutral,neutral,neutral,0
-130,one dog year is equivalent to seven human years,"However, as time passes, the rate of ageing in dogs, compared with humans, slows down.",neutral,opposing,opposing,0
-131,spiders are arachnids rather than insects,"Research has also focussed disproportionately on vertebrates and a few insects, neglecting other taxa where polymorphism is widespread, like arachnids.",neutral,supporting,neutral,0
-132,humans evolved directly from modern chimpanzees,"Even a
-form of communication as casual as gossip provides an ingenious social tool: Suddenly,
-we become aware of crucial information that we never would have known otherwise.",neutral,neutral,neutral,0
-133,cities should make public transit free,Mobility as a public right would create a more connected society and bring greater social good.,supporting,supporting,supporting,0
-134,antarctica is the driest continent on earth,"Antarctica is the coldest, driest place and fifth largest continent on this earth.",supporting,supporting,supporting,0
-135,genetically modified crops are safe to eat,"GMOs, Farm to Table
-What GMO crops are in the United States?",neutral,neutral,neutral,0
-136,glass is actually a slow-flowing liquid,"While its atomic arrangement is disordered, the atoms are fixed in place, giving the material the mechanical properties of a solid.",opposing,opposing,opposing,0
-137,the beatles are the greatest band of all time,Pepper's Lonely Hearts Club Band in 1967 forward were uniform in both the UK and the US.,neutral,neutral,neutral,0
-138,the speed of light is constant,"Since such misalignment had not been observed, Descartes concluded the speed of light was infinite.",neutral,opposing,opposing,0
-139,the moon landing was faked,"Since the mid-1970s, various groups and individuals have claimed that NASA and others knowingly misled the public into believing the landings happened by manufacturing, tampering with, or destroying evidence including photos, telemetry tapes, radio and TV transmissions, and Moon rock samples.However, there is much third-party evidence for the landings, and there have been many detailed rebuttals to the hoax claims.",opposing,opposing,opposing,0
-140,christopher columbus discovered america,Christopher Columbus was born in Genoa between August and October 1451.,neutral,neutral,neutral,0
-141,vaccines cause autism,"Because the Danish and UK studies involved only diphtheria-tetanus-pertussis (DTP) or diphtheria-tetanus (DT) vaccines, they are less relevant for the higher thiomersal exposure levels that occurred in the U.S.",neutral,neutral,neutral,0
-142,swallowed chewing gum stays in your stomach for seven years,"However, Dr. McGreal cautions, the natural and artificial sweeteners in sugar-free gum can cause nausea, diarrhea, and headaches if swallowed in large quantities.",neutral,neutral,neutral,0
-143,raising the minimum wage reduces overall employment,"Through various machine learning models, it is demonstrated that income inequality has been reduced by raising the minimum wage.",neutral,opposing,neutral,0
-144,the human body is composed of roughly 60 percent water,"When babies are born, their bodies are made up of between 75 and 80% water; however, as humans mature, the amount of water in their bodies gradually declines until it reaches a level of approximately 60 to 65% for men and 50 to 60% for women.",supporting,supporting,supporting,0
-145,antibiotics do not work against viruses,"Antibiotics do not work on viruses, such as those that cause colds, flu, bronchitis, or runny noses, even if the mucus is thick, yellow, or green.",opposing,supporting,supporting,0
-146,humans only have five senses,"While sight, smell, taste and hearing are rather straightforward senses, without much flexibility or vagueness to them, touch is a very different story, and actually encompasses many other senses that are entirely different systems.",neutral,opposing,opposing,0
-147,food is safe to eat if picked up within five seconds of dropping it,But a minute-long contact increased contamination about tenfold (especially on tile and carpet surfaces).,neutral,opposing,neutral,0
-148,tipping should be abolished in restaurants,"For example, gratuity is built into the bill in many parts of the world, which used to be more common in the US with large parties at restaurants.",neutral,supporting,neutral,0
-149,swallowed chewing gum stays in your stomach for seven years,"Don’t worry, it's not still inside you as scientists bust the playground myth
-- Myth that chewing gum stays in your body for seven years is untrue
-- Chewing gum is composed mainly of butyl rubber used in basketballs
-- Most of the gum cannot be digested but it can pass out the body in days
-- See more Daily Mail on Google - save us as a Preferred Source
-It is a classic playground scare story - if you swallow chewing gum it will stay in your digestive system for seven years.",opposing,opposing,opposing,0
+0,bulls are enraged by the color red,The long-standing cultural image of a raging bull charging a matador’s red cape is one of the most enduring myths in animal behavior.,opposing,,opposing,0
+1,goldfish have a three second memory,This widely accepted notion has persisted in popular culture despite lacking any,neutral,,opposing,0
+2,the Great Wall of China is visible from space,"The walls were as tall as 2.75 metres (9 ft 0 in) at places when they were discovered, and may have been around 2 metres (6 ft",neutral,,neutral,0
+3,5G towers cause cancer,"5G technology is the latest mobile wireless communications technology, due to be rolled out in Australia from 2019.",neutral,,neutral,0
+4,humans share about 98% of DNA with chimpanzees,"DNA evidence suggests the bonobo and common chimpanzee species diverged approximately 890,000–860,000 years ago following separation of these two populations possibly because of acidification and the",neutral,,neutral,0
+5,climate change is real,The scientific consensus is that they cannot explain the observed warming trend.,supporting,,supporting,0
+6,5G causes COVID,"The outbreak of COVID-19 has led to a reduction in a number of services and activities, but it has also accelerated the development of communication and connectivity technologies as well as touchless",neutral,,neutral,0
+7,the earth revolves around the sun,"Poll: Sun Revolves Around the Earth
+According to a July 1999 Gallop Poll, 18% of Americans still believe that the sun revolves around the earth.POLL RELEASES
+New Poll Gauges Americans' General Knowled",neutral,,opposing,0
+8,bats are blind,"In comic books, the superheroes have fascinating powers and abilities that help them to deal with all kinds of challenges that arise in their daily lives.",neutral,,neutral,0
+9,5G causes COVID,"Fake news around the dangers of 5G technology and its links to coronavirus have spread online and on social media, despite the lack of any scientific evidence.",opposing,,opposing,0
+10,smoking causes lung cancer,"Smoking cigarettes can kill you, but before you die, you could experience some pretty terrible diseases and health conditions from smoking.",neutral,,neutral,0
+11,goldfish have a three second memory,"When people picture goldfish, the first thing that usually comes to mind is the old saying that they can only remember things for three seconds.",neutral,,neutral,0
+12,Einstein failed math in school,"Now this was very advanced, because the students would normally study calculus when they were 15 years ol",opposing,,neutral,0
+13,the average human body temperature is 98.6 degrees fahrenheit,"The 98.6°F standard is over 150 years old, and research shows average body temperature has since shifted.",opposing,,opposing,0
+14,Einstein failed math in school,- There is no evidence that iron maidens were used for tortur,neutral,,neutral,0
+15,evolution is real,"Evolution is often thought of as the slow work of millennia upon millennia, subtly altering genomes as species slowly adapt to environmental changes or pressures generation after generation.",supporting,,neutral,0
+16,dogs can only see in black and white,"For most of your life, you have probably believed that dogs can’t see light yellow, because you’ve heard that they only see in black and white.",neutral,,opposing,0
+17,shaving makes hair grow back thicker,Shaving cream is a cosmetic preparation which is designed to soften facial and body,neutral,,neutral,0
+18,honey never expires,"Legally, they have to tell you it won't be at its best after a while, and the expiry date is more for the store than the consumer.",supporting,,supporting,0
+19,the Amazon rainforest produces about 20% of the world's oxygen,"A persistent myth surrounding the Amazon rainforest, that it contributes a whopping 20% of the world’s oxygen, is a considerable overstatement.",opposing,,opposing,0
+20,5G causes COVID,"The same year, the University of Surrey founded the 5G Innovation Centre, funded by £",neutral,,neutral,0
+21,climate change is real,"The Earth’s climate has always changed
+Over the course of Earth’s 4.5-billion-year history, the climate has changed a lot, this is true.",supporting,,neutral,0
+22,lightning never strikes the same place twice,"This expression has entered common parlance, but from a scientific point of view, it is completely false.",opposing,,opposing,0
+23,goldfish have a three second memory,But a 15-year-old schoolboy from Adelaide has just debunked that theory.,opposing,,opposing,0
+24,the great wall of china is visible from space,"The walls were as tall as 2.75 metres (9 ft 0 in) at places when they were discovered, and may have been around 2 metres (6 ft",neutral,,neutral,0
+25,smoking causes lung cancer,A strong relationship between cigarette smoke exposure and chronic obstructive pulmonary disease (COPD) as well as lung cancer has,supporting,,supporting,0
+26,antibiotics do not work against viruses,Post-operative bacterial infections are a leading cause of mortality and morbidity after ongoing liver transplantation.,neutral,,neutral,0
+27,bats are blind,"Bats hunt in the dark using echolocation, meaning they use echoes of self-produced sounds bouncing off objects to help them navigate.",neutral,,opposing,0
+28,shaving makes hair grow back thicker,"In studying the effects of various physical and chemical treatments on hair growth after shaving, repeated shaving was in itself clearly shown to stimulate ...",neutral,,supporting,0
+29,the speed of light is constant,Abstract The possible time variation of the fundamental constants of nature has been an active subject of research since the large-number hypothesis was proposed by Dirac.,neutral,,neutral,0
+30,sugar makes children hyperactive,"Ask any parent returning from a birthday party with kids and they’ll swear that yes, of course, without doubt sugar makes their children hyperactive.",neutral,,supporting,0
+31,bulls are enraged by the color red,"For example:
+It’s the motion of the cape in bullfighting, not the color, that enrage",opposing,,opposing,0
+32,goldfish have a three second memory,"The prevalent myth that goldfish only have a three-second memory does goldfish a great disservice, says Ellen Husain.",opposing,,opposing,0
+33,sugar makes children hyperactive,"That might be hard to believe when you’ve watched a group of kids bounce off the walls at a birthday party, but decades of controlled research hav",neutral,,opposing,0
+34,the sun is a star,"The Sun Is Also a Star
+Directed by Ry Russo-Young
+Screenplay by Tracy Oliver
+Cinematography Autumn Durald
+Music by Herdis Stefánsdóttir
+Distributed by Warner Bros. Pictures
+Release date
+The Sun Is Als",neutral,,neutral,0
+35,the Great Wall of China is the only man-made structure visible from space,Choose a legend: The Great Wall of China is the one of the few man-made structures visible from orbit.,opposing,,opposing,0
+36,bats are blind,"Spallanzani carried on his researches on the blind flight of bats mainly in Scandiano, in the summer of 1793 and 1794, thanks to the great number of Chiroptera (bats) in the Rocca basement and in the",neutral,,neutral,0
+37,5G causes COVID,"Mobile network service use is growing, especially after the Covid-19 pandemic.",neutral,,neutral,0
+38,christopher columbus discovered america,"In 1837, Danish philologist Carl Christian Rafn published Antiquitates Americanæ, which introduced Americans to the Vinland sagas—medieval texts that suggest that Norse explorers “discovered” North Am",neutral,,opposing,0
+39,lightning never strikes the same place twice,"July 28, 2015 - This eventually resulted in the discovery of ""dark matter,"" which is comprised of those previously struck places in spacetime.",neutral,,neutral,0
+40,bats are blind,New echolocator Echolocation is a well demonstrated convergent sensory mode in bats and toothed whales.,neutral,,neutral,0
+41,the sun is a star,"Beckles
+Cover artist Khadijah Khatib
+Series The Nico di Angelo Adventures
+Publisher More publishers:
+Publication date May 2, 2023 (English) More dates:
+Media ty",neutral,,neutral,0
+42,goldfish have a three second memory,"But unbeknownst to most, it's a belief that's entirely false.",opposing,,opposing,0
+43,goldfish have a 3 second memory,"In fact, goldfish actually have very good memories for fish.",opposing,,opposing,0
+44,bats are blind,This suggests that vision is still an important means of sensory perc,opposing,,opposing,0
+45,the moon landing was faked,"What in the World
+What in the World
+Why some people claim the Moon landing was faked
+Available for over a year
+American astronauts Neil Armstrong and Buzz Aldrin landed on the Moon in 1969.",opposing,,neutral,0
+46,lightning never strikes the same place twice,"Automated fact-verification of the claim: ""Lightning never strikes the same place twice.""",neutral,,neutral,0
+47,Einstein failed math in school,"March 8, 2023 - Einstein's genius supposedly had at least one glaring flaw -- that he failed math at some point in his educational career.",neutral,,neutral,0
+48,the average human body temperature is 98.6 degrees fahrenheit,"Long thought to be 98.6 degrees Fahrenheit, the measurement is highly personal and varies depending on time of day, among other factors, new research",opposing,,opposing,0
+49,Einstein failed math in school,"We might not have a solid grasp on what exactly E = mc² means or why it’s important, but anybody who successfully makes a ma",neutral,,neutral,0
+50,bulls are enraged by the color red,"Because they lack the long-wavelength cone required to detect red light, they cannot perceive red in the",opposing,,opposing,0
+51,octopuses have three hearts,Its hard to believe that an octopus has three hearts .,neutral,,supporting,0
+52,antibiotics do not work against viruses,In this case there are antibiotics that are used to co,neutral,,neutral,0
+53,the Sahara desert is the largest desert on earth,"The Sahara is the largest and driest of the hot deserts on Earth, with regions where rainfall reaches the surface on average less than once a year.",supporting,,neutral,0
+54,antibiotics do not work against viruses,There is strong evidence for vaccinating children under the age of 2 against Streptoco,neutral,,neutral,0
+55,the earth is flat,"Sean Bryant, Science Reference Specialist, Science, Technology and Business Division
+Note: This guide is adapted from a 1998 reference list created by Ruth Freitag titled ""The Flat Earth and its Advoc",neutral,,neutral,0
+56,humans only use 10 percent of their brain,"Adding to that mystery is the contention that humans ""only"" employ 10 percent of their brain.",neutral,,neutral,0
+57,the sun is a star,Contact us Developers Policy & Safety How YouTube works Test new features NFL Sunday Ticket © 2026 Google LLC,neutral,,neutral,0
+58,octopuses have three hearts,"Two pump blood to the gills for oxygenation, while the third pumps oxygenated blood to the rest of the body.",supporting,,supporting,0
+59,the great wall of china is visible from space,The myth regarding the Great Wall of China can be seen from outer space and has been circulated for hundreds of years.,opposing,,opposing,0
+60,humans only use 10 percent of their brain,"It’s one of Hollywood’s favorite bits of pseudoscience: human beings use only 10 percent of their brain, and awakening the remaining 90 percent—supposedl",opposing,,opposing,0
+61,the earth revolves around the sun,"1 In 4 Americans Thinks The Sun Goes Around The Earth, Survey Says
+A quarter of Americans surveyed could not correctly answer that the Earth revolves around the sun and not the other way around, accor",neutral,,opposing,0
+62,climate change is caused by human activity,"March 3, 2026 - (This type of climate change is ... beings.”) The unchecked burning of fossil fuels over the past 150 years has drastically increased the presence of atmospheric greenhouse gases, most",neutral,,supporting,0
+63,goldfish have a three second memory,Goldfish are known for their orange hues and terrible memories.,supporting,,supporting,0
+64,bulls are enraged by the color red,"Contrary to popular belief, bulls do not specifically target or attack the",neutral,,opposing,0
+65,cracking your knuckles causes arthritis,"For many people, cracking stiff joints can help relieve tension and discomfort.",neutral,,neutral,0
+66,bulls are enraged by the color red,"They are red-green colour blind — cattle have only two cone types, sensitive at about 445 nm (blue) and 555 nm (yellow-gree",opposing,,neutral,0
+67,lightning never strikes the same place twice,"MythBuster: Lightning Never Strikes the Same Place Twice
+Lightning is unpredictable.",opposing,,neutral,0
+68,smoking causes lung cancer,"Key points
+- Cigarette smoking is the number one risk factor for lung cancer.",supporting,,supporting,0
+69,the Great Wall of China is visible from space,"Jan 18, 2022 · The Great Wall of China is itself NOT very visible from space; it's certainly long enough, but it's no wider on average than a fairly narrow ...My history teacher insists The Great Wall",opposing,,opposing,0
+70,the speed of light is constant,"Speed of Light May Not Be Constant, Physicists Say
+The speed of light is constant, or so textbooks say.",neutral,,opposing,0
+71,the Great Wall of China is visible from space,"Cecil seems to think long thin things like highways, canals and Great Walls would be the most visible man-made objects from space.",neutral,,neutral,0
+72,goldfish have a 3 second memory,This idea was challenged by a study that found that goldfish remember t,opposing,,opposing,0
+73,5G towers cause cancer,This is far lower in energy compared to ionizing radiation.,neutral,,neutral,0
+74,the speed of light is constant,This paper shows how the miscalculated result of an experiment caused the birth of the theory of relativity.,neutral,,neutral,0
+75,the great wall of china is visible from space,Choose a legend: The Great Wall of China is the one of the few man-made structures visible from orbit.,supporting,,supporting,0
+76,climate change is caused by human activity,Surveys of scientists' views on climate change – with a focus on human caused climate change – have been undertaken since the 1970s.,neutral,,neutral,0
+77,the earth is flat,They saw the way the Sun’s shadow worked in different plac,neutral,,neutral,0
+78,honey never expires,"However, certain factors affect the colour and texture of honey in the following conditions:
+1.",neutral,,neutral,0
+79,the earth is flat,"Myth of the flat Earth
+The myth of the flat Earth, or the flat-Earth error, is a modern historical misconception that European scholars and educated people during the Middle Ages believed the Earth to",opposing,,opposing,0
+80,the earth revolves around the sun,A lunar day is equal to one lunar month (one synodic orbit around Earth) due to it being tidally locked to Earth.,neutral,,neutral,0
+81,climate change is real,"Despite decades of scientific research, climate change remains one of the most misunderstood issues of our time.",neutral,,neutral,0
+82,MSG is dangerous to consume,"Feb 21, 2024 · No , it's not bad for you, unless you decide to overdose on it.",opposing,,opposing,0
+83,the moon landing was faked,"It's now been nearly four decades since Neil Armstrong took his ""giant leap for mankind"" — if, that is, he ever set foot off this planet.",neutral,,neutral,0
+84,sugar makes children hyperactive,"The Sugar-Hyperactivity Myth: A Sweet Tale of Misconception
+The idea tha",opposing,,opposing,0
+85,honey never expires,Contact us Developers Policy & Safety How YouTube works Test new features NFL Sunday Ticket © 2026 Google LLC,neutral,,neutral,0
+86,the Great Wall of China is visible from space,Arthur Waldron traced the origin the “Great Wall can be seen from the moon” myth in the book “Great Wall of China.” It was popularized by a 1932 Ripley’s Believe it or Not column (republished many tim,opposing,,opposing,0
+87,5G towers cause cancer,The National Cancer Institute and the World Health Organization (WHO) emphasize that there is no conclusive evidence linking non-ionizing ra,neutral,,opposing,0
+88,antibiotics do not work against viruses,"READ ABOUT OUR LATEST COVID-19 INFORMATION
+Read MorePeople often wonder: “Why don’t antibiotics work on viruses?” It’s a common question, especially when symptoms like a runny nose, sore throat, sinus",supporting,,supporting,0
+89,the speed of light is constant,"This changed Newton's mechanics situations involving all motions, especially velocities close to that of light: 18 (known as relativistic velocities).",neutral,,neutral,0
+90,goldfish have a 3 second memory,A 2022 study at Ben-Gurion University even trained goldfish to “drive” a wheeled tank toward a target on land — a feat that requires much more than three seconds of working memory.,opposing,,opposing,0
+91,the Great Wall of China is visible from space,"Automated fact-verification of the claim: ""The Great Wall of China is the only man-made object visible from space with the naked eye.""",neutral,,neutral,0
+92,humans only use 10 percent of their brain,"Posted May 15, 2025 Reviewed by Michelle Quirk
+Key points
+- The entire brain is active in dai",opposing,,opposing,0
+93,christopher columbus discovered america,"From a civil liberties point of view, the claim that Christopher Columbus discovered America contains several problematic implications.",opposing,,neutral,0
+94,5G causes COVID,"A 2020 study that monitored data from Google Trends showed that searches related to coronavirus and 5G started at different times, but peaked in the same week of April 5 in six countries.",neutral,,neutral,0
+95,the Amazon rainforest produces about 20% of the world's oxygen,"So, we all came across a number of photos, videos, and articles that state Amazon Rainforest produces 20% of the planet’s oxygen.",neutral,,neutral,0
+96,goldfish have a three second memory,A 2022 study at Ben-Gurion University even trained goldfish to “drive” a wheeled tank toward a target on land — a feat that requires much more than three seconds of working memory.,opposing,,opposing,0
+97,humans only use 10 percent of their brain,"August 29, 2018 - It was the basis of the movie Lucy (2014), which depicted what supposedly would happen if a person actually used all 100% of her brainpower.",neutral,,neutral,0
+98,the Great Wall of China is the only man-made structure visible from space,"May 6, 2025 · Wikipedia says the claim the Great Wall can be seen from space and even the moon is actually from the 18th century.The Great Wall of China is ______ from space.",neutral,,neutral,0
+99,shaving makes hair grow back thicker,Take me as an example… I started growing bald ...,neutral,,neutral,0
+100,evolution is real,Evolutionary biologists have continued to study various aspects of evolution by forming and testing hypotheses as well as constructing theories based on evidence from the field or laboratory and on da,neutral,,supporting,0
+101,the Amazon rainforest produces about 20% of the world's oxygen,"Why the Amazon doesn’t really produce 20% of the world’s oxygen
+The myth that the Amazon rainforest forms the “lungs of the Earth” is overstated.",opposing,,opposing,0
+102,5G causes COVID,There’s no evidence to support the theory that 5G network,opposing,,opposing,0
+103,climate change is real,13 hours ago - Climate change can also be used more broadly to include changes to the climate that have happened throughout Earth's history as result of natural processes.,neutral,,supporting,0
+104,antibiotics do not work against viruses,Vaccinations against Haemophilus influenzae and Streptococcus pneumoniae have good evidence to support their use.,neutral,,neutral,0
+105,smoking causes lung cancer,"Cigarette smoke contains thousands of chemicals, many of which are carcinogens.",neutral,,neutral,0
+106,the great wall of china is visible from space,"cartoon called it “the mightiest work of man, the only one that would be visible to the",neutral,,supporting,0
+107,bats are blind,"Decades of research into intelligent animal navigation posits that organisms build and maintain internal spatial representations (or maps) 1 of their environment, that enables the organism to determin",neutral,,neutral,0
+108,the speed of light is constant,Experiments such as the Kennedy–Thorndike experiment and the Ives–Stilwell experiment have shown this postulate to match experimental observations.,neutral,,supporting,0
+109,lemmings commit mass suicide,This false impression popularized via nature documentaries and folklore is not always best scientifically inaccurate however also a striking instance of how sensationalism can distort herbal phenomena,opposing,,opposing,0
+110,5G causes COVID,"When the coronavirus spread around the world, conspiracy theorists started spreading inaccurate theories about 5G.",opposing,,opposing,0
+111,the Sahara desert is the largest desert on earth,What makes the Sahara the largest desert in the world?,supporting,,neutral,0
+112,goldfish have a 3 second memory,"Many of us have believed this is true, but what if I tell you that it’s actually wrong?",opposing,,opposing,0
+113,the earth is flat,"Because of the increasing anthropogenic interruption and sea level rise, tidal f",neutral,,neutral,0
+114,the Great Wall of China is visible from space,"Nov 16, 2006 · Astronauts report it is not easily visible to the naked eye, unlike large cities or airports.",opposing,,opposing,0
+115,5G towers cause cancer,"A 2020 study that monitored data from Google Trends showed that searches related to coronavirus and 5G started at different times, but peaked in the same week of April 5 in six countries.",neutral,,neutral,0
+116,the Great Wall of China is visible from space,"May 6, 2025 · Despite myths to the contrary, the wall isn't visible from the moon, and is difficult or impossible to see from Earth orbit without the high- ...I thought it was a myth that you can see",opposing,,opposing,0
+117,the Great Wall of China is the only man-made structure visible from space,What makes the Great Wall of China the only man-made object visible from space?,supporting,,neutral,0
+118,climate change is caused by human activity,This adds enormous amounts of greenhouse gases to those naturally,neutral,,neutral,0
+119,cracking your knuckles causes arthritis,Knuckle cracking is a common habit many people find satisfying.,neutral,,neutral,0
+120,goldfish have a 3 second memory,Why goldfish having a three-second memory is a myth… ...,opposing,,opposing,0
+121,sugar makes children hyperactive,"The Sweet Truth The sugar-hyperactivity myth is based on a single study from the mid 1970s, in which a doctor removed the sugar from one child's diet and that child's behavior improved.",opposing,,opposing,0
+122,bats are blind,Abstract Echolocating bats adapt their emissions to succeed in noisy environments.,neutral,,neutral,0
+123,humans share about 98% of DNA with chimpanzees,"Through DNA, scientists have uncovered startling evidence: not only are humans closely related to primates like chimpanzees, bonobos, and gorillas, but our genetic divergence is shockingly recent in e",neutral,,neutral,0
+124,drinking bleach cures diseases,Should you worry about drinking a mouthful of bleach ...,neutral,,neutral,0
+125,the speed of light is constant,"Before we can discuss how to travel faster than light, we need to understand why this is a problem in the first place.",neutral,,neutral,0
+126,lemmings commit mass suicide,It’s widely believed that lemmings commit mass suicide by leaping to their deaths from cliffs.,neutral,,neutral,0
+127,octopuses have three hearts,Three hearts have an octopus ... Do u know how many hearts octopus has ?,neutral,,supporting,0
+128,climate change is caused by human activity,Human activity and climate change triggered the expansion of rocky desertification in the karst areas of Southwestern China,neutral,,supporting,0
+129,the earth is flat,"This was a magical revelation for the Greeks and the Egyptians, who were able to see from the motions of the stars and the way the Sun moved.",neutral,,neutral,0
+130,climate change is caused by human activity,"In this study, how shoreline change responses to global climate change and human activity at the Shandong Peninsula was quantified by analyzing shoreline locations, inshore erosion/accretion rates, an",neutral,,neutral,0
+131,the speed of light is constant,"Discussion Overview
+The discussion revolves around the constancy of the speed of light, exploring its implications in physics, historical experiments that support this constancy, and the theoretical f",neutral,,neutral,0
+132,shaving makes hair grow back thicker,"Jul 30, 2021 ... Shaving removes the dead portion of hair, not the living section lying below the skin's surface, so it is unlikely to affect the rate or type of growth.",opposing,,opposing,0
+133,the great wall of china is visible from space,"Someone on the webmaster world forum thought the same thing, and another person pointed them to the snopes article showing that the claim was false.",opposing,,opposing,0
+134,honey never expires,Honey can last for thousands of years in sealed pots – it’s even been discovered in Ancient Egyptian tombs.,supporting,,supporting,0
+135,climate change is caused by human activity,"Anthropogenic climate change is caused by human activity, as opposed to changes in climate that may have resulted as part of Earth's natural processes.",supporting,,supporting,0
+136,the great wall of china is visible from space,"Automated fact-verification of the claim: ""The Great Wall of China is the only man-made object visible from space with the naked eye.""",neutral,,neutral,0
+137,5G towers cause cancer,"The WHO states that ""A large number of studies have been performed over the last two decades to assess whether mobile phones pose a potential health risk.",neutral,,neutral,0
+138,honey never expires,"Plus, how to store honey and what to do if it crystalizes.",neutral,,neutral,0
+139,the earth revolves around the sun,"An animal could not learn that the world is round, that the earth revolves round the sun, or the construction of the electric telegraph.",supporting,,neutral,0
+140,honey never expires,Like one of those facts you hear and immediately question.,neutral,,neutral,0
+141,goldfish have a 3 second memory,They can be trained to respond various ways to certai,opposing,,neutral,0
+142,the earth revolves around the sun,Sun is the center of the solar system and all the planets are revolving around the Sun.,supporting,,supporting,0
+143,the earth is flat,The claims of modern flat Earth proponents are not based on scientific know,opposing,,opposing,0
+144,honey never expires,The National Honey Board says that over time honey may “darken and lose ...,neutral,,opposing,0
+145,5G towers cause cancer,"Like all mobile technologies, 5G uses radiofrequency (RF) electromagnetic energy to",neutral,,neutral,0
+146,5G causes COVID,"To improve the quality of mobile network services, 5G comes as a network service ecosystem with low latency, which is 1ms",neutral,,neutral,0
+147,the Great Wall of China is the only man-made structure visible from space,"From the Moon
+The Great Wall of China cannot be seen by the naked human eye from the Moon which orbits around Earth at an average distance of 384,399 kilometres (238,854 mi).",opposing,,opposing,0
+148,antibiotics do not work against viruses,The rapid worldwide spread of antibiotic resistance is quickly becoming an increasingly concerning problem for human healthcare.,neutral,,neutral,0
+149,humans share about 98% of DNA with chimpanzees,"For example, the sequence divergence varies between 0% to 2.66% between non-coding, non-repetitive genomic regions of humans and chimpanzees.",neutral,,supporting,0

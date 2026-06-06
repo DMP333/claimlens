@@ -1,30 +1,45 @@
 id,claim,sentence,gold,old,llm_label
-3,water boils at 100 degrees celsius,Older definitions of the Celsius temperature scale once defined the boiling point of water under one standard atmosphere as being precisely 100 °C.,supporting,supporting,neutral
-4,artificial intelligence will benefit society more than it harms it,The biggest gains appeared among students who were struggling the most.,supporting,supporting,neutral
-6,dogs can only see in black and white,Colors are more muted for our canine companions than what we see.,neutral,neutral,opposing
-7,cryptocurrency is a good long-term investment,"Economic analysis of these market cycles suggests that cryptocurrency price dynamics are characteristic of speculative bubbles, driven more by market sentiment than by traditional economic fundamentals.",neutral,opposing,opposing
-12,einstein failed math in school,"Einstein applied himself and later passed the entrance exam, earning a place at the prestigious school in Zurich.",neutral,opposing,opposing
-24,glass is actually a slow-flowing liquid,"To reach equilibrium, the glass would need to ""relax"" back toward a liquid state.",neutral,supporting,supporting
-25,ai will replace most jobs,"Still, he said, not every job is destined for extinction.",neutral,opposing,opposing
-32,hair and fingernails continue to grow after death,"In All Quiet on the Western Front, the author describes a friend’s fingernails growing in corkscrews after the burial.w22 Johnny Carson even perpetuated this myth with his joke, “For three days after death hair and fingernails continue to grow, but phone calls taper off.”w23 To quote the expert opinion of forensic anthropologist William Maples, “It is a powerful, disturbing image, but it is pure moonshine.",opposing,opposing,neutral
-34,"the tongue has separate zones for tasting sweet, sour, salty, and bitter",Later research has revealed that taste bud seems to contain 50 to 100 receptors for each taste.,neutral,opposing,opposing
-37,spiders are arachnids rather than insects,"And how often, in mass media, we read or hear a phrase like ""spiders prey on other insects!""",neutral,opposing,opposing
-43,the moon landing was faked,Cosmonaut Alexei Leonov later described listening to the Moon landing live.,neutral,opposing,opposing
-51,banning smartphones in schools improves educational outcomes,"In schools where cell phones are banned, students are more likely to engage with one another during breaks and lunchtime, fostering interpersonal skills.",supporting,supporting,neutral
-53,climate change is caused by human activity,Other greenhouse gases are emitted by human activities in smaller quantities.,neutral,supporting,supporting
-75,the sun is a star,"Because it is so close, we can learn more about other stars just by studying its activity and properties.",supporting,supporting,neutral
-76,electric cars are better for the environment than gasoline cars,"To illustrate how EVs create fewer emissions than their counterparts, Paltsev points to MIT’s Insights Into Future Mobility study from 2019.4 This study looked at comparable vehicles like the Toyota Camry and Honda Clarity across their gasoline, hybrid, plug-in hybrid, battery electric, and hydrogen fuel cell configurations.",neutral,supporting,supporting
-78,diamonds are made of carbon,"The way the carbon atoms are arranged in space, however, is different for the three materials, making them allotropes of carbon.",neutral,supporting,supporting
-79,einstein failed math in school,"And on returning, earn his place at the prestigious school in Zurich.",neutral,neutral,opposing
-87,sushi means raw fish,Fact- The etymology of the word sushi is unknown but the characters have definitely been put together more because of the way they sound rather than the meaning.,opposing,opposing,neutral
-90,you lose most body heat through your head,The head only represents about 10% of the body's total surface area.,neutral,opposing,opposing
-92,inflation in the united states is under control,"What Caused the Recent Price Surge
-The inflation spike beginning in 2021 resulted from complex, overlapping economic forces—a “perfect storm” that simultaneously boosted demand and constrained supply.",neutral,opposing,opposing
-94,water expands when it freezes,This is why ice floats in cold drinks and why liquid beverages cooled in the freezer may explode.,supporting,supporting,neutral
-95,streaming services have benefited musicians financially,"This shift significantly impacted album sales, as the convenience and affordability of streaming services led to a decline in physical and digital sales.",opposing,opposing,neutral
-117,humans only use 10 percent of their brain,"The myth's durability, Gordon says, stems from people's conceptions about their own brains: they see their own shortcomings as evidence of the existence of untapped gray matter.",neutral,opposing,opposing
-120,5g towers cause cancer,"Background: Scientific literature, with no conflicts of interest, shows that even below the limits defined by the International Commission on Non-Ionizing Radiation Protection, microwaves from telecommunication technologies cause numerous health effects: neurological, oxidative stress, carcinogenicity, deoxyribonucleic acid and immune system damage, electro-hypersensitivity.",supporting,supporting,neutral
-130,one dog year is equivalent to seven human years,"However, as time passes, the rate of ageing in dogs, compared with humans, slows down.",neutral,opposing,opposing
-138,the speed of light is constant,"Since such misalignment had not been observed, Descartes concluded the speed of light was infinite.",neutral,opposing,opposing
-145,antibiotics do not work against viruses,"Antibiotics do not work on viruses, such as those that cause colds, flu, bronchitis, or runny noses, even if the mucus is thick, yellow, or green.",opposing,supporting,supporting
-146,humans only have five senses,"While sight, smell, taste and hearing are rather straightforward senses, without much flexibility or vagueness to them, touch is a very different story, and actually encompasses many other senses that are entirely different systems.",neutral,opposing,opposing
+1,goldfish have a three second memory,This widely accepted notion has persisted in popular culture despite lacking any,neutral,,opposing
+7,the earth revolves around the sun,"Poll: Sun Revolves Around the Earth
+According to a July 1999 Gallop Poll, 18% of Americans still believe that the sun revolves around the earth.POLL RELEASES
+New Poll Gauges Americans' General Knowled",neutral,,opposing
+12,Einstein failed math in school,"Now this was very advanced, because the students would normally study calculus when they were 15 years ol",opposing,,neutral
+15,evolution is real,"Evolution is often thought of as the slow work of millennia upon millennia, subtly altering genomes as species slowly adapt to environmental changes or pressures generation after generation.",supporting,,neutral
+16,dogs can only see in black and white,"For most of your life, you have probably believed that dogs can’t see light yellow, because you’ve heard that they only see in black and white.",neutral,,opposing
+21,climate change is real,"The Earth’s climate has always changed
+Over the course of Earth’s 4.5-billion-year history, the climate has changed a lot, this is true.",supporting,,neutral
+27,bats are blind,"Bats hunt in the dark using echolocation, meaning they use echoes of self-produced sounds bouncing off objects to help them navigate.",neutral,,opposing
+28,shaving makes hair grow back thicker,"In studying the effects of various physical and chemical treatments on hair growth after shaving, repeated shaving was in itself clearly shown to stimulate ...",neutral,,supporting
+30,sugar makes children hyperactive,"Ask any parent returning from a birthday party with kids and they’ll swear that yes, of course, without doubt sugar makes their children hyperactive.",neutral,,supporting
+33,sugar makes children hyperactive,"That might be hard to believe when you’ve watched a group of kids bounce off the walls at a birthday party, but decades of controlled research hav",neutral,,opposing
+38,christopher columbus discovered america,"In 1837, Danish philologist Carl Christian Rafn published Antiquitates Americanæ, which introduced Americans to the Vinland sagas—medieval texts that suggest that Norse explorers “discovered” North Am",neutral,,opposing
+45,the moon landing was faked,"What in the World
+What in the World
+Why some people claim the Moon landing was faked
+Available for over a year
+American astronauts Neil Armstrong and Buzz Aldrin landed on the Moon in 1969.",opposing,,neutral
+51,octopuses have three hearts,Its hard to believe that an octopus has three hearts .,neutral,,supporting
+53,the Sahara desert is the largest desert on earth,"The Sahara is the largest and driest of the hot deserts on Earth, with regions where rainfall reaches the surface on average less than once a year.",supporting,,neutral
+61,the earth revolves around the sun,"1 In 4 Americans Thinks The Sun Goes Around The Earth, Survey Says
+A quarter of Americans surveyed could not correctly answer that the Earth revolves around the sun and not the other way around, accor",neutral,,opposing
+62,climate change is caused by human activity,"March 3, 2026 - (This type of climate change is ... beings.”) The unchecked burning of fossil fuels over the past 150 years has drastically increased the presence of atmospheric greenhouse gases, most",neutral,,supporting
+64,bulls are enraged by the color red,"Contrary to popular belief, bulls do not specifically target or attack the",neutral,,opposing
+66,bulls are enraged by the color red,"They are red-green colour blind — cattle have only two cone types, sensitive at about 445 nm (blue) and 555 nm (yellow-gree",opposing,,neutral
+67,lightning never strikes the same place twice,"MythBuster: Lightning Never Strikes the Same Place Twice
+Lightning is unpredictable.",opposing,,neutral
+70,the speed of light is constant,"Speed of Light May Not Be Constant, Physicists Say
+The speed of light is constant, or so textbooks say.",neutral,,opposing
+87,5G towers cause cancer,The National Cancer Institute and the World Health Organization (WHO) emphasize that there is no conclusive evidence linking non-ionizing ra,neutral,,opposing
+93,christopher columbus discovered america,"From a civil liberties point of view, the claim that Christopher Columbus discovered America contains several problematic implications.",opposing,,neutral
+100,evolution is real,Evolutionary biologists have continued to study various aspects of evolution by forming and testing hypotheses as well as constructing theories based on evidence from the field or laboratory and on da,neutral,,supporting
+103,climate change is real,13 hours ago - Climate change can also be used more broadly to include changes to the climate that have happened throughout Earth's history as result of natural processes.,neutral,,supporting
+106,the great wall of china is visible from space,"cartoon called it “the mightiest work of man, the only one that would be visible to the",neutral,,supporting
+108,the speed of light is constant,Experiments such as the Kennedy–Thorndike experiment and the Ives–Stilwell experiment have shown this postulate to match experimental observations.,neutral,,supporting
+111,the Sahara desert is the largest desert on earth,What makes the Sahara the largest desert in the world?,supporting,,neutral
+117,the Great Wall of China is the only man-made structure visible from space,What makes the Great Wall of China the only man-made object visible from space?,supporting,,neutral
+127,octopuses have three hearts,Three hearts have an octopus ... Do u know how many hearts octopus has ?,neutral,,supporting
+128,climate change is caused by human activity,Human activity and climate change triggered the expansion of rocky desertification in the karst areas of Southwestern China,neutral,,supporting
+139,the earth revolves around the sun,"An animal could not learn that the world is round, that the earth revolves round the sun, or the construction of the electric telegraph.",supporting,,neutral
+141,goldfish have a 3 second memory,They can be trained to respond various ways to certai,opposing,,neutral
+144,honey never expires,The National Honey Board says that over time honey may “darken and lose ...,neutral,,opposing
+149,humans share about 98% of DNA with chimpanzees,"For example, the sequence divergence varies between 0% to 2.66% between non-coding, non-repetitive genomic regions of humans and chimpanzees.",neutral,,supporting

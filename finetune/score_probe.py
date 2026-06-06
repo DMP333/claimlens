@@ -77,6 +77,8 @@ R4  MATCH THE CLAIM'S MODIFIER BY TYPE.
     - DEGREE modifier (superlative / comparative / ranking / exact count: driest, largest,
       greatest, only, most, three): the sentence must establish THAT degree; a weaker
       version is neutral. Ex: claim "driest continent"; "Antarctica is dry" -> neutral.
+    - QUANTIFIER (all / most / some / none): match the claim's quantifier. "not all X"
+      neither establishes nor contradicts "most X"; "some X" does not establish "most X".
     - SCOPE modifier (a when/where/who restriction: throughout their lives, in winter): if
       the sentence supports the core assertion and does not contradict the scope, supporting;
       do not downgrade over an unaddressed scope detail or import outside facts about it.

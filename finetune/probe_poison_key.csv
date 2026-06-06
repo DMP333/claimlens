@@ -1,0 +1,185 @@
+id,claim,sentence,deberta_label,deberta_conf,old_llm_label,direction
+0,bulls are enraged by the color red,The long-standing cultural image of a raging bull charging a matador’s red cape is one of the most enduring myths in animal behavior.,neutral,0.76,opposing,undercall_opposing
+1,goldfish have a three second memory,This widely accepted notion has persisted in popular culture despite lacking any,opposing,0.93,neutral,forced_opposing
+2,the Great Wall of China is visible from space,"The walls were as tall as 2.75 metres (9 ft 0 in) at places when they were discovered, and may have been around 2 metres (6 ft",opposing,0.7,neutral,forced_opposing
+3,5G towers cause cancer,"5G technology is the latest mobile wireless communications technology, due to be rolled out in Australia from 2019.",opposing,0.82,neutral,forced_opposing
+4,humans share about 98% of DNA with chimpanzees,"DNA evidence suggests the bonobo and common chimpanzee species diverged approximately 890,000–860,000 years ago following separation of these two populations possibly because of acidification and the",opposing,0.85,neutral,forced_opposing
+5,climate change is real,The scientific consensus is that they cannot explain the observed warming trend.,neutral,0.93,supporting,undercall_supporting
+6,5G causes COVID,"The outbreak of COVID-19 has led to a reduction in a number of services and activities, but it has also accelerated the development of communication and connectivity technologies as well as touchless",opposing,0.99,neutral,forced_opposing
+7,the earth revolves around the sun,"Poll: Sun Revolves Around the Earth
+According to a July 1999 Gallop Poll, 18% of Americans still believe that the sun revolves around the earth.POLL RELEASES
+New Poll Gauges Americans' General Knowled",opposing,0.73,neutral,forced_opposing
+8,bats are blind,"In comic books, the superheroes have fascinating powers and abilities that help them to deal with all kinds of challenges that arise in their daily lives.",opposing,0.87,neutral,forced_opposing
+9,5G causes COVID,"Fake news around the dangers of 5G technology and its links to coronavirus have spread online and on social media, despite the lack of any scientific evidence.",neutral,0.86,opposing,undercall_opposing
+10,smoking causes lung cancer,"Smoking cigarettes can kill you, but before you die, you could experience some pretty terrible diseases and health conditions from smoking.",neutral,1.0,supporting,undercall_supporting
+11,goldfish have a three second memory,"When people picture goldfish, the first thing that usually comes to mind is the old saying that they can only remember things for three seconds.",supporting,0.6,neutral,forced_supporting
+12,Einstein failed math in school,"Now this was very advanced, because the students would normally study calculus when they were 15 years ol",opposing,0.93,neutral,forced_opposing
+13,the average human body temperature is 98.6 degrees fahrenheit,"The 98.6°F standard is over 150 years old, and research shows average body temperature has since shifted.",neutral,0.8,opposing,undercall_opposing
+14,Einstein failed math in school,- There is no evidence that iron maidens were used for tortur,opposing,0.63,neutral,forced_opposing
+15,evolution is real,"Evolution is often thought of as the slow work of millennia upon millennia, subtly altering genomes as species slowly adapt to environmental changes or pressures generation after generation.",neutral,0.79,supporting,undercall_supporting
+16,dogs can only see in black and white,"For most of your life, you have probably believed that dogs can’t see light yellow, because you’ve heard that they only see in black and white.",supporting,0.64,neutral,forced_supporting
+17,shaving makes hair grow back thicker,Shaving cream is a cosmetic preparation which is designed to soften facial and body,opposing,0.99,neutral,forced_opposing
+18,honey never expires,"Legally, they have to tell you it won't be at its best after a while, and the expiry date is more for the store than the consumer.",opposing,1.0,supporting,hardflip
+19,the Amazon rainforest produces about 20% of the world's oxygen,"A persistent myth surrounding the Amazon rainforest, that it contributes a whopping 20% of the world’s oxygen, is a considerable overstatement.",neutral,0.61,opposing,undercall_opposing
+20,5G causes COVID,"The same year, the University of Surrey founded the 5G Innovation Centre, funded by £",opposing,0.87,neutral,forced_opposing
+21,climate change is real,"The Earth’s climate has always changed
+Over the course of Earth’s 4.5-billion-year history, the climate has changed a lot, this is true.",supporting,0.98,neutral,forced_supporting
+22,lightning never strikes the same place twice,"This expression has entered common parlance, but from a scientific point of view, it is completely false.",neutral,0.99,opposing,undercall_opposing
+23,goldfish have a three second memory,But a 15-year-old schoolboy from Adelaide has just debunked that theory.,neutral,0.88,opposing,undercall_opposing
+24,the great wall of china is visible from space,"The walls were as tall as 2.75 metres (9 ft 0 in) at places when they were discovered, and may have been around 2 metres (6 ft",opposing,0.85,neutral,forced_opposing
+25,smoking causes lung cancer,A strong relationship between cigarette smoke exposure and chronic obstructive pulmonary disease (COPD) as well as lung cancer has,neutral,0.97,supporting,undercall_supporting
+26,antibiotics do not work against viruses,Post-operative bacterial infections are a leading cause of mortality and morbidity after ongoing liver transplantation.,opposing,0.74,neutral,forced_opposing
+27,bats are blind,"Bats hunt in the dark using echolocation, meaning they use echoes of self-produced sounds bouncing off objects to help them navigate.",opposing,1.0,neutral,forced_opposing
+28,shaving makes hair grow back thicker,"In studying the effects of various physical and chemical treatments on hair growth after shaving, repeated shaving was in itself clearly shown to stimulate ...",neutral,1.0,supporting,undercall_supporting
+29,the speed of light is constant,Abstract The possible time variation of the fundamental constants of nature has been an active subject of research since the large-number hypothesis was proposed by Dirac.,neutral,0.97,opposing,undercall_opposing
+30,sugar makes children hyperactive,"Ask any parent returning from a birthday party with kids and they’ll swear that yes, of course, without doubt sugar makes their children hyperactive.",supporting,0.95,neutral,forced_supporting
+31,bulls are enraged by the color red,"For example:
+It’s the motion of the cape in bullfighting, not the color, that enrage",neutral,0.7,opposing,undercall_opposing
+32,goldfish have a three second memory,"The prevalent myth that goldfish only have a three-second memory does goldfish a great disservice, says Ellen Husain.",neutral,0.75,opposing,undercall_opposing
+33,sugar makes children hyperactive,"That might be hard to believe when you’ve watched a group of kids bounce off the walls at a birthday party, but decades of controlled research hav",neutral,0.99,opposing,undercall_opposing
+34,the sun is a star,"The Sun Is Also a Star
+Directed by Ry Russo-Young
+Screenplay by Tracy Oliver
+Cinematography Autumn Durald
+Music by Herdis Stefánsdóttir
+Distributed by Warner Bros. Pictures
+Release date
+The Sun Is Als",supporting,0.97,neutral,forced_supporting
+35,the Great Wall of China is the only man-made structure visible from space,Choose a legend: The Great Wall of China is the one of the few man-made structures visible from orbit.,opposing,0.96,neutral,forced_opposing
+36,bats are blind,"Spallanzani carried on his researches on the blind flight of bats mainly in Scandiano, in the summer of 1793 and 1794, thanks to the great number of Chiroptera (bats) in the Rocca basement and in the",supporting,0.79,neutral,forced_supporting
+37,5G causes COVID,"Mobile network service use is growing, especially after the Covid-19 pandemic.",opposing,0.98,neutral,forced_opposing
+38,christopher columbus discovered america,"In 1837, Danish philologist Carl Christian Rafn published Antiquitates Americanæ, which introduced Americans to the Vinland sagas—medieval texts that suggest that Norse explorers “discovered” North Am",neutral,0.72,opposing,undercall_opposing
+39,lightning never strikes the same place twice,"July 28, 2015 - This eventually resulted in the discovery of ""dark matter,"" which is comprised of those previously struck places in spacetime.",opposing,0.99,neutral,forced_opposing
+40,bats are blind,New echolocator Echolocation is a well demonstrated convergent sensory mode in bats and toothed whales.,opposing,1.0,neutral,forced_opposing
+41,the sun is a star,"Beckles
+Cover artist Khadijah Khatib
+Series The Nico di Angelo Adventures
+Publisher More publishers:
+Publication date May 2, 2023 (English) More dates:
+Media ty",opposing,0.94,neutral,forced_opposing
+42,goldfish have a three second memory,"But unbeknownst to most, it's a belief that's entirely false.",neutral,0.98,opposing,undercall_opposing
+43,goldfish have a 3 second memory,"In fact, goldfish actually have very good memories for fish.",neutral,1.0,opposing,undercall_opposing
+44,bats are blind,This suggests that vision is still an important means of sensory perc,neutral,0.77,opposing,undercall_opposing
+45,the moon landing was faked,"What in the World
+What in the World
+Why some people claim the Moon landing was faked
+Available for over a year
+American astronauts Neil Armstrong and Buzz Aldrin landed on the Moon in 1969.",neutral,0.95,opposing,undercall_opposing
+46,lightning never strikes the same place twice,"Automated fact-verification of the claim: ""Lightning never strikes the same place twice.""",supporting,0.98,neutral,forced_supporting
+47,Einstein failed math in school,"March 8, 2023 - Einstein's genius supposedly had at least one glaring flaw -- that he failed math at some point in his educational career.",supporting,0.87,neutral,forced_supporting
+48,the average human body temperature is 98.6 degrees fahrenheit,"Long thought to be 98.6 degrees Fahrenheit, the measurement is highly personal and varies depending on time of day, among other factors, new research",neutral,0.7,opposing,undercall_opposing
+49,Einstein failed math in school,"We might not have a solid grasp on what exactly E = mc² means or why it’s important, but anybody who successfully makes a ma",opposing,0.99,neutral,forced_opposing
+50,bulls are enraged by the color red,"Because they lack the long-wavelength cone required to detect red light, they cannot perceive red in the",neutral,1.0,opposing,undercall_opposing
+51,octopuses have three hearts,Its hard to believe that an octopus has three hearts .,supporting,0.93,neutral,forced_supporting
+52,antibiotics do not work against viruses,In this case there are antibiotics that are used to co,opposing,0.6,neutral,forced_opposing
+53,the Sahara desert is the largest desert on earth,"The Sahara is the largest and driest of the hot deserts on Earth, with regions where rainfall reaches the surface on average less than once a year.",supporting,0.94,opposing,hardflip
+54,antibiotics do not work against viruses,There is strong evidence for vaccinating children under the age of 2 against Streptoco,opposing,0.92,neutral,forced_opposing
+55,the earth is flat,"Sean Bryant, Science Reference Specialist, Science, Technology and Business Division
+Note: This guide is adapted from a 1998 reference list created by Ruth Freitag titled ""The Flat Earth and its Advoc",supporting,0.76,neutral,forced_supporting
+56,humans only use 10 percent of their brain,"Adding to that mystery is the contention that humans ""only"" employ 10 percent of their brain.",supporting,0.92,neutral,forced_supporting
+57,the sun is a star,Contact us Developers Policy & Safety How YouTube works Test new features NFL Sunday Ticket © 2026 Google LLC,opposing,0.72,neutral,forced_opposing
+58,octopuses have three hearts,"Two pump blood to the gills for oxygenation, while the third pumps oxygenated blood to the rest of the body.",neutral,0.93,supporting,undercall_supporting
+59,the great wall of china is visible from space,The myth regarding the Great Wall of China can be seen from outer space and has been circulated for hundreds of years.,supporting,0.95,neutral,forced_supporting
+60,humans only use 10 percent of their brain,"It’s one of Hollywood’s favorite bits of pseudoscience: human beings use only 10 percent of their brain, and awakening the remaining 90 percent—supposedl",supporting,0.99,opposing,hardflip
+61,the earth revolves around the sun,"1 In 4 Americans Thinks The Sun Goes Around The Earth, Survey Says
+A quarter of Americans surveyed could not correctly answer that the Earth revolves around the sun and not the other way around, accor",supporting,0.72,neutral,forced_supporting
+62,climate change is caused by human activity,"March 3, 2026 - (This type of climate change is ... beings.”) The unchecked burning of fossil fuels over the past 150 years has drastically increased the presence of atmospheric greenhouse gases, most",neutral,0.97,supporting,undercall_supporting
+63,goldfish have a three second memory,Goldfish are known for their orange hues and terrible memories.,neutral,1.0,supporting,undercall_supporting
+64,bulls are enraged by the color red,"Contrary to popular belief, bulls do not specifically target or attack the",neutral,0.98,opposing,undercall_opposing
+65,cracking your knuckles causes arthritis,"For many people, cracking stiff joints can help relieve tension and discomfort.",opposing,1.0,neutral,forced_opposing
+66,bulls are enraged by the color red,"They are red-green colour blind — cattle have only two cone types, sensitive at about 445 nm (blue) and 555 nm (yellow-gree",neutral,0.93,opposing,undercall_opposing
+67,lightning never strikes the same place twice,"MythBuster: Lightning Never Strikes the Same Place Twice
+Lightning is unpredictable.",supporting,0.86,neutral,forced_supporting
+68,smoking causes lung cancer,"Key points
+- Cigarette smoking is the number one risk factor for lung cancer.",neutral,0.78,supporting,undercall_supporting
+69,the Great Wall of China is visible from space,"Jan 18, 2022 · The Great Wall of China is itself NOT very visible from space; it's certainly long enough, but it's no wider on average than a fairly narrow ...My history teacher insists The Great Wall",neutral,0.99,opposing,undercall_opposing
+70,the speed of light is constant,"Speed of Light May Not Be Constant, Physicists Say
+The speed of light is constant, or so textbooks say.",neutral,0.62,opposing,undercall_opposing
+71,the Great Wall of China is visible from space,"Cecil seems to think long thin things like highways, canals and Great Walls would be the most visible man-made objects from space.",neutral,0.96,supporting,undercall_supporting
+72,goldfish have a 3 second memory,This idea was challenged by a study that found that goldfish remember t,neutral,1.0,opposing,undercall_opposing
+73,5G towers cause cancer,This is far lower in energy compared to ionizing radiation.,neutral,0.94,opposing,undercall_opposing
+74,the speed of light is constant,This paper shows how the miscalculated result of an experiment caused the birth of the theory of relativity.,neutral,0.92,opposing,undercall_opposing
+75,the great wall of china is visible from space,Choose a legend: The Great Wall of China is the one of the few man-made structures visible from orbit.,supporting,0.98,neutral,forced_supporting
+76,climate change is caused by human activity,Surveys of scientists' views on climate change – with a focus on human caused climate change – have been undertaken since the 1970s.,supporting,0.79,neutral,forced_supporting
+77,the earth is flat,They saw the way the Sun’s shadow worked in different plac,opposing,0.98,neutral,forced_opposing
+78,honey never expires,"However, certain factors affect the colour and texture of honey in the following conditions:
+1.",opposing,0.99,neutral,forced_opposing
+79,the earth is flat,"Myth of the flat Earth
+The myth of the flat Earth, or the flat-Earth error, is a modern historical misconception that European scholars and educated people during the Middle Ages believed the Earth to",neutral,0.88,opposing,undercall_opposing
+80,the earth revolves around the sun,A lunar day is equal to one lunar month (one synodic orbit around Earth) due to it being tidally locked to Earth.,opposing,0.94,neutral,forced_opposing
+81,climate change is real,"Despite decades of scientific research, climate change remains one of the most misunderstood issues of our time.",supporting,0.68,neutral,forced_supporting
+82,MSG is dangerous to consume,"Feb 21, 2024 · No , it's not bad for you, unless you decide to overdose on it.",neutral,0.76,opposing,undercall_opposing
+83,the moon landing was faked,"It's now been nearly four decades since Neil Armstrong took his ""giant leap for mankind"" — if, that is, he ever set foot off this planet.",neutral,0.81,supporting,undercall_supporting
+84,sugar makes children hyperactive,"The Sugar-Hyperactivity Myth: A Sweet Tale of Misconception
+The idea tha",neutral,0.6,opposing,undercall_opposing
+85,honey never expires,Contact us Developers Policy & Safety How YouTube works Test new features NFL Sunday Ticket © 2026 Google LLC,opposing,0.99,neutral,forced_opposing
+86,the Great Wall of China is visible from space,Arthur Waldron traced the origin the “Great Wall can be seen from the moon” myth in the book “Great Wall of China.” It was popularized by a 1932 Ripley’s Believe it or Not column (republished many tim,supporting,0.6,neutral,forced_supporting
+87,5G towers cause cancer,The National Cancer Institute and the World Health Organization (WHO) emphasize that there is no conclusive evidence linking non-ionizing ra,neutral,0.99,opposing,undercall_opposing
+88,antibiotics do not work against viruses,"READ ABOUT OUR LATEST COVID-19 INFORMATION
+Read MorePeople often wonder: “Why don’t antibiotics work on viruses?” It’s a common question, especially when symptoms like a runny nose, sore throat, sinus",supporting,0.89,neutral,forced_supporting
+89,the speed of light is constant,"This changed Newton's mechanics situations involving all motions, especially velocities close to that of light: 18 (known as relativistic velocities).",opposing,0.93,neutral,forced_opposing
+90,goldfish have a 3 second memory,A 2022 study at Ben-Gurion University even trained goldfish to “drive” a wheeled tank toward a target on land — a feat that requires much more than three seconds of working memory.,neutral,0.82,opposing,undercall_opposing
+91,the Great Wall of China is visible from space,"Automated fact-verification of the claim: ""The Great Wall of China is the only man-made object visible from space with the naked eye.""",supporting,0.98,neutral,forced_supporting
+92,humans only use 10 percent of their brain,"Posted May 15, 2025 Reviewed by Michelle Quirk
+Key points
+- The entire brain is active in dai",opposing,0.97,neutral,forced_opposing
+93,christopher columbus discovered america,"From a civil liberties point of view, the claim that Christopher Columbus discovered America contains several problematic implications.",supporting,0.59,neutral,forced_supporting
+94,5G causes COVID,"A 2020 study that monitored data from Google Trends showed that searches related to coronavirus and 5G started at different times, but peaked in the same week of April 5 in six countries.",opposing,0.94,neutral,forced_opposing
+95,the Amazon rainforest produces about 20% of the world's oxygen,"So, we all came across a number of photos, videos, and articles that state Amazon Rainforest produces 20% of the planet’s oxygen.",supporting,0.94,neutral,forced_supporting
+96,goldfish have a three second memory,A 2022 study at Ben-Gurion University even trained goldfish to “drive” a wheeled tank toward a target on land — a feat that requires much more than three seconds of working memory.,neutral,0.86,opposing,undercall_opposing
+97,humans only use 10 percent of their brain,"August 29, 2018 - It was the basis of the movie Lucy (2014), which depicted what supposedly would happen if a person actually used all 100% of her brainpower.",opposing,0.98,neutral,forced_opposing
+98,the Great Wall of China is the only man-made structure visible from space,"May 6, 2025 · Wikipedia says the claim the Great Wall can be seen from space and even the moon is actually from the 18th century.The Great Wall of China is ______ from space.",neutral,1.0,opposing,undercall_opposing
+99,shaving makes hair grow back thicker,Take me as an example… I started growing bald ...,opposing,0.66,neutral,forced_opposing
+100,evolution is real,Evolutionary biologists have continued to study various aspects of evolution by forming and testing hypotheses as well as constructing theories based on evidence from the field or laboratory and on da,neutral,0.89,supporting,undercall_supporting
+101,the Amazon rainforest produces about 20% of the world's oxygen,"Why the Amazon doesn’t really produce 20% of the world’s oxygen
+The myth that the Amazon rainforest forms the “lungs of the Earth” is overstated.",neutral,0.59,opposing,undercall_opposing
+102,5G causes COVID,There’s no evidence to support the theory that 5G network,neutral,0.99,opposing,undercall_opposing
+103,climate change is real,13 hours ago - Climate change can also be used more broadly to include changes to the climate that have happened throughout Earth's history as result of natural processes.,supporting,0.73,neutral,forced_supporting
+104,antibiotics do not work against viruses,Vaccinations against Haemophilus influenzae and Streptococcus pneumoniae have good evidence to support their use.,opposing,0.97,neutral,forced_opposing
+105,smoking causes lung cancer,"Cigarette smoke contains thousands of chemicals, many of which are carcinogens.",neutral,1.0,supporting,undercall_supporting
+106,the great wall of china is visible from space,"cartoon called it “the mightiest work of man, the only one that would be visible to the",neutral,0.94,supporting,undercall_supporting
+107,bats are blind,"Decades of research into intelligent animal navigation posits that organisms build and maintain internal spatial representations (or maps) 1 of their environment, that enables the organism to determin",opposing,1.0,neutral,forced_opposing
+108,the speed of light is constant,Experiments such as the Kennedy–Thorndike experiment and the Ives–Stilwell experiment have shown this postulate to match experimental observations.,neutral,0.99,supporting,undercall_supporting
+109,lemmings commit mass suicide,This false impression popularized via nature documentaries and folklore is not always best scientifically inaccurate however also a striking instance of how sensationalism can distort herbal phenomena,neutral,0.85,opposing,undercall_opposing
+110,5G causes COVID,"When the coronavirus spread around the world, conspiracy theorists started spreading inaccurate theories about 5G.",neutral,0.64,opposing,undercall_opposing
+111,the Sahara desert is the largest desert on earth,What makes the Sahara the largest desert in the world?,supporting,0.98,neutral,forced_supporting
+112,goldfish have a 3 second memory,"Many of us have believed this is true, but what if I tell you that it’s actually wrong?",neutral,0.94,opposing,undercall_opposing
+113,the earth is flat,"Because of the increasing anthropogenic interruption and sea level rise, tidal f",opposing,1.0,neutral,forced_opposing
+114,the Great Wall of China is visible from space,"Nov 16, 2006 · Astronauts report it is not easily visible to the naked eye, unlike large cities or airports.",neutral,0.99,opposing,undercall_opposing
+115,5G towers cause cancer,"A 2020 study that monitored data from Google Trends showed that searches related to coronavirus and 5G started at different times, but peaked in the same week of April 5 in six countries.",opposing,0.95,neutral,forced_opposing
+116,the Great Wall of China is visible from space,"May 6, 2025 · Despite myths to the contrary, the wall isn't visible from the moon, and is difficult or impossible to see from Earth orbit without the high- ...I thought it was a myth that you can see",neutral,0.86,opposing,undercall_opposing
+117,the Great Wall of China is the only man-made structure visible from space,What makes the Great Wall of China the only man-made object visible from space?,supporting,0.96,neutral,forced_supporting
+118,climate change is caused by human activity,This adds enormous amounts of greenhouse gases to those naturally,neutral,0.99,supporting,undercall_supporting
+119,cracking your knuckles causes arthritis,Knuckle cracking is a common habit many people find satisfying.,opposing,0.86,neutral,forced_opposing
+120,goldfish have a 3 second memory,Why goldfish having a three-second memory is a myth… ...,opposing,0.92,neutral,forced_opposing
+121,sugar makes children hyperactive,"The Sweet Truth The sugar-hyperactivity myth is based on a single study from the mid 1970s, in which a doctor removed the sugar from one child's diet and that child's behavior improved.",neutral,0.91,opposing,undercall_opposing
+122,bats are blind,Abstract Echolocating bats adapt their emissions to succeed in noisy environments.,opposing,1.0,neutral,forced_opposing
+123,humans share about 98% of DNA with chimpanzees,"Through DNA, scientists have uncovered startling evidence: not only are humans closely related to primates like chimpanzees, bonobos, and gorillas, but our genetic divergence is shockingly recent in e",neutral,1.0,supporting,undercall_supporting
+124,drinking bleach cures diseases,Should you worry about drinking a mouthful of bleach ...,opposing,0.59,neutral,forced_opposing
+125,the speed of light is constant,"Before we can discuss how to travel faster than light, we need to understand why this is a problem in the first place.",opposing,0.83,neutral,forced_opposing
+126,lemmings commit mass suicide,It’s widely believed that lemmings commit mass suicide by leaping to their deaths from cliffs.,neutral,0.56,opposing,undercall_opposing
+127,octopuses have three hearts,Three hearts have an octopus ... Do u know how many hearts octopus has ?,supporting,0.84,neutral,forced_supporting
+128,climate change is caused by human activity,Human activity and climate change triggered the expansion of rocky desertification in the karst areas of Southwestern China,neutral,0.91,supporting,undercall_supporting
+129,the earth is flat,"This was a magical revelation for the Greeks and the Egyptians, who were able to see from the motions of the stars and the way the Sun moved.",opposing,0.95,neutral,forced_opposing
+130,climate change is caused by human activity,"In this study, how shoreline change responses to global climate change and human activity at the Shandong Peninsula was quantified by analyzing shoreline locations, inshore erosion/accretion rates, an",neutral,0.99,supporting,undercall_supporting
+131,the speed of light is constant,"Discussion Overview
+The discussion revolves around the constancy of the speed of light, exploring its implications in physics, historical experiments that support this constancy, and the theoretical f",supporting,0.88,neutral,forced_supporting
+132,shaving makes hair grow back thicker,"Jul 30, 2021 ... Shaving removes the dead portion of hair, not the living section lying below the skin's surface, so it is unlikely to affect the rate or type of growth.",neutral,0.57,opposing,undercall_opposing
+133,the great wall of china is visible from space,"Someone on the webmaster world forum thought the same thing, and another person pointed them to the snopes article showing that the claim was false.",neutral,1.0,opposing,undercall_opposing
+134,honey never expires,Honey can last for thousands of years in sealed pots – it’s even been discovered in Ancient Egyptian tombs.,neutral,0.61,supporting,undercall_supporting
+135,climate change is caused by human activity,"Anthropogenic climate change is caused by human activity, as opposed to changes in climate that may have resulted as part of Earth's natural processes.",supporting,0.99,neutral,forced_supporting
+136,the great wall of china is visible from space,"Automated fact-verification of the claim: ""The Great Wall of China is the only man-made object visible from space with the naked eye.""",supporting,0.98,neutral,forced_supporting
+137,5G towers cause cancer,"The WHO states that ""A large number of studies have been performed over the last two decades to assess whether mobile phones pose a potential health risk.",opposing,0.76,neutral,forced_opposing
+138,honey never expires,"Plus, how to store honey and what to do if it crystalizes.",opposing,0.96,neutral,forced_opposing
+139,the earth revolves around the sun,"An animal could not learn that the world is round, that the earth revolves round the sun, or the construction of the electric telegraph.",supporting,0.98,neutral,forced_supporting
+140,honey never expires,Like one of those facts you hear and immediately question.,opposing,1.0,neutral,forced_opposing
+141,goldfish have a 3 second memory,They can be trained to respond various ways to certai,neutral,0.63,opposing,undercall_opposing
+142,the earth revolves around the sun,Sun is the center of the solar system and all the planets are revolving around the Sun.,neutral,0.98,supporting,undercall_supporting
+143,the earth is flat,The claims of modern flat Earth proponents are not based on scientific know,neutral,0.95,opposing,undercall_opposing
+144,honey never expires,The National Honey Board says that over time honey may “darken and lose ...,opposing,1.0,neutral,forced_opposing
+145,5G towers cause cancer,"Like all mobile technologies, 5G uses radiofrequency (RF) electromagnetic energy to",opposing,0.79,neutral,forced_opposing
+146,5G causes COVID,"To improve the quality of mobile network services, 5G comes as a network service ecosystem with low latency, which is 1ms",opposing,0.99,neutral,forced_opposing
+147,the Great Wall of China is the only man-made structure visible from space,"From the Moon
+The Great Wall of China cannot be seen by the naked human eye from the Moon which orbits around Earth at an average distance of 384,399 kilometres (238,854 mi).",neutral,0.99,opposing,undercall_opposing
+148,antibiotics do not work against viruses,The rapid worldwide spread of antibiotic resistance is quickly becoming an increasingly concerning problem for human healthcare.,opposing,0.62,neutral,forced_opposing
+149,humans share about 98% of DNA with chimpanzees,"For example, the sequence divergence varies between 0% to 2.66% between non-coding, non-repetitive genomic regions of humans and chimpanzees.",neutral,0.74,supporting,undercall_supporting

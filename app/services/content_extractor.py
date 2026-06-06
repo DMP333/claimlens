@@ -23,6 +23,39 @@ Design rationale:
 import re
 import math
 from collections import Counter
+from nltk.tokenize import sent_tokenize
+
+
+# -- Sentence-boundary trim (fixes word-budget mid-sentence cuts) ------------
+# The word budget below cuts the last selected paragraph mid-sentence, leaving
+# the final sentence incomplete (no terminal punctuation). Downstream that
+# becomes a truncated training/inference sentence. We trim the result back to
+# the last COMPLETE sentence so an extract never ends mid-sentence. This only
+# ever removes the partial tail; it never adds or invents text, and it is a
+# no-op when the text already ends cleanly.
+
+def _ends_clean(s: str) -> bool:
+    """True if s ends on terminal punctuation (. ! ?), optionally followed by a
+    closing quote/bracket. A trailing '...' is treated as a truncation marker."""
+    s = (s or "").rstrip()
+    if not s or s.endswith("...") or s.endswith("\u2026"):
+        return False
+    return bool(re.search(r'[.!?]["\'\u2019\u201d\)\]]*$', s))
+
+
+def _trim_to_last_sentence(text: str) -> str:
+    """Drop a trailing partial sentence left by the word-budget cut. Falls back to
+    the original text only when no complete sentence is found (a single paragraph
+    longer than the whole budget with no internal sentence break, which is rare),
+    so it can never empty a snippet."""
+    t = (text or "").rstrip()
+    if not t or _ends_clean(t):
+        return t
+    sents = sent_tokenize(t)
+    while sents and not _ends_clean(sents[-1]):
+        sents.pop()
+    trimmed = " ".join(sents).strip()
+    return trimmed if trimmed else text
 
 
 # -- Configuration ----------------------------------------------------------
@@ -284,11 +317,11 @@ def extract_relevant_paragraphs(
 
     if not paragraphs:
         words = article_text.split()
-        return ' '.join(words[:max_words]), 0.0
+        return _trim_to_last_sentence(' '.join(words[:max_words])), 0.0
 
     if len(paragraphs) == 1:
         words = paragraphs[0].split()
-        return ' '.join(words[:max_words]), 0.0
+        return _trim_to_last_sentence(' '.join(words[:max_words])), 0.0
 
     # Score each paragraph
     bm25_scores = _normalize(_score_bm25(claim, paragraphs))
@@ -321,6 +354,6 @@ def extract_relevant_paragraphs(
 
     words = result.split()
     if len(words) > max_words:
-        result = ' '.join(words[:max_words])
+        result = _trim_to_last_sentence(' '.join(words[:max_words]))
 
     return result, max_score

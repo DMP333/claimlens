@@ -1,26 +1,27 @@
 """
 Project A - Step 3: LLM sentence labeling (silver standard).
 
-Adapted from archive/pre_finetune/diagnostics/llm_label_sentences.py. The labeling
-logic and PROMPT are UNCHANGED from the original (so label semantics match your d5
-diagnosis); what's new is: paths anchored to the finetune/ track, no dependency on
-common.py / tiers.json, and incremental save + resume so a crash mid-run never
-re-spends or loses work.
+Adapted from archive/pre_finetune/diagnostics/llm_label_sentences.py. Paths anchored to
+the finetune/ track, no dependency on common.py / tiers.json, incremental save + resume.
+
+CHANGED from the original: the PROMPT is now the LOCKED strict sentence-bounded block
+(R1-R8), the same one validated in finetune/score_probe.py against the human gold
+(~84% agreement, kappa ~0.69 on Sonnet). The parser is hardened (JSON array first, then a
+regex rescue for wrapped/malformed/partial output), and batch recovery fires on partial
+parses too, not only refusals: any sentence a batch misses is re-sent individually.
 
 What it does: read finetune/labeled_sources.json, take every web/encyclopedia/academic
-source, split its snippet with your LOCKED production splitter (nli_service.split_sentences),
-keep sentences with >= DEFAULT_MIN_WORDS words (exactly what production scores), dedup
-identical (claim, sentence) pairs, and label each as supporting/opposing/neutral via the LLM.
-Fact-check and wikidata sources are skipped (rating bypass / excluded from NLI).
+source, split its snippet with the LOCKED production splitter (nli_service.split_sentences),
+keep sentences with >= DEFAULT_MIN_WORDS words, dedup identical (claim, sentence) pairs,
+and label each as supporting/opposing/neutral via the LLM. Fact-check and wikidata sources
+are skipped (rating bypass / excluded from NLI).
 
 Requires: pip install anthropic ; export ANTHROPIC_API_KEY=...
 This is OFFLINE labeling, separate from the 'no LLM in the stance path' rule.
 
 Run from repo root, inside venv `falseclaim`:
-    # cheap dry-run first: confirm the model string works and see real cost in your console
-    LABEL_LIMIT=100 python finetune/label_sentences.py
-    # then the full run
-    python finetune/label_sentences.py
+    LABEL_LIMIT=100 python finetune/label_sentences.py   # cheap dry-run: model string + real cost
+    python finetune/label_sentences.py                   # full run
 
 Knobs: LABEL_MODEL (default claude-sonnet-4-6), LABEL_LIMIT, LABEL_CONFIRM=1 (skip prompt),
        LABELED_SOURCES / LABELS_OUT / AUDIT_OUT to override paths.
@@ -28,6 +29,7 @@ Knobs: LABEL_MODEL (default claude-sonnet-4-6), LABEL_LIMIT, LABEL_CONFIRM=1 (sk
 import json
 import sys
 import os
+import re
 import csv
 import random
 import time
@@ -50,19 +52,66 @@ LABELS_PATH = os.environ.get("LABELS_OUT", os.path.join(_SCRIPT_DIR, "sentence_l
 AUDIT_PATH = os.environ.get("AUDIT_OUT", os.path.join(_SCRIPT_DIR, "sentence_audit_sample.csv"))
 
 SENT_TYPES = {"encyclopedia", "academic", "web"}
-# original used claude-sonnet-4-5 (likely retired). claude-sonnet-4-6 is the current
-# same-tier model; override with LABEL_MODEL if you want a stronger one for silver labels.
 MODEL = os.environ.get("LABEL_MODEL", "claude-sonnet-4-6")
 BATCH = 20
+LABELS = ("supporting", "opposing", "neutral")
 
-# PROMPT: verbatim from the original labeler. Do not edit without re-auditing.
-PROMPT = """You label the stance of a SENTENCE toward a CLAIM, judging the sentence ALONE.
-Return ONLY one word per item: supporting, opposing, or neutral.
-- supporting: the sentence, read alone, provides evidence the claim is TRUE.
-- opposing: the sentence provides evidence the claim is FALSE.
-- neutral: off-topic, or states the claim without evidence, or is about a different entity/subtopic.
-Treat a sentence that merely RESTATES a myth (without endorsing it) as neutral or opposing per its actual content, not supporting.
-Return a JSON array of {"i": <index>, "stance": "<label>"} and nothing else.
+# PROMPT: LOCKED strict block. Must stay identical to score_probe.py's PROMPT, since that is
+# what the ~84%/kappa-0.69 validation was measured on. Do not edit without re-validating on a
+# FRESH probe set (changing it and re-scoring the same 150 would just overfit the rubric).
+PROMPT = """TASK: Label each SENTENCE's stance toward the CLAIM, judging the sentence ALONE.
+Output one of: supporting, opposing, neutral.
+
+MASTER RULE - read first, applies everywhere:
+Judge ONLY the words in the sentence and the claim. Add nothing, remove nothing.
+Do not supply a fact, definition, causal link, or inference the sentence does not state.
+Do not add doubt or a "they're only claiming this" frame the sentence does not state.
+If linking the sentence to the claim needs a step the sentence does not make, do not make
+it; that is neutral. Almost every wrong label comes from supplying the missing step yourself.
+
+LABELS:
+- supporting: the sentence, alone, asserts or gives evidence the claim is TRUE.
+- opposing:   the sentence, alone, asserts or gives evidence the claim is FALSE.
+- neutral:    the sentence does not decide either way under the rules below.
+
+R1  ATTRIBUTION IS NOT NEUTRAL. "A study found X", "according to Y", "the anchor said X"
+    is a source asserting X. Judge the asserted content, not the attribution.
+    Ex: claim "Amazon produces 20% of the world's oxygen"; sentence "It provides 20% of the
+    planet's oxygen, the anchor said" -> supporting.
+
+R2  FALSE-FRAMING = OPPOSING. A sentence flips to opposing only when a word IN the sentence
+    frames the claim as false: "the myth that", "the false claim that", "debunked", "wrongly".
+    (Merely mentioning or quoting the claim without asserting it is neutral; see R7.)
+
+R3  NO-EVIDENCE / NO-EFFECT = OPPOSING. "No evidence that X", "does not affect", "no
+    significant impact" -> opposing. The mirror ("established/confirmed/proven") -> supporting.
+
+R4  MATCH THE CLAIM'S MODIFIER BY TYPE.
+    - DEGREE modifier (superlative / comparative / ranking / exact count: driest, largest,
+      greatest, only, most, three): the sentence must establish THAT degree; a weaker
+      version is neutral. Ex: claim "driest continent"; "Antarctica is dry" -> neutral.
+    - QUANTIFIER (all / most / some / none): match the claim's quantifier. "not all X"
+      neither establishes nor contradicts "most X"; "some X" does not establish "most X".
+    - SCOPE modifier (a when/where/who restriction: throughout their lives, in winter): if
+      the sentence supports the core assertion and does not contradict the scope, supporting;
+      do not downgrade over an unaddressed scope detail or import outside facts about it.
+
+R5  OPINION / VALUE CLAIMS (should, better, greatest, belongs). Supporting requires the
+    sentence to make the evaluative case FOR the position. A bare fact, statistic, or
+    achievement the sentence does not itself connect to the position is neutral.
+    Ex: claim "LeBron is the greatest"; "passed Abdul-Jabbar, 11,000 points ahead" -> neutral.
+
+R6  REFERENCES. Resolve "it / this / the study / they" to the obvious subject of the claim
+    when that is the only sensible reading. If you cannot tell what it refers to, neutral.
+
+R7  NON-CONTENT is neutral: reference lists, citations, funding lines, bylines, navigation
+    text. Pure depiction, hypothetical, or "some believe" without endorsement is neutral.
+
+R8  TIE-BREAK. If after R1-R7 you still cannot tell, label neutral.
+
+OUTPUT: a JSON array only, one object per sentence, exactly like
+[{"i": 0, "stance": "neutral"}, {"i": 1, "stance": "supporting"}]
+No preamble, no explanation, no markdown fences, nothing but the array.
 
 CLAIM: {claim}
 SENTENCES:
@@ -99,9 +148,11 @@ def save_labels(labels):
 
 def label_chunk(client, claim, chunk):
     """Label one chunk. Returns (labels_dict, refused).
-    labels_dict maps sentence -> stance for whatever the model labeled.
-    refused is True only when the model declined (stop_reason=refusal / empty content)."""
-    items = "\n".join(f"{i}: {s}" for i, s in enumerate(chunk))
+    labels_dict maps sentence -> stance for whatever parsed (JSON array first, then a regex
+    rescue for wrapped/malformed/partial JSON). refused is True only when the model declined
+    (stop_reason=refusal / empty content). A fully unparseable response raises internally so
+    the attempt loop retries."""
+    items = "\n".join(f"[{i}] {s}" for i, s in enumerate(chunk))
     msg = PROMPT.replace("{claim}", claim).replace("{items}", items)
     for attempt in range(3):
         try:
@@ -114,22 +165,32 @@ def label_chunk(client, claim, chunk):
             ).strip()
             if getattr(resp, "stop_reason", "") == "refusal" or not txt:
                 return {}, True  # model declined this chunk
-            if "[" not in txt:
-                raise ValueError("no JSON array in response")
-            txt = txt[txt.index("["):txt.rindex("]") + 1]
-            out = {}
-            for o in json.loads(txt):
-                try:
-                    idx = int(o["i"])
+            txt = re.sub(r"^```(?:json)?", "", txt).strip()
+            txt = re.sub(r"```$", "", txt).strip()
+            idx_out = {}
+            # strategy 1: parse the JSON array
+            try:
+                arr = txt[txt.index("["):txt.rindex("]") + 1]
+                for o in json.loads(arr):
+                    i = int(o["i"])
                     stance = str(o["stance"]).strip().lower()
-                except (KeyError, ValueError, TypeError):
-                    continue
-                if 0 <= idx < len(chunk) and stance in ("supporting", "opposing", "neutral"):
-                    out[chunk[idx]] = stance
-            return out, False
+                    if 0 <= i < len(chunk) and stance in LABELS:
+                        idx_out[i] = stance
+            except Exception:
+                pass
+            # strategy 2: rescue individual objects if the array was wrapped/malformed/partial
+            if len(idx_out) < len(chunk):
+                for mo in re.finditer(r'"i"\s*:\s*(\d+)\s*,\s*"stance"\s*:\s*"([A-Za-z]+)"', txt):
+                    i = int(mo.group(1))
+                    stance = mo.group(2).strip().lower()
+                    if 0 <= i < len(chunk) and stance in LABELS and i not in idx_out:
+                        idx_out[i] = stance
+            if idx_out:
+                return {chunk[i]: st for i, st in idx_out.items()}, False
+            raise ValueError("unparseable response")  # nothing recovered -> retry
         except Exception:  # noqa: BLE001 - transport/JSON error -> retry
             time.sleep(1.5)
-    return {}, False  # transport failure after retries (not a refusal)
+    return {}, False  # failure after retries (not a refusal)
 
 
 def main():
@@ -161,7 +222,7 @@ def main():
         print("Nothing new to label."); return
     approx_calls = -(-n // BATCH)
     print(f"{len(all_pairs)} total eligible pairs | {n} still to label "
-          f"-> ~{approx_calls} API calls, ~{approx_calls*1300:,} tokens.")
+          f"-> ~{approx_calls} API calls, ~{approx_calls*1700:,} tokens.")
     print(f"Model: {MODEL}. OFFLINE one-time cost; check your Anthropic console for the charge.")
     print("Tip: LABEL_LIMIT=100 first to confirm the model string + real cost, then run the rest.")
     if os.environ.get("LABEL_CONFIRM") != "1":
@@ -180,17 +241,19 @@ def main():
         for b in range(0, len(sents), BATCH):
             chunk = sents[b:b + BATCH]
             got, was_refused = label_chunk(client, claim, chunk)
-            if was_refused and len(chunk) > 1:
-                # isolate the trigger: re-label one sentence at a time, recover the innocent ones
-                print(f"  [refusal] splitting {len(chunk)}-sentence batch in {claim[:40]!r} to recover the rest")
-                for s in chunk:
+            missing = [s for s in chunk if s not in got]
+            if missing and len(chunk) > 1:
+                # recover whatever the batch missed (refusal OR partial parse) one at a time
+                tag = "refusal" if was_refused else "partial parse"
+                print(f"  [{tag}] re-labeling {len(missing)}/{len(chunk)} missed in {claim[:40]!r} individually")
+                for s in missing:
                     g1, r1 = label_chunk(client, claim, [s])
                     if g1:
                         got.update(g1)
                     elif r1:
                         refused += 1
-            elif was_refused:
-                refused += 1
+            elif missing and was_refused:
+                refused += len(missing)
             for s, stance in got.items():
                 labels[f"{claim}||{s}"] = stance
             done += len(chunk)
@@ -211,7 +274,7 @@ def main():
         dist[v] = dist.get(v, 0) + 1
     tot = sum(dist.values()) or 1
     print("label distribution:", {k: f"{v} ({v*100//tot}%)" for k, v in dist.items()})
-    print("  ^ confirm neutral is ~70%; that's the basis for the class-weighted-loss plan.")
+    print("  ^ under the strict prompt expect neutral ~75-80%; that's the class-weighted-loss basis.")
 
     # stratified audit sample for the human cross-check (this is what validates the silver labels)
     by_label = {}
@@ -227,8 +290,7 @@ def main():
         for k, v in sample[:150]:
             claim, s = k.split("||", 1)
             w.writerow([claim, s, v, ""])
-    print(f"Wrote {AUDIT_PATH}: fill 'your_label' on the 150 rows, then measure agreement:")
-    print("  import pandas as pd; df=pd.read_csv(...); (df.llm_label==df.your_label).mean()")
+    print(f"Wrote {AUDIT_PATH}: optional extra human cross-check on a fresh 150 rows.")
 
 
 if __name__ == "__main__":
