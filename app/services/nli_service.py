@@ -8,7 +8,6 @@ import torch
 from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
 import nltk
-nltk.download('punkt_tab', quiet=True)
 from nltk.tokenize import sent_tokenize
 
 
@@ -21,14 +20,43 @@ DEVICE = ("cuda" if torch.cuda.is_available()
           else "mps" if getattr(torch.backends, "mps", None) and torch.backends.mps.is_available()
           else "cpu")
 
-tokenizer = AutoTokenizer.from_pretrained(BASE_MODEL)
-_base_model = AutoModelForSequenceClassification.from_pretrained(BASE_MODEL)
-model = PeftModel.from_pretrained(_base_model, ADAPTER_DIR)
-model.to(DEVICE).eval()
+# Models load lazily (on first use) and are cached, NOT at import time.
+# This keeps `import nli_service` cheap so tests/CI never pull the model,
+# and lets the process start instantly (load happens on first NLI call, or
+# on an explicit startup warmup if one is added in main.py for production).
+_tokenizer = None
+_model = None
+_relevance_model = None
+_nltk_ready = False
 
-relevance_model = SentenceTransformer("all-MiniLM-L6-v2")
 
-#TODO: consider lazy loading to speed up startup
+def _get_nli():
+    """Load (once) and return the fine-tuned stance model + tokenizer.
+
+    DeBERTa-v3-large NLI base with our LoRA adapter applied on top.
+    """
+    global _model, _tokenizer
+    if _model is None:
+        _tokenizer = AutoTokenizer.from_pretrained(BASE_MODEL)
+        _base = AutoModelForSequenceClassification.from_pretrained(BASE_MODEL)
+        _model = PeftModel.from_pretrained(_base, ADAPTER_DIR).to(DEVICE).eval()
+    return _model, _tokenizer
+
+
+def _get_relevance_model():
+    """Load (once) and return the MiniLM relevance model."""
+    global _relevance_model
+    if _relevance_model is None:
+        _relevance_model = SentenceTransformer("all-MiniLM-L6-v2")
+    return _relevance_model
+
+
+def _ensure_nltk() -> None:
+    """Download the nltk sentence-tokenizer data once, on first use."""
+    global _nltk_ready
+    if not _nltk_ready:
+        nltk.download('punkt_tab', quiet=True)
+        _nltk_ready = True
 
 LABEL_MAP = {0: "supporting", 1: "neutral", 2: "opposing"}
 
@@ -61,6 +89,7 @@ def _preprocess_for_splitting(text: str) -> str:
 
 def split_sentences(text: str) -> list[str]:
     """Split text into sentences using nltk with pre-processing."""
+    _ensure_nltk()
     cleaned = _preprocess_for_splitting(text)
     return sent_tokenize(cleaned)
 
@@ -79,6 +108,7 @@ def _run_nli_batch(
     Returns list of dicts: {p_supp, p_neut, p_opp, label, confidence}
     Processes in chunks of batch_size for memory efficiency.
     """
+    model, tokenizer = _get_nli()
     results = []
     for i in range(0, len(premises), batch_size):
         batch_premises = premises[i:i + batch_size]
@@ -281,6 +311,7 @@ def classify_stance_sentences(
 
 def classify_stance(premise: str, hypothesis: str) -> tuple[str, float]:
     """Original paragraph-level NLI. Kept for FC fallback and comparison."""
+    model, tokenizer = _get_nli()
     inputs = tokenizer(
         premise,
         hypothesis,
@@ -305,6 +336,7 @@ def classify_stance(premise: str, hypothesis: str) -> tuple[str, float]:
 def compute_relevance(claim: str, sources_text: list[str]) -> list[float]:
     if not sources_text:
         return []
+    relevance_model = _get_relevance_model()
     claim_embedding = relevance_model.encode([claim])
     text_embeddings = relevance_model.encode(sources_text)
     scores = cosine_similarity(claim_embedding, text_embeddings)[0]

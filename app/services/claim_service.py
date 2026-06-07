@@ -306,7 +306,10 @@ def _filter_relevant_sources(claim: str, sources: list[Source]) -> list[Source]:
         if _is_non_content(source.title):
             print(f"[FILTERED-TYPE] {source.title[:80]}")
             continue
-        if text == "" or score >= RELEVANCE_THRESHOLD:
+        if text == "":
+            print(f"[FILTERED-EMPTY] no title or snippet | {source.url[:80]}")
+            continue
+        if score >= RELEVANCE_THRESHOLD:
             filtered.append(source)
         else:
             print(f"[FILTERED] {score:.2f} | {source.title[:80]}")
@@ -324,8 +327,6 @@ async def analyze_claim(request: ClaimRequest) -> ClaimResponse:
     routing_config = build_routing_config(claim_domain, request.claim)
     print(f"[CLAIM] type={claim_type} ({claim_type_confidence:.2f}) | domain={claim_domain}")
 
-    #TODO: add claim_domain to ClaimResponse schema
-
     raw_sources = await search_sources(request, routing_config)
     raw_sources = _filter_relevant_sources(request.claim, raw_sources) #filtering added
     raw_sources = _deduplicate_sources(raw_sources) #filter duplicate sources
@@ -335,10 +336,16 @@ async def analyze_claim(request: ClaimRequest) -> ClaimResponse:
         claim=request.claim,
         claim_type=claim_type,
         claim_type_confidence=claim_type_confidence,
+        claim_domain=claim_domain,
         verdict=verdict,
         confidence_in_verdict=confidence_in_verdict,
         sources=analyzed_sources,
     )
+
+
+# Per-source network timeout. One slow/hanging API is dropped after this many
+# seconds instead of stalling the whole request. Tune as needed.
+SOURCE_TIMEOUT_SECONDS = 10.0
 
 
 async def search_sources(request: ClaimRequest, routing_config: dict | None = None) -> list[Source]:
@@ -362,7 +369,7 @@ async def search_sources(request: ClaimRequest, routing_config: dict | None = No
         if not cfg.get("enabled", True):
             print(f"[SKIP] {name} (disabled by routing)")
             continue
-        tasks.append(call_fn(cfg))
+        tasks.append(asyncio.wait_for(call_fn(cfg), timeout=SOURCE_TIMEOUT_SECONDS))
         task_names.append(name)
 
     results = await asyncio.gather(*tasks, return_exceptions=True)
@@ -449,6 +456,11 @@ async def analyze_sources(claim: str, raw_sources: list[Source]) -> list[SourceR
     return results
 
 
+# How much total weighted evidence is "a lot." Higher = more sources/strength
+# needed before confidence saturates. Tune against real runs.
+EVIDENCE_SATURATION_K = 2.0
+
+
 def compute_verdict(source_results_list: list[SourceResult], claim_type: str) -> tuple[str, float]:
     weighted_supporting = 0.0
     weighted_opposing = 0.0
@@ -468,7 +480,12 @@ def compute_verdict(source_results_list: list[SourceResult], claim_type: str) ->
         return ("insufficient evidence", 0.0)
 
     ratio = weighted_supporting / total
-    confidence = abs(ratio - 0.5) * 2
+
+    # Confidence = how lopsided (direction) x how much credible evidence (mass).
+    # Thin or weak evidence can no longer score 1.0 just by being unanimous.
+    direction = abs(ratio - 0.5) * 2
+    evidence_factor = total / (total + EVIDENCE_SATURATION_K)
+    confidence = round(direction * evidence_factor, 4)
 
     # Opinion claims: show what sources say, but don't give hard true/false verdict
     if claim_type == "opinion":
@@ -478,7 +495,7 @@ def compute_verdict(source_results_list: list[SourceResult], claim_type: str) ->
             verdict = "sources divided"
         else:
             verdict = "sources lean opposing"
-        return (verdict, round(confidence, 4))
+        return (verdict, confidence)
 
     # Factual claims: normal verdict
     if ratio >= 0.80:
@@ -492,4 +509,4 @@ def compute_verdict(source_results_list: list[SourceResult], claim_type: str) ->
     else:
         verdict = "strongly opposed"
 
-    return (verdict, round(confidence, 4))
+    return (verdict, confidence)
