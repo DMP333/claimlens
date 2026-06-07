@@ -12,7 +12,22 @@ Replaces the previous XLM-R-based classify_claim_type in nli_service.py.
 """
 
 import re
+import nltk
 from nltk import pos_tag, word_tokenize
+
+
+# nltk data (sentence tokenizer + POS tagger) is downloaded once, on first use,
+# so a fresh CI runner / container has it instead of crashing on first claim.
+_nltk_ready = False
+
+
+def _ensure_nltk() -> None:
+    """Download the nltk data the classifier needs, once, on first use."""
+    global _nltk_ready
+    if not _nltk_ready:
+        for pkg in ("punkt_tab", "averaged_perceptron_tagger_eng", "averaged_perceptron_tagger"):
+            nltk.download(pkg, quiet=True)
+        _nltk_ready = True
 
 
 # =============================================================
@@ -114,6 +129,7 @@ def classify_claim_type(claim: str) -> tuple[str, float]:
       2. POS tagging (catches comparative/superlative structures)
       3. Default to factual (DeBERTa fallback available but off by default)
     """
+    _ensure_nltk()
     claim_lower = claim.lower().strip()
     words = claim_lower.split()
     words_set = set(re.sub(r'[.,!?;:\'"()\[\]]', '', w) for w in words)
@@ -250,6 +266,7 @@ def classify_claim_domain(claim: str) -> str:
         "statistical"    -> prioritize DDG, academic; verify with structured data
         "general"        -> query all sources normally, no special filtering
     """
+    _ensure_nltk()
     claim_lower = claim.lower().strip()
     words_set = set(
         re.sub(r'[.,!?;:\'"()\[\]]', '', w) for w in claim_lower.split()
