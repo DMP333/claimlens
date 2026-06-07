@@ -1,7 +1,9 @@
 import re
 import math
+import os
 
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
+from peft import PeftModel
 import torch
 from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
@@ -10,11 +12,19 @@ nltk.download('punkt_tab', quiet=True)
 from nltk.tokenize import sent_tokenize
 
 
-MODEL_NAME = "MoritzLaurer/DeBERTa-v3-base-mnli-fever-anli"
+# Fine-tuned stance model: DeBERTa-v3-large NLI base + our LoRA adapter (run large_len256).
+# The adapter lives at <repo_root>/finetune/model_final and is loaded ON TOP of the base.
+BASE_MODEL  = "MoritzLaurer/deberta-v3-large-mnli-fever-anli-ling-wanli"
+ADAPTER_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "finetune", "model_final")
+MAX_LEN     = 256   # MUST match fine-tuning (sentences were truncated at 256 during training)
+DEVICE = ("cuda" if torch.cuda.is_available()
+          else "mps" if getattr(torch.backends, "mps", None) and torch.backends.mps.is_available()
+          else "cpu")
 
-tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
-model = AutoModelForSequenceClassification.from_pretrained(MODEL_NAME)
-model.eval()
+tokenizer = AutoTokenizer.from_pretrained(BASE_MODEL)
+_base_model = AutoModelForSequenceClassification.from_pretrained(BASE_MODEL)
+model = PeftModel.from_pretrained(_base_model, ADAPTER_DIR)
+model.to(DEVICE).eval()
 
 relevance_model = SentenceTransformer("all-MiniLM-L6-v2")
 
@@ -78,9 +88,10 @@ def _run_nli_batch(
             batch_hypotheses,
             return_tensors="pt",
             truncation=True,
-            max_length=512,
+            max_length=MAX_LEN,
             padding=True,
         )
+        inputs = inputs.to(DEVICE)
         with torch.no_grad():
             outputs = model(**inputs)
         probs = torch.softmax(outputs.logits, dim=1)
@@ -275,8 +286,9 @@ def classify_stance(premise: str, hypothesis: str) -> tuple[str, float]:
         hypothesis,
         return_tensors="pt",
         truncation=True,
-        max_length=512,
+        max_length=MAX_LEN,
     )
+    inputs = inputs.to(DEVICE)
     with torch.no_grad():
         outputs = model(**inputs)
     probs = torch.softmax(outputs.logits, dim=1)[0]
