@@ -46,10 +46,12 @@ def _get_nli():
     DeBERTa-v3-large NLI base with our LoRA adapter applied on top.
     """
     global _model, _tokenizer
-    if _model is None:
-        _tokenizer = AutoTokenizer.from_pretrained(BASE_MODEL)
-        _base = AutoModelForSequenceClassification.from_pretrained(BASE_MODEL)
-        _model = PeftModel.from_pretrained(_base, ADAPTER_DIR).to(DEVICE).eval()
+    if _model is None:                  # fast path once warm: no lock needed
+        with _MODEL_LOCK:
+            if _model is None:          # re-check: another thread may have loaded it while we waited
+                _tokenizer = AutoTokenizer.from_pretrained(BASE_MODEL)
+                _base = AutoModelForSequenceClassification.from_pretrained(BASE_MODEL)
+                _model = PeftModel.from_pretrained(_base, ADAPTER_DIR).to(DEVICE).eval()
     return _model, _tokenizer
 
 
@@ -57,7 +59,9 @@ def _get_relevance_model():
     """Load (once) and return the MiniLM relevance model."""
     global _relevance_model
     if _relevance_model is None:
-        _relevance_model = SentenceTransformer("all-MiniLM-L6-v2")
+        with _MODEL_LOCK:
+            if _relevance_model is None:
+                _relevance_model = SentenceTransformer("all-MiniLM-L6-v2")
     return _relevance_model
 
 
