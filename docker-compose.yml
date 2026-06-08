@@ -1,0 +1,15 @@
+services: #list of container this file defines
+  db: #our only container for now, named db
+    image: postgres:16 #finished package (not a list to install.. this is the finished product after all those requirmenets are met )
+    container_name: claimlens-db #name of container for running
+    environment: #configuration value I hand into the box
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: claimlens
+    ports: #since container will contain postgres which is a server, this container will contain a server
+      - "5432:5432"
+    volumes: #this is mounting, storing data called claimlens_pgdata outside of container so it doesn't get deleted with the container
+      - claimlens_pgdata:/var/lib/postgresql/data
+
+volumes: #declare where mounted data exists
+  claimlens_pgdata:
