@@ -28,7 +28,6 @@ async def search_semantic_scholar(
     params = {
         "query": claim_request.claim,
         "limit": max_results,
-        "year": f"{claim_request.date_range_start.year}-{claim_request.date_range_end.year}",
         "fields": "title,abstract,url,year,citationCount,fieldsOfStudy",
     }
 

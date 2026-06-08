@@ -318,6 +318,25 @@ def _filter_relevant_sources(claim: str, sources: list[Source]) -> list[Source]:
     return filtered
 
 
+# Display order for the response source list: supporting first, then opposing.
+# Neutral is dropped in _present_sources, so its rank only matters if neutral
+# is ever re-included in the output later.
+_STANCE_RANK = {"supporting": 0, "opposing": 1, "neutral": 2}
+
+
+def _present_sources(sources: list[SourceResult]) -> list[SourceResult]:
+    """Shape the analyzed sources for the API response.
+
+    Drops neutral sources: they contribute nothing to the verdict (compute_verdict
+    already skips them) and a stanceless source does not serve a show-both-sides
+    output. Then groups by stance (supporting, then opposing) and sorts by
+    credibility descending within each group. Pure function, no I/O.
+    """
+    visible = [s for s in sources if s.stance != "neutral"]
+    visible.sort(key=lambda s: (_STANCE_RANK.get(s.stance, 99), -s.credibility_score))
+    return visible
+
+
 async def analyze_claim(request: ClaimRequest) -> ClaimResponse:
     from app.services.claim_classifier import classify_claim_type, classify_claim_domain
     from app.services.source_router import build_routing_config
@@ -328,7 +347,7 @@ async def analyze_claim(request: ClaimRequest) -> ClaimResponse:
     print(f"[CLAIM] type={claim_type} ({claim_type_confidence:.2f}) | domain={claim_domain}")
 
     raw_sources = await search_sources(request, routing_config)
-    raw_sources = _filter_relevant_sources(request.claim, raw_sources) #filtering added
+    raw_sources = await asyncio.to_thread(_filter_relevant_sources, request.claim, raw_sources)  #filtering added
     raw_sources = _deduplicate_sources(raw_sources) #filter duplicate sources
     analyzed_sources = await analyze_sources(request.claim, raw_sources)
     verdict, confidence_in_verdict = compute_verdict(analyzed_sources, claim_type)
@@ -339,7 +358,7 @@ async def analyze_claim(request: ClaimRequest) -> ClaimResponse:
         claim_domain=claim_domain,
         verdict=verdict,
         confidence_in_verdict=confidence_in_verdict,
-        sources=analyzed_sources,
+        sources=_present_sources(analyzed_sources),
     )
 
 
@@ -412,7 +431,7 @@ async def analyze_sources(claim: str, raw_sources: list[Source]) -> list[SourceR
 
         # Fact-check sources: use rating instead of NLI on snippet
         if source.source_type == "fact_check" and source.raw_claim_rating:
-            fc_stance, fc_conf = _stance_from_factcheck(source, claim)
+            fc_stance, fc_conf = await asyncio.to_thread(_stance_from_factcheck, source, claim)
             if fc_stance:
                 results.append(
                     SourceResult(
@@ -438,7 +457,9 @@ async def analyze_sources(claim: str, raw_sources: list[Source]) -> list[SourceR
         # "about X" means "supports X" (e.g. "Flat Earth" article classified as supporting flat earth)
         # Snippet/abstract contains the actual argument, which NLI can classify correctly
         premise = source.snippet if source.snippet else source.title
-        stance, confidence, sent_details = classify_stance_sentences(premise, claim)
+        stance, confidence, sent_details = await asyncio.to_thread(
+            classify_stance_sentences, premise, claim
+        )
 
         results.append(
             SourceResult(

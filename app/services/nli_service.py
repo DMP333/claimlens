@@ -1,6 +1,7 @@
 import re
 import math
 import os
+import threading
 
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 from peft import PeftModel
@@ -28,6 +29,15 @@ _tokenizer = None
 _model = None
 _relevance_model = None
 _nltk_ready = False
+
+# Serializes all model forward passes across threads. The NLI and relevance
+# models are shared module-level singletons, and analyze_claim runs blocking
+# inference via asyncio.to_thread, so two concurrent jobs could otherwise call
+# forward() on the same model at the same time, which PyTorch does not guarantee
+# is safe (notably on MPS). One process-wide lock keeps exactly one thread inside
+# any model at a time. Throughput is unaffected at this scale: one model on one
+# device serializes anyway.
+_MODEL_LOCK = threading.Lock()
 
 
 def _get_nli():
@@ -121,10 +131,11 @@ def _run_nli_batch(
             max_length=MAX_LEN,
             padding=True,
         )
-        inputs = inputs.to(DEVICE)
-        with torch.no_grad():
-            outputs = model(**inputs)
-        probs = torch.softmax(outputs.logits, dim=1)
+        with _MODEL_LOCK:
+            inputs = inputs.to(DEVICE)
+            with torch.no_grad():
+                outputs = model(**inputs)
+            probs = torch.softmax(outputs.logits, dim=1).cpu()
         for j in range(len(batch_premises)):
             p = probs[j]
             idx = p.argmax().item()
@@ -319,10 +330,11 @@ def classify_stance(premise: str, hypothesis: str) -> tuple[str, float]:
         truncation=True,
         max_length=MAX_LEN,
     )
-    inputs = inputs.to(DEVICE)
-    with torch.no_grad():
-        outputs = model(**inputs)
-    probs = torch.softmax(outputs.logits, dim=1)[0]
+    with _MODEL_LOCK:
+        inputs = inputs.to(DEVICE)
+        with torch.no_grad():
+            outputs = model(**inputs)
+        probs = torch.softmax(outputs.logits, dim=1)[0].cpu()
     predicted_idx = probs.argmax().item()
     confidence = probs[predicted_idx].item()
     print(f"[NLI-RAW] S:{probs[0]:.3f} N:{probs[1]:.3f} O:{probs[2]:.3f} | {premise[:100]}")
@@ -337,7 +349,8 @@ def compute_relevance(claim: str, sources_text: list[str]) -> list[float]:
     if not sources_text:
         return []
     relevance_model = _get_relevance_model()
-    claim_embedding = relevance_model.encode([claim])
-    text_embeddings = relevance_model.encode(sources_text)
+    with _MODEL_LOCK:
+        claim_embedding = relevance_model.encode([claim])
+        text_embeddings = relevance_model.encode(sources_text)
     scores = cosine_similarity(claim_embedding, text_embeddings)[0]
     return scores.tolist()

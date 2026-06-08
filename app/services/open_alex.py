@@ -47,7 +47,6 @@ async def search_openalex(
     params = {
         "search": claim_request.claim,
         "per_page": max_results,
-        "filter": f"publication_year:{claim_request.date_range_start.year}-{claim_request.date_range_end.year}",
         "sort": "relevance_score:desc",
         "select": "id,display_name,doi,abstract_inverted_index,publication_year,cited_by_count,primary_topic",
     }
