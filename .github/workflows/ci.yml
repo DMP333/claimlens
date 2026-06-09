@@ -1,0 +1,43 @@
+name: CI
+
+on: push #git push triggers it, CI so this should be correct
+
+jobs:
+  test: #on push, it runs the test
+    runs-on: ubuntu-latest #this is the github virtual machine github provides for us
+
+    env:
+      # The tests never connect to a real database (the DB session is overridden
+      # or mocked), but the app constructs a SQLAlchemy engine at import time,
+      # which needs a parseable URL. This dummy satisfies that; nothing connects.
+      DATABASE_URL: postgresql+asyncpg://postgres:postgres@localhost:5432/claimlens
+
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4 #clones my repo to runner 
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: |
+            requirements.txt
+            requirements-dev.txt
+
+      - name: Install CPU-only torch
+        # The runner is amd64, where the default torch wheel bundles CUDA (~2GB,
+        # useless here since tests run on CPU). The +cpu wheel is far smaller and
+        # faster to install. ==2.12.0 is satisfied by 2.12.0+cpu, so the next
+        # step sees torch as already present and does not pull the CUDA wheel.
+        run: pip install torch==2.12.0 --index-url https://download.pytorch.org/whl/cpu
+
+      - name: Install dependencies
+        run: pip install -r requirements-dev.txt
+
+      - name: Download NLTK data
+        # The classifier tests run the real POS tagger, which needs this data.
+        run: python -c "import nltk; [nltk.download(p) for p in ('punkt_tab','averaged_perceptron_tagger_eng','averaged_perceptron_tagger')]"
+
+      - name: Run tests
+        run: pytest -q
