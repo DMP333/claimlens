@@ -261,7 +261,7 @@ def classify_claim_domain(claim: str) -> str:
 
     Returns one of:
         "scientific"     -> prioritize academic w/ field filter, Wikipedia, DDG
-        "historical"     -> prioritize Wikipedia, Wikidata, DDG
+        "historical"     -> prioritize Wikipedia, DDG
         "current_events" -> prioritize DDG, Google FC; restrict academic to recent
         "statistical"    -> prioritize DDG, academic; verify with structured data
         "general"        -> query all sources normally, no special filtering

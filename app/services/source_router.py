@@ -148,7 +148,6 @@ _DEFAULTS = {
     "semantic_scholar":  {"enabled": True, "max_results": 10, "field_filters": None},
     "open_alex":        {"enabled": True, "max_results": 10, "field_filters": None},
     "duckduckgo":       {"enabled": True, "max_results": 10},
-    "wikidata":         {"enabled": True},
 }
 
 
@@ -171,7 +170,6 @@ def build_routing_config(claim_domain: str, claim_text: str) -> dict:
 
     # -- SCIENTIFIC claims --
     # Academic sources get field filtering. Wikipedia is useful.
-    # Wikidata useful for structured facts (height, temperature, etc.)
     if claim_domain == "scientific":
         fields = _get_academic_fields(claim_text)
         if fields:
@@ -182,7 +180,7 @@ def build_routing_config(claim_domain: str, claim_text: str) -> dict:
         config["open_alex"]["max_results"] = 7
 
     # -- HISTORICAL claims --
-    # Wikipedia and Wikidata are primary. Academic sources deprioritized.
+    # Wikipedia is primary. Academic sources deprioritized.
     # DDG still useful for debunking articles.
     elif claim_domain == "historical":
         config["wikipedia"]["max_results"] = 7  # more Wikipedia results for historical

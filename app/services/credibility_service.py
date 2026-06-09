@@ -160,15 +160,6 @@ async def score_all_sources(sources: list[Source]) -> list[dict]:
             })
             continue
 
-        if source.source_type == "knowledge_graph":
-            results.append({
-                "credibility_tier": "estimated",
-                "credibility_score": 0.85,
-                "bias_rating": None,
-                "factual_reporting": None,
-            })
-            continue
-
         if source.source_type == "fact_check":
             results.append({
                 "credibility_tier": "estimated",

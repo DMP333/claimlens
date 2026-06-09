@@ -8,7 +8,6 @@ from app.services.wikipedia import search_wikipedia
 from app.services.semantic_scholar import search_semantic_scholar
 from app.services.open_alex import search_openalex
 from app.services.duckduckgo import search_duckduckgo
-from app.services.wikidata import search_wikidata
 from app.services.nli_service import classify_stance, classify_stance_sentences, compute_relevance
 from app.services.credibility_service import score_all_sources
 
@@ -380,7 +379,6 @@ async def search_sources(request: ClaimRequest, routing_config: dict | None = No
         "semantic_scholar":  lambda cfg: search_semantic_scholar(request, cfg),
         "open_alex":        lambda cfg: search_openalex(request, cfg),
         "duckduckgo":       lambda cfg: search_duckduckgo(request),
-        "wikidata":         lambda cfg: search_wikidata(request),
     }
 
     for name, call_fn in source_calls.items():
@@ -410,23 +408,6 @@ async def analyze_sources(claim: str, raw_sources: list[Source]) -> list[SourceR
     results = []
     for source, cred in zip(raw_sources, credibility_results):
         if not source.snippet:
-            continue
-
-        # Wikidata: structured entity data, not suited for NLI
-        if source.source_type == "knowledge_graph":
-            results.append(
-                SourceResult(
-                    url=source.url,
-                    title=source.title,
-                    stance="neutral",
-                    stance_confidence=0.0,
-                    credibility_tier=cred["credibility_tier"],
-                    credibility_score=cred["credibility_score"],
-                    bias_rating=cred["bias_rating"],
-                    factual_reporting=cred["factual_reporting"],
-                    support_summary="Wikidata: excluded from NLI (factual reference only)",
-                )
-            )
             continue
 
         # Fact-check sources: use rating instead of NLI on snippet

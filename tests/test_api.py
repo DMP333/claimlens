@@ -77,7 +77,7 @@ def _install_fakes(monkeypatch, sources):
 
     monkeypatch.setattr(f"{cs}.search_duckduckgo", _return_sources)
     for name in ("search_factcheck", "search_wikipedia", "search_semantic_scholar",
-                 "search_openalex", "search_wikidata"):
+                 "search_openalex"):
         monkeypatch.setattr(f"{cs}.{name}", _empty_search)
 
     monkeypatch.setattr(f"{cs}.classify_stance_sentences", _fake_stance_sentences)
