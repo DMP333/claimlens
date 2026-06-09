@@ -1,0 +1,30 @@
+# Python caches and local virtualenvs (the venv can be gigabytes; never send it)
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+falseclaim/
+
+# Version control and editor cruft
+.git/
+.gitignore
+.idea/
+.vscode/
+.DS_Store
+
+# Secrets: never send .env into the build context. Compose injects env at RUN
+# time instead (see docker-compose.yml).
+.env
+.env.*
+
+# Things the runtime image does not need (kept out of the context for speed).
+# Note: app/data IS needed (the MBFC csv) and is under app/, so it is unaffected.
+tests/
+analysis/
+archive/
+*.md
+
+# Docker artifacts themselves
+Dockerfile
+.dockerignore

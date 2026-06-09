@@ -127,15 +127,18 @@ def _run_nli_batch(
     for i in range(0, len(premises), batch_size):
         batch_premises = premises[i:i + batch_size]
         batch_hypotheses = [hypothesis] * len(batch_premises)
-        inputs = tokenizer(
-            batch_premises,
-            batch_hypotheses,
-            return_tensors="pt",
-            truncation=True,
-            max_length=MAX_LEN,
-            padding=True,
-        )
+        # Tokenize INSIDE the lock: the fast tokenizer mutates internal state on
+        # each call and is not safe to share across threads concurrently
+        # ("Already borrowed"). Lock covers tokenize + forward as one unit.
         with _MODEL_LOCK:
+            inputs = tokenizer(
+                batch_premises,
+                batch_hypotheses,
+                return_tensors="pt",
+                truncation=True,
+                max_length=MAX_LEN,
+                padding=True,
+            )
             inputs = inputs.to(DEVICE)
             with torch.no_grad():
                 outputs = model(**inputs)
@@ -327,14 +330,16 @@ def classify_stance_sentences(
 def classify_stance(premise: str, hypothesis: str) -> tuple[str, float]:
     """Original paragraph-level NLI. Kept for FC fallback and comparison."""
     model, tokenizer = _get_nli()
-    inputs = tokenizer(
-        premise,
-        hypothesis,
-        return_tensors="pt",
-        truncation=True,
-        max_length=MAX_LEN,
-    )
+    # Tokenize INSIDE the lock (see _run_nli_batch): the fast tokenizer is not
+    # safe to call from two threads at once. Lock covers tokenize + forward.
     with _MODEL_LOCK:
+        inputs = tokenizer(
+            premise,
+            hypothesis,
+            return_tensors="pt",
+            truncation=True,
+            max_length=MAX_LEN,
+        )
         inputs = inputs.to(DEVICE)
         with torch.no_grad():
             outputs = model(**inputs)
