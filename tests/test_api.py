@@ -62,6 +62,13 @@ def _fake_stance_sentences(premise, hypothesis, *args, **kwargs):
     return (stance, 0.9, [{"text": premise}])
 
 
+def _fake_stance_sentences_batch(premises, hypothesis, *args, **kwargs):
+    """Batch seam fake: same deterministic snippet-decoding as the single
+    fake, applied per premise. Mirrors the production contract of
+    classify_stance_sentences_batch (one tuple per premise, input order)."""
+    return [_fake_stance_sentences(p, hypothesis) for p in premises]
+
+
 def _install_fakes(monkeypatch, sources):
     """Replace every networked / model-backed / nondeterministic edge.
 
@@ -81,6 +88,7 @@ def _install_fakes(monkeypatch, sources):
         monkeypatch.setattr(f"{cs}.{name}", _empty_search)
 
     monkeypatch.setattr(f"{cs}.classify_stance_sentences", _fake_stance_sentences)
+    monkeypatch.setattr(f"{cs}.classify_stance_sentences_batch", _fake_stance_sentences_batch)
     monkeypatch.setattr(f"{cs}.classify_stance", lambda p, h: ("neutral", 0.0))
     monkeypatch.setattr(f"{cs}.compute_relevance", lambda claim, texts: [1.0] * len(texts))
 
