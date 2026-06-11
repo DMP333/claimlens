@@ -337,19 +337,38 @@ def _present_sources(sources: list[SourceResult]) -> list[SourceResult]:
 
 
 async def analyze_claim(request: ClaimRequest) -> ClaimResponse:
+    import time
     from app.services.claim_classifier import classify_claim_type, classify_claim_domain
     from app.services.source_router import build_routing_config
 
+    t0 = time.perf_counter()
     claim_type, claim_type_confidence = classify_claim_type(request.claim)
     claim_domain = classify_claim_domain(request.claim)
     routing_config = build_routing_config(claim_domain, request.claim)
+    t_classify = time.perf_counter()
     print(f"[CLAIM] type={claim_type} ({claim_type_confidence:.2f}) | domain={claim_domain}")
 
     raw_sources = await search_sources(request, routing_config)
-    raw_sources = await asyncio.to_thread(_filter_relevant_sources, request.claim, raw_sources)  #filtering added
-    raw_sources = _deduplicate_sources(raw_sources) #filter duplicate sources
+    t_search = time.perf_counter()
+
+    raw_sources = await asyncio.to_thread(_filter_relevant_sources, request.claim, raw_sources)
+    t_relevance = time.perf_counter()
+    raw_sources = _deduplicate_sources(raw_sources)
+    t_dedup = time.perf_counter()
+
     analyzed_sources = await analyze_sources(request.claim, raw_sources)
+    t_nli = time.perf_counter()
+
     verdict, confidence_in_verdict = compute_verdict(analyzed_sources, claim_type)
+    t_end = time.perf_counter()
+
+    print(
+        f"[TIMING] classify={t_classify-t0:.2f} search={t_search-t_classify:.2f} "
+        f"relevance={t_relevance-t_search:.2f} dedup={t_dedup-t_relevance:.2f} "
+        f"nli={t_nli-t_dedup:.2f} verdict={t_end-t_nli:.2f} "
+        f"| model_locked(relevance+nli)={(t_relevance-t_search)+(t_nli-t_dedup):.2f} "
+        f"TOTAL={t_end-t0:.2f}"
+    )
     return ClaimResponse(
         claim=request.claim,
         claim_type=claim_type,

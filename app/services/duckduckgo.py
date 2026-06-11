@@ -1,4 +1,5 @@
 import asyncio
+import time
 import httpx
 from ddgs import DDGS
 from app.models.schemas import Source, ClaimRequest
@@ -15,11 +16,14 @@ async def search_duckduckgo(claim_request: ClaimRequest) -> list[Source]:
         with DDGS() as ddgs:
             return list(ddgs.text(claim_request.claim, max_results=10))
 
+    t0 = time.perf_counter()
     results = await asyncio.to_thread(_search)
+    t_search = time.perf_counter()
 
     # Step 2: Fetch actual page content in parallel
     urls = [item.get("href", "") for item in results]
     fetched_texts = await _fetch_all(urls)
+    t_fetch = time.perf_counter()
 
     # Step 3: Build sources with evidence-extracted snippets
     sources = []
@@ -45,10 +49,13 @@ async def search_duckduckgo(claim_request: ClaimRequest) -> list[Source]:
                        "extract_score": extract_score},
         )
         sources.append(source)
+    t_build = time.perf_counter()
 
     enriched_count = sum(1 for item, f in zip(results, fetched_texts)
                         if f and len(f.split()) >= MIN_ENRICHED_WORDS)
     print(f"[DDG] {len(results)} results, {enriched_count} enriched with full article text")
+    print(f"[DDG-TIMING] search={t_search-t0:.2f} fetch+extract={t_fetch-t_search:.2f} "
+          f"paragraph_select={t_build-t_fetch:.2f} TOTAL={t_build-t0:.2f}")
 
     return sources
 
@@ -81,7 +88,11 @@ async def _fetch_article_text(client: httpx.AsyncClient, url: str) -> str:
         if "text/html" not in content_type.lower():
             return ""
 
-        return _extract_text_from_html(response.text)
+        # Extraction is CPU-bound HTML parsing (trafilatura/lxml). Run it off
+        # the event loop so ten extractions don't serialize on the loop and
+        # block polls and other claims' I/O while they grind. lxml's C parsing
+        # releases the GIL, so threaded extractions genuinely overlap.
+        return await asyncio.to_thread(_extract_text_from_html, response.text)
     except Exception:
         return ""
 
