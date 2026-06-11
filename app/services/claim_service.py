@@ -10,6 +10,7 @@ from app.services.open_alex import search_openalex
 from app.services.duckduckgo import search_duckduckgo
 from app.services.nli_service import (
     classify_stance,
+    classify_stance_batch,
     classify_stance_sentences,
     classify_stance_sentences_batch,
     compute_relevance,
@@ -245,6 +246,20 @@ def _stance_from_factcheck(source: Source, claim: str) -> tuple[str | None, floa
         return None, None
 
     alignment, alignment_conf = classify_stance(claim_reviewed, claim)
+    return _stance_from_factcheck_rating(source, claim, alignment, alignment_conf)
+
+
+def _stance_from_factcheck_rating(
+    source: Source, claim: str, alignment: str, alignment_conf: float
+) -> tuple[str | None, float | None]:
+    """Rating-decision half of the FC bypass, taking a precomputed alignment.
+
+    Split out so analyze_sources can compute all FC alignments in ONE batched
+    model call (classify_stance_batch) and then apply this per-source logic,
+    instead of each FC source separately acquiring the model lock.
+    """
+    rating = (source.raw_claim_rating or "").lower().strip()
+    claim_reviewed = (source.metadata or {}).get("claim_reviewed", "")
 
     print(f"[FC-DEBUG] claim_reviewed: '{claim_reviewed}'")
     print(f"[FC-DEBUG] user_claim: '{claim}'")
@@ -429,10 +444,13 @@ async def search_sources(request: ClaimRequest, routing_config: dict | None = No
 async def analyze_sources(claim: str, raw_sources: list[Source]) -> list[SourceResult]:
     credibility_results = await score_all_sources(raw_sources)
 
-    # Pass 1: route each source. Fact-check sources resolve immediately via
-    # the rating bypass (unchanged). All other sources are COLLECTED instead
-    # of classified one-by-one, so their sentence pairs can share one GPU run.
+    # Pass 1: route each source. Fact-check sources are COLLECTED so all
+    # their alignment pairs share one batched model call (they were ~10
+    # separate single-pair lock acquisitions per claim, the dominant
+    # serialized cost under concurrent load). Other sources are collected
+    # for the cross-source sentence batch as before.
     entries: list[tuple[int, SourceResult]] = []   # (original index, result)
+    fc_jobs: list[tuple[int, Source, dict, str]] = []   # (idx, source, cred, claim_reviewed)
     nli_jobs: list[tuple[int, Source, dict, str]] = []  # (idx, source, cred, premise)
 
     for idx, (source, cred) in enumerate(zip(raw_sources, credibility_results)):
@@ -441,7 +459,32 @@ async def analyze_sources(claim: str, raw_sources: list[Source]) -> list[SourceR
 
         # Fact-check sources: use rating instead of NLI on snippet
         if source.source_type == "fact_check" and source.raw_claim_rating:
-            fc_stance, fc_conf = await asyncio.to_thread(_stance_from_factcheck, source, claim)
+            rating = (source.raw_claim_rating or "").lower().strip()
+            claim_reviewed = (source.metadata or {}).get("claim_reviewed", "")
+            if not claim_reviewed or not rating:
+                # Same outcome as the old bypass returning (None, None)
+                print(f"[FC-SKIP] Bypass failed, dropping: {source.title[:80]}")
+                continue
+            fc_jobs.append((idx, source, cred, claim_reviewed))
+            continue
+
+        # All other sources: NLI on snippet only (not title)
+        # Title contains the topic name which misleads NLI into thinking
+        # "about X" means "supports X" (e.g. "Flat Earth" article classified as supporting flat earth)
+        # Snippet/abstract contains the actual argument, which NLI can classify correctly
+        premise = source.snippet if source.snippet else source.title
+        nli_jobs.append((idx, source, cred, premise))
+
+    # Pass 2a: ONE batched alignment call for every FC source, then the
+    # per-source rating logic (unchanged) on each precomputed alignment.
+    if fc_jobs:
+        alignments = await asyncio.to_thread(
+            classify_stance_batch, [cr for _, _, _, cr in fc_jobs], claim
+        )
+        for (idx, source, cred, _), (alignment, alignment_conf) in zip(fc_jobs, alignments):
+            fc_stance, fc_conf = _stance_from_factcheck_rating(
+                source, claim, alignment, alignment_conf
+            )
             if fc_stance:
                 entries.append((idx,
                     SourceResult(
@@ -456,20 +499,12 @@ async def analyze_sources(claim: str, raw_sources: list[Source]) -> list[SourceR
                         support_summary=f"Fact-check: '{source.raw_claim_rating}' (rating-based)",
                     )
                 ))
-                continue
-             # Bypass couldn't parse the rating - skip entirely
-            # Snippet is the false claim text, NLI on it would be wrong
-            print(f"[FC-SKIP] Bypass failed, dropping: {source.title[:80]}")
-            continue
+            else:
+                # Bypass couldn't parse the rating - skip entirely
+                # Snippet is the false claim text, NLI on it would be wrong
+                print(f"[FC-SKIP] Bypass failed, dropping: {source.title[:80]}")
 
-        # All other sources: NLI on snippet only (not title)
-        # Title contains the topic name which misleads NLI into thinking
-        # "about X" means "supports X" (e.g. "Flat Earth" article classified as supporting flat earth)
-        # Snippet/abstract contains the actual argument, which NLI can classify correctly
-        premise = source.snippet if source.snippet else source.title
-        nli_jobs.append((idx, source, cred, premise))
-
-    # Pass 2: ONE cross-source batched inference for every collected premise.
+    # Pass 2b: ONE cross-source batched inference for every collected premise.
     # Same sentences, same model, same aggregation as the per-source path;
     # only the GPU batching granularity changes (claim-level, not source-level).
     if nli_jobs:

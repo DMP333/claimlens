@@ -13,8 +13,14 @@ import json
 import time
 import urllib.request
 
-BASE = "http://54.149.196.181:8000"
-CLAIM = "vaccines cause autism"
+BASE = "http://34.219.90.125"
+CLAIMS = [
+    "vaccines cause autism",
+    "the great wall of china is visible from space",
+    "humans only use ten percent of their brains",
+    "goldfish have a three second memory",
+    "lightning never strikes the same place twice",
+]
 
 
 def submit(claim):
@@ -35,8 +41,8 @@ def status(job_id):
 def run(n):
     print(f"\n=== {n} concurrent ===")
     start = time.perf_counter()
-    # Submits return instantly (202); the pipelines then overlap on the server.
-    ids = [submit(CLAIM) for _ in range(n)]
+    # Distinct claims per slot: realistic load, avoids 5x-identical-query throttling.
+    ids = [submit(CLAIMS[i % len(CLAIMS)]) for i in range(n)]
     done = {}
     while len(done) < n:
         for job_id in ids:

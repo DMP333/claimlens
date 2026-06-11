@@ -90,6 +90,8 @@ def _install_fakes(monkeypatch, sources):
     monkeypatch.setattr(f"{cs}.classify_stance_sentences", _fake_stance_sentences)
     monkeypatch.setattr(f"{cs}.classify_stance_sentences_batch", _fake_stance_sentences_batch)
     monkeypatch.setattr(f"{cs}.classify_stance", lambda p, h: ("neutral", 0.0))
+    monkeypatch.setattr(f"{cs}.classify_stance_batch",
+                        lambda premises, h: [("neutral", 0.0) for _ in premises])
     monkeypatch.setattr(f"{cs}.compute_relevance", lambda claim, texts: [1.0] * len(texts))
 
     async def _fake_credibility(srcs):

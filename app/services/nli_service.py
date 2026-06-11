@@ -451,6 +451,22 @@ def classify_stance(premise: str, hypothesis: str) -> tuple[str, float]:
     return LABEL_MAP[predicted_idx], confidence
 
 
+def classify_stance_batch(premises: list[str], hypothesis: str) -> list[tuple[str, float]]:
+    """Batched paragraph-level NLI: same per-pair results as calling
+    classify_stance once per premise, but all pairs go through the model in
+    one _run_nli_batch call (one lock acquisition instead of len(premises)).
+
+    Used for Fact Check alignment, where ~10 single-pair calls per claim were
+    each separately queueing at the model lock under concurrent load.
+    """
+    results = _run_nli_batch(premises, hypothesis)
+    out = []
+    for premise, r in zip(premises, results):
+        print(f"[NLI-RAW] S:{r['p_supp']:.3f} N:{r['p_neut']:.3f} O:{r['p_opp']:.3f} | {premise[:100]}")
+        out.append((r["label"], r["confidence"]))
+    return out
+
+
 # ============================================================
 # RELEVANCE SCORING
 # ============================================================
