@@ -20,7 +20,6 @@ MAX_LEN     = 256   # MUST match fine-tuning (sentences were truncated at 256 du
 DEVICE = ("cuda" if torch.cuda.is_available()
           else "mps" if getattr(torch.backends, "mps", None) and torch.backends.mps.is_available()
           else "cpu")
-NLI_BATCH_SIZE = int(os.getenv("NLI_BATCH_SIZE", "32"))
 
 # Models load lazily (on first use) and are cached, NOT at import time.
 # This keeps `import nli_service` cheap so tests/CI never pull the model,
@@ -79,6 +78,10 @@ LABEL_MAP = {0: "supporting", 1: "neutral", 2: "opposing"}
 DEFAULT_STRATEGY = "3K"   # Options: "3K", "3A", "3J"
 DEFAULT_MIN_WORDS = 10
 DEFAULT_TOP_K = 3         # For 3J strategy
+
+# GPU batch size for NLI forward passes. Runtime knob (no rebuild needed):
+# set NLI_BATCH_SIZE in .env and recreate the container.
+NLI_BATCH_SIZE = int(os.getenv("NLI_BATCH_SIZE", "32"))
 
 
 # ============================================================
@@ -322,6 +325,89 @@ def classify_stance_sentences(
           f"{premise[:80]}")
 
     return stance, confidence, sentence_details
+
+
+def classify_stance_sentences_batch(
+    premises: list[str],
+    hypothesis: str,
+    strategy: str = DEFAULT_STRATEGY,
+    min_words: int = DEFAULT_MIN_WORDS,
+    top_k: int = DEFAULT_TOP_K,
+) -> list[tuple[str, float, list[dict]]]:
+    """Cross-source batched sentence-NLI.
+
+    Behaviorally identical to calling classify_stance_sentences once per
+    premise (same sentences, same model, same per-sentence scores, same
+    aggregation, same logs), but ALL sources' sentence pairs go through the
+    GPU in a single _run_nli_batch call instead of one tiny call per source.
+    This is the batching-granularity fix: per-source calls average 10-20
+    pairs and never fill a GPU batch; the combined claim-level run does.
+
+    Returns one (stance, confidence, sentence_details) tuple per premise,
+    in input order.
+    """
+    # Phase 1: split + filter per source, building one flat pair list.
+    # For sources with no sentence >= min_words we fall back to the whole
+    # paragraph as a single premise (same fallback as the single version).
+    flat: list[str] = []
+    spans: list[tuple[int, int]] = []          # slice of `flat` per source
+    per_source_filtered: list[list | None] = []  # None marks paragraph fallback
+    for premise in premises:
+        sentences = split_sentences(premise)
+        filtered = [(i, s) for i, s in enumerate(sentences)
+                    if len(s.split()) >= min_words]
+        start = len(flat)
+        if not filtered:
+            print(f"[SENT-NLI] No sentences >= {min_words} words, falling back to paragraph")
+            flat.append(premise)
+            per_source_filtered.append(None)
+        else:
+            flat.extend(s for _, s in filtered)
+            per_source_filtered.append(filtered)
+        spans.append((start, len(flat)))
+
+    # Phase 2: ONE batched inference over every pair from every source.
+    all_results = _run_nli_batch(flat, hypothesis) if flat else []
+
+    # Phase 3: scatter results back per source and aggregate exactly as
+    # the single-source version does.
+    out: list[tuple[str, float, list[dict]]] = []
+    agg_fn = _STRATEGY_MAP.get(strategy)
+    if agg_fn is None:
+        raise ValueError(f"Unknown strategy: {strategy}. Options: {list(_STRATEGY_MAP.keys())}")
+
+    for premise, filtered, (start, end) in zip(premises, per_source_filtered, spans):
+        nli_results = all_results[start:end]
+
+        if filtered is None:
+            result = nli_results[0]
+            out.append((result["label"], result["confidence"], []))
+            continue
+
+        sentence_details = []
+        for (orig_idx, text), nli in zip(filtered, nli_results):
+            sentence_details.append({
+                "index": orig_idx,
+                "text": text,
+                "word_count": len(text.split()),
+                **nli,
+            })
+
+        if strategy == "3J":
+            stance, confidence = agg_fn(sentence_details, k=top_k)
+        else:
+            stance, confidence = agg_fn(sentence_details)
+
+        n_s = sum(1 for s in sentence_details if s["label"] == "supporting")
+        n_n = sum(1 for s in sentence_details if s["label"] == "neutral")
+        n_o = sum(1 for s in sentence_details if s["label"] == "opposing")
+        print(f"[SENT-NLI] {strategy} | {stance} ({confidence:.3f}) | "
+              f"S:{n_s} N:{n_n} O:{n_o} of {len(sentence_details)} sents | "
+              f"{premise[:80]}")
+
+        out.append((stance, confidence, sentence_details))
+
+    return out
 
 
 # ============================================================

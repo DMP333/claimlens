@@ -8,7 +8,12 @@ from app.services.wikipedia import search_wikipedia
 from app.services.semantic_scholar import search_semantic_scholar
 from app.services.open_alex import search_openalex
 from app.services.duckduckgo import search_duckduckgo
-from app.services.nli_service import classify_stance, classify_stance_sentences, compute_relevance
+from app.services.nli_service import (
+    classify_stance,
+    classify_stance_sentences,
+    classify_stance_sentences_batch,
+    compute_relevance,
+)
 from app.services.credibility_service import score_all_sources
 
 
@@ -424,8 +429,13 @@ async def search_sources(request: ClaimRequest, routing_config: dict | None = No
 async def analyze_sources(claim: str, raw_sources: list[Source]) -> list[SourceResult]:
     credibility_results = await score_all_sources(raw_sources)
 
-    results = []
-    for source, cred in zip(raw_sources, credibility_results):
+    # Pass 1: route each source. Fact-check sources resolve immediately via
+    # the rating bypass (unchanged). All other sources are COLLECTED instead
+    # of classified one-by-one, so their sentence pairs can share one GPU run.
+    entries: list[tuple[int, SourceResult]] = []   # (original index, result)
+    nli_jobs: list[tuple[int, Source, dict, str]] = []  # (idx, source, cred, premise)
+
+    for idx, (source, cred) in enumerate(zip(raw_sources, credibility_results)):
         if not source.snippet:
             continue
 
@@ -433,7 +443,7 @@ async def analyze_sources(claim: str, raw_sources: list[Source]) -> list[SourceR
         if source.source_type == "fact_check" and source.raw_claim_rating:
             fc_stance, fc_conf = await asyncio.to_thread(_stance_from_factcheck, source, claim)
             if fc_stance:
-                results.append(
+                entries.append((idx,
                     SourceResult(
                         url=source.url,
                         title=source.title,
@@ -445,7 +455,7 @@ async def analyze_sources(claim: str, raw_sources: list[Source]) -> list[SourceR
                         factual_reporting=cred["factual_reporting"],
                         support_summary=f"Fact-check: '{source.raw_claim_rating}' (rating-based)",
                     )
-                )
+                ))
                 continue
              # Bypass couldn't parse the rating - skip entirely
             # Snippet is the false claim text, NLI on it would be wrong
@@ -457,24 +467,36 @@ async def analyze_sources(claim: str, raw_sources: list[Source]) -> list[SourceR
         # "about X" means "supports X" (e.g. "Flat Earth" article classified as supporting flat earth)
         # Snippet/abstract contains the actual argument, which NLI can classify correctly
         premise = source.snippet if source.snippet else source.title
-        stance, confidence, sent_details = await asyncio.to_thread(
-            classify_stance_sentences, premise, claim
-        )
+        nli_jobs.append((idx, source, cred, premise))
 
-        results.append(
-            SourceResult(
-                url=source.url,
-                title=source.title,
-                stance=stance,
-                stance_confidence=confidence,
-                credibility_tier=cred["credibility_tier"],
-                credibility_score=cred["credibility_score"],
-                bias_rating=cred["bias_rating"],
-                factual_reporting=cred["factual_reporting"],
-                support_summary=f"Sentence-NLI: {stance} ({confidence:.2f}, {len(sent_details)} sents)",
-            )
+    # Pass 2: ONE cross-source batched inference for every collected premise.
+    # Same sentences, same model, same aggregation as the per-source path;
+    # only the GPU batching granularity changes (claim-level, not source-level).
+    if nli_jobs:
+        premises = [premise for _, _, _, premise in nli_jobs]
+        batch_results = await asyncio.to_thread(
+            classify_stance_sentences_batch, premises, claim
         )
-    return results
+        for (idx, source, cred, _), (stance, confidence, sent_details) in zip(
+            nli_jobs, batch_results
+        ):
+            entries.append((idx,
+                SourceResult(
+                    url=source.url,
+                    title=source.title,
+                    stance=stance,
+                    stance_confidence=confidence,
+                    credibility_tier=cred["credibility_tier"],
+                    credibility_score=cred["credibility_score"],
+                    bias_rating=cred["bias_rating"],
+                    factual_reporting=cred["factual_reporting"],
+                    support_summary=f"Sentence-NLI: {stance} ({confidence:.2f}, {len(sent_details)} sents)",
+                )
+            ))
+
+    # Restore original source order (FC and NLI results interleave as before).
+    entries.sort(key=lambda pair: pair[0])
+    return [result for _, result in entries]
 
 
 # How much total weighted evidence is "a lot." Higher = more sources/strength
