@@ -26,7 +26,7 @@ services: #list of containers this file defines
     env_file:
       - .env #compose reads the host .env at up-time and injects the API keys
     ports: #publish the app to the host so the browser can reach localhost:8000
-      - "127.0.0.1:8000:8000"
+      - "8000:8000"
     depends_on:
       db:
         condition: service_healthy #wait for the db healthcheck to pass, not just start
