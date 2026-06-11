@@ -13,7 +13,7 @@ import json
 import time
 import urllib.request
 
-BASE = "http://localhost:8000"
+BASE = "http://54.149.196.181:8000"
 CLAIM = "vaccines cause autism"
 
 

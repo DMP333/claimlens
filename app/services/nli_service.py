@@ -20,6 +20,7 @@ MAX_LEN     = 256   # MUST match fine-tuning (sentences were truncated at 256 du
 DEVICE = ("cuda" if torch.cuda.is_available()
           else "mps" if getattr(torch.backends, "mps", None) and torch.backends.mps.is_available()
           else "cpu")
+NLI_BATCH_SIZE = int(os.getenv("NLI_BATCH_SIZE", "32"))
 
 # Models load lazily (on first use) and are cached, NOT at import time.
 # This keeps `import nli_service` cheap so tests/CI never pull the model,
@@ -115,7 +116,7 @@ def split_sentences(text: str) -> list[str]:
 def _run_nli_batch(
     premises: list[str],
     hypothesis: str,
-    batch_size: int = 32,
+    batch_size: int = NLI_BATCH_SIZE,
 ) -> list[dict]:
     """Run NLI on multiple premises against a single hypothesis.
 
