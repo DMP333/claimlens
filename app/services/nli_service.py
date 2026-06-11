@@ -2,6 +2,7 @@ import re
 import math
 import os
 import threading
+import time
 
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 from peft import PeftModel
@@ -128,13 +129,20 @@ def _run_nli_batch(
     """
     model, tokenizer = _get_nli()
     results = []
+    t_call = time.perf_counter()
+    lock_wait = 0.0
+    tok_time = 0.0
+    fwd_time = 0.0
     for i in range(0, len(premises), batch_size):
         batch_premises = premises[i:i + batch_size]
         batch_hypotheses = [hypothesis] * len(batch_premises)
         # Tokenize INSIDE the lock: the fast tokenizer mutates internal state on
         # each call and is not safe to share across threads concurrently
         # ("Already borrowed"). Lock covers tokenize + forward as one unit.
+        t0 = time.perf_counter()
         with _MODEL_LOCK:
+            t1 = time.perf_counter()
+            lock_wait += t1 - t0
             inputs = tokenizer(
                 batch_premises,
                 batch_hypotheses,
@@ -144,9 +152,12 @@ def _run_nli_batch(
                 padding=True,
             )
             inputs = inputs.to(DEVICE)
+            t2 = time.perf_counter()
+            tok_time += t2 - t1
             with torch.no_grad():
                 outputs = model(**inputs)
             probs = torch.softmax(outputs.logits, dim=1).cpu()
+            fwd_time += time.perf_counter() - t2
         for j in range(len(batch_premises)):
             p = probs[j]
             idx = p.argmax().item()
@@ -157,6 +168,9 @@ def _run_nli_batch(
                 "label": LABEL_MAP[idx],
                 "confidence": p[idx].item(),
             })
+    print(f"[NLI-PROF] pairs={len(premises)} batches={math.ceil(len(premises)/batch_size) if premises else 0} "
+          f"lock_wait={lock_wait:.2f} tokenize={tok_time:.2f} gpu_forward={fwd_time:.2f} "
+          f"call_total={time.perf_counter()-t_call:.2f}")
     return results
 
 
