@@ -13,7 +13,7 @@ import json
 import time
 import urllib.request
 
-BASE = "http://34.219.90.125:8000"
+BASE = "http://32.185.186.94:8000"
 CLAIMS = [
     "vaccines cause autism",
     "the great wall of china is visible from space",
@@ -51,7 +51,7 @@ def run(n):
             s = status(job_id)
             if s in ("done", "failed", "ERR"):
                 done[job_id] = (time.perf_counter() - start, s)
-        time.sleep(1)
+        time.sleep(0.4)
     for i, job_id in enumerate(ids):
         secs, s = done[job_id]
         print(f"  claim {i + 1}: {secs:5.1f}s  {s}")
@@ -60,5 +60,5 @@ def run(n):
 
 
 if __name__ == "__main__":
-    for level in (1, 3, 5):
+    for level in (1, 3, 5, 7, 9):
         run(level)
