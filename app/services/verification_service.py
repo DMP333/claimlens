@@ -68,14 +68,15 @@ class QueueFullError(Exception):
         super().__init__(f"queue full: {depth} jobs in flight")
 
 
-async def _inflight_count(session: AsyncSession) -> int:
-    """How many jobs are currently pending or running (not done/failed)."""
-    result = await session.execute(
-        select(func.count()).select_from(Verification).where(
-            Verification.status == "pending"
-        )
-    )
-    return int(result.scalar_one())
+# In-flight count: jobs accepted but not yet finished. A plain int, NOT a DB
+# count, on purpose. A "count pending rows in the DB then decide" check races
+# under burst: many concurrent submissions all run their COUNT before any of
+# them commits its insert, so they all see a low number and all pass the gate.
+# Because every submission runs on the single event loop, incrementing this
+# counter in submit_job and decrementing it when the job finishes is atomic
+# relative to other submissions (no two coroutines mutate it simultaneously),
+# so it is the accurate, race-free in-flight number.
+_inflight: int = 0
 
 
 #what adds the task to the row in the table
@@ -84,20 +85,27 @@ async def submit_job(claim: str, session: AsyncSession) -> uuid.UUID:
 
     Admission control: if too many jobs are already in flight, refuse with
     QueueFullError (the route turns it into 429) BEFORE inserting a row, so a
-    rejected request leaves no trace and consumes no work.
+    rejected request leaves no trace and consumes no work. The check and the
+    increment happen with no await between them, so the gate cannot be raced.
     """
-    depth = await _inflight_count(session)
-    if depth >= MAX_QUEUE_DEPTH:
-        # Estimate how long until a slot likely frees: jobs ahead, divided by
-        # how many run at once, times per-claim time. Floor of 1s.
-        retry_after = max(1, (depth // MAX_CONCURRENT_PIPELINES) * EST_SECONDS_PER_CLAIM)
-        raise QueueFullError(depth=depth, retry_after=retry_after)
+    global _inflight
+    if _inflight >= MAX_QUEUE_DEPTH:
+        retry_after = max(1, (_inflight // MAX_CONCURRENT_PIPELINES) * EST_SECONDS_PER_CLAIM)
+        raise QueueFullError(depth=_inflight, retry_after=retry_after)
 
-    verification = Verification(claim=claim)
-    session.add(verification)
-    await session.commit()
-
-    job_id = verification.id
+    # Reserve the slot synchronously (before the first await) so concurrent
+    # submissions on the same loop see the updated count immediately.
+    _inflight += 1
+    try:
+        verification = Verification(claim=claim)
+        session.add(verification)
+        await session.commit()
+        job_id = verification.id
+    except Exception:
+        # Insert failed: release the reserved slot so a DB error does not leak
+        # in-flight capacity permanently.
+        _inflight -= 1
+        raise
 
     task = asyncio.create_task(run_job(job_id))
     _background_tasks.add(task)
@@ -116,28 +124,34 @@ async def run_job(verification_id: uuid.UUID) -> None:
     used while waiting) until a slot frees. started_at is stamped at the moment
     work actually begins, which is what staleness is measured from.
     """
-    async with _get_sem():
-        async with AsyncSessionLocal() as session:
-            verification = await session.get(Verification, verification_id)
-            if verification is None:
-                logger.error("run_job: verification %s vanished before run", verification_id)
-                return
+    global _inflight
+    try:
+        async with _get_sem():
+            async with AsyncSessionLocal() as session:
+                verification = await session.get(Verification, verification_id)
+                if verification is None:
+                    logger.error("run_job: verification %s vanished before run", verification_id)
+                    return
 
-            # Mark the start of actual work (used by the stale check).
-            verification.started_at = datetime.now(timezone.utc)
-            await session.commit()
+                # Mark the start of actual work (used by the stale check).
+                verification.started_at = datetime.now(timezone.utc)
+                await session.commit()
 
-            try:
-                result = await analyze_claim(ClaimRequest(claim=verification.claim))
-                verification.status = "done"
-                verification.result = result.model_dump(mode="json")
-            except Exception as exc:  # noqa: BLE001 - every failure must be recorded
-                logger.exception("run_job: pipeline failed for %s", verification_id)
-                verification.status = "failed"
-                verification.error = str(exc)
+                try:
+                    result = await analyze_claim(ClaimRequest(claim=verification.claim))
+                    verification.status = "done"
+                    verification.result = result.model_dump(mode="json")
+                except Exception as exc:  # noqa: BLE001 - every failure must be recorded
+                    logger.exception("run_job: pipeline failed for %s", verification_id)
+                    verification.status = "failed"
+                    verification.error = str(exc)
 
-            verification.completed_at = datetime.now(timezone.utc)
-            await session.commit()
+                verification.completed_at = datetime.now(timezone.utc)
+                await session.commit()
+    finally:
+        # Release the in-flight slot no matter how the job ended (done, failed,
+        # vanished, or crashed). Pairs with the increment in submit_job.
+        _inflight -= 1
 
 
 #this is what does polling
