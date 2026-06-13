@@ -80,9 +80,10 @@ DEFAULT_STRATEGY = "3K"   # Options: "3K", "3A", "3J"
 DEFAULT_MIN_WORDS = 10
 DEFAULT_TOP_K = 3         # For 3J strategy
 
-# GPU batch size for NLI forward passes. Runtime knob (no rebuild needed):
-# set NLI_BATCH_SIZE in .env and recreate the container.
-NLI_BATCH_SIZE = int(os.getenv("NLI_BATCH_SIZE", "32"))
+# GPU batch size for NLI forward passes. 128 is the validated default (a sweep
+# showed no benefit beyond it once batching granularity was fixed). Still an env
+# override (NLI_BATCH_SIZE, recreate the container) if a different box wants it.
+NLI_BATCH_SIZE = int(os.getenv("NLI_BATCH_SIZE", "128"))
 
 
 # ============================================================
