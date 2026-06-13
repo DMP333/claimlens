@@ -227,7 +227,11 @@ def test_poll_returns_200_with_job_status(api_client, monkeypatch):
     async def _get(verification_id, session):
         return job
 
+    async def _pos(verification_id, session):
+        return 0
+
     monkeypatch.setattr("app.services.verification_service.get_job", _get)
+    monkeypatch.setattr("app.services.verification_service.queue_position", _pos)
 
     resp = api_client.get(f"/verify/{job.id}")
     assert resp.status_code == 200
@@ -245,3 +249,46 @@ def test_poll_returns_503_when_db_unavailable(api_client, monkeypatch):
 
     resp = api_client.get(f"/verify/{uuid.uuid4()}")
     assert resp.status_code == 503
+
+# ===========================================================================
+# 4. BACKPRESSURE (admission control: 429 + queue position)
+# ===========================================================================
+
+def test_submit_returns_429_when_queue_full(api_client, monkeypatch):
+    """When submit_job raises QueueFullError, the route returns 429 with a
+    Retry-After header instead of accepting work it cannot serve in time."""
+    from app.services.verification_service import QueueFullError
+
+    async def _full(claim, session):
+        raise QueueFullError(depth=12, retry_after=40)
+
+    monkeypatch.setattr("app.services.verification_service.submit_job", _full)
+
+    resp = api_client.post("/verify", json={"claim": "A perfectly valid claim"})
+    assert resp.status_code == 429
+    assert resp.headers.get("Retry-After") == "40"
+
+
+def test_poll_pending_includes_queue_position(api_client, monkeypatch):
+    """A still-pending job reports its queue position in the body."""
+    job = SimpleNamespace(
+        id=uuid.uuid4(),
+        status="pending",
+        result=None,
+        error=None,
+        created_at=datetime.now(timezone.utc),
+        completed_at=None,
+    )
+
+    async def _get(verification_id, session):
+        return job
+
+    async def _pos(verification_id, session):
+        return 2
+
+    monkeypatch.setattr("app.services.verification_service.get_job", _get)
+    monkeypatch.setattr("app.services.verification_service.queue_position", _pos)
+
+    resp = api_client.get(f"/verify/{job.id}")
+    assert resp.status_code == 200
+    assert resp.json()["queue_position"] == 2

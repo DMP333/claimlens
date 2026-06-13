@@ -42,6 +42,15 @@ class Verification(Base):
         nullable=False,
     )
 
+    # When the job actually BEGAN running the pipeline (acquired the concurrency
+    # slot). Null while still queued. Staleness is measured from THIS, not from
+    # created_at, so a job that legitimately waits in the admission queue is not
+    # mistaken for a hung job.
+    started_at: Mapped[datetime | None] = mapped_column(
+        DateTime(timezone=True),
+        nullable=True,
+    )
+
     # When the job reached done or failed. Null while still pending.
     completed_at: Mapped[datetime | None] = mapped_column(
         DateTime(timezone=True),

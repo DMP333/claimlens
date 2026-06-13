@@ -87,3 +87,7 @@ class VerificationStatusResponse(BaseModel):
     error: Optional[str] = None
     created_at: datetime
     completed_at: Optional[datetime] = None
+    # Populated by the route only while status == "pending": how many pending
+    # jobs are ahead of this one (0 = at the front). Null otherwise. Not an ORM
+    # column, so it is set explicitly by the route, not via model_validate.
+    queue_position: Optional[int] = None

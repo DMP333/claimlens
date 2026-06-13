@@ -1,6 +1,6 @@
 from uuid import UUID
 
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Depends, HTTPException, Response, status
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -11,6 +11,7 @@ from app.models.schemas import (
     VerificationStatusResponse,
 )
 from app.services import verification_service
+from app.services.verification_service import QueueFullError
 
 router = APIRouter()
 
@@ -26,6 +27,7 @@ _DB_UNAVAILABLE = "Verification store is unavailable. Please retry shortly."
 )
 async def submit_verification(
     request: ClaimRequest,
+    response: Response,
     session: AsyncSession = Depends(get_session),
 ) -> VerificationSubmitResponse:
     """Accept a claim, start verification in the background, return the job id.
@@ -33,10 +35,20 @@ async def submit_verification(
     Returns 202 immediately; the client polls GET /verify/{id} for the result.
     submit_job commits the pending row BEFORE scheduling the background task, so
     if the DB is down the commit raises here and no orphan task is ever started.
+
+    Admission control: if too many jobs are already in flight, submit_job raises
+    QueueFullError and we return 429 with Retry-After, so the system sheds load
+    honestly instead of accepting work it cannot serve in bounded time.
     """
     try:
         # submit_job takes the claim STRING, not the ClaimRequest object.
         job_id = await verification_service.submit_job(request.claim, session)
+    except QueueFullError as exc:
+        raise HTTPException(
+            status_code=status.HTTP_429_TOO_MANY_REQUESTS,
+            detail="Server at capacity. Please retry shortly.",
+            headers={"Retry-After": str(exc.retry_after)},
+        )
     except SQLAlchemyError:
         raise HTTPException(
             status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
@@ -56,18 +68,28 @@ async def get_verification(
     job is reported in the body, not via an error code. 404 only when the id
     matches no job. The HTTP code answers "did the lookup work"; the status
     field answers "what happened to the job".
+
+    For a still-pending job we also report queue_position (0 = at the front),
+    so a waiting client sees progress instead of a silent hang.
     """
     try:
         verification = await verification_service.get_job(verification_id, session)
+        if verification is None:
+            raise HTTPException(
+                status_code=status.HTTP_404_NOT_FOUND,
+                detail="No verification found for that id.",
+            )
+        position = None
+        if verification.status == "pending":
+            position = await verification_service.queue_position(verification_id, session)
     except SQLAlchemyError:
         raise HTTPException(
             status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
             detail=_DB_UNAVAILABLE,
         )
-    if verification is None:
-        raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail="No verification found for that id.",
-        )
+
     # ORM row -> HTTP response object (works because from_attributes=True).
-    return VerificationStatusResponse.model_validate(verification)
+    body = VerificationStatusResponse.model_validate(verification)
+    if position is not None:
+        body.queue_position = position
+    return body
