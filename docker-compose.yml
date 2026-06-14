@@ -16,8 +16,8 @@ services: #list of containers this file defines
       timeout: 3s
       retries: 10
 
-  app: #our application container, pulled pre-built from ECR (built by CI, not here)
-    image: 292535187659.dkr.ecr.us-west-2.amazonaws.com/claimlens:latest
+  app: #our application container, pulled pre-built from ECR by image tag
+    image: 292535187659.dkr.ecr.us-west-2.amazonaws.com/claimlens:${IMAGE_TAG:-latest}
     container_name: claimlens-app
     environment:
       # Inside the compose network the DB is reached by SERVICE NAME (db), not
