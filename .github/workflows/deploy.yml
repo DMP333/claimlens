@@ -33,15 +33,15 @@ jobs:
         id: ecr-login
         uses: aws-actions/amazon-ecr-login@v2
 
-      # Build the image and push two tags:
-      #   <commit-sha>  immutable, traces every image to an exact commit
-      #   latest        moving convenience tag for "newest build"
+      # Build the image and push ONE immutable tag: the commit SHA. The repo is
+      # configured immutable (tags can never be overwritten), so we do NOT push a
+      # moving "latest" tag. Every image is traceable to an exact commit, and the
+      # deploy step pulls by this exact SHA, no ambiguity about what is running.
       - name: Build and push image
         env:
           ECR_REPO: ${{ vars.ECR_REPOSITORY }}
           IMAGE_TAG: ${{ github.sha }}
         run: |
-          docker build -t "$ECR_REPO:$IMAGE_TAG" -t "$ECR_REPO:latest" .
+          docker build -t "$ECR_REPO:$IMAGE_TAG" .
           docker push "$ECR_REPO:$IMAGE_TAG"
-          docker push "$ECR_REPO:latest"
           echo "Pushed $ECR_REPO:$IMAGE_TAG"
