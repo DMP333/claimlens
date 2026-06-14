@@ -13,7 +13,7 @@ import json
 import time
 import urllib.request
 
-BASE = "http://32.185.186.94:8000"
+BASE = "http://54.190.73.166:8000"
 CLAIMS = [
     "vaccines cause autism",
     "the great wall of china is visible from space",
