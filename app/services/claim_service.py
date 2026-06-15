@@ -357,17 +357,42 @@ def _present_sources(sources: list[SourceResult]) -> list[SourceResult]:
     return visible
 
 
+# Page chrome that sometimes survives extraction (nav, footer, legal, promo).
+# Used ONLY to keep such lines out of the surfaced evidence sentence. It does not
+# touch stance or the verdict, only which sentence we quote, so a miss here is
+# cosmetic (an uglier quote) and never changes a result.
+_BOILERPLATE_MARKERS = (
+    "\u00a9", "all rights reserved", "privacy policy", "terms of service",
+    "contact us", "sign in", "subscribe", "cookie", "how youtube works",
+    "we hope you enjoyed", "create high-quality images",
+)
+
+
+def _looks_like_boilerplate(text: str) -> bool:
+    low = text.lower()
+    if any(m in low for m in _BOILERPLATE_MARKERS):
+        return True
+    if low.count("http") >= 2:   # a dump of links, not a sentence
+        return True
+    return False
+
+
 def _top_evidence_sentence(stance: str, sent_details: list[dict]) -> str | None:
     """The single sentence that most drove this source's stance: the highest
     supporting-probability sentence for a supporting source, the highest
-    opposing-probability one for an opposing source. None if unavailable."""
+    opposing-probability one for an opposing source. Page-chrome lines are
+    skipped so the quoted evidence stays readable; None if nothing usable."""
     if not sent_details:
         return None
     key = "p_supp" if stance == "supporting" else "p_opp" if stance == "opposing" else None
     if key is None:
         return None
-    best = max(sent_details, key=lambda s: s.get(key, 0.0))
-    return best.get("text")
+    ranked = sorted(sent_details, key=lambda s: s.get(key, 0.0), reverse=True)
+    for s in ranked:
+        text = (s.get("text") or "").strip()
+        if text and not _looks_like_boilerplate(text):
+            return text
+    return None   # every candidate was chrome; better None than junk
 
 
 async def analyze_claim(request: ClaimRequest) -> ClaimResponse:
