@@ -1,14 +1,12 @@
 """
-Claim classification: type (fact vs opinion) and domain routing.
+Claim domain classification for source routing.
 
-Two independent classifiers:
-  - classify_claim_type:   determines verdict framing (factual vs opinion)
-  - classify_claim_domain: determines source routing (scientific, historical, etc.)
+classify_claim_domain determines which sources to query (scientific, historical,
+current_events, statistical, general) via keyword matching and POS tagging.
 
-Approach: keyword/phrase matching + POS tagging for comparative/superlative
-detection. DeBERTa zero-shot as optional fallback for ambiguous claims.
-
-Replaces the previous XLM-R-based classify_claim_type in nli_service.py.
+(The previous fact-vs-opinion classifier was removed: it only switched the
+verdict wording, relied on brittle keyword matching, and the verdict now reads
+uniformly as "Sources <verdict> this claim" for every claim.)
 """
 
 import re
@@ -30,52 +28,8 @@ def _ensure_nltk() -> None:
         _nltk_ready = True
 
 
-# =============================================================
-# CLAIM TYPE: factual vs opinion
-# =============================================================
-
-# Layer 1a: Multi-word opinion phrases (highest confidence, 0.95)
-# Checked via substring match on lowercased claim
-_OPINION_PHRASES = [
-    # Personal framing
-    "i think", "i believe", "in my opinion", "i feel that", "i feel like",
-    # Comparative constructions
-    "is better than", "is worse than",
-    # Superlative constructions
-    "is the best", "is the worst", "is the greatest", "is the least",
-    "is the most important", "is the most dangerous",
-    # Prescriptive
-    "should be", "should not be", "shouldn't be", "should have",
-    "ought to", "needs to be",
-    # Value judgments about belonging/deserving
-    "belongs on", "deserves to", "deserves a",
-    "is worth", "isn't worth", "is not worth",
-    # Evaluative effect phrases
-    "is good for", "is bad for",
-]
-
-# Layer 1b: Single-word opinion markers (confidence 0.90)
-# Checked via exact word match after stripping punctuation
-_OPINION_KEYWORDS = {
-    # Prescriptive modals
-    "should", "ought",
-    # Subjective evaluators
-    "overrated", "underrated", "overhyped",
-    "beautiful", "ugly", "terrible", "amazing", "wonderful", "horrible",
-    "perfect", "awful", "excellent", "superior", "inferior",
-    # Moral/ethical judgments
-    "immoral", "unethical", "evil", "righteous",
-    "corrupt", "dishonest",
-    # Health evaluators (subjective)
-    "unhealthy", "wholesome",
-    # Quality evaluators
-    "wasteful", "pointless", "useless", "worthless",
-}
-
-# Layer 2: POS tagging catches comparatives/superlatives the keywords miss.
-# But quantitative comparisons ("spends more than 10 countries") are factual,
-# not opinion. These patterns identify quantitative context to suppress
-# false-positive opinion signals from POS tags.
+# Statistical patterns (numbers, percentages, money, quantitative comparisons).
+# Used by classify_claim_domain to boost the "statistical" bucket.
 _STATISTICAL_PATTERNS = [
     r'\d+\s*%',
     r'\$[\d,]+',
@@ -88,80 +42,7 @@ _STATISTICAL_PATTERNS = [
     r'\d+\s+(?:out of|in every)',
 ]
 
-# "most" + countable noun = "majority of" (quantitative), not superlative
-_QUANTITATIVE_MOST = re.compile(
-    r'\bmost\s+(?:jobs|people|workers|countries|students|cases|'
-    r'americans|things|adults|children|of\b)',
-    re.IGNORECASE,
-)
 
-# Superlatives describing measurable quantities, not value judgments
-# "largest economy" is measurable, "greatest player" is opinion
-_QUANTITATIVE_SUPERLATIVE = re.compile(
-    r'\b(?:largest|smallest|tallest|shortest|highest|lowest|fastest|slowest|'
-    r'oldest|youngest|longest|heaviest|lightest|richest|poorest)\s+'
-    r'(?:economy|country|city|population|gdp|building|mountain|river|ocean|'
-    r'company|market|army|military|budget|deficit|surplus|producer|exporter|'
-    r'importer|continent|planet|star|lake|desert|island|forest)',
-    re.IGNORECASE,
-)
-
-
-def _has_statistical_context(claim_lower: str) -> bool:
-    for pattern in _STATISTICAL_PATTERNS:
-        if re.search(pattern, claim_lower):
-            return True
-    if _QUANTITATIVE_MOST.search(claim_lower):
-        return True
-    if _QUANTITATIVE_SUPERLATIVE.search(claim_lower):
-        return True
-    return False
-
-
-def classify_claim_type(claim: str) -> tuple[str, float]:
-    """Classify a claim as factual or opinion.
-
-    Returns:
-        ("factual", confidence) or ("opinion", confidence)
-
-    Three detection layers, checked in order:
-      1. Phrase/keyword matching (catches explicit opinion language)
-      2. POS tagging (catches comparative/superlative structures)
-      3. Default to factual (DeBERTa fallback available but off by default)
-    """
-    _ensure_nltk()
-    claim_lower = claim.lower().strip()
-    words = claim_lower.split()
-    words_set = set(re.sub(r'[.,!?;:\'"()\[\]]', '', w) for w in words)
-
-    # Layer 1a: phrase matching
-    for phrase in _OPINION_PHRASES:
-        if phrase in claim_lower:
-            return ("opinion", 0.95)
-
-    # Layer 1b: keyword matching
-    for word in words:
-        clean = re.sub(r'[.,!?;:\'"()\[\]]', '', word)
-        if clean in _OPINION_KEYWORDS:
-            return ("opinion", 0.90)
-
-    # Layer 2: POS comparative/superlative detection
-    tokens = word_tokenize(claim)
-    tags = pos_tag(tokens)
-    has_comparative = any(
-        tag in ("JJR", "JJS", "RBR", "RBS") for _, tag in tags
-    )
-    has_scientific = bool(words_set & _SCIENTIFIC_TERMS)
-    if has_comparative and not _has_statistical_context(claim_lower) and not has_scientific:
-        return ("opinion", 0.85)
-
-    # Layer 3: default to factual
-    # TODO: optional DeBERTa zero-shot fallback for ambiguous claims
-    # from app.services.nli_service import classify_stance
-    # stance, conf = classify_stance(claim, "This is a personal opinion or value judgment.")
-    # if stance == "supporting" and conf > 0.7:
-    #     return ("opinion", conf * 0.8)
-    return ("factual", 0.80)
 
 
 # =============================================================

@@ -443,22 +443,17 @@
     if(c>=0.50) return 'slight';
     return 'weak';
   }
-  // parse the backend's debug support_summary into a clean meta line.
-  // forms seen: "Sentence-NLI: opposing (1.00, 17 sents)" | "Fact-check: 'False' (rating-based)"
+  // build a clean meta line from the structured fields the backend now sends.
   function methodLine(s){
-    const summ = s.support_summary||'';
     const dir = (s.stance||'').toLowerCase().indexOf('support')===0 ? 'support' : 'opposition';
     const strength = strengthWord(s.stance_confidence||0);
-    // sentence-NLI source: pull the sentence count
-    const m = summ.match(/(\d+)\s*sents?/i);
-    if(m){
-      const n = m[1];
-      return `${n} sentence${n==='1'?'':'s'} analyzed · ${strength} ${dir}`;
+    if(s.method==='fact_check'){
+      return s.rating ? `fact-check rating · ${esc(s.rating)}` : `fact-check · ${strength} ${dir}`;
     }
-    // fact-check source: rating-based, no sentence count
-    if(/fact-check/i.test(summ)){
-      const r = summ.match(/'([^']+)'/);
-      return r ? `fact-check rating · ${esc(r[1])}` : `fact-check · ${strength} ${dir}`;
+    // sentence-NLI source
+    if(s.sentence_count!=null){
+      const n = s.sentence_count;
+      return `${n} sentence${n===1?'':'s'} analyzed · ${strength} ${dir}`;
     }
     // fallback
     return `${strength} ${dir}`;

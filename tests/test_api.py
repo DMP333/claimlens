@@ -99,8 +99,6 @@ def _install_fakes(monkeypatch, sources):
                  "bias_rating": None, "factual_reporting": None} for _ in srcs]
     monkeypatch.setattr(f"{cs}.score_all_sources", _fake_credibility)
 
-    monkeypatch.setattr("app.services.claim_classifier.classify_claim_type",
-                        lambda claim: ("factual", 0.9))
     monkeypatch.setattr("app.services.claim_classifier.classify_claim_domain",
                         lambda claim: "scientific")
     monkeypatch.setattr("app.services.source_router.build_routing_config",
@@ -113,9 +111,6 @@ def test_pipeline_runs_chain_drops_neutral_and_shows_both_sides(make_source, mon
     result = asyncio.run(
         claim_service.analyze_claim(ClaimRequest(claim="Bats can sense magnetic fields"))
     )
-
-    # classifier/router stubs flowed through to the response
-    assert result.claim_domain == "scientific"
 
     # the core contract: both sides present, neutral dropped from the output
     stances = {s.stance for s in result.sources}

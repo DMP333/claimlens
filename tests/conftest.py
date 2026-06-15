@@ -32,7 +32,7 @@ def make_result(): #fixed condition for the test, 과학 실험 할때 controlle
             credibility_score=credibility_score,
             bias_rating=None,
             factual_reporting=None,
-            support_summary="test",
+            method="sentence_nli",
         )
         defaults.update(overrides)
         return SourceResult(**defaults)

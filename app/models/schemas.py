@@ -24,13 +24,14 @@ class SourceResult(BaseModel):
     credibility_score: float
     bias_rating: str | None = None #bias, only tier one has it
     factual_reporting: str | None = None
-    support_summary: str
+    method: str | None = None         # "sentence_nli" | "fact_check" (None only for legacy cached results)
+    sentence_count: int | None = None # NLI: sentences read; None for fact-check
+    evidence: str | None = None       # NLI: the single sentence that drove the stance
+    snippet: str | None = None        # the analyzed text chunk (context for evidence)
+    rating: str | None = None         # fact-check rating; None for NLI sources
 
 class ClaimResponse(BaseModel):
     claim: str
-    claim_type: str #opinion vs factual
-    claim_type_confidence: float #how confident are you on the fact that it is opinon or factual
-    claim_domain: str #topic bucket (science, politics, health, ...) used for source routing
     verdict: str
     confidence_in_verdict: float
     sources: list[SourceResult]

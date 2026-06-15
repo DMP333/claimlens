@@ -348,25 +348,38 @@ def _present_sources(sources: list[SourceResult]) -> list[SourceResult]:
 
     Drops neutral sources: they contribute nothing to the verdict (compute_verdict
     already skips them) and a stanceless source does not serve a show-both-sides
-    output. Then groups by stance (supporting, then opposing) and sorts by
-    credibility descending within each group. Pure function, no I/O.
+    output. Then groups by stance (supporting, then opposing) and sorts by verdict
+    weight (stance_confidence * credibility_score) descending within each group,
+    the same weight compute_verdict and the frontend use. Pure function, no I/O.
     """
     visible = [s for s in sources if s.stance != "neutral"]
-    visible.sort(key=lambda s: (_STANCE_RANK.get(s.stance, 99), -s.credibility_score))
+    visible.sort(key=lambda s: (_STANCE_RANK.get(s.stance, 99), -(s.stance_confidence * s.credibility_score)))
     return visible
+
+
+def _top_evidence_sentence(stance: str, sent_details: list[dict]) -> str | None:
+    """The single sentence that most drove this source's stance: the highest
+    supporting-probability sentence for a supporting source, the highest
+    opposing-probability one for an opposing source. None if unavailable."""
+    if not sent_details:
+        return None
+    key = "p_supp" if stance == "supporting" else "p_opp" if stance == "opposing" else None
+    if key is None:
+        return None
+    best = max(sent_details, key=lambda s: s.get(key, 0.0))
+    return best.get("text")
 
 
 async def analyze_claim(request: ClaimRequest) -> ClaimResponse:
     import time
-    from app.services.claim_classifier import classify_claim_type, classify_claim_domain
+    from app.services.claim_classifier import classify_claim_domain
     from app.services.source_router import build_routing_config
 
     t0 = time.perf_counter()
-    claim_type, claim_type_confidence = classify_claim_type(request.claim)
     claim_domain = classify_claim_domain(request.claim)
     routing_config = build_routing_config(claim_domain, request.claim)
     t_classify = time.perf_counter()
-    print(f"[CLAIM] type={claim_type} ({claim_type_confidence:.2f}) | domain={claim_domain}")
+    print(f"[CLAIM] domain={claim_domain}")
 
     raw_sources = await search_sources(request, routing_config)
     t_search = time.perf_counter()
@@ -379,7 +392,7 @@ async def analyze_claim(request: ClaimRequest) -> ClaimResponse:
     analyzed_sources = await analyze_sources(request.claim, raw_sources)
     t_nli = time.perf_counter()
 
-    verdict, confidence_in_verdict = compute_verdict(analyzed_sources, claim_type)
+    verdict, confidence_in_verdict = compute_verdict(analyzed_sources)
     t_end = time.perf_counter()
 
     print(
@@ -391,9 +404,6 @@ async def analyze_claim(request: ClaimRequest) -> ClaimResponse:
     )
     return ClaimResponse(
         claim=request.claim,
-        claim_type=claim_type,
-        claim_type_confidence=claim_type_confidence,
-        claim_domain=claim_domain,
         verdict=verdict,
         confidence_in_verdict=confidence_in_verdict,
         sources=_present_sources(analyzed_sources),
@@ -496,7 +506,11 @@ async def analyze_sources(claim: str, raw_sources: list[Source]) -> list[SourceR
                         credibility_score=cred["credibility_score"],
                         bias_rating=cred["bias_rating"],
                         factual_reporting=cred["factual_reporting"],
-                        support_summary=f"Fact-check: '{source.raw_claim_rating}' (rating-based)",
+                        method="fact_check",
+                        sentence_count=None,
+                        evidence=None,
+                        snippet=source.snippet,
+                        rating=source.raw_claim_rating,
                     )
                 ))
             else:
@@ -525,7 +539,11 @@ async def analyze_sources(claim: str, raw_sources: list[Source]) -> list[SourceR
                     credibility_score=cred["credibility_score"],
                     bias_rating=cred["bias_rating"],
                     factual_reporting=cred["factual_reporting"],
-                    support_summary=f"Sentence-NLI: {stance} ({confidence:.2f}, {len(sent_details)} sents)",
+                    method="sentence_nli",
+                    sentence_count=len(sent_details),
+                    evidence=_top_evidence_sentence(stance, sent_details),
+                    snippet=source.snippet,
+                    rating=None,
                 )
             ))
 
@@ -539,7 +557,7 @@ async def analyze_sources(claim: str, raw_sources: list[Source]) -> list[SourceR
 EVIDENCE_SATURATION_K = 2.0
 
 
-def compute_verdict(source_results_list: list[SourceResult], claim_type: str) -> tuple[str, float]:
+def compute_verdict(source_results_list: list[SourceResult]) -> tuple[str, float]:
     weighted_supporting = 0.0
     weighted_opposing = 0.0
 
@@ -565,17 +583,9 @@ def compute_verdict(source_results_list: list[SourceResult], claim_type: str) ->
     evidence_factor = total / (total + EVIDENCE_SATURATION_K)
     confidence = round(direction * evidence_factor, 4)
 
-    # Opinion claims: show what sources say, but don't give hard true/false verdict
-    if claim_type == "opinion":
-        if ratio >= 0.60:
-            verdict = "sources lean supporting"
-        elif ratio > 0.40:
-            verdict = "sources divided"
-        else:
-            verdict = "sources lean opposing"
-        return (verdict, confidence)
-
-    # Factual claims: normal verdict
+    # One graded vocabulary for every claim. The frontend frames it as
+    # "Sources <verdict> this claim", a statement about what the sources do, not a
+    # truth claim, so the same wording fits opinion and factual claims alike.
     if ratio >= 0.80:
         verdict = "strongly supported"
     elif ratio >= 0.60:
