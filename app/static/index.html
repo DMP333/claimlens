@@ -3,6 +3,18 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
+  /* Apply saved/system theme before paint so there is no flash of the wrong theme. */
+  (function(){
+    try{
+      var t = localStorage.getItem('claimlens-theme');
+      if(t!=='dark' && t!=='light'){
+        t = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+      }
+      document.documentElement.setAttribute('data-theme', t);
+    }catch(e){}
+  })();
+</script>
 <title>ClaimLens — Evidence Intelligence</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,11 +35,35 @@
     --tier-estimated:#9a7b2e;
     --tier-unverified:#8a8276;
     --accent:#1a1714;
+    --ink-soft:#3b352d;     /* method-body running text */
+    --placeholder:#b3aa98;  /* input placeholder */
+  }
+  /* Dark theme: warm and editorial, deliberately NOT a cold devtool gray. The
+     paper goes to a warm near-black and the ink to a warm off-white so the
+     document feel survives; accents brighten a touch to hold contrast on dark. */
+  [data-theme="dark"]{
+    --ink:#ece4d6;
+    --paper:#1b1714;
+    --paper-edge:#241f1a;
+    --rule:#3a332a;
+    --rule-strong:#564d3e;
+    --muted:#9a9082;
+    --support:#82b08b;
+    --support-tint:#1e2922;
+    --oppose:#d2806a;
+    --oppose-tint:#2c2019;
+    --tier-verified:#82b08b;
+    --tier-estimated:#cdb06a;
+    --tier-unverified:#9a9082;
+    --accent:#ece4d6;
+    --ink-soft:#cfc6b6;
+    --placeholder:#7d7464;
   }
   *{box-sizing:border-box}
   html{-webkit-text-size-adjust:100%}
   body{
     margin:0; background:var(--paper); color:var(--ink);
+    transition:background-color .25s ease, color .25s ease;
     font-family:"Newsreader",Georgia,serif;
     font-size:18px; line-height:1.5;
     -webkit-font-smoothing:antialiased;
@@ -40,15 +76,18 @@
     border-bottom:2px solid var(--ink);
     padding:26px 0 16px;
   }
-  .mast-row{display:flex; align-items:baseline; justify-content:space-between; gap:16px; flex-wrap:wrap;}
+  .mast-row{display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;}
   .brand{
     font-weight:600; font-size:30px; letter-spacing:-0.01em;
   }
   .brand .lens{font-style:italic; color:var(--muted);}
-  .tagline{
+  .theme-toggle{
     font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:0.14em;
     text-transform:uppercase; color:var(--muted);
+    background:transparent; border:1px solid var(--rule-strong);
+    padding:6px 12px; cursor:pointer; transition:color .15s, border-color .15s;
   }
+  .theme-toggle:hover{color:var(--ink); border-color:var(--ink);}
 
   /* Query bar */
   .query{padding:30px 0 8px;}
@@ -62,7 +101,7 @@
     font-family:"Newsreader",serif; font-size:25px; color:var(--ink);
     padding:6px 2px 10px; line-height:1.25;
   }
-  .query-input::placeholder{color:#b3aa98; font-style:italic;}
+  .query-input::placeholder{color:var(--placeholder); font-style:italic;}
   .query-input:focus{outline:none; border-bottom-color:var(--oppose);}
   .submit{
     align-self:flex-end; flex:none;
@@ -201,7 +240,7 @@
   .methodology summary:hover{color:var(--ink);}
   .method-body{
     margin-top:14px; max-width:64ch;
-    font-size:15.5px; line-height:1.6; color:#3b352d;
+    font-size:15.5px; line-height:1.6; color:var(--ink-soft);
   }
   .method-body h4{
     font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:0.08em;
@@ -242,7 +281,7 @@
     <header class="mast">
       <div class="mast-row">
         <div class="brand">Claim<span class="lens">Lens</span></div>
-        <div class="tagline">Evidence intelligence · both sides, weighed</div>
+        <button id="themeToggle" class="theme-toggle" type="button" aria-label="Toggle dark mode">Dark</button>
       </div>
     </header>
 
@@ -307,18 +346,29 @@
         <div class="tierline"><span class="k mk-verified">Verified</span><span>Fact-checkers and established encyclopedias or outlets with a known reliability record.</span></div>
         <div class="tierline"><span class="k mk-estimated">Estimated</span><span>Academic, institutional, or topically relevant sources without a formal reliability rating.</span></div>
         <div class="tierline"><span class="k mk-unverified">Unverified</span><span>Open-web results with no established track record; shown for transparency, weighted least.</span></div>
-        <h4>A caution</h4>
-        <p>Tiers and credibility scores are heuristic editorial estimates, not measured values. ClaimLens is built to surface and weigh evidence transparently, it is a research aid, not a final authority.</p>
       </div>
     </details>
-    <p class="disclaimer">ClaimLens surfaces and weighs evidence from public sources. It is a research tool, not an arbiter of truth: the reading reflects what sources lean toward, not verified fact.</p>
+    <p class="disclaimer">ClaimLens surfaces and weighs evidence from public sources; the reading reflects what those sources lean toward, not verified fact. Tiers and credibility scores are heuristic editorial estimates, not measured values. It is a research tool, not an arbiter of truth.</p>
     <footer class="foot">
-      <span>ClaimLens · DeBERTa-v3-large + LoRA · fact-check · encyclopedia · academic · web</span>
+      <span>Stance: DeBERTa-v3-large NLI, LoRA-tuned · Sources: Wikipedia, Semantic Scholar, OpenAlex, Google Fact Check, open web</span>
       <span id="timing"></span>
     </footer>
   </div>
 
 <script>
+(function(){
+  // Dark-mode toggle. The initial theme was already applied in <head> to avoid a
+  // flash; here we only label the button and wire the click, persisting the choice.
+  const root = document.documentElement, tbtn = document.getElementById('themeToggle');
+  const labelFor = th => th==='dark' ? 'Light' : 'Dark';
+  tbtn.textContent = labelFor(root.getAttribute('data-theme'));
+  tbtn.addEventListener('click', ()=>{
+    const next = root.getAttribute('data-theme')==='dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    tbtn.textContent = labelFor(next);
+    try{ localStorage.setItem('claimlens-theme', next); }catch(e){}
+  });
+})();
 (function(){
   const $ = id => document.getElementById(id);
   const claimInput = $('claim'), goBtn = $('go'),
@@ -500,4 +550,4 @@
 })();
 </script>
 </body>
-</html>g
+</html>
