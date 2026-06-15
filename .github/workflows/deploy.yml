@@ -33,18 +33,35 @@ jobs:
         id: ecr-login
         uses: aws-actions/amazon-ecr-login@v2
 
+      # Buildx with the docker-container driver. The default docker driver on the
+      # runner CANNOT export a build cache; this driver can. This step is what
+      # makes the cache-from/cache-to below actually do anything (without it they
+      # are silently ignored and the build runs uncached like before).
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
       # Build the image and push ONE immutable tag: the commit SHA. The repo is
       # configured immutable (tags can never be overwritten), so we do NOT push a
       # moving "latest" tag. Every image is traceable to an exact commit, and the
       # deploy step pulls by this exact SHA, no ambiguity about what is running.
+      #
+      # Caching: cache-from/cache-to type=gha stores the expensive, rarely-changing
+      # layers (the pip install of torch, the baked-in model download) in GitHub's
+      # Actions cache, NOT in ECR. That sidesteps the immutable repo entirely, since
+      # the cache never becomes a tag in ECR. On a code-only push those heavy layers
+      # restore from cache and only COPY app/ rebuilds. mode=max caches intermediate
+      # layers too (without it, only the final layer is cached, which is useless here).
+      # provenance:false keeps a single image manifest (no attestation manifest index),
+      # matching the old `docker build`/`docker push` behavior that compose expects.
       - name: Build and push image
-        env:
-          ECR_REPO: ${{ vars.ECR_REPOSITORY }}
-          IMAGE_TAG: ${{ github.sha }}
-        run: |
-          docker build -t "$ECR_REPO:$IMAGE_TAG" .
-          docker push "$ECR_REPO:$IMAGE_TAG"
-          echo "Pushed $ECR_REPO:$IMAGE_TAG"
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: true
+          tags: ${{ vars.ECR_REPOSITORY }}:${{ github.sha }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          provenance: false
 
   # Second job: tell the instance to pull the just-built image and restart.
   # Runs only after build-and-push succeeds. Uses SSM (no SSH, no open ports,
