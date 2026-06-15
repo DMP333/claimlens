@@ -45,3 +45,76 @@ jobs:
           docker build -t "$ECR_REPO:$IMAGE_TAG" .
           docker push "$ECR_REPO:$IMAGE_TAG"
           echo "Pushed $ECR_REPO:$IMAGE_TAG"
+
+  # Second job: tell the instance to pull the just-built image and restart.
+  # Runs only after build-and-push succeeds. Uses SSM (no SSH, no open ports,
+  # no stored keys): the workflow assumes the OIDC role and calls SSM SendCommand,
+  # and the instance's SSM agent picks up the command and runs it.
+  deploy:
+    needs: build-and-push          # wait for the image to exist in ECR
+    runs-on: ubuntu-latest
+    steps:
+      - name: Configure AWS credentials (OIDC)
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ vars.AWS_ROLE_ARN }}
+          aws-region: ${{ vars.AWS_REGION }}
+
+      # Send the deploy command to the instance via SSM and wait for it to finish.
+      # The command logs in to ECR, pulls the exact SHA just built, and restarts.
+      # IMAGE_TAG is passed in so compose pulls precisely this commit's image.
+      - name: Deploy to EC2 via SSM
+        env:
+          INSTANCE_ID: ${{ vars.EC2_INSTANCE_ID }}
+          REGION: ${{ vars.AWS_REGION }}
+          ECR_REPO: ${{ vars.ECR_REPOSITORY }}
+          IMAGE_TAG: ${{ github.sha }}
+        run: |
+          # The shell command the instance will run, as a JSON-safe string.
+          REGISTRY="$(echo "$ECR_REPO" | cut -d/ -f1)"
+          REMOTE_CMD="cd /home/ubuntu/FalseClaimDetector && \
+          aws ecr get-login-password --region $REGION | docker login --username AWS --password-stdin $REGISTRY && \
+          IMAGE_TAG=$IMAGE_TAG docker compose pull app && \
+          IMAGE_TAG=$IMAGE_TAG docker compose up -d"
+
+          # Dispatch the command to the instance's SSM agent.
+          COMMAND_ID=$(aws ssm send-command \
+            --region "$REGION" \
+            --instance-ids "$INSTANCE_ID" \
+            --document-name "AWS-RunShellScript" \
+            --comment "Deploy ${IMAGE_TAG} from GitHub Actions" \
+            --parameters "commands=[\"$REMOTE_CMD\"]" \
+            --query "Command.CommandId" --output text)
+          echo "SSM command dispatched: $COMMAND_ID"
+
+          # Poll until the command finishes, then report success/failure.
+          echo "Waiting for the instance to finish deploying..."
+          aws ssm wait command-executed \
+            --region "$REGION" \
+            --command-id "$COMMAND_ID" \
+            --instance-id "$INSTANCE_ID" || true
+
+          STATUS=$(aws ssm get-command-invocation \
+            --region "$REGION" \
+            --command-id "$COMMAND_ID" \
+            --instance-id "$INSTANCE_ID" \
+            --query "Status" --output text)
+          echo "Deploy status: $STATUS"
+
+          # Print the instance-side output (stdout/stderr) for visibility.
+          aws ssm get-command-invocation \
+            --region "$REGION" \
+            --command-id "$COMMAND_ID" \
+            --instance-id "$INSTANCE_ID" \
+            --query "StandardOutputContent" --output text
+          aws ssm get-command-invocation \
+            --region "$REGION" \
+            --command-id "$COMMAND_ID" \
+            --instance-id "$INSTANCE_ID" \
+            --query "StandardErrorContent" --output text
+
+          # Fail the job if the deploy did not succeed.
+          if [ "$STATUS" != "Success" ]; then
+            echo "Deploy failed with status: $STATUS"
+            exit 1
+          fi
