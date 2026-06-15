@@ -75,7 +75,8 @@ jobs:
           REMOTE_CMD="sudo -u ubuntu env HOME=/home/ubuntu bash -c 'cd /home/ubuntu/FalseClaimDetector && \
           aws ecr get-login-password --region $REGION | docker login --username AWS --password-stdin $REGISTRY && \
           IMAGE_TAG=$IMAGE_TAG docker compose pull app && \
-          IMAGE_TAG=$IMAGE_TAG docker compose up -d --remove-orphans'"
+          IMAGE_TAG=$IMAGE_TAG docker compose up -d --remove-orphans && \
+          docker image prune -af && docker builder prune -af'"
 
           # Dispatch the command to the instance's SSM agent.
           COMMAND_ID=$(aws ssm send-command \
