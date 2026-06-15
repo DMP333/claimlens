@@ -1,7 +1,9 @@
 # FastAPI app object is created and configured here. Kind of like main function in java
 from contextlib import asynccontextmanager
+import os
 
 from fastapi import FastAPI
+from fastapi.responses import FileResponse
 
 from app.db.session import engine, Base
 # Imported for its SIDE EFFECT only: defining the Verification class registers
@@ -23,15 +25,22 @@ async def lifespan(app: FastAPI):
     await engine.dispose()
 
 
-app = FastAPI(title="FalseClaimDetector", lifespan=lifespan)
+app = FastAPI(title="ClaimLens", lifespan=lifespan)
 #creates the instance and store it in app
 
 app.include_router(claims_router) #allows us to use /verify, now our app object knows about /verify
 
+# Absolute path to the bundled single-file frontend (app/static/index.html).
+# Built from __file__ so it resolves the same in local dev and in the container.
+_FRONTEND = os.path.join(os.path.dirname(__file__), "static", "index.html")
+
 #these are handlign different types of URL we handle
-@app.get("/") #if someone sends a get request to '/', run the function directly below this
+@app.get("/") #serve the web client (the human-facing page) at the root
 def root():
-    return {"message": "FalseClaimDector is running"} #what gets returned in the json file
+    # The page's JavaScript calls /verify on this same origin, so the API and the
+    # website share one server with no CORS setup. The API remains fully usable
+    # on its own (curl/scripts hit /verify directly); the page is just another client.
+    return FileResponse(_FRONTEND)
 
 @app.get("/health")
 def health():
