@@ -87,18 +87,23 @@ jobs:
             --query "Command.CommandId" --output text)
           echo "SSM command dispatched: $COMMAND_ID"
 
-          # Poll until the command finishes, then report success/failure.
+          # Poll until the command leaves InProgress/Pending. A pull of the large
+          # image plus container start can take several minutes, longer than the
+          # default waiter, so we poll manually up to ~10 minutes.
           echo "Waiting for the instance to finish deploying..."
-          aws ssm wait command-executed \
-            --region "$REGION" \
-            --command-id "$COMMAND_ID" \
-            --instance-id "$INSTANCE_ID" || true
-
-          STATUS=$(aws ssm get-command-invocation \
-            --region "$REGION" \
-            --command-id "$COMMAND_ID" \
-            --instance-id "$INSTANCE_ID" \
-            --query "Status" --output text)
+          STATUS="Pending"
+          for i in $(seq 1 60); do
+            STATUS=$(aws ssm get-command-invocation \
+              --region "$REGION" \
+              --command-id "$COMMAND_ID" \
+              --instance-id "$INSTANCE_ID" \
+              --query "Status" --output text 2>/dev/null || echo "Pending")
+            echo "  [$i] status: $STATUS"
+            case "$STATUS" in
+              Success|Failed|Cancelled|TimedOut) break ;;
+            esac
+            sleep 10
+          done
           echo "Deploy status: $STATUS"
 
           # Print the instance-side output (stdout/stderr) for visibility.
