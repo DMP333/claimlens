@@ -8,9 +8,7 @@
   (function(){
     try{
       var t = localStorage.getItem('claimlens-theme');
-      if(t!=='dark' && t!=='light'){
-        t = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
-      }
+      if(t!=='dark' && t!=='light'){ t = 'light'; }
       document.documentElement.setAttribute('data-theme', t);
     }catch(e){}
   })();
@@ -296,7 +294,7 @@
       <div class="hint">
         Try:
         <button data-ex="humans only use ten percent of their brains">a common myth</button> ·
-        <button data-ex="nuclear energy is safe">a contested claim</button> ·
+        <button data-ex="no two fingerprints are alike">a contested claim</button> ·
         <button data-ex="a four day work week improves productivity">an open question</button>
       </div>
     </section>
@@ -350,7 +348,7 @@
     </details>
     <p class="disclaimer">ClaimLens surfaces and weighs evidence from public sources; the reading reflects what those sources lean toward, not verified fact. Tiers and credibility scores are heuristic editorial estimates, not measured values. It is a research tool, not an arbiter of truth.</p>
     <footer class="foot">
-      <span>Stance: DeBERTa-v3-large NLI, LoRA-tuned · Sources: Wikipedia, Semantic Scholar, OpenAlex, Google Fact Check, open web</span>
+      <span>Stance: DeBERTa-v3-large NLI, LoRA-tuned<br>Sources: Wikipedia, Semantic Scholar, OpenAlex, Google Fact Check, open web</span>
       <span id="timing"></span>
     </footer>
   </div>
@@ -491,8 +489,11 @@
       else if(st.indexOf('oppos')===0) opp.push(s);
       // any non-directional stance is left out of the two columns
     });
-    const byConf=(a,b)=>(b.stance_confidence||0)-(a.stance_confidence||0);
-    sup.sort(byConf); opp.sort(byConf);
+    // Order each column by each source's actual weight in the verdict:
+    // stance_confidence * credibility_score, the same product the backend uses.
+    const weight=s=>(s.stance_confidence||0)*(s.credibility_score||0);
+    const byWeight=(a,b)=>weight(b)-weight(a);
+    sup.sort(byWeight); opp.sort(byWeight);
 
     // Balance bar driven by the BACKEND's own verdict + confidence (not source counts),
     // so the bar faithfully reflects the pipeline's confidence-weighted decision.
