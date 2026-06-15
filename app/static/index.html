@@ -162,18 +162,12 @@
 
   .card{padding:18px 0; border-bottom:1px solid var(--rule);}
   .card:last-child{border-bottom:none;}
-  .card-top{display:flex; align-items:flex-start; gap:10px; margin-bottom:7px;}
-  .conf{
-    flex:none; font-family:"IBM Plex Mono",monospace; font-size:12px; font-weight:600;
-    color:var(--ink); padding-top:3px; min-width:38px;
-  }
   .card-title{
-    font-size:20px; line-height:1.25; font-weight:500; margin:0;
+    font-size:20px; line-height:1.3; font-weight:500; margin:0 0 9px;
   }
   .card-title a{color:var(--ink); text-decoration:none; background-image:linear-gradient(var(--rule),var(--rule)); background-size:100% 1px; background-position:0 100%; background-repeat:no-repeat; transition:background-image .15s;}
   .card-title a:hover{background-image:linear-gradient(var(--oppose),var(--oppose));}
-  .card-summary{font-size:16.5px; line-height:1.5; color:#3b352d; margin:7px 0 11px;}
-  .card-foot{display:flex; align-items:center; gap:14px; flex-wrap:wrap;}
+  .card-foot{display:flex; align-items:center; gap:12px; flex-wrap:wrap;}
   .tier{
     font-family:"IBM Plex Mono",monospace; font-size:10.5px; letter-spacing:0.08em;
     text-transform:uppercase; font-weight:600;
@@ -182,12 +176,41 @@
   .tier.verified{color:var(--tier-verified);}
   .tier.estimated{color:var(--tier-estimated);}
   .tier.unverified{color:var(--tier-unverified);}
-  .cred{font-family:"IBM Plex Mono",monospace; font-size:11.5px; color:var(--muted);}
   .ratingflag{
     font-family:"IBM Plex Mono",monospace; font-size:11px; color:var(--muted);
     font-style:normal;
   }
   .col-empty{font-size:16px; color:var(--muted); font-style:italic; padding:18px 0;}
+
+  .method{
+    font-family:"IBM Plex Mono",monospace; font-size:11.5px; letter-spacing:0.02em;
+    color:var(--muted);
+  }
+
+  /* methodology expander */
+  .methodology{margin-top:30px;}
+  .methodology summary{
+    cursor:pointer; list-style:none;
+    font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:0.1em;
+    text-transform:uppercase; color:var(--muted);
+    display:inline-flex; align-items:center; gap:8px; padding:4px 0;
+  }
+  .methodology summary::-webkit-details-marker{display:none;}
+  .methodology summary::before{content:"+"; font-size:14px; color:var(--oppose);}
+  .methodology[open] summary::before{content:"\2212";}
+  .methodology summary:hover{color:var(--ink);}
+  .method-body{
+    margin-top:14px; max-width:64ch;
+    font-size:15.5px; line-height:1.6; color:#3b352d;
+  }
+  .method-body h4{
+    font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:0.08em;
+    text-transform:uppercase; color:var(--muted); margin:16px 0 5px; font-weight:600;
+  }
+  .method-body p{margin:0 0 6px;}
+  .method-body .tierline{display:flex; gap:9px; align-items:baseline; margin:3px 0;}
+  .method-body .k{font-family:"IBM Plex Mono",monospace; font-size:11px; text-transform:uppercase; letter-spacing:0.06em; min-width:78px;}
+  .mk-verified{color:var(--tier-verified);} .mk-estimated{color:var(--tier-estimated);} .mk-unverified{color:var(--tier-unverified);}
 
   .disclaimer{
     margin-top:36px; padding-top:0; max-width:62ch;
@@ -275,7 +298,20 @@
       </section>
     </main>
 
-    <p class="disclaimer">ClaimLens surfaces and weighs evidence from public sources. It is a research tool, not an arbiter of truth: the reading reflects what sources lean toward, not verified fact. Source tiers are an editorial reliability estimate.</p>
+    <details class="methodology">
+      <summary>How ClaimLens scores sources</summary>
+      <div class="method-body">
+        <h4>The reading</h4>
+        <p>For each source, a fine-tuned natural-language-inference model reads the page sentence by sentence and decides whether each sentence supports or opposes the claim. Those per-sentence judgments are aggregated into one stance per source, and the sources are combined into the overall reading shown above, weighted by how confident and how credible each one is. The bar position reflects that combined, confidence-weighted verdict, not a simple source count.</p>
+        <h4>Source tiers</h4>
+        <div class="tierline"><span class="k mk-verified">Verified</span><span>Fact-checkers and established encyclopedias or outlets with a known reliability record.</span></div>
+        <div class="tierline"><span class="k mk-estimated">Estimated</span><span>Academic, institutional, or topically relevant sources without a formal reliability rating.</span></div>
+        <div class="tierline"><span class="k mk-unverified">Unverified</span><span>Open-web results with no established track record; shown for transparency, weighted least.</span></div>
+        <h4>A caution</h4>
+        <p>Tiers and credibility scores are heuristic editorial estimates, not measured values. ClaimLens is built to surface and weigh evidence transparently, it is a research aid, not a final authority.</p>
+      </div>
+    </details>
+    <p class="disclaimer">ClaimLens surfaces and weighs evidence from public sources. It is a research tool, not an arbiter of truth: the reading reflects what sources lean toward, not verified fact.</p>
     <footer class="foot">
       <span>ClaimLens · DeBERTa-v3-large + LoRA · fact-check · encyclopedia · academic · web</span>
       <span id="timing"></span>
@@ -352,21 +388,44 @@
   function sleep(ms){ return new Promise(r=>setTimeout(r,ms)); }
   function pct(x){ return Math.round((x||0)*100); }
 
+  // strength word from a stance confidence (0..1)
+  function strengthWord(c){
+    if(c>=0.90) return 'strong';
+    if(c>=0.70) return 'moderate';
+    if(c>=0.50) return 'slight';
+    return 'weak';
+  }
+  // parse the backend's debug support_summary into a clean meta line.
+  // forms seen: "Sentence-NLI: opposing (1.00, 17 sents)" | "Fact-check: 'False' (rating-based)"
+  function methodLine(s){
+    const summ = s.support_summary||'';
+    const dir = (s.stance||'').toLowerCase().indexOf('support')===0 ? 'support' : 'opposition';
+    const strength = strengthWord(s.stance_confidence||0);
+    // sentence-NLI source: pull the sentence count
+    const m = summ.match(/(\d+)\s*sents?/i);
+    if(m){
+      const n = m[1];
+      return `${n} sentence${n==='1'?'':'s'} analyzed · ${strength} ${dir}`;
+    }
+    // fact-check source: rating-based, no sentence count
+    if(/fact-check/i.test(summ)){
+      const r = summ.match(/'([^']+)'/);
+      return r ? `fact-check rating · ${esc(r[1])}` : `fact-check · ${strength} ${dir}`;
+    }
+    // fallback
+    return `${strength} ${dir}`;
+  }
+
   function card(s){
     const tier = (s.credibility_tier||'unverified').toLowerCase();
     const tierClass = tier.indexOf('verif')===0 ? 'verified'
                     : tier.indexOf('estim')===0 ? 'estimated' : 'unverified';
-    const rating = s.raw_claim_rating || s.bias_rating;
     return `
       <article class="card">
-        <div class="card-top">
-          <span class="conf">${pct(s.stance_confidence)}%</span>
-          <h3 class="card-title"><a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title||s.url)}</a></h3>
-        </div>
-        <p class="card-summary">${esc(s.support_summary||'')}</p>
+        <h3 class="card-title"><a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title||s.url)}</a></h3>
         <div class="card-foot">
           <span class="tier ${tierClass}">${esc(s.credibility_tier||'unverified')}</span>
-          ${s.factual_reporting?`<span class="ratingflag">${esc(s.factual_reporting)}</span>`:''}
+          <span class="method">${methodLine(s)}</span>
         </div>
       </article>`;
   }
@@ -374,31 +433,55 @@
   function render(res, secs){
     $('claimEcho').textContent = res.claim || claimInput.value.trim();
 
-    // split sources
+    // split sources into supporting / opposing columns
     const sup=[], opp=[];
     (res.sources||[]).forEach(s=>{
       const st=(s.stance||'').toLowerCase();
       if(st.indexOf('support')===0) sup.push(s);
       else if(st.indexOf('oppos')===0) opp.push(s);
-      // neutral sources are dropped from the two-column view
+      // any non-directional stance is left out of the two columns
     });
     const byConf=(a,b)=>(b.stance_confidence||0)-(a.stance_confidence||0);
     sup.sort(byConf); opp.sort(byConf);
 
-    // balance bar: share of supporting among directional sources
+    // Balance bar driven by the BACKEND's own verdict + confidence (not source counts),
+    // so the bar faithfully reflects the pipeline's confidence-weighted decision.
+    // verdict direction -> which side; confidence_in_verdict -> how far from center.
+    const verdict = (res.verdict||'').toLowerCase();
+    const conf = res.confidence_in_verdict;
+    const leansSupport = verdict.indexOf('support')>=0;
+    const leansOppose  = verdict.indexOf('oppos')>=0;
     const total = sup.length+opp.length;
-    const supShare = total? sup.length/total : 0.5;
-    const fill = $('balanceFill');
-    fill.style.width = (supShare*100).toFixed(1)+'%';
-    fill.classList.toggle('lean-oppose', supShare<0.5);
 
-    // lean read line
-    const v=(res.verdict||'').toLowerCase();
+    let fillPct, oppose;
+    if(leansSupport || leansOppose){
+      // center is 50%; push toward the leaning side by (confidence * 50)
+      const c = (typeof conf==='number' && conf>=0 && conf<=1) ? conf : 0.5;
+      const offset = c*50;
+      fillPct = leansSupport ? 50+offset : 50-offset;
+      oppose = leansOppose;
+    } else if(total){
+      // no directional verdict text -> fall back to a centered split by counts
+      fillPct = (sup.length/total)*100; oppose = fillPct<50;
+    } else {
+      fillPct = 50; oppose = false;
+    }
+    const fill = $('balanceFill');
+    fill.style.width = fillPct.toFixed(1)+'%';
+    fill.classList.toggle('lean-oppose', oppose);
+
+    // Lean read line: show the backend's actual graded verdict, framed as a lean.
     let lean;
-    if(total===0) lean='No directional evidence found.';
-    else if(Math.abs(supShare-0.5)<0.08) lean='Sources are <b>divided</b>.';
-    else if(supShare>0.5) lean=`Sources lean <b>supporting</b>.`;
-    else lean=`Sources lean <b>opposing</b>.`;
+    if(res.verdict){
+      lean = `Sources <b>${esc(res.verdict)}</b> this claim.`;
+    } else if(total===0){
+      lean = 'No directional evidence found.';
+    } else {
+      const supShare = sup.length/total;
+      lean = Math.abs(supShare-0.5)<0.08 ? 'Sources are <b>divided</b>.'
+           : supShare>0.5 ? 'Sources lean <b>supporting</b>.'
+           : 'Sources lean <b>opposing</b>.';
+    }
     $('leanRead').innerHTML = lean;
 
     // columns
@@ -417,4 +500,4 @@
 })();
 </script>
 </body>
-</html>
+</html>g
