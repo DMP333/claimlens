@@ -1,0 +1,26 @@
+# Local build override.
+#
+# The committed docker-compose.yml pulls the app image from a private ECR
+# registry, which is correct for deployment but unusable from a fresh clone:
+# you have no access to that registry. This override adds a build directive so
+# the app image is built locally from the Dockerfile instead of pulled.
+#
+# Usage (from the repo root, after creating .env):
+#   docker compose -f docker-compose.yml -f docker-compose.local.yml up --build
+#
+# It is opt-in on purpose. It is NOT named docker-compose.override.yml, because
+# that name auto-merges into every `docker compose up` and would make the deploy
+# box try to build instead of pull. You only get this behavior when you pass it
+# explicitly with -f.
+#
+# Requires finetune/model_final/ (the LoRA adapter) to be present in the clone,
+# since the Dockerfile copies it into the image at build time.
+
+services:
+  app:
+    # Override the ECR image reference from the base file: build here, and tag
+    # the result locally so nothing reaches for the registry.
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: claimlens:local
