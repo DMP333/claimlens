@@ -29,7 +29,7 @@ split instead of picking a side.
 
 ## Demo
 
-Demo video and screenshots: coming soon.
+Demo video and screenshots: Planned.. Hopefully coming soon!
 
 A live instance is available at the address listed at the top of this README. It
 is usually kept off to control cost, so it responds only while the box is
